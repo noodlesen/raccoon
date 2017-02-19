@@ -1,0 +1,495 @@
+/*  EXAMPLE
+.block {
+  float: left;
+  width: 250px;
+  @include respond-to(handhelds) { width: 100% ;}
+  @include respond-to(medium-screens) { width: 125px; }
+  @include respond-to(wide-screens) { float: none; }
+}​ */
+/* line 102, scss/_config.scss */
+.color-blue {
+  color: #0088cc;
+}
+
+/* line 107, scss/_config.scss */
+.color-cyan {
+  color: #0cbeb2;
+}
+
+/* line 112, scss/_config.scss */
+.color-green {
+  color: #55d426;
+}
+
+/* line 117, scss/_config.scss */
+.color-yellow {
+  color: #ff9800;
+}
+
+/* line 122, scss/_config.scss */
+.color-orange {
+  color: #ff9800;
+}
+
+/* line 127, scss/_config.scss */
+.color-red {
+  color: #ff4e2b;
+}
+
+/* line 131, scss/_config.scss */
+.color-magenta {
+  color: #b652bf;
+}
+
+/* line 137, scss/_config.scss */
+.color-dark-blue {
+  color: #002c87;
+}
+
+/* line 142, scss/_config.scss */
+.color-dark-cyan {
+  color: #00705d;
+}
+
+/* line 147, scss/_config.scss */
+.color-dark-green {
+  color: #0c9702;
+}
+
+/* line 152, scss/_config.scss */
+.color-dark-orange {
+  color: #ff7b00;
+}
+
+/* line 157, scss/_config.scss */
+.color-dark-yellow {
+  color: #ffd900;
+}
+
+/* line 162, scss/_config.scss */
+.color-dark-red {
+  color: #ff0a02;
+}
+
+/* line 167, scss/_config.scss */
+.color-dark-magenta {
+  color: #821a8f;
+}
+
+/* line 172, scss/_config.scss */
+.color-light-blue {
+  color: #acd6e7;
+}
+
+/* line 177, scss/_config.scss */
+.color-light-cyan {
+  color: #b1e8df;
+}
+
+/* line 182, scss/_config.scss */
+.color-light-green {
+  color: #c8efb1;
+}
+
+/* line 187, scss/_config.scss */
+.color-light-orange {
+  color: #ffeaa5;
+}
+
+/* line 192, scss/_config.scss */
+.color-light-yellow {
+  color: #fff8a9;
+}
+
+/* line 197, scss/_config.scss */
+.color-light-red {
+  color: #ffc4b3;
+}
+
+/* line 202, scss/_config.scss */
+.color-pale-blue {
+  color: #d5eaf3;
+}
+
+/* line 207, scss/_config.scss */
+.color-light-magenta {
+  color: #d294d7;
+}
+
+/* line 212, scss/_config.scss */
+.color-pale-cyan {
+  color: #d8f3ef;
+}
+
+/* line 217, scss/_config.scss */
+.color-pale-green {
+  color: #e3f7d8;
+}
+
+/* line 222, scss/_config.scss */
+.color-pale-yellow {
+  color: #fff4d2;
+}
+
+/* line 227, scss/_config.scss */
+.color-pale-yellow {
+  color: #fffbd4;
+}
+
+/* line 232, scss/_config.scss */
+.color-pale-red {
+  color: #ffe1d9;
+}
+
+/* line 237, scss/_config.scss */
+.color-pale-magenta {
+  color: #e8c9eb;
+}
+
+/* line 245, scss/_config.scss */
+.back-color-none {
+  background-color: #78a7b4;
+  color: white;
+}
+
+/* line 250, scss/_config.scss */
+.back-color-blue {
+  background-color: #0088cc;
+  color: white;
+}
+
+/* line 255, scss/_config.scss */
+.back-color-cyan {
+  background-color: #0cbeb2;
+  color: white;
+}
+
+/* line 260, scss/_config.scss */
+.back-color-green {
+  background-color: #55d426;
+  color: white;
+}
+
+/* line 265, scss/_config.scss */
+.back-color-yellow {
+  background-color: #ff9800;
+  color: white;
+}
+
+/* line 270, scss/_config.scss */
+.back-color-orange {
+  background-color: #ff9800;
+  color: white;
+}
+
+/* line 275, scss/_config.scss */
+.back-color-red {
+  background-color: #ff4e2b;
+  color: white;
+}
+
+/* line 280, scss/_config.scss */
+.back-color-magenta {
+  background-color: #b652bf;
+  color: white;
+}
+
+/* line 286, scss/_config.scss */
+.back-color-dark-blue {
+  background-color: #002c87;
+  color: white;
+}
+
+/* line 291, scss/_config.scss */
+.back-color-dark-cyan {
+  background-color: #00705d;
+  color: white;
+}
+
+/* line 296, scss/_config.scss */
+.back-color-dark-green {
+  background-color: #0c9702;
+  color: white;
+}
+
+/* line 301, scss/_config.scss */
+.back-color-dark-orange {
+  background-color: #ff7b00;
+  color: white;
+}
+
+/* line 306, scss/_config.scss */
+.back-color-dark-yellow {
+  background-color: #ffd900;
+  color: white;
+}
+
+/* line 311, scss/_config.scss */
+.back-color-dark-red {
+  background-color: #ff0a02;
+  color: white;
+}
+
+/* line 316, scss/_config.scss */
+.back-color-dark-magenta {
+  background-color: #821a8f;
+  color: white;
+}
+
+/* line 321, scss/_config.scss */
+.back-color-light-blue {
+  background-color: #acd6e7;
+  color: white;
+}
+
+/* line 326, scss/_config.scss */
+.back-color-light-cyan {
+  background-color: #b1e8df;
+  color: white;
+}
+
+/* line 331, scss/_config.scss */
+.back-color-light-green {
+  background-color: #c8efb1;
+  color: white;
+}
+
+/* line 336, scss/_config.scss */
+.back-color-light-orange {
+  background-color: #ffeaa5;
+  color: white;
+}
+
+/* line 341, scss/_config.scss */
+.back-color-light-yellow {
+  background-color: #fff8a9;
+  color: white;
+}
+
+/* line 346, scss/_config.scss */
+.back-color-light-red {
+  background-color: #ffc4b3;
+  color: white;
+}
+
+/* line 351, scss/_config.scss */
+.back-color-pale-blue {
+  background-color: #d5eaf3;
+  color: white;
+}
+
+/* line 356, scss/_config.scss */
+.back-color-light-magenta {
+  background-color: #d294d7;
+  color: white;
+}
+
+/* line 361, scss/_config.scss */
+.back-color-pale-cyan {
+  background-color: #d8f3ef;
+  color: white;
+}
+
+/* line 366, scss/_config.scss */
+.back-color-pale-green {
+  background-color: #e3f7d8;
+  color: white;
+}
+
+/* line 371, scss/_config.scss */
+.back-color-pale-orange {
+  background-color: #fff4d2;
+  color: white;
+}
+
+/* line 376, scss/_config.scss */
+.back-color-pale-yellow {
+  background-color: #fffbd4;
+  color: white;
+}
+
+/* line 381, scss/_config.scss */
+.back-color-pale-red {
+  background-color: #ffe1d9;
+  color: white;
+}
+
+/* line 386, scss/_config.scss */
+.back-color-pale-magenta {
+  background-color: #e8c9eb;
+  color: white;
+}
+
+/* line 4, scss/base.scss */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* line 10, scss/base.scss */
+#pre-footer {
+  height: 120px;
+}
+
+/* line 15, scss/base.scss */
+#footer {
+  position: absolute;
+  bottom: -30px;
+  width: 100%;
+  font-weight: bolder;
+  color: #585858;
+  background-color: #efefef;
+  /* Set the fixed height of the footer here */
+  height: 70px;
+  text-align: center;
+}
+/* line 26, scss/base.scss */
+#footer p {
+  font-size: 80%;
+}
+
+/* line 31, scss/base.scss */
+body {
+  color: #585858;
+  background-color: #f8f8f8;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+/* ================================= NAVBAR =============================*/
+/* line 44, scss/base.scss */
+#navbar {
+  background-color: white;
+  color: #585858;
+  border-width: 0 0 2px 0;
+  border-color: #efefef;
+  border-style: solid;
+  min-height: 60px;
+}
+
+/* #navbar__user{
+
+} */
+/* #user__image{
+    display: inline-block;
+} */
+/* line 61, scss/base.scss */
+#navbar__logo {
+  float: left;
+}
+@media only screen and (max-width: 767px) {
+  /* line 61, scss/base.scss */
+  #navbar__logo {
+    width: 100%;
+    float: none;
+  }
+}
+/* line 64, scss/base.scss */
+#navbar__logo img {
+  display: block;
+  margin: auto;
+}
+
+/* line 70, scss/base.scss */
+#navbar__search {
+  text-align: center;
+  float: left;
+  min-width: 20em;
+  margin-top: .8em;
+}
+@media only screen and (max-width: 767px) {
+  /* line 70, scss/base.scss */
+  #navbar__search {
+    min-width: 100%;
+    width: 100%;
+    float: none;
+  }
+}
+/* line 76, scss/base.scss */
+#navbar__search input {
+  border-radius: 1em;
+  display: inline-block;
+  width: 80%;
+  vertical-align: middle;
+  border-color: #acd6e7;
+  border-width: 2px;
+}
+/* line 84, scss/base.scss */
+#navbar__search span {
+  vertical-align: middle;
+  font-size: 1.5em;
+  color: #0088cc;
+}
+
+/* line 91, scss/base.scss */
+#navbar__user {
+  float: right;
+  margin-top: 0.5em;
+}
+@media only screen and (max-width: 767px) {
+  /* line 91, scss/base.scss */
+  #navbar__user {
+    min-width: 100%;
+    float: none;
+  }
+}
+/* line 95, scss/base.scss */
+#navbar__user td {
+  padding-left: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  /* line 100, scss/base.scss */
+  #user-login {
+    min-width: 100%;
+    text-align: center;
+  }
+}
+
+/* line 104, scss/base.scss */
+#user__nickname {
+  font-size: 18px;
+}
+/* line 108, scss/base.scss */
+#user__nickname table {
+  margin: auto;
+}
+
+/* line 113, scss/base.scss */
+#user__nots {
+  float: right;
+  padding-top: 5px;
+}
+
+/* line 119, scss/base.scss */
+.user__alert a {
+  text-decoration: none;
+}
+
+/* line 124, scss/base.scss */
+#search-results {
+  padding: 2px 10% 2em;
+  background-color: #0088cc;
+  color: white;
+}
+/* line 128, scss/base.scss */
+#search-results a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid #0088cc;
+}
+/* line 134, scss/base.scss */
+#search-results a:hover {
+  border-color: white;
+}
+/* line 137, scss/base.scss */
+#search-results a.search-result--preselected {
+  border-color: white;
+}
+
+/* ================================= END NAVBAR =============================*/

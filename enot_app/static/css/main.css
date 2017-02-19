@@ -1,0 +1,598 @@
+/*  EXAMPLE
+.block {
+  float: left;
+  width: 250px;
+  @include respond-to(handhelds) { width: 100% ;}
+  @include respond-to(medium-screens) { width: 125px; }
+  @include respond-to(wide-screens) { float: none; }
+}​ */
+/* line 102, scss/_config.scss */
+.color-blue {
+  color: #0088cc;
+}
+
+/* line 107, scss/_config.scss */
+.color-cyan {
+  color: #0cbeb2;
+}
+
+/* line 112, scss/_config.scss */
+.color-green {
+  color: #55d426;
+}
+
+/* line 117, scss/_config.scss */
+.color-yellow {
+  color: #ff9800;
+}
+
+/* line 122, scss/_config.scss */
+.color-orange {
+  color: #ff9800;
+}
+
+/* line 127, scss/_config.scss */
+.color-red {
+  color: #ff4e2b;
+}
+
+/* line 131, scss/_config.scss */
+.color-magenta {
+  color: #b652bf;
+}
+
+/* line 137, scss/_config.scss */
+.color-dark-blue {
+  color: #002c87;
+}
+
+/* line 142, scss/_config.scss */
+.color-dark-cyan {
+  color: #00705d;
+}
+
+/* line 147, scss/_config.scss */
+.color-dark-green {
+  color: #0c9702;
+}
+
+/* line 152, scss/_config.scss */
+.color-dark-orange {
+  color: #ff7b00;
+}
+
+/* line 157, scss/_config.scss */
+.color-dark-yellow {
+  color: #ffd900;
+}
+
+/* line 162, scss/_config.scss */
+.color-dark-red {
+  color: #ff0a02;
+}
+
+/* line 167, scss/_config.scss */
+.color-dark-magenta {
+  color: #821a8f;
+}
+
+/* line 172, scss/_config.scss */
+.color-light-blue {
+  color: #acd6e7;
+}
+
+/* line 177, scss/_config.scss */
+.color-light-cyan {
+  color: #b1e8df;
+}
+
+/* line 182, scss/_config.scss */
+.color-light-green {
+  color: #c8efb1;
+}
+
+/* line 187, scss/_config.scss */
+.color-light-orange {
+  color: #ffeaa5;
+}
+
+/* line 192, scss/_config.scss */
+.color-light-yellow {
+  color: #fff8a9;
+}
+
+/* line 197, scss/_config.scss */
+.color-light-red {
+  color: #ffc4b3;
+}
+
+/* line 202, scss/_config.scss */
+.color-pale-blue {
+  color: #d5eaf3;
+}
+
+/* line 207, scss/_config.scss */
+.color-light-magenta {
+  color: #d294d7;
+}
+
+/* line 212, scss/_config.scss */
+.color-pale-cyan {
+  color: #d8f3ef;
+}
+
+/* line 217, scss/_config.scss */
+.color-pale-green {
+  color: #e3f7d8;
+}
+
+/* line 222, scss/_config.scss */
+.color-pale-yellow {
+  color: #fff4d2;
+}
+
+/* line 227, scss/_config.scss */
+.color-pale-yellow {
+  color: #fffbd4;
+}
+
+/* line 232, scss/_config.scss */
+.color-pale-red {
+  color: #ffe1d9;
+}
+
+/* line 237, scss/_config.scss */
+.color-pale-magenta {
+  color: #e8c9eb;
+}
+
+/* line 245, scss/_config.scss */
+.back-color-none {
+  background-color: #78a7b4;
+  color: white;
+}
+
+/* line 250, scss/_config.scss */
+.back-color-blue {
+  background-color: #0088cc;
+  color: white;
+}
+
+/* line 255, scss/_config.scss */
+.back-color-cyan {
+  background-color: #0cbeb2;
+  color: white;
+}
+
+/* line 260, scss/_config.scss */
+.back-color-green {
+  background-color: #55d426;
+  color: white;
+}
+
+/* line 265, scss/_config.scss */
+.back-color-yellow {
+  background-color: #ff9800;
+  color: white;
+}
+
+/* line 270, scss/_config.scss */
+.back-color-orange {
+  background-color: #ff9800;
+  color: white;
+}
+
+/* line 275, scss/_config.scss */
+.back-color-red {
+  background-color: #ff4e2b;
+  color: white;
+}
+
+/* line 280, scss/_config.scss */
+.back-color-magenta {
+  background-color: #b652bf;
+  color: white;
+}
+
+/* line 286, scss/_config.scss */
+.back-color-dark-blue {
+  background-color: #002c87;
+  color: white;
+}
+
+/* line 291, scss/_config.scss */
+.back-color-dark-cyan {
+  background-color: #00705d;
+  color: white;
+}
+
+/* line 296, scss/_config.scss */
+.back-color-dark-green {
+  background-color: #0c9702;
+  color: white;
+}
+
+/* line 301, scss/_config.scss */
+.back-color-dark-orange {
+  background-color: #ff7b00;
+  color: white;
+}
+
+/* line 306, scss/_config.scss */
+.back-color-dark-yellow {
+  background-color: #ffd900;
+  color: white;
+}
+
+/* line 311, scss/_config.scss */
+.back-color-dark-red {
+  background-color: #ff0a02;
+  color: white;
+}
+
+/* line 316, scss/_config.scss */
+.back-color-dark-magenta {
+  background-color: #821a8f;
+  color: white;
+}
+
+/* line 321, scss/_config.scss */
+.back-color-light-blue {
+  background-color: #acd6e7;
+  color: white;
+}
+
+/* line 326, scss/_config.scss */
+.back-color-light-cyan {
+  background-color: #b1e8df;
+  color: white;
+}
+
+/* line 331, scss/_config.scss */
+.back-color-light-green {
+  background-color: #c8efb1;
+  color: white;
+}
+
+/* line 336, scss/_config.scss */
+.back-color-light-orange {
+  background-color: #ffeaa5;
+  color: white;
+}
+
+/* line 341, scss/_config.scss */
+.back-color-light-yellow {
+  background-color: #fff8a9;
+  color: white;
+}
+
+/* line 346, scss/_config.scss */
+.back-color-light-red {
+  background-color: #ffc4b3;
+  color: white;
+}
+
+/* line 351, scss/_config.scss */
+.back-color-pale-blue {
+  background-color: #d5eaf3;
+  color: white;
+}
+
+/* line 356, scss/_config.scss */
+.back-color-light-magenta {
+  background-color: #d294d7;
+  color: white;
+}
+
+/* line 361, scss/_config.scss */
+.back-color-pale-cyan {
+  background-color: #d8f3ef;
+  color: white;
+}
+
+/* line 366, scss/_config.scss */
+.back-color-pale-green {
+  background-color: #e3f7d8;
+  color: white;
+}
+
+/* line 371, scss/_config.scss */
+.back-color-pale-orange {
+  background-color: #fff4d2;
+  color: white;
+}
+
+/* line 376, scss/_config.scss */
+.back-color-pale-yellow {
+  background-color: #fffbd4;
+  color: white;
+}
+
+/* line 381, scss/_config.scss */
+.back-color-pale-red {
+  background-color: #ffe1d9;
+  color: white;
+}
+
+/* line 386, scss/_config.scss */
+.back-color-pale-magenta {
+  background-color: #e8c9eb;
+  color: white;
+}
+
+/* line 3, scss/main.scss */
+#logo {
+  width: 160px;
+  display: block;
+  margin: 0 auto -0.5em;
+  font-weight: 500;
+}
+
+/* line 10, scss/main.scss */
+h1 {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 240%;
+}
+
+/* line 19, scss/main.scss */
+h2 {
+  font-size: 150%;
+  text-align: center;
+}
+
+/* line 24, scss/main.scss */
+#subscription {
+  padding: 2em 15%;
+  margin-bottom: 1em;
+  background-color: #e3f7d8;
+  border-radius: .7em;
+  text-align: center;
+}
+/* line 30, scss/main.scss */
+#subscription input {
+  display: block;
+  margin: auto;
+  width: 66%;
+  font-size: 120%;
+  text-align: center;
+}
+/* line 37, scss/main.scss */
+#subscription button {
+  width: 66%;
+  margin: auto;
+  font-size: 140%;
+  display: block;
+  margin-top: 5px;
+}
+
+/* line 46, scss/main.scss */
+#warning-msg {
+  margin-top: 1em;
+  background-color: #e3f7d8;
+  color: #0c9702;
+  border-radius: 4px;
+  padding: 1em;
+}
+
+/* line 54, scss/main.scss */
+.logo-text {
+  text-align: center;
+  font-size: 150%;
+  color: black;
+  display: block;
+  font-weight: 500;
+  margin: auto;
+}
+
+/* line 62, scss/main.scss */
+#bid-feed {
+  background-color: #323232;
+  padding: 1em;
+  border-radius: 6px;
+  min-height: 10em;
+}
+
+/* line 69, scss/main.scss */
+.bid__row {
+  color: white;
+  display: block;
+  font-size: 120%;
+  padding: 5px .5em;
+  border-color: #585858;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  margin-bottom: 10px;
+  width: 100%;
+}
+/* line 80, scss/main.scss */
+.bid__row a {
+  text-decoration: none;
+}
+/* line 82, scss/main.scss */
+.bid__row a.normal-price {
+  color: white;
+}
+/* line 85, scss/main.scss */
+.bid__row a.special-price {
+  color: magenta;
+}
+
+/* line 94, scss/main.scss */
+.bid-part {
+  display: inline-block;
+  text-align: center;
+  border-width: 0 1px 0 0;
+  border-color: white;
+  border-style: solid;
+}
+/* line 100, scss/main.scss */
+.bid-part:last-of-type {
+  border-width: 0;
+}
+
+/* line 105, scss/main.scss */
+.bid__destination {
+  font-weight: 600;
+  width: 7%;
+}
+
+/* line 110, scss/main.scss */
+.bid__dest-name {
+  width: 20%;
+}
+
+/* line 114, scss/main.scss */
+.bid__price {
+  width: 15%;
+  font-size: 110%;
+}
+
+/* line 120, scss/main.scss */
+.bid__dates {
+  min-width: 28%;
+}
+
+/* line 124, scss/main.scss */
+.bid__stops {
+  width: 10%;
+}
+
+/* line 128, scss/main.scss */
+.bid__days {
+  width: 10%;
+}
+
+/* line 133, scss/main.scss */
+.s_bid-part {
+  display: inline-block;
+  text-align: center;
+}
+/* line 137, scss/main.scss */
+.s_bid-part:last-of-type {
+  border-width: 0;
+}
+
+/* line 142, scss/main.scss */
+.s_bid__destination {
+  font-weight: 600;
+  width: 7%;
+}
+
+/* line 147, scss/main.scss */
+.s_bid__dest-name {
+  font-size: 130%;
+  display: block;
+  float: left;
+}
+
+/* line 153, scss/main.scss */
+.s_bid__price {
+  font-size: 130%;
+  text-align: right;
+  display: block;
+  float: right;
+}
+
+/* line 172, scss/main.scss */
+.second-line {
+  font-size: 90%;
+}
+
+/* line 176, scss/main.scss */
+.window {
+  padding: 0 .5em;
+  background-color: black;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+/* line 184, scss/main.scss */
+.rsign {
+  font-size: 80%;
+  font-weight: lighter;
+  color: #585858;
+}
+
+/* always present */
+/* line 213, scss/main.scss */
+.expand-transition {
+  transition: all .3s ease;
+}
+
+/* .expand-enter defines the starting state for entering */
+/* .expand-leave defines the ending state for leaving */
+/* line 218, scss/main.scss */
+.expand-enter, .expand-leave {
+  opacity: 0;
+}
+
+/* line 225, scss/main.scss */
+.flip {
+  transition: transform 1s;
+}
+
+/* line 230, scss/main.scss */
+.bounce-transition {
+  display: inline-block;
+  /* otherwise scale animation won't work */
+}
+
+/* line 233, scss/main.scss */
+.bounce-enter {
+  animation: bounce-in .5s;
+}
+
+/* line 236, scss/main.scss */
+.bounce-leave {
+  animation: bounce-out .5s;
+}
+
+@keyframes bounce-in {
+  /* line 240, scss/main.scss */
+  0% {
+    transform: scale(0);
+  }
+
+  /* line 243, scss/main.scss */
+  50% {
+    transform: scale(1.5);
+  }
+
+  /* line 246, scss/main.scss */
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce-out {
+  /* line 251, scss/main.scss */
+  0% {
+    transform: scale(1);
+  }
+
+  /* line 254, scss/main.scss */
+  50% {
+    transform: scale(1.5);
+  }
+
+  /* line 257, scss/main.scss */
+  100% {
+    transform: scale(0);
+  }
+}
+
+/* line 263, scss/main.scss */
+.staggered-transition {
+  transition: all 2s ease;
+  margin: 0;
+  background-color: #323232;
+}
+
+/* line 270, scss/main.scss */
+.staggered-enter, .staggered-leave {
+  background-color: #55d426;
+  opacity: 0;
+  height: 0;
+}

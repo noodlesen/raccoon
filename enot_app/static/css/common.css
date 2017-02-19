@@ -1,0 +1,577 @@
+/*  EXAMPLE
+.block {
+  float: left;
+  width: 250px;
+  @include respond-to(handhelds) { width: 100% ;}
+  @include respond-to(medium-screens) { width: 125px; }
+  @include respond-to(wide-screens) { float: none; }
+}​ */
+/* line 102, scss/_config.scss */
+.color-blue {
+  color: #0088cc;
+}
+
+/* line 107, scss/_config.scss */
+.color-cyan {
+  color: #0cbeb2;
+}
+
+/* line 112, scss/_config.scss */
+.color-green {
+  color: #55d426;
+}
+
+/* line 117, scss/_config.scss */
+.color-yellow {
+  color: #ff9800;
+}
+
+/* line 122, scss/_config.scss */
+.color-orange {
+  color: #ff9800;
+}
+
+/* line 127, scss/_config.scss */
+.color-red {
+  color: #ff4e2b;
+}
+
+/* line 131, scss/_config.scss */
+.color-magenta {
+  color: #b652bf;
+}
+
+/* line 137, scss/_config.scss */
+.color-dark-blue {
+  color: #002c87;
+}
+
+/* line 142, scss/_config.scss */
+.color-dark-cyan {
+  color: #00705d;
+}
+
+/* line 147, scss/_config.scss */
+.color-dark-green {
+  color: #0c9702;
+}
+
+/* line 152, scss/_config.scss */
+.color-dark-orange {
+  color: #ff7b00;
+}
+
+/* line 157, scss/_config.scss */
+.color-dark-yellow {
+  color: #ffd900;
+}
+
+/* line 162, scss/_config.scss */
+.color-dark-red {
+  color: #ff0a02;
+}
+
+/* line 167, scss/_config.scss */
+.color-dark-magenta {
+  color: #821a8f;
+}
+
+/* line 172, scss/_config.scss */
+.color-light-blue {
+  color: #acd6e7;
+}
+
+/* line 177, scss/_config.scss */
+.color-light-cyan {
+  color: #b1e8df;
+}
+
+/* line 182, scss/_config.scss */
+.color-light-green {
+  color: #c8efb1;
+}
+
+/* line 187, scss/_config.scss */
+.color-light-orange {
+  color: #ffeaa5;
+}
+
+/* line 192, scss/_config.scss */
+.color-light-yellow {
+  color: #fff8a9;
+}
+
+/* line 197, scss/_config.scss */
+.color-light-red {
+  color: #ffc4b3;
+}
+
+/* line 202, scss/_config.scss */
+.color-pale-blue {
+  color: #d5eaf3;
+}
+
+/* line 207, scss/_config.scss */
+.color-light-magenta {
+  color: #d294d7;
+}
+
+/* line 212, scss/_config.scss */
+.color-pale-cyan {
+  color: #d8f3ef;
+}
+
+/* line 217, scss/_config.scss */
+.color-pale-green {
+  color: #e3f7d8;
+}
+
+/* line 222, scss/_config.scss */
+.color-pale-yellow {
+  color: #fff4d2;
+}
+
+/* line 227, scss/_config.scss */
+.color-pale-yellow {
+  color: #fffbd4;
+}
+
+/* line 232, scss/_config.scss */
+.color-pale-red {
+  color: #ffe1d9;
+}
+
+/* line 237, scss/_config.scss */
+.color-pale-magenta {
+  color: #e8c9eb;
+}
+
+/* line 245, scss/_config.scss */
+.back-color-none {
+  background-color: #78a7b4;
+  color: white;
+}
+
+/* line 250, scss/_config.scss */
+.back-color-blue {
+  background-color: #0088cc;
+  color: white;
+}
+
+/* line 255, scss/_config.scss */
+.back-color-cyan {
+  background-color: #0cbeb2;
+  color: white;
+}
+
+/* line 260, scss/_config.scss */
+.back-color-green {
+  background-color: #55d426;
+  color: white;
+}
+
+/* line 265, scss/_config.scss */
+.back-color-yellow {
+  background-color: #ff9800;
+  color: white;
+}
+
+/* line 270, scss/_config.scss */
+.back-color-orange {
+  background-color: #ff9800;
+  color: white;
+}
+
+/* line 275, scss/_config.scss */
+.back-color-red {
+  background-color: #ff4e2b;
+  color: white;
+}
+
+/* line 280, scss/_config.scss */
+.back-color-magenta {
+  background-color: #b652bf;
+  color: white;
+}
+
+/* line 286, scss/_config.scss */
+.back-color-dark-blue {
+  background-color: #002c87;
+  color: white;
+}
+
+/* line 291, scss/_config.scss */
+.back-color-dark-cyan {
+  background-color: #00705d;
+  color: white;
+}
+
+/* line 296, scss/_config.scss */
+.back-color-dark-green {
+  background-color: #0c9702;
+  color: white;
+}
+
+/* line 301, scss/_config.scss */
+.back-color-dark-orange {
+  background-color: #ff7b00;
+  color: white;
+}
+
+/* line 306, scss/_config.scss */
+.back-color-dark-yellow {
+  background-color: #ffd900;
+  color: white;
+}
+
+/* line 311, scss/_config.scss */
+.back-color-dark-red {
+  background-color: #ff0a02;
+  color: white;
+}
+
+/* line 316, scss/_config.scss */
+.back-color-dark-magenta {
+  background-color: #821a8f;
+  color: white;
+}
+
+/* line 321, scss/_config.scss */
+.back-color-light-blue {
+  background-color: #acd6e7;
+  color: white;
+}
+
+/* line 326, scss/_config.scss */
+.back-color-light-cyan {
+  background-color: #b1e8df;
+  color: white;
+}
+
+/* line 331, scss/_config.scss */
+.back-color-light-green {
+  background-color: #c8efb1;
+  color: white;
+}
+
+/* line 336, scss/_config.scss */
+.back-color-light-orange {
+  background-color: #ffeaa5;
+  color: white;
+}
+
+/* line 341, scss/_config.scss */
+.back-color-light-yellow {
+  background-color: #fff8a9;
+  color: white;
+}
+
+/* line 346, scss/_config.scss */
+.back-color-light-red {
+  background-color: #ffc4b3;
+  color: white;
+}
+
+/* line 351, scss/_config.scss */
+.back-color-pale-blue {
+  background-color: #d5eaf3;
+  color: white;
+}
+
+/* line 356, scss/_config.scss */
+.back-color-light-magenta {
+  background-color: #d294d7;
+  color: white;
+}
+
+/* line 361, scss/_config.scss */
+.back-color-pale-cyan {
+  background-color: #d8f3ef;
+  color: white;
+}
+
+/* line 366, scss/_config.scss */
+.back-color-pale-green {
+  background-color: #e3f7d8;
+  color: white;
+}
+
+/* line 371, scss/_config.scss */
+.back-color-pale-orange {
+  background-color: #fff4d2;
+  color: white;
+}
+
+/* line 376, scss/_config.scss */
+.back-color-pale-yellow {
+  background-color: #fffbd4;
+  color: white;
+}
+
+/* line 381, scss/_config.scss */
+.back-color-pale-red {
+  background-color: #ffe1d9;
+  color: white;
+}
+
+/* line 386, scss/_config.scss */
+.back-color-pale-magenta {
+  background-color: #e8c9eb;
+  color: white;
+}
+
+/*  div {
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: red;
+}  */
+/* line 11, scss/common.scss */
+h1, h2, h3, h4 {
+  margin-top: 0;
+  font-weight: 300;
+}
+
+/* line 16, scss/common.scss */
+.inactive {
+  display: none;
+}
+
+/* line 20, scss/common.scss */
+.row {
+  padding: 10px;
+  outline-color: blue;
+}
+/* line 23, scss/common.scss */
+.row h2.row__header {
+  margin-left: 20px;
+  margin-bottom: 25px;
+  font-size: 180%;
+}
+
+/* line 30, scss/common.scss */
+h3.col__header {
+  font-size: 150%;
+}
+
+/* line 34, scss/common.scss */
+a, .plink {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+/* line 43, scss/common.scss */
+.plink {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* line 49, scss/common.scss */
+.subtitle {
+  font-style: italic;
+  margin-top: -12px;
+  color: #878787;
+  font-size: 0.8em;
+}
+
+/* line 56, scss/common.scss */
+.error {
+  color: red;
+  outline-color: red;
+  outline-style: solid;
+  outline-width: 2px;
+}
+
+/* line 63, scss/common.scss */
+.debug {
+  outline-width: 1px;
+  outline-color: red;
+  outline-style: solid;
+}
+
+/* line 70, scss/common.scss */
+.waiting {
+  cursor: pointer;
+  color: #c6c6c6;
+}
+/* line 73, scss/common.scss */
+.waiting:hover {
+  color: #27c257;
+}
+
+/* line 78, scss/common.scss */
+.label-as-badge {
+  border-radius: 1em;
+}
+
+/* line 82, scss/common.scss */
+.label-brand {
+  background-color: #0088cc;
+  color: white;
+}
+
+/* line 88, scss/common.scss */
+.hint {
+  font-size: 120%;
+  color: #878787;
+  padding: .5em;
+}
+
+/* line 94, scss/common.scss */
+.hint-icon {
+  font-size: 200%;
+}
+
+/* line 98, scss/common.scss */
+.nano-timeline img {
+  max-width: 12px;
+  margin-left: -1px;
+}
+
+/* line 105, scss/common.scss */
+.center-label {
+  font-size: 300%;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 100px;
+}
+
+/* line 110, scss/common.scss */
+.center-sub-label {
+  text-align: center;
+}
+
+/* section{
+    border-width: 1px;
+    border-radius: 6px;
+    border-style: solid;
+    border-color: $gray5;
+    padding: 40px 40px;
+    background-color: white;
+} */
+/* line 124, scss/common.scss */
+section {
+  border-width: 1px;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: #efefef;
+  background-color: white;
+  margin-bottom: 8px;
+}
+
+/* line 133, scss/common.scss */
+.section-header {
+  border-radius: 6px 6px 0 0;
+  background-color: #0088cc;
+  color: white;
+  padding: 2px 7px;
+}
+/* line 138, scss/common.scss */
+.section-header h2 {
+  margin-bottom: 0px;
+  font-size: 22px;
+  padding: 5px;
+}
+/* line 143, scss/common.scss */
+.section-header:hover .help-sign {
+  display: inline;
+}
+
+/* line 148, scss/common.scss */
+.section-body {
+  padding: 15px;
+}
+
+/* line 152, scss/common.scss */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #efefef;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* line 160, scss/common.scss */
+.form-inline {
+  margin-bottom: 15px;
+}
+
+/* line 164, scss/common.scss */
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+/* line 170, scss/common.scss */
+.avatar-big {
+  border-radius: 6px;
+}
+
+/* line 174, scss/common.scss */
+.avatar-small {
+  border-radius: 3px;
+  width: 40px;
+  height: 40px;
+}
+
+/* line 180, scss/common.scss */
+.inline-menu__item {
+  display: inline-block;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+/* line 185, scss/common.scss */
+.inline-menu__item:hover {
+  background-color: #c6c6c6;
+  color: white;
+}
+@media screen and (max-width: 486px) {
+  /* line 180, scss/common.scss */
+  .inline-menu__item {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* line 195, scss/common.scss */
+.inline-menu__item--selected {
+  background-color: #0088cc;
+  color: white;
+}
+
+@font-face {
+  font-family: 'fontello';
+  src: url("/static/font/fontello.eot?83001647");
+  src: url("/static/font/fontello.eot?83001647#iefix") format("embedded-opentype"), url("/static/font/fontello.woff?83001647") format("woff"), url("/static/font/fontello.ttf?83001647") format("truetype"), url("/static/font/fontello.svg?83001647#fontello") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 216, scss/common.scss */
+.demo-icon {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* You can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}

@@ -1,0 +1,274 @@
+@import "config";
+
+#logo{
+  width:160px; 
+  display: block;
+  margin: 0 auto -0.5em;
+  font-weight: 500;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  //color: black;
+  font-size: 240%;
+
+}
+
+h2 {
+  font-size: 150%;
+  text-align: center;
+}
+
+#subscription {
+  padding: 2em 15%;
+  margin-bottom: 1em;
+  background-color: $pale-green;
+  border-radius: .7em;
+  text-align: center;
+  input {
+    display: block;
+    margin: auto;
+    width: 66%;
+    font-size: 120%;
+    text-align: center;
+  }
+  button{
+    width: 66%;
+    margin: auto;
+    font-size: 140%;
+    display: block;
+    margin-top: 5px;
+  }
+}
+
+#warning-msg{
+  margin-top: 1em;
+  background-color: $pale-green;
+  color: $dark-green;
+  border-radius: 4px;
+  padding: 1em;
+}
+
+.logo-text {
+    text-align: center;
+    font-size: 150%;
+    color: black;
+    display: block;
+    font-weight: 500;
+    margin: auto;
+}
+#bid-feed{
+    background-color: $gray1;
+    padding: 1em;
+    border-radius: 6px;
+    min-height: 10em;
+}
+
+.bid__row{
+    color:white;
+    display: block;
+    font-size: 120%;
+    padding: 5px .5em;
+    border-color: $gray2;
+    //border-width: 1px;
+    border-width: 0 0 1px 0;
+    border-style: solid; 
+    margin-bottom: 10px;
+    width:100%;
+    a {
+      text-decoration: none;
+      &.normal-price{
+        color: white;
+      }
+      &.special-price{
+        color:magenta;
+      }
+    }
+}
+
+
+//====================================================
+
+.bid-part{
+    display: inline-block;
+    text-align: center;
+    border-width: 0 1px 0 0;
+    border-color: white;
+    border-style: solid;
+    &:last-of-type{
+      border-width: 0;
+    }
+}
+
+.bid__destination{
+    font-weight: 600;
+    width: 7%;
+}
+
+.bid__dest-name{
+    width: 20%;
+}
+
+.bid__price{
+    //font-weight: 600;
+    width: 15%;
+    font-size: 110%;
+}
+
+.bid__dates{
+    min-width: 28%;
+}
+
+.bid__stops{
+  width:10%;
+}
+
+.bid__days{
+  width:10%;
+}
+
+
+.s_bid-part{
+    display: inline-block;
+    text-align: center;
+
+    &:last-of-type{
+      border-width: 0;
+    }
+}
+
+.s_bid__destination{
+    font-weight: 600;
+    width: 7%;
+}
+
+.s_bid__dest-name{
+    font-size: 130%;
+    display: block;
+    float: left;
+}
+
+.s_bid__price{
+    font-size: 130%;
+    text-align: right;
+    display: block;
+    float: right;
+}
+
+.s_bid__dates{
+    //min-width: 28%;
+}
+
+.s_bid__stops{
+  //width:10%;
+}
+
+.s_bid__days{
+  //width:10%;
+}
+
+.second-line{
+  font-size: 90%;
+}
+
+.window {
+  padding: 0 .5em;
+  background-color:black;
+  border-radius:3px;
+  font-weight: 600;
+
+}
+
+.rsign{
+    font-size: 80%;
+    font-weight: lighter;
+    color:$gray2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// TRANSITIONS
+
+/* always present */
+.expand-transition {
+  transition: all .3s ease;
+}
+/* .expand-enter defines the starting state for entering */
+/* .expand-leave defines the ending state for leaving */
+.expand-enter, .expand-leave {
+  opacity: 0;
+}
+
+
+
+
+.flip {
+  transition: transform 1s;
+}
+
+
+.bounce-transition {
+  display: inline-block; /* otherwise scale animation won't work */
+}
+.bounce-enter {
+  animation: bounce-in .5s;
+}
+.bounce-leave {
+  animation: bounce-out .5s;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes bounce-out {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+
+.staggered-transition {
+    transition: all 2s ease;
+    //overflow: hidden;
+    margin: 0;
+    background-color: $gray1;
+
+}
+.staggered-enter, .staggered-leave {
+    background-color: $green;
+    opacity: 0;
+    height: 0;
+}
