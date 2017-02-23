@@ -1,4 +1,12 @@
-from django.db import models
+from django.db import models, connection
+
+def dictfetchall(cursor):
+    "Returns all rows from a cursor as a dict"
+    desc = cursor.description
+    return [
+        dict(zip([col[0] for col in desc], row))
+        for row in cursor.fetchall()
+    ]
 
 # Create your models here.
 
@@ -29,7 +37,7 @@ class GDirection(models.Model):
 class GCountry(models.Model):
     code = models.CharField(max_length=2)
     eng_name = models.CharField(max_length=50)
-    direction = models.ForeignKey(GDirection)
+    gdirection = models.ForeignKey(GDirection)
     rus_name = models.CharField(max_length=50)
     kdb_id = models.IntegerField() #-
     slug = models.SlugField(max_length=50)
@@ -44,7 +52,7 @@ class GPlace(models.Model):
     b_number = models.IntegerField()
     lat = models.FloatField()
     lng = models.FloatField()
-    country = models.ForeignKey(GCountry) # !!!
+    gcountry = models.ForeignKey(GCountry) # !!!
     UFI = models.IntegerField()
     types = models.CharField(max_length=100)
     google_place_id = models.CharField(max_length=50)
@@ -63,6 +71,21 @@ class Destination(models.Model):
     place = models.ForeignKey(GPlace)
     total_bid_count = models.IntegerField()
     average_price = models.IntegerField()
+
+    @classmethod
+    def get_structured(cls):
+        cursor = connection.cursor()
+        query = """
+                SELECT ds.name, c.rus_name as crn, c.id as cid, c.slug as cslug, d.rus_name as drn, d.id as did, d.slug as dslug
+                FROM `enot_app_destination` as ds
+                JOIN `enot_app_gplace` as p ON p.id = ds.place_id
+                JOIN `enot_app_gcountry` as c ON c.id = p.gcountry_id
+                JOIN `enot_app_gdirection` as d ON d.id = c.gdirection_id
+                """
+        cursor.execute(query)
+        #rows = cursor.fetchall()
+        rows = dictfetchall(cursor)
+        return rows
 
 
 

@@ -3,14 +3,16 @@ from django.http import JsonResponse
 
 from datetime import datetime
 
-from .models import Bid
+from .models import Bid, Destination#, GPlace, GCountry, GDirection
 
 
 # Create your views here.
 
 
 def main_page(request):
-    return render(request, 'enot_app/main_page.html', {})
+    dsts = Destination.get_structured()
+    print (dsts)
+    return render(request, 'enot_app/newmain.html', {})
 
 def bid_feed(request):
     bids = list(Bid.objects.all().values()[:50])
