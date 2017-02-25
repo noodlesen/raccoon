@@ -54,7 +54,7 @@ Vue.transition('stagger', {
 });*/
 
 var cDir = Vue.extend({
-    props: ['bids','ttl'],
+    props: ['ttl', 'bids'],
     data: function(){
         return {
         };
@@ -118,16 +118,16 @@ var directions = new Vue({
     },
     template: '<div>\
             <div class="col-lg-4">\
-                <c-dir :ttl="Европа" :bids="bids[\'Европа\'][\'countries\']"></c-dir>\
+                <c-dir ttl="Европа" :bids="bids[\'Европа\'][\'countries\']"></c-dir>\
             </div>\
             <div class="col-lg-4">\
-                <c-dir :ttl="Азия" :bids="bids[\'Азия\'][\'countries\']"></c-dir>\
-                <c-dir :ttl="Австралия и Океания" :bids="bids[\'Австралия и Океания\'][\'countries\']"></c-dir>\
+                <c-dir ttl="Азия" :bids="bids[\'Азия\'][\'countries\']"></c-dir>\
+                <c-dir ttl="Австралия и Океания" :bids="bids[\'Австралия и Океания\'][\'countries\']"></c-dir>\
             </div>\
             <div class="col-lg-4">\
-                <c-dir :ttl="Северная Америка" :bids="bids[\'Северная Америка\'][\'countries\']"></c-dir>\
-                <c-dir :ttl="Южная Америка" :bids="bids[\'Южная Америка\'][\'countries\']"></c-dir>\
-                <c-dir :ttl="Африка" :bids="bids[\'Африка\'][\'countries\']"></c-dir>\
+                <c-dir ttl="Северная Америка" :bids="bids[\'Северная Америка\'][\'countries\']"></c-dir>\
+                <c-dir ttl="Южная Америка" :bids="bids[\'Южная Америка\'][\'countries\']"></c-dir>\
+                <c-dir ttl="Африка" :bids="bids[\'Африка\'][\'countries\']"></c-dir>\
             </div>\
         </div>'
 });
