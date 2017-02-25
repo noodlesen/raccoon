@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 from datetime import datetime
 
@@ -8,11 +9,13 @@ from .models import Bid, Destination#, GPlace, GCountry, GDirection
 
 # Create your views here.
 
-
+@ensure_csrf_cookie
 def main_page(request):
-    dsts = Destination.get_structured()
-    print (dsts)
-    return render(request, 'enot_app/newmain.html', {})
+    return render(request, 'enot_app/newmain.html')
+
+def structured_feed(request):
+    bids = Bid.get_best()
+    return JsonResponse({'success':True, 'bids':bids}, safe=False)
 
 def bid_feed(request):
     bids = list(Bid.objects.all().values()[:50])

@@ -328,21 +328,7 @@
   font-weight: 500;
 }
 
-/* line 10, scss/main.scss */
-h1 {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
-  font-size: 240%;
-}
-
-/* line 19, scss/main.scss */
-h2 {
-  font-size: 150%;
-  text-align: center;
-}
-
-/* line 24, scss/main.scss */
+/* line 12, scss/main.scss */
 #subscription {
   padding: 2em 15%;
   margin-bottom: 1em;
@@ -350,7 +336,7 @@ h2 {
   border-radius: .7em;
   text-align: center;
 }
-/* line 30, scss/main.scss */
+/* line 18, scss/main.scss */
 #subscription input {
   display: block;
   margin: auto;
@@ -358,7 +344,7 @@ h2 {
   font-size: 120%;
   text-align: center;
 }
-/* line 37, scss/main.scss */
+/* line 25, scss/main.scss */
 #subscription button {
   width: 66%;
   margin: auto;
@@ -367,7 +353,7 @@ h2 {
   margin-top: 5px;
 }
 
-/* line 46, scss/main.scss */
+/* line 34, scss/main.scss */
 #warning-msg {
   margin-top: 1em;
   background-color: #e3f7d8;
@@ -376,7 +362,7 @@ h2 {
   padding: 1em;
 }
 
-/* line 54, scss/main.scss */
+/* line 42, scss/main.scss */
 .logo-text {
   text-align: center;
   font-size: 150%;
@@ -386,7 +372,7 @@ h2 {
   margin: auto;
 }
 
-/* line 62, scss/main.scss */
+/* line 50, scss/main.scss */
 #bid-feed {
   background-color: #323232;
   padding: 1em;
@@ -394,7 +380,7 @@ h2 {
   min-height: 10em;
 }
 
-/* line 69, scss/main.scss */
+/* line 57, scss/main.scss */
 .bid__row {
   color: white;
   display: block;
@@ -406,20 +392,20 @@ h2 {
   margin-bottom: 10px;
   width: 100%;
 }
-/* line 80, scss/main.scss */
+/* line 68, scss/main.scss */
 .bid__row a {
   text-decoration: none;
 }
-/* line 82, scss/main.scss */
+/* line 70, scss/main.scss */
 .bid__row a.normal-price {
   color: white;
 }
-/* line 85, scss/main.scss */
+/* line 73, scss/main.scss */
 .bid__row a.special-price {
   color: magenta;
 }
 
-/* line 94, scss/main.scss */
+/* line 82, scss/main.scss */
 .bid-part {
   display: inline-block;
   text-align: center;
@@ -427,67 +413,67 @@ h2 {
   border-color: white;
   border-style: solid;
 }
-/* line 100, scss/main.scss */
+/* line 88, scss/main.scss */
 .bid-part:last-of-type {
   border-width: 0;
 }
 
-/* line 105, scss/main.scss */
+/* line 93, scss/main.scss */
 .bid__destination {
   font-weight: 600;
   width: 7%;
 }
 
-/* line 110, scss/main.scss */
+/* line 98, scss/main.scss */
 .bid__dest-name {
   width: 20%;
 }
 
-/* line 114, scss/main.scss */
+/* line 102, scss/main.scss */
 .bid__price {
   width: 15%;
   font-size: 110%;
 }
 
-/* line 120, scss/main.scss */
+/* line 108, scss/main.scss */
 .bid__dates {
   min-width: 28%;
 }
 
-/* line 124, scss/main.scss */
+/* line 112, scss/main.scss */
 .bid__stops {
   width: 10%;
 }
 
-/* line 128, scss/main.scss */
+/* line 116, scss/main.scss */
 .bid__days {
   width: 10%;
 }
 
-/* line 133, scss/main.scss */
+/* line 121, scss/main.scss */
 .s_bid-part {
   display: inline-block;
   text-align: center;
 }
-/* line 137, scss/main.scss */
+/* line 125, scss/main.scss */
 .s_bid-part:last-of-type {
   border-width: 0;
 }
 
-/* line 142, scss/main.scss */
+/* line 130, scss/main.scss */
 .s_bid__destination {
   font-weight: 600;
   width: 7%;
 }
 
-/* line 147, scss/main.scss */
+/* line 135, scss/main.scss */
 .s_bid__dest-name {
   font-size: 130%;
   display: block;
   float: left;
 }
 
-/* line 153, scss/main.scss */
+/* line 141, scss/main.scss */
 .s_bid__price {
   font-size: 130%;
   text-align: right;
@@ -495,12 +481,12 @@ h2 {
   float: right;
 }
 
-/* line 172, scss/main.scss */
+/* line 160, scss/main.scss */
 .second-line {
   font-size: 90%;
 }
 
-/* line 176, scss/main.scss */
+/* line 164, scss/main.scss */
 .window {
   padding: 0 .5em;
   background-color: black;
@@ -508,7 +494,7 @@ h2 {
   font-weight: 600;
 }
 
-/* line 184, scss/main.scss */
+/* line 172, scss/main.scss */
 .rsign {
   font-size: 80%;
   font-weight: lighter;
@@ -516,83 +502,139 @@ h2 {
 }
 
 /* always present */
-/* line 213, scss/main.scss */
+/* line 201, scss/main.scss */
 .expand-transition {
   transition: all .3s ease;
 }
 
 /* .expand-enter defines the starting state for entering */
 /* .expand-leave defines the ending state for leaving */
-/* line 218, scss/main.scss */
+/* line 206, scss/main.scss */
 .expand-enter, .expand-leave {
   opacity: 0;
 }
 
-/* line 225, scss/main.scss */
+/* line 213, scss/main.scss */
 .flip {
   transition: transform 1s;
 }
 
-/* line 230, scss/main.scss */
+/* line 218, scss/main.scss */
 .bounce-transition {
   display: inline-block;
   /* otherwise scale animation won't work */
 }
 
-/* line 233, scss/main.scss */
+/* line 221, scss/main.scss */
 .bounce-enter {
   animation: bounce-in .5s;
 }
 
-/* line 236, scss/main.scss */
+/* line 224, scss/main.scss */
 .bounce-leave {
   animation: bounce-out .5s;
 }
 
 @keyframes bounce-in {
-  /* line 240, scss/main.scss */
+  /* line 228, scss/main.scss */
   0% {
     transform: scale(0);
   }
 
-  /* line 243, scss/main.scss */
+  /* line 231, scss/main.scss */
   50% {
     transform: scale(1.5);
   }
 
-  /* line 246, scss/main.scss */
+  /* line 234, scss/main.scss */
   100% {
     transform: scale(1);
   }
 }
 
 @keyframes bounce-out {
-  /* line 251, scss/main.scss */
+  /* line 239, scss/main.scss */
   0% {
     transform: scale(1);
   }
 
-  /* line 254, scss/main.scss */
+  /* line 242, scss/main.scss */
   50% {
     transform: scale(1.5);
   }
 
-  /* line 257, scss/main.scss */
+  /* line 245, scss/main.scss */
   100% {
     transform: scale(0);
   }
 }
 
-/* line 263, scss/main.scss */
+/* line 251, scss/main.scss */
 .staggered-transition {
   transition: all 2s ease;
   margin: 0;
   background-color: #323232;
 }
 
-/* line 270, scss/main.scss */
+/* line 258, scss/main.scss */
 .staggered-enter, .staggered-leave {
   background-color: #55d426;
   opacity: 0;
   height: 0;
+}
+
+/* line 266, scss/main.scss */
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 240%;
+  display: block;
+  border-color: #efefef;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  padding-bottom: .15em;
+}
+
+/* line 280, scss/main.scss */
+h2 {
+  font-size: 150%;
+}
+
+/* line 285, scss/main.scss */
+.direction {
+  background-color: white;
+  padding: 1em;
+  border-radius: .5em;
+  border: 1px solid #efefef;
+  margin-bottom: 1em;
+}
+
+/* line 293, scss/main.scss */
+.country {
+  padding: .5em;
+  border: 1px solid #efefef;
+  margin-bottom: 1em;
+}
+
+/* line 299, scss/main.scss */
+.place {
+  padding-left: .3em;
+}
+
+/* line 303, scss/main.scss */
+.place__name {
+  float: left;
+  width: 50%;
+}
+
+/* line 308, scss/main.scss */
+.place__price {
+  float: left;
+  width: 30%;
+}
+
+/* line 313, scss/main.scss */
+.place__stops, .place__more {
+  float: left;
+  width: 10%;
 }

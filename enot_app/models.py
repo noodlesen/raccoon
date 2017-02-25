@@ -27,6 +27,38 @@ class Bid(models.Model):
     found_at = models.DateTimeField()
     snapshot = models.CharField(max_length=50)
 
+    @classmethod
+    def get_best(cls):
+        cursor = connection.cursor()
+        query = """
+                SELECT b.destination_name as name, min(b.price) as price, c.rus_name as crn, dir.rus_name as drn, dir.id as did
+                FROM enot_app_bid as b
+                JOIN enot_app_destination as d ON d.code = b.destination_code
+                JOIN enot_app_gplace as p ON p.id=d.place_id
+                JOIN enot_app_gcountry as c ON c.id=p.gcountry_id
+                JOIN `enot_app_gdirection` as dir ON dir.id=c.`gdirection_id`
+                GROUP BY b.destination_code
+                ORDER BY name
+                """
+        cursor.execute(query)
+        rows = dictfetchall(cursor)
+
+
+        #return rows
+        res={}
+        for r in rows:
+            if r['drn'] not in res.keys():
+                print('creating direction', r['drn'])
+                res[r['drn']]={"name": r['drn'], "countries": {}}
+            if r['crn'] not in res[r['drn']]['countries'].keys():
+                print('creating country', r['crn'])
+                res[r['drn']]['countries'][r['crn']]={"name": r['crn'], "places": []}
+            res[r['drn']]['countries'][r['crn']]['places'].append(r)
+
+        return res
+
+
+
 
 class GDirection(models.Model):
     eng_name = models.CharField(max_length=50)
@@ -76,16 +108,31 @@ class Destination(models.Model):
     def get_structured(cls):
         cursor = connection.cursor()
         query = """
-                SELECT ds.name, c.rus_name as crn, c.id as cid, c.slug as cslug, d.rus_name as drn, d.id as did, d.slug as dslug
+                SELECT ds.name, ds.code, p.slug as pslug, c.rus_name as cslug, c.id as cid, c.slug as cslug, d.rus_name as drn, d.id as did, d.slug as dslug
                 FROM `enot_app_destination` as ds
                 JOIN `enot_app_gplace` as p ON p.id = ds.place_id
                 JOIN `enot_app_gcountry` as c ON c.id = p.gcountry_id
                 JOIN `enot_app_gdirection` as d ON d.id = c.gdirection_id
                 """
         cursor.execute(query)
-        #rows = cursor.fetchall()
         rows = dictfetchall(cursor)
-        return rows
+
+        res={}
+
+        for r in rows:
+            rd = {"name": r['name'], "code": r['code'], "slug": r['pslug']}
+
+            if r['dslug'] in res.keys():
+                if r['cslug'] in res[r['dslug']].keys():
+                    res[r['dslug']] [r['cslug']] ['places'].append(rd)
+                else:
+                    res[r['dslug']] [r['cslug']]={"places": [rd] }
+            else:
+                res[r['dslug']]={}
+                res[r['dslug']][r['cslug']]={"places": [rd] }
+
+
+        return res
 
 
 

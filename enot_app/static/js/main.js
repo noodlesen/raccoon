@@ -31,7 +31,7 @@ Vue.transition('stagger', {
 })
 
 
-var subscribeForm = new Vue({
+/*var subscribeForm = new Vue({
     el: '#subscription',
     data: {
         email:'',
@@ -51,21 +51,47 @@ var subscribeForm = new Vue({
             this.showBlock = false;
         }
     }
+});*/
+
+var cDir = Vue.extend({
+    props: ['bids','ttl'],
+    data: function(){
+        return {
+        };
+    },
+    template: ' <div class="direction">\
+                    <h1>{{ttl}}</h1>\
+                    <div class="country" v-for="b in bids">\
+                        <h2>{{b.name}}</h2>\
+                        <div class="place" v-for="p in b.places">\
+                            <div class="place__name"> <a href="#"> {{p.name}} </a> </div>\
+                            <div class="place__price"><a href="#">{{p.price}}</a></div>\
+                            <div class="place__stops"><a href="#">1C</a></div>\
+                            <div class="place__more"><a href="#">23+</a></div>\
+                            <div class="clearfix"></div>\
+                        </div>\
+                    </div>\
+                </div>'
 });
 
-var bidFeed = new Vue({
-    el: '#bid-feed',
+Vue.component('c-dir', cDir);
+
+
+
+
+var directions = new Vue({
+    el: '#directions',
     data: {
-        shownBids:[],
-        allBids: []
+        bids:{}
     },
     ready: function(){
-        var currentdate = new Date();
-        var sc = currentdate.getSeconds();
+/*        var currentdate = new Date();
+        var sc = currentdate.getSeconds();*/
         var self = this;
-        getResults('/bid-feed', 'json', {}, function(res){
+
+        getResults('/structured-feed', 'json', {}, function(res){
             if (res.success){
-                self.allBids = res.bids;
+/*                self.allBids = res.bids;
                 var i=0;
 
                 setTimeout(function cycle(){
@@ -79,23 +105,29 @@ var bidFeed = new Vue({
                     setTimeout(cycle, i*100+Math.floor((Math.sin(i+sc)+1)*750));
                 },1500);
 
-
-
+*/              console.log('success');
+                self.bids = res.bids;
+                console.log(JSON.stringify(self.bids));
+            } else {
+                console.log('error');
             }
         });
     },
     methods: {
-        sortBids: function(){
-            function compareRating(a,b){
-                if (a.rating>b.rating){
-                    return -1;
-                } else if (a.rating<b.rating){
-                    return 1;
-                } else {
-                    return 0;
-                }
-            }
-            this.shownBids.sort(compareRating);
-        }
-    }
+
+    },
+    template: '<div>\
+            <div class="col-lg-4">\
+                <c-dir :ttl="Европа" :bids="bids[\'Европа\'][\'countries\']"></c-dir>\
+            </div>\
+            <div class="col-lg-4">\
+                <c-dir :ttl="Азия" :bids="bids[\'Азия\'][\'countries\']"></c-dir>\
+                <c-dir :ttl="Австралия и Океания" :bids="bids[\'Австралия и Океания\'][\'countries\']"></c-dir>\
+            </div>\
+            <div class="col-lg-4">\
+                <c-dir :ttl="Северная Америка" :bids="bids[\'Северная Америка\'][\'countries\']"></c-dir>\
+                <c-dir :ttl="Южная Америка" :bids="bids[\'Южная Америка\'][\'countries\']"></c-dir>\
+                <c-dir :ttl="Африка" :bids="bids[\'Африка\'][\'countries\']"></c-dir>\
+            </div>\
+        </div>'
 });

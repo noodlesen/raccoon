@@ -7,19 +7,7 @@
   font-weight: 500;
 }
 
-h1 {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
-  //color: black;
-  font-size: 240%;
 
-}
-
-h2 {
-  font-size: 150%;
-  text-align: center;
-}
 
 #subscription {
   padding: 2em 15%;
@@ -271,4 +259,58 @@ h2 {
     background-color: $green;
     opacity: 0;
     height: 0;
+}
+
+//=============================================
+
+h1 {
+  //text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  //color: black;
+  font-size: 240%;
+  display: block;
+  border-color: $gray5;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  padding-bottom: .15em;
+
+}
+
+h2 {
+  font-size: 150%;
+  //text-align: center; 
+}
+
+.direction{
+  background-color: white;
+  padding:1em;
+  border-radius: .5em;
+  border: 1px solid $gray5;
+  margin-bottom: 1em;
+}
+
+.country {
+  padding: .5em;
+  border: 1px solid $gray5;
+  margin-bottom: 1em;
+}
+
+.place {
+  padding-left: .3em;
+}
+
+.place__name{
+  float: left;
+  width: 50%;
+}
+
+.place__price{
+  float: left;
+  width: 30%;
+}
+
+.place__stops, .place__more{
+  float: left;
+  width: 10%;
 }
