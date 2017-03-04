@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import pytz
 from django.core.management.base import BaseCommand, CommandError
@@ -23,6 +23,7 @@ this_month_start = now.replace(day=1).date()
 this_month = this_month_start.month
 next_month_start = plus_month(this_month_start,1)
 after_next_month_start = plus_month(this_month_start,2)
+months = [this_month_start, next_month_start, after_next_month_start]
 
 
 class Command(BaseCommand):
@@ -33,25 +34,28 @@ class Command(BaseCommand):
         src = Destination.objects.get(code='MOW')
 
         # get destinations
-        dests = Destination.objects.all().exclude(code='MOW')
+        dests = Destination.objects.filter(enabled=True).exclude(code='MOW')
 
         # delete obsolete entries
-        obs = SpiderQueryTP.objects.filter(expires_at__lt=now).delete()
+        obs = SpiderQueryTP.objects.filter(expires_at__lte=now).delete()
 
         # checking and adding queries
         for d in dests:
 
-            try:
-                n = SpiderQueryTP.objects.get(start_date=this_month_start, origin=src, destination=d)
+            for m in months:
+                try:
+                    n = SpiderQueryTP.objects.get(start_date=m, origin=src, destination=d)
 
-            except SpiderQueryTP.DoesNotExist:
+                except SpiderQueryTP.DoesNotExist:
 
-                query=SpiderQueryTP(origin=src,
-                                    destination=d,
-                                    start_date=this_month_start,
-                                    requested_at=past,
-                                    expires_at=next_month_start)
-                query.save()
+                    exp_date = plus_month(m,1) - timedelta(days=1)
+
+                    query=SpiderQueryTP(origin=src,
+                                        destination=d,
+                                        start_date=m,
+                                        requested_at=past,
+                                        expires_at=exp_date)
+                    query.save()
 
 
 
