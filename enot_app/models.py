@@ -1,4 +1,7 @@
 from django.db import models, connection
+from datetime import datetime
+from pytz import timezone
+
 
 def dictfetchall(cursor):
     "Returns all rows from a cursor as a dict"
@@ -7,6 +10,7 @@ def dictfetchall(cursor):
         dict(zip([col[0] for col in desc], row))
         for row in cursor.fetchall()
     ]
+
 
 # Create your models here.
 
@@ -52,7 +56,9 @@ class Bid(models.Model):
                 res[r['drn']]={"name": r['drn'], "countries": {}}
             if r['crn'] not in res[r['drn']]['countries'].keys():
                 print('creating country', r['crn'])
-                res[r['drn']]['countries'][r['crn']]={"name": r['crn'], "places": []}
+                res[r['drn']]['countries'][r['crn']] = {"name": r['crn'],
+                                                        "places": []
+                                                        }
             res[r['drn']]['countries'][r['crn']]['places'].append(r)
 
         return res
@@ -103,6 +109,7 @@ class Destination(models.Model):
     place = models.ForeignKey(GPlace)
     total_bid_count = models.IntegerField()
     average_price = models.IntegerField()
+    enabled = models.BooleanField(default=True)
 
     @classmethod
     def get_structured(cls):
@@ -135,11 +142,14 @@ class Destination(models.Model):
         return res
 
 
-
-
-
-
-
-
-
+class SpiderQueryTP(models.Model):
+    origin = models.ForeignKey(Destination, related_name='tpr_origin')
+    destination = models.ForeignKey(Destination,
+                                    related_name='tpr_destination'
+                                    )
+    start_date = models.DateField()
+    requested_at = models.DateTimeField(default=datetime(1979,6,30,9,30,0,0,
+                                        timezone('Europe/Moscow'))
+                                     )
+    expires_at = models.DateField()
 
