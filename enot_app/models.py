@@ -29,7 +29,7 @@ class Bid(models.Model):
     rating = models.IntegerField()
     to_expose = models.BooleanField()
     found_at = models.DateTimeField()
-    snapshot = models.CharField(max_length=50)
+    signature = models.CharField(max_length=50, unique=True)
 
     @classmethod
     def get_best(cls):
