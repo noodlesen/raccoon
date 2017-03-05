@@ -73,8 +73,6 @@ class Command(BaseCommand):
                 bid.rating=0
                 bid.to_expose=True
 
-                #bid.save()
-
                 try:
                     bid.save()
                 except IntegrityError as e:
