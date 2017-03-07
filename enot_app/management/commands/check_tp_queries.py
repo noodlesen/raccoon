@@ -54,7 +54,8 @@ class Command(BaseCommand):
                                         destination=d,
                                         start_date=m,
                                         requested_at=past,
-                                        expires_at=exp_date)
+                                        expires_at=exp_date,
+                                        priority=1)
                     query.save()
 
 

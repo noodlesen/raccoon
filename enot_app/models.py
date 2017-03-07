@@ -152,4 +152,5 @@ class SpiderQueryTP(models.Model):
                                         timezone('Europe/Moscow'))
                                      )
     expires_at = models.DateField()
+    priority = models.IntegerField(default=0)
 

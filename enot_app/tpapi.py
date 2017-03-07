@@ -32,6 +32,7 @@ def tp_request(endpoint, p={}):
 
     api_request = API_BASE+endpoint['endpoint']+"?"+"&".join([k + '=' + str(v) for k, v in params.items()])
 
+    # requests.exception.ConnectionError!!!
     response = requests.get(api_request, headers=headers)
 
     return {"data": json.loads(response.text)['data'], "params": params}
