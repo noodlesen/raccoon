@@ -27,7 +27,7 @@ months = [this_month_start, next_month_start, after_next_month_start]
 
 
 class Command(BaseCommand):
-    help = 'checks if Spiders TPQueries are up to date'
+    """ Checks if Spiders TPQueries are up to date """
 
     def handle(self, *args, **options):
         # get origin (Moscow is temp)

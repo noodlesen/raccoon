@@ -1,3 +1,5 @@
+""" Scheduled bid loader script """
+
 import pytz
 from datetime import datetime, timedelta
 from time import sleep
@@ -6,17 +8,19 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import IntegrityError
 from django.db.models import Q, F
 
-from enot_app.models import Bid, SpiderQueryTP
+from enot_app.models import Bid, SpiderQueryTP, Destination
 from enot_app.tpapi import get_month_bids
 
 
 def bid_cleanup(d):
+    """ Cleaning up bids table """
+
     now = datetime.utcnow()
     today = datetime.today()
     last = now - timedelta(days=d)
     last = pytz.utc.localize(last)
 
-    Bid.objects.filter(Q(found_at__gt=last)
+    Bid.objects.filter(Q(found_at__lt=last)
                        | Q(departure_date__lte=today)
                        | Q(departure_date=F('return_date'))
                        ).delete()
@@ -28,7 +32,7 @@ BID_LIFETIME = 2
 
 
 class Command(BaseCommand):
-    help = 'Preloads some new bids from tpapi'
+    """ Preloads some new bids using tpapi """
 
     # def add_arguments(self, parser):
     #     parser.add_argument('poll_id', nargs='+', type=int)
@@ -41,7 +45,7 @@ class Command(BaseCommand):
         tz = pytz.timezone('Europe/Moscow')
         old_limit = tz.localize(datetime.now())-timedelta(days=1)
 
-        # перебираем подходящие запросы
+        """ Browsing through queries """
         queries = SpiderQueryTP.objects.filter(requested_at__lt=old_limit).order_by('start_date')[:200]
         for q in queries:
             sleep(REQUEST_DELAY)
@@ -57,7 +61,10 @@ class Command(BaseCommand):
                  }
             )
 
-            dest = Destination.objects.get(code=q.destination_code)
+            q.requested_at=tz.localize(datetime.now())
+            q.save()
+
+            dest = Destination.objects.get(code=q.destination.code)
 
             sum_price = 0
             sum_bids = 0
@@ -107,10 +114,16 @@ class Command(BaseCommand):
                     print ("IntegrityError: ", bid.signature)
                     pass
 
-            # new_bid_count = stat.total_bid_count+sum_bids
-            # if new_bid_count >0:
-            #     stat.avg_price= int((stat.avg_price*stat.total_bid_count+sum_price)/new_bid_count)
-            #     stat.total_bid_count=new_bid_count
+            """ Updating destination stats """
+            nbc = dest.total_bid_count+sum_bids
+            if nbc >0:
+                dest.avg_price = int(
+                    (dest.average_price*dest.total_bid_count+sum_price)/nbc
+                )
+                dest.total_bid_count = nbc
+                dest.save()
+
+
 
 
 
