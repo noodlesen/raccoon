@@ -154,3 +154,11 @@ class SpiderQueryTP(models.Model):
     expires_at = models.DateField()
     priority = models.IntegerField(default=0)
 
+
+class Subscriber(models.Model):
+    email = models.CharField(max_length=50)
+    confirmed = models.BooleanField(default=False)
+    last_mail_sent_at = models.DateTimeField()
+    premium = models.BooleanField(default=False)
+    interval = models.IntegerField(default=1)
+
