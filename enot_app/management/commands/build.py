@@ -78,18 +78,18 @@ class Command(BaseCommand):
         print ()
         print (len(rows))
 
-        qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
+        # qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
 
-        req = QPXRequest(destination='BCN',
-                         origin='MOW',
-                         date=datetime(2017,6,3),
-                         return_date=datetime(2017,6,29),
-                         num_adults=1
-                         )
-        print (datetime.now())
-        resp = qpx.search(req)
-        print (datetime.now())
+        # req = QPXRequest(destination='BCN',
+        #                  origin='MOW',
+        #                  date=datetime(2017,6,3),
+        #                  return_date=datetime(2017,6,29),
+        #                  num_adults=1
+        #                  )
+        # print (datetime.now())
+        # resp = qpx.search(req)
+        # print (datetime.now())
 
-        print (resp.top_flights(num=30))
+        # print (resp.top_flights(num=30))
 
 
