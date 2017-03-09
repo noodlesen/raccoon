@@ -26,8 +26,8 @@ def bid_cleanup(d):
                        ).delete()
 
 
-WORK_TIME_LIMIT = 20
-REQUEST_DELAY = 2
+WORK_TIME_LIMIT = 3300
+REQUEST_DELAY = 1
 BID_LIFETIME = 2
 
 
@@ -45,6 +45,8 @@ class Command(BaseCommand):
         tz = pytz.timezone('Europe/Moscow')
         old_limit = tz.localize(datetime.now())-timedelta(days=1)
 
+        print ("OLD ",old_limit)
+
         """ Browsing through queries """
         queries = SpiderQueryTP.objects.filter(requested_at__lt=old_limit).order_by('start_date')[:200]
         for q in queries:
@@ -52,7 +54,7 @@ class Command(BaseCommand):
             if (datetime.now()-started_at).seconds >= WORK_TIME_LIMIT:
                 print ('Reached work time limit - ', WORK_TIME_LIMIT, " sec")
                 break
-            print (q.origin.code, " >>> ", q.destination.code)
+            print (q.origin.code, " >>> ", q.destination.code, q.requested_at)
 
             month_bids = get_month_bids(
                 {"beginning_of_period": q.start_date.strftime('%Y-%m-%d'),
@@ -105,7 +107,7 @@ class Command(BaseCommand):
                 bid.found_at = found_at
 
                 # tmp:
-                bid.rating = int(bid.distance/bid.price*1000)
+                #bid.rating = int(bid.distance/bid.price*1000)
                 bid.to_expose = True
 
                 try:

@@ -2,15 +2,7 @@ from django.db import models, connection
 from datetime import datetime
 from pytz import timezone
 
-
-def dictfetchall(cursor):
-    "Returns all rows from a cursor as a dict"
-    desc = cursor.description
-    return [
-        dict(zip([col[0] for col in desc], row))
-        for row in cursor.fetchall()
-    ]
-
+from .toolbox import dictfetchall
 
 # Create your models here.
 
@@ -26,7 +18,6 @@ class Bid(models.Model):
     stops = models.IntegerField()
     trip_class = models.IntegerField()
     distance = models.IntegerField()
-    rating = models.IntegerField()
     to_expose = models.BooleanField()
     found_at = models.DateTimeField()
     signature = models.CharField(max_length=50, unique=True)
@@ -157,8 +148,13 @@ class SpiderQueryTP(models.Model):
 
 class Subscriber(models.Model):
     email = models.CharField(max_length=50)
-    confirmed = models.BooleanField(default=False)
-    last_mail_sent_at = models.DateTimeField()
-    premium = models.BooleanField(default=False)
     interval = models.IntegerField(default=1)
+    confirmed = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
+    premium = models.BooleanField(default=False)
+    tester = models.BooleanField(default=False)
+    last_mail_sent_at = models.DateTimeField()
+
+    def __str__(self):
+        return self.email
 
