@@ -33,9 +33,15 @@ def tp_request(endpoint, p={}):
     api_request = API_BASE+endpoint['endpoint']+"?"+"&".join([k + '=' + str(v) for k, v in params.items()])
 
     # requests.exception.ConnectionError!!!
-    response = requests.get(api_request, headers=headers)
+    try:
+        response = requests.get(api_request, headers=headers)
+    except requests.exceptions.ConnectionError:
+        print ("CONNECTION ERROR")
+        return {"data": [], "params": params}
 
     return {"data": json.loads(response.text)['data'], "params": params}
+
+    
 
 
 def get_month_bids(p={}):
