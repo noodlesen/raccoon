@@ -20,9 +20,12 @@ class Command(BaseCommand):
                        departure_date,
                        return_date,
                        distance,
-                       price
+                       price,
+                       stops,
+                       found_at
                 FROM enot_app_bid
                 GROUP BY destination_name
+                ORDER BY price
                 """
         cursor.execute(query)
         rows = dictfetchall(cursor)
@@ -31,8 +34,8 @@ class Command(BaseCommand):
 
         for s in subscribers:
             
-
             for r in rows:
+                """ Calculate common rating """
                 rt =0
                 d = r['distance']
                 days = (r['return_date']-r['departure_date']).days
@@ -55,6 +58,19 @@ class Command(BaseCommand):
                 if days<3:
                     rt-=300
 
+                wd = r['departure_date'].weekday()
+                if wd == 3:
+                    rt+=50
+                elif wd == 4 or wd == 5:
+                    rt+=100
+
+                rt = rt-r['stops']*100
+
+                age = int((datetime.utcnow()-r['found_at']).seconds/3600)
+                rt -= 10*age
+
+                r['age'] = age
+
                 r['rating']=rt
                 r['days']=days
 
@@ -62,21 +78,8 @@ class Command(BaseCommand):
             rows = sorted(rows, key=itemgetter('rating'), reverse=True)[:50]
 
             for i,r in enumerate(rows):
-                # print()
-                # print(i,':')
-                # print(r['destination_name'])
-                # print(r['distance'], "km")
-                # print(r['price'])
-                # print("R",r['rating'])
-                
+                print ('%d: %s | %dд | %d км | %dр | R%d | %dч ' %(i+1, r['destination_name'], r['days'], r['distance'], r['price'], r['rating'], r['age']))
 
-                print ('%d: %s | %dд | %d км | %dр | R%d' %(i+1, r['destination_name'], r['days'], r['distance'], r['price'], r['rating']))
-
-
-
-
-        print ()
-        print (len(rows))
 
         # qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
 

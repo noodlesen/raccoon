@@ -2,59 +2,9 @@ from django.db import models, connection
 from datetime import datetime
 from pytz import timezone
 
-from .toolbox import dictfetchall
+from .toolbox import dictfetchall, get_hash
 
 # Create your models here.
-
-
-class Bid(models.Model):
-    origin_code = models.CharField(max_length=3)
-    destination_code = models.CharField(max_length=3)
-    destination_name = models.CharField(max_length=35)
-    one_way = models.BooleanField()
-    departure_date = models.DateField()
-    return_date = models.DateField()
-    price = models.IntegerField()
-    stops = models.IntegerField()
-    trip_class = models.IntegerField()
-    distance = models.IntegerField()
-    to_expose = models.BooleanField()
-    found_at = models.DateTimeField()
-    signature = models.CharField(max_length=50, unique=True)
-
-    @classmethod
-    def get_best(cls):
-        cursor = connection.cursor()
-        query = """
-                SELECT b.destination_name as name, min(b.price) as price, c.rus_name as crn, dir.rus_name as drn, dir.id as did
-                FROM enot_app_bid as b
-                JOIN enot_app_destination as d ON d.code = b.destination_code
-                JOIN enot_app_gplace as p ON p.id=d.place_id
-                JOIN enot_app_gcountry as c ON c.id=p.gcountry_id
-                JOIN `enot_app_gdirection` as dir ON dir.id=c.`gdirection_id`
-                GROUP BY b.destination_code
-                ORDER BY name
-                """
-        cursor.execute(query)
-        rows = dictfetchall(cursor)
-
-
-        #return rows
-        res={}
-        for r in rows:
-            if r['drn'] not in res.keys():
-                print('creating direction', r['drn'])
-                res[r['drn']]={"name": r['drn'], "countries": {}}
-            if r['crn'] not in res[r['drn']]['countries'].keys():
-                print('creating country', r['crn'])
-                res[r['drn']]['countries'][r['crn']] = {"name": r['crn'],
-                                                        "places": []
-                                                        }
-            res[r['drn']]['countries'][r['crn']]['places'].append(r)
-
-        return res
-
-
 
 
 class GDirection(models.Model):
@@ -68,7 +18,7 @@ class GCountry(models.Model):
     eng_name = models.CharField(max_length=50)
     gdirection = models.ForeignKey(GDirection)
     rus_name = models.CharField(max_length=50)
-    kdb_id = models.IntegerField() #-
+    kdb_id = models.IntegerField()  # -
     slug = models.SlugField(max_length=50)
 
 
@@ -81,13 +31,13 @@ class GPlace(models.Model):
     b_number = models.IntegerField()
     lat = models.FloatField()
     lng = models.FloatField()
-    gcountry = models.ForeignKey(GCountry) # !!!
+    gcountry = models.ForeignKey(GCountry)  # !!!
     UFI = models.IntegerField()
     types = models.CharField(max_length=100)
     google_place_id = models.CharField(max_length=50)
-    image = models.CharField(max_length=50) #?
-    fpid = models.IntegerField() #-
-    dup = models.IntegerField() #-
+    image = models.CharField(max_length=50)  # ?
+    fpid = models.IntegerField()  # -
+    dup = models.IntegerField()  # -
     chd_airports = models.TextField()
     city_code = models.CharField(max_length=3)
 
@@ -141,9 +91,65 @@ class SpiderQueryTP(models.Model):
     start_date = models.DateField()
     requested_at = models.DateTimeField(default=datetime(1979,6,30,9,30,0,0,
                                         timezone('Europe/Moscow'))
-                                     )
+                                        )
     expires_at = models.DateField()
     priority = models.IntegerField(default=0)
+
+
+class Bid(models.Model):
+    origin_code = models.CharField(max_length=3)
+    origin = models.ForeignKey(Destination,
+                               default=1,
+                               related_name='bid_origin'
+    )
+    destination_code = models.CharField(max_length=3)
+    destination = models.ForeignKey(Destination, 
+                                    default=1,
+                                    related_name='bid_destination'
+    )
+    destination_name = models.CharField(max_length=35)
+    one_way = models.BooleanField()
+    departure_date = models.DateField()
+    return_date = models.DateField()
+    price = models.IntegerField()
+    stops = models.IntegerField()
+    trip_class = models.IntegerField()
+    distance = models.IntegerField()
+    to_expose = models.BooleanField()
+    found_at = models.DateTimeField()
+    signature = models.CharField(max_length=50, unique=True)
+
+    @classmethod
+    def get_best(cls):
+        cursor = connection.cursor()
+        query = """
+                SELECT b.destination_name as name, min(b.price) as price, c.rus_name as crn, dir.rus_name as drn, dir.id as did
+                FROM enot_app_bid as b
+                JOIN enot_app_destination as d ON d.code = b.destination_code
+                JOIN enot_app_gplace as p ON p.id=d.place_id
+                JOIN enot_app_gcountry as c ON c.id=p.gcountry_id
+                JOIN `enot_app_gdirection` as dir ON dir.id=c.`gdirection_id`
+                GROUP BY b.destination_code
+                ORDER BY name
+                """
+        cursor.execute(query)
+        rows = dictfetchall(cursor)
+
+
+        #return rows
+        res={}
+        for r in rows:
+            if r['drn'] not in res.keys():
+                print('creating direction', r['drn'])
+                res[r['drn']]={"name": r['drn'], "countries": {}}
+            if r['crn'] not in res[r['drn']]['countries'].keys():
+                print('creating country', r['crn'])
+                res[r['drn']]['countries'][r['crn']] = {"name": r['crn'],
+                                                        "places": []
+                                                        }
+            res[r['drn']]['countries'][r['crn']]['places'].append(r)
+
+        return res
 
 
 class Subscriber(models.Model):
@@ -154,7 +160,23 @@ class Subscriber(models.Model):
     premium = models.BooleanField(default=False)
     tester = models.BooleanField(default=False)
     last_mail_sent_at = models.DateTimeField()
+    hsh = models.CharField(max_length=50, default='')
 
     def __str__(self):
         return self.email
+
+    @classmethod
+    def add(cls, email, **kwargs):
+        s = Subscriber()
+        if 'interval' in kwargs:
+            s.interval = kwargs['interval']
+        if 'premium' in kwargs:
+            s.premium = kwargs['premium']
+        if 'tester' in kwargs:
+            s.tester = kwargs['tester']
+
+        s.hsh = get_hash(email)
+
+        s.save()
+
 
