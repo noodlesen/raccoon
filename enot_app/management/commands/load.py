@@ -88,6 +88,10 @@ class Command(BaseCommand):
                 bid.origin_code = b['origin']
                 bid.destination_code = b['destination']
                 bid.destination_name = q.destination.name.upper()
+
+                bid.origin = Destination.objects.get(code=bid.origin_code)
+                bid.destination = Destination.objects.get(code=bid.destination_code)
+
                 bid.one_way = month_bids['params']['one_way'] == 'true'
                 bid.price = b['value']
                 sum_price += b['value']
