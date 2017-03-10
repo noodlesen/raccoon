@@ -1,4 +1,4 @@
-
+/*
 
 Vue.transition('fade', {
   css: false,
@@ -28,7 +28,7 @@ Vue.transition('stagger', {
     // but limit max delay to 300ms
     return Math.min(300, index * 50)
   }
-})
+})*/
 
 
 /*var subscribeForm = new Vue({

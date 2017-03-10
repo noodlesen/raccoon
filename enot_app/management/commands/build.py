@@ -22,10 +22,12 @@ class Command(BaseCommand):
                        distance,
                        price,
                        stops,
-                       found_at
+                       found_at,
+                       pre_rating,
+                       chd_days
                 FROM enot_app_bid
                 GROUP BY destination_name
-                ORDER BY price
+                ORDER BY pre_rating DESC
                 """
         cursor.execute(query)
         rows = dictfetchall(cursor)
@@ -35,36 +37,8 @@ class Command(BaseCommand):
         for s in subscribers:
             
             for r in rows:
-                """ Calculate common rating """
-                rt =0
-                d = r['distance']
-                days = (r['return_date']-r['departure_date']).days
-                if d > 1200 and d <= 2100:
-                    rt += 100
-                if d > 2100 and d <= 4000:
-                    rt += 300
-                    if days>21:
-                        rt-=200
-                if d > 4000 and d <= 8000:
-                    rt += 200
-                    if days>40 or days<7:
-                        rt-=200
-                if d > 8000:
-                    rt += 100
-                    if days>60 or days<14:
-                        rt-=200
-                rt += int(d/r['price']*1000)
-
-                if days<3:
-                    rt-=300
-
-                wd = r['departure_date'].weekday()
-                if wd == 3:
-                    rt+=50
-                elif wd == 4 or wd == 5:
-                    rt+=100
-
-                rt = rt-r['stops']*100
+                
+                rt = r['pre_rating']
 
                 age = int((datetime.utcnow()-r['found_at']).seconds/3600)
                 rt -= 10*age
@@ -72,13 +46,12 @@ class Command(BaseCommand):
                 r['age'] = age
 
                 r['rating']=rt
-                r['days']=days
 
 
             rows = sorted(rows, key=itemgetter('rating'), reverse=True)[:50]
 
             for i,r in enumerate(rows):
-                print ('%d: %s | %dд | %d км | %dр | R%d | %dч ' %(i+1, r['destination_name'], r['days'], r['distance'], r['price'], r['rating'], r['age']))
+                print ('%d: %s | %dд | %d км | %dр | R%d | %dч ' %(i+1, r['destination_name'], r['chd_days'], r['distance'], r['price'], r['rating'], r['age']))
 
 
         # qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)

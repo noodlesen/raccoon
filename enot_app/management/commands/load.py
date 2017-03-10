@@ -10,6 +10,8 @@ from django.db.models import Q, F
 
 from enot_app.models import Bid, SpiderQueryTP, Destination
 from enot_app.tpapi import get_month_bids
+from enot_app.rating import prerate
+
 
 
 def bid_cleanup(d):
@@ -107,7 +109,8 @@ class Command(BaseCommand):
                 bid.found_at = found_at
 
                 # tmp:
-                #bid.rating = int(bid.distance/bid.price*1000)
+                bid.pre_rating = prerate(bid)
+                bid.chd_days = (bid.return_date-bid.departure_date).days 
                 bid.to_expose = True
 
                 try:

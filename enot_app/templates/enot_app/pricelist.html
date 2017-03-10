@@ -1,0 +1,25 @@
+{% extends 'enot_app/base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/pricelist.css' %}">
+<link rel="stylesheet" href="{% static 'lib/keen-ui.min.css' %}">
+<title>Обзор цен</title>
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <div class="row" id="directions">
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src ="{% static 'lib/keen-ui.min.js' %}" type="text/javascript"></script>
+    <script src ="{% static 'js/pricelist.js' %}" type="text/javascript"></script>
+{% endblock %}

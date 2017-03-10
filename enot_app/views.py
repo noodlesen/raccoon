@@ -11,7 +11,7 @@ from .models import Bid, Destination#, GPlace, GCountry, GDirection
 
 @ensure_csrf_cookie
 def main_page(request):
-    return render(request, 'enot_app/newmain.html')
+    return render(request, 'enot_app/pricelist.html')
 
 def structured_feed(request):
     bids = Bid.get_best()
