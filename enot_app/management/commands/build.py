@@ -1,14 +1,21 @@
 """ Builds the offers list for the mail """
 
+import json
 from operator import itemgetter
 from django.core.management.base import BaseCommand, CommandError
 from django.db import connection
 from datetime import datetime
 
-from enot_app.models import Bid, Subscriber
+from enot_app.models import Bid, Subscriber, Airline
 from enot_app.toolbox import dictfetchall
 from enot_app.qpxexpress import QPXExpressApi, QPXRequest, QPXResponse
 from enot.settings import GOOGLE_API_KEY
+
+
+def show_offer(offer):
+    print (offer['departure'], " - ", offer['arrival'])
+    print (offer['price'])
+    print()
 
 
 class Command(BaseCommand):
@@ -16,7 +23,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         cursor = connection.cursor()
         query = """
-                SELECT destination_name,
+                SELECT id,
+                       destination_name,
+                       destination_code,
                        departure_date,
                        return_date,
                        distance,
@@ -51,21 +60,38 @@ class Command(BaseCommand):
             rows = sorted(rows, key=itemgetter('rating'), reverse=True)[:50]
 
             for i,r in enumerate(rows):
-                print ('%d: %s | %dд | %d км | %dр | R%d | %dч ' %(i+1, r['destination_name'], r['chd_days'], r['distance'], r['price'], r['rating'], r['age']))
+                print ('%d: [%d] %s | %dд | %d км | %dр | R%d | %dч ' %(i+1, r['id'], r['destination_name'], r['chd_days'], r['distance'], r['price'], r['rating'], r['age']))
 
 
-        # qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
+        qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
 
-        # req = QPXRequest(destination='BCN',
-        #                  origin='MOW',
-        #                  date=datetime(2017,6,3),
-        #                  return_date=datetime(2017,6,29),
-        #                  num_adults=1
-        #                  )
-        # print (datetime.now())
-        # resp = qpx.search(req)
-        # print (datetime.now())
+        v = rows[0]
 
-        # print (resp.top_flights(num=30))
+        print(v)
+
+
+        req = QPXRequest('MOW',
+                         v['destination_code'],
+                         v['departure_date'], 
+                         1,
+                         return_date=v['return_date']
+                         )
+        
+        resp = qpx.search(req)
+        
+        res = resp.top_flights(num=30)
+
+        # with open('response.txt', 'w') as f:
+        #     f.write(json.dumps(res[0]))
+
+        print()
+        print(res[0])
+        print()
+
+        # for r in res:
+        #     #print (r['price'])
+        #     show_offer(r)
+
+
 
 

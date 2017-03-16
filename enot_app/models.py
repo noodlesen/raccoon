@@ -182,3 +182,8 @@ class Subscriber(models.Model):
         s.save()
 
 
+class Airline(models.Model):
+    iata = models.CharField(max_length=2)
+    name = models.CharField(max_length=50)
+
+

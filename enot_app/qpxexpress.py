@@ -98,6 +98,9 @@ class QPXResponse(object):
     def __init__(self, json_resp):
         self.raw_data = json_resp
         self.flight_options = json_resp.get('trips').get('tripOption')
+        self.aircrafts = {}
+        for a in json_resp.get('trips').get('data').get('aircraft'):
+            self.aircrafts[a['code']] = a['name']
 
     def sort_by_base_price(self):
         """ Sort all flights by base price, putting lowest first. """
@@ -137,29 +140,35 @@ class QPXResponse(object):
                                                  flight.get(
                                                      'saleTotal')).group(),
                            'duration': flight['slice'][0]['duration'],
-                           'duration_hours': flight['slice'][0][
-                               'duration'] / 60.0,
-                           'departure': datetime.strptime(
+                           'trip_departure': datetime.strptime(
                                flight['slice'][0]['segment'][0][
                                    'leg'][0]['departureTime'][:15],
                                '%Y-%m-%dT%H:%S'),
-                           'arrival': datetime.strptime(
-                               flight['slice'][0]['segment'][-1][
+                           'trip_arrival': datetime.strptime(
+                               flight['slice'][-1]['segment'][-1][
                                    'leg'][0]['arrivalTime'][:15],
                                '%Y-%m-%dT%H:%S'),
-                           'legs': []}
-            for segment in flight['slice'][0]['segment']:
-                flight_info['legs'].append({
-                    'origin': segment['leg'][0]['origin'],
-                    'departure': segment['leg'][0]['departureTime'],
-                    'arrival': segment['leg'][0]['arrivalTime'],
-                    'destination': segment['leg'][0]['destination'],
-                    'carrier': segment['flight']['carrier'],
-                    'total_duration': (lambda x: segment[x] if x in
-                                       segment.keys() else segment['duration'])(
-                                           'connectionDuration')
-                })
-            flight_info['carrier'] = ', '.join(set([c.get('carrier') for c in
-                                                    flight_info['legs']]))
+                           'slices': [],
+                           'carriers': []}
+
+            for s in flight['slice']:
+                legs=[]
+                for segment in s['segment']:
+                    flight_info['carriers'].append(segment['flight']['carrier'])
+                    legs.append({
+                        'origin': segment['leg'][0]['origin'],
+                        'departure': segment['leg'][0]['departureTime'],
+                        'arrival': segment['leg'][0]['arrivalTime'],
+                        'destination': segment['leg'][0]['destination'],
+                        'carrier': segment['flight']['carrier'],
+                        'total_duration': (lambda x: segment[x] if x in
+                                           segment.keys() else segment['duration'])(
+                                               'connectionDuration')
+                    })
+                    
+                flight_info['slices'].append(legs)
+
+            flight_info['stops'] = [len(s)-1 for s in flight_info['slices']]
+
             top_flights.append(flight_info)
         return top_flights
