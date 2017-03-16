@@ -97,32 +97,32 @@ class QPXResponse(object):
     """ QPX Response object. """
     def __init__(self, json_resp):
         self.raw_data = json_resp
-        self.flight_options = json_resp.get('trips').get('tripOption')
+        self.trip_options = json_resp.get('trips').get('tripOption')
         self.aircrafts = {}
-        for a in json_resp.get('trips').get('data').get('aircraft'):
-            self.aircrafts[a['code']] = a['name']
+        for aircraft in json_resp.get('trips').get('data').get('aircraft'):
+            self.aircrafts[aircraft['code']] = aircraft['name']
 
     def sort_by_base_price(self):
-        """ Sort all flights by base price, putting lowest first. """
-        self.flight_options = sorted(self.flight_options,
+        """ Sort all trips by base price, putting lowest first. """
+        self.trip_options = sorted(self.trip_options,
                                      key=lambda x: float(re.search(
                                          r'\d+', x[
                                              'pricing'][0]['baseFareTotal']
                                      ).group(0)))
 
     def sort_by_total_price(self):
-        """ Sort all flights by total price, putting lowest first. """
-        self.flight_options = sorted(self.flight_options,
+        """ Sort all trips by total price, putting lowest first. """
+        self.trip_options = sorted(self.trip_options,
                                      key=lambda x: float(re.search(
                                          r'\d+', x['saleTotal']).group(0)))
 
     def sort_by_duration(self):
-        """ Sort all flights by duration, putting shortest first. """
-        self.flight_options = sorted(self.flight_options, key=lambda x:
+        """ Sort all trips by duration, putting shortest first. """
+        self.trip_options = sorted(self.trip_options, key=lambda x:
                                      x['slice'][0]['duration'])
 
-    def top_flights(self, num=10, sort='price'):
-        """ Return a smaller (more readable) dictionary of top cheapest flights.
+    def top_trips(self, num=10, sort='price'):
+        """ Return a smaller (more readable) dictionary of top cheapest trips.
         :kwargs num: integer of how many to show (default: 10)
         :kwargs sort: 'price' or 'duration' sort method (default: 'price')
 
@@ -132,43 +132,53 @@ class QPXResponse(object):
             self.sort_by_total_price()
         elif sort == 'duration':
             self.sort_by_duration()
-        top_flights = []
-        for flight in self.flight_options[:num]:
-            flight_info = {'price': re.search(r'[\d.]+',
-                                              flight.get('saleTotal')).group(),
+        top_trips = []
+        for trip in self.trip_options[:num]:
+            trip_info = {'price': re.search(r'[\d.]+',
+                                              trip.get('saleTotal')).group(),
                            'currency': re.search(r'[^\d.]+',
-                                                 flight.get(
+                                                 trip.get(
                                                      'saleTotal')).group(),
-                           'duration': flight['slice'][0]['duration'],
                            'trip_departure': datetime.strptime(
-                               flight['slice'][0]['segment'][0][
+                               trip['slice'][0]['segment'][0][
                                    'leg'][0]['departureTime'][:15],
                                '%Y-%m-%dT%H:%S'),
                            'trip_arrival': datetime.strptime(
-                               flight['slice'][-1]['segment'][-1][
+                               trip['slice'][-1]['segment'][-1][
                                    'leg'][0]['arrivalTime'][:15],
                                '%Y-%m-%dT%H:%S'),
                            'slices': [],
                            'carriers': []}
 
-            for s in flight['slice']:
-                legs=[]
-                for segment in s['segment']:
-                    flight_info['carriers'].append(segment['flight']['carrier'])
-                    legs.append({
-                        'origin': segment['leg'][0]['origin'],
-                        'departure': segment['leg'][0]['departureTime'],
-                        'arrival': segment['leg'][0]['arrivalTime'],
-                        'destination': segment['leg'][0]['destination'],
+            for _slice in trip['slice']:
+                segments = []
+                for segment in _slice['segment']:
+                    legs = []
+                    trip_info['carriers'].append(segment['flight']['carrier'])
+                    for leg in segment['leg']:
+                        legs.append({
+                            'type': 'leg',
+                            'origin': leg['origin'],
+                            'departure': leg['departureTime'],
+                            'arrival': leg['arrivalTime'],
+                            'destination': leg['destination'],
+                            'aircraft': self.aircrafts[leg['aircraft']]
+                        })
+                    segments.append({
+                        'type': 'segment',
                         'carrier': segment['flight']['carrier'],
-                        'total_duration': (lambda x: segment[x] if x in
-                                           segment.keys() else segment['duration'])(
-                                               'connectionDuration')
+                        'legs': legs,
+                        'segment_stops': len(legs)-1
                     })
-                    
-                flight_info['slices'].append(legs)
 
-            flight_info['stops'] = [len(s)-1 for s in flight_info['slices']]
+                slice_stops = sum([s['segment_stops'] for s in segments])
+                slice_stops += len(segments)-1
+                trip_info['slices'].append({
+                    'type': 'slice',
+                    'segments': segments,
+                    'slice_stops': slice_stops
+                })
 
-            top_flights.append(flight_info)
-        return top_flights
+
+            top_trips.append(trip_info)
+        return top_trips

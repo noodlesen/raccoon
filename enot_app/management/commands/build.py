@@ -12,10 +12,6 @@ from enot_app.qpxexpress import QPXExpressApi, QPXRequest, QPXResponse
 from enot.settings import GOOGLE_API_KEY
 
 
-def show_offer(offer):
-    print (offer['departure'], " - ", offer['arrival'])
-    print (offer['price'])
-    print()
 
 
 class Command(BaseCommand):
@@ -79,14 +75,16 @@ class Command(BaseCommand):
         
         resp = qpx.search(req)
         
-        res = resp.top_flights(num=30)
+        res = resp.top_trips(num=10)
 
         # with open('response.txt', 'w') as f:
         #     f.write(json.dumps(res[0]))
 
-        print()
-        print(res[0])
-        print()
+        
+        for r in res:
+            print()
+            print(r)
+            print()
 
         # for r in res:
         #     #print (r['price'])
