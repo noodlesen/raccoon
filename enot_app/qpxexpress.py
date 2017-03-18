@@ -134,21 +134,21 @@ class QPXResponse(object):
             self.sort_by_duration()
         top_trips = []
         for trip in self.trip_options[:num]:
-            trip_info = {'price': re.search(r'[\d.]+',
-                                              trip.get('saleTotal')).group(),
-                           'currency': re.search(r'[^\d.]+',
-                                                 trip.get(
-                                                     'saleTotal')).group(),
-                           'trip_departure': datetime.strptime(
-                               trip['slice'][0]['segment'][0][
-                                   'leg'][0]['departureTime'][:15],
-                               '%Y-%m-%dT%H:%S'),
-                           'trip_arrival': datetime.strptime(
-                               trip['slice'][-1]['segment'][-1][
-                                   'leg'][0]['arrivalTime'][:15],
-                               '%Y-%m-%dT%H:%S'),
-                           'slices': [],
-                           'carriers': []}
+            sale = trip.get('saleTotal')
+
+            ts = trip['slice']
+            dts = ts[0]['segment'][0]['leg'][0]['departureTime']#[:15]
+            dts = dts.replace(':','')
+            dt = datetime.strptime(dts,'%Y-%m-%dT%H%M%z')
+            ats = ts[-1]['segment'][-1]['leg'][0]['arrivalTime']#[:15]
+            ats = ats.replace(':','')
+            at = datetime.strptime(ats,'%Y-%m-%dT%H%M%z')
+            trip_info = {'price': re.search(r'[\d.]+', sale).group(),
+                         'currency': re.search(r'[^\d.]+', sale).group(),
+                         'trip_departure': dt,
+                         'trip_arrival': at,
+                         'slices': [],
+                         'carriers': []}
 
             for _slice in trip['slice']:
                 segments = []
@@ -156,6 +156,9 @@ class QPXResponse(object):
                     legs = []
                     trip_info['carriers'].append(segment['flight']['carrier'])
                     for leg in segment['leg']:
+                        # fs = '%Y-%m-%d %H:%M:%S %z'
+                        # dts = leg['departureTime'].strftime(fs)
+                        # ats = leg['arrivalTime'].strftime(fs)
                         legs.append({
                             'type': 'leg',
                             'origin': leg['origin'],

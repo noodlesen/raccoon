@@ -1,15 +1,17 @@
 """ Builds the offers list for the mail """
 
 import json
+import pytz
 from operator import itemgetter
 from django.core.management.base import BaseCommand, CommandError
 from django.db import connection
 from datetime import datetime
 
-from enot_app.models import Bid, Subscriber, Airline
+from enot_app.models import Bid, Subscriber, Airline, Trip
 from enot_app.toolbox import dictfetchall
 from enot_app.qpxexpress import QPXExpressApi, QPXRequest, QPXResponse
 from enot.settings import GOOGLE_API_KEY
+
 
 
 
@@ -67,7 +69,7 @@ class Command(BaseCommand):
 
 
         req = QPXRequest('MOW',
-                         v['destination_code'],
+                         'SIN',  # v['destination_code'],
                          v['departure_date'], 
                          1,
                          return_date=v['return_date']
@@ -77,8 +79,7 @@ class Command(BaseCommand):
         
         res = resp.top_trips(num=10)
 
-        # with open('response.txt', 'w') as f:
-        #     f.write(json.dumps(res[0]))
+        print (resp.raw_data)
 
         
         for r in res:
@@ -86,9 +87,17 @@ class Command(BaseCommand):
             print(r)
             print()
 
-        # for r in res:
-        #     #print (r['price'])
-        #     show_offer(r)
+            t = Trip()
+            t.price = r['price']
+            t.currency = r['currency']
+            t.departure = r['trip_departure']
+            t.arrival = r['trip_arrival']
+            t.carriers = ', '.join(r['carriers'])
+            t.slices = json.dumps(r['slices'])
+
+            t.save()
+
+
 
 
 

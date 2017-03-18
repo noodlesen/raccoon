@@ -187,3 +187,14 @@ class Airline(models.Model):
     name = models.CharField(max_length=50)
 
 
+class Trip(models.Model):
+    price = models.IntegerField()
+    currency = models.CharField(max_length=3)
+    departure = models.DateTimeField()
+    arrival = models.DateTimeField()
+    carriers = models.CharField(max_length=25)
+    slices = models.TextField()
+    rating = models.IntegerField(default=0)
+    rt_comfort = models.IntegerField(default=0)
+    rt_price = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
