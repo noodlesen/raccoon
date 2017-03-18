@@ -6,6 +6,8 @@ from .toolbox import dictfetchall, get_hash
 
 # Create your models here.
 
+#long_long_ago = datetime(1979, 6, 30, 9, 30, 0, 0, timezone('Europe/Moscow'))
+
 
 class GDirection(models.Model):
     eng_name = models.CharField(max_length=50)
@@ -155,31 +157,41 @@ class Bid(models.Model):
 
 
 class Subscriber(models.Model):
+    name = models.CharField(max_length=50, default='')
     email = models.CharField(max_length=50)
     interval = models.IntegerField(default=1)
     confirmed = models.BooleanField(default=False)
     active = models.BooleanField(default=True)
     premium = models.BooleanField(default=False)
     tester = models.BooleanField(default=False)
-    last_mail_sent_at = models.DateTimeField()
+    last_mail_sent_at = models.DateTimeField(null=True)
+    invite_code = models.CharField(max_length=50)
     hsh = models.CharField(max_length=50, default='')
+    joined_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.email
 
     @classmethod
-    def add(cls, email, **kwargs):
-        s = Subscriber()
+    def create(cls, email, invite, **kwargs):
+        s = cls(email=email, invite_code=invite)
+        s.email = email
+        s.invite = invite
         if 'interval' in kwargs:
             s.interval = kwargs['interval']
         if 'premium' in kwargs:
             s.premium = kwargs['premium']
         if 'tester' in kwargs:
             s.tester = kwargs['tester']
+        if 'name' in kwargs:
+            s.name = kwargs['name']
 
         s.hsh = get_hash(email)
 
-        s.save()
+        return s
+
+
+
 
 
 class Airline(models.Model):
@@ -188,6 +200,9 @@ class Airline(models.Model):
 
 
 class Trip(models.Model):
+    origin_code = models.CharField(max_length=3)
+    destination_code = models.CharField(max_length=3)
+    return_code = models.CharField(max_length=3)
     price = models.IntegerField()
     currency = models.CharField(max_length=3)
     departure = models.DateTimeField()
@@ -198,3 +213,22 @@ class Trip(models.Model):
     rt_comfort = models.IntegerField(default=0)
     rt_price = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Invite(models.Model):
+    code = models.CharField(max_length=50)
+    emitter = models.ForeignKey(Subscriber)
+    created_at = models.DateTimeField(auto_now_add=True)
+    released = models.BooleanField(default=False)
+    released_at = models.DateTimeField(null=True)
+
+    @classmethod
+    def create(cls, emitter):
+        inv = cls(emitter=emitter)
+        inv.code = get_hash(str(inv.id))
+        return inv
+
+
+class Stat(models.Model):
+    stat_date = models.DateField(unique=True)
+    qpx_requests = models.IntegerField(default=0)

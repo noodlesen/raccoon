@@ -20,6 +20,7 @@ def send_email(**kwargs):
 
     msg['Subject'] = kwargs['subject']
     msg['From']    = kwargs['sender']
+    # format: "sender name <sender@email>"
     msg['To']      = kwargs['to']
 
     text = "К сожалению, наша рассылка поддерживает только HTML формат письма"

@@ -137,10 +137,10 @@ class QPXResponse(object):
             sale = trip.get('saleTotal')
 
             ts = trip['slice']
-            dts = ts[0]['segment'][0]['leg'][0]['departureTime']#[:15]
+            dts = ts[0]['segment'][0]['leg'][0]['departureTime']
             dts = dts.replace(':','')
             dt = datetime.strptime(dts,'%Y-%m-%dT%H%M%z')
-            ats = ts[-1]['segment'][-1]['leg'][0]['arrivalTime']#[:15]
+            ats = ts[-1]['segment'][-1]['leg'][0]['arrivalTime']
             ats = ats.replace(':','')
             at = datetime.strptime(ats,'%Y-%m-%dT%H%M%z')
             trip_info = {'price': re.search(r'[\d.]+', sale).group(),
@@ -156,9 +156,6 @@ class QPXResponse(object):
                     legs = []
                     trip_info['carriers'].append(segment['flight']['carrier'])
                     for leg in segment['leg']:
-                        # fs = '%Y-%m-%d %H:%M:%S %z'
-                        # dts = leg['departureTime'].strftime(fs)
-                        # ats = leg['arrivalTime'].strftime(fs)
                         legs.append({
                             'type': 'leg',
                             'origin': leg['origin'],
@@ -181,6 +178,9 @@ class QPXResponse(object):
                     'segments': segments,
                     'slice_stops': slice_stops
                 })
+                trip_info['origin']=trip_info['slices'][0]['segments'][0]['legs'][0]['origin']
+                trip_info['destination']=trip_info['slices'][0]['segments'][-1]['legs'][-1]['destination']
+                trip_info['return']=trip_info['slices'][-1]['segments'][-1]['legs'][-1]['return']
 
 
             top_trips.append(trip_info)

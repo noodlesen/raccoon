@@ -1,12 +1,14 @@
 {% extends 'enot_app/base_letter.html' %}
 
 {% block title %}
-Hello world!
+Улётные Билеты
 {% endblock %}
 
 {% block content %}
-<h1>Hello world</h1>
-<p>WADsfslkes sefksefkm osek msef  soekfm se</p>
+<h1>Улётные билеты</h1>
+{% for t in trips %}
+<p>{{ t.destination_code }} - {{t.price}}</p>
+{% endfor %}
 {% endblock %}
 
 {% block footer %}
