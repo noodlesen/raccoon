@@ -6,8 +6,68 @@
 
 {% block content %}
 <h1>Улётные билеты</h1>
+<div>
+    <h2>БАНГКОК: 32000р</h2>
+    <h2>Emirates со стыковкой в Дубаи</h2>
+    <div>26 дней: 23 апреля —19 мая</div>
+
+    <table>
+        <tr>
+            <td width="50%">
+                <h3>Туда</h3>
+                <p>
+                    Вылет 19:30 из Домодедово<br/>
+                    Москва — 5ч 30мин — Дубаи<br/>
+                    Стыковка 3ч30мин<br/>
+                    Дубай — 6ч 30мин — Бангкок<br/>
+                    Прилетаем в 10:20 
+                </p>
+            </td>
+            <td width="50%">
+                <h3>Обратно</h3>
+                    <p>
+                    Вылет 10:05<br/>
+
+                    Бангкок  - Дубай 6ч 30мин<br/>
+                    Стыковка 4ч30мин<br/>
+                    Дубай - Москва 5ч 30мин<br/>
+
+                    Прилетаем в Домодедово
+                    в 18:05
+                    </p>
+
+            </td>
+        </tr>
+    </table>
+<!--     <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+      <tbody>
+        <tr>
+          <td align="right">
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td> <a href="http://htmlemail.io" target="_blank">32000р</a> </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table> -->
+</div>
 {% for t in trips %}
-<p>{{ t.destination_code }} - {{t.price}}</p>
+<div>
+    <h2>{{ t.destination_code }} - {{t.price}}</h2>
+    {% for sl in t.get_slices %}
+        {% for s in sl.segments %}
+            {% for l in s.legs %}
+                <p>{{l.origin}} -> {{l.destination}}</p>
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+
+
+</div>
 {% endfor %}
 {% endblock %}
 

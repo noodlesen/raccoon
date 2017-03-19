@@ -37,62 +37,51 @@ class Command(BaseCommand):
                 ORDER BY pre_rating DESC
                 """
         cursor.execute(query)
-        rows = dictfetchall(cursor)
+        bids = dictfetchall(cursor)
 
-       # subscribers = Subscriber.objects.filter(tester=True)
-
-        for r in rows:
+        for r in bids:
             rt = r['pre_rating']
             age = int((datetime.utcnow()-r['found_at']).seconds/3600)
             rt -= 10*age
             r['age'] = age
             r['rating']=rt
 
-        rows = sorted(rows, key=itemgetter('rating'), reverse=True)[:50]
+        bids = sorted(bids, key=itemgetter('rating'), reverse=True)[:50]
 
-        for i,r in enumerate(rows):
+        for i,r in enumerate(bids):
             print ('%d: [%d] %s | %dд | %d км | %dр | R%d | %dч ' %(i+1, r['id'], r['destination_name'], r['chd_days'], r['distance'], r['price'], r['rating'], r['age']))
 
 
         qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
 
-        v = rows[0]
-
-        # print(v)
+        #v = bids[0]
 
 
-        req = QPXRequest('MOW',
-                         v['destination_code'],
-                         v['departure_date'],
-                         1,
-                         return_date=v['return_date']
-                         )
-        stats = Stat.objects.get_or_create(stat_date=datetime.today())
-        if stats.qpx_requests < 50:
-            resp = qpx.search(req)
-            stats.qpx_requests += 1
-            stats.save()
-            
-            res = resp.top_trips(num=10)
+        for b in bids[:2]:
 
-            for r in res:
-                print()
-                print(r)
-                print()
+            req = QPXRequest('MOW',
+                             b['destination_code'],
+                             b['departure_date'],
+                             1,
+                             return_date=b['return_date']
+                             )
+            stats, created = Stat.objects.get_or_create(
+                stat_date=datetime.today()
+            )
+            if stats.qpx_requests < 50:
+                resp = qpx.search(req)
+                stats.qpx_requests += 1
+                stats.save()
+                res = resp.top_trips(num=10)
 
-                t = Trip()
-                t.origin_code = r['origin']
-                t.destination_code = r['destination']
-                t.return_code = r['return']
-                t.price = r['price']
-                t.currency = r['currency']
-                t.departure = r['trip_departure']
-                t.arrival = r['trip_arrival']
-                t.carriers = ', '.join(r['carriers'])
-                t.slices = json.dumps(r['slices'])
+                for r in res:
+                    print()
+                    print(r)
 
-                t.save()
-        else:
-            print ("REQUESTS LIMIT EXCEEDED")
+                    t = Trip.load_qpx(r, b)
+
+                    t.save()
+            else:
+                print ("REQUESTS LIMIT EXCEEDED")
 
 

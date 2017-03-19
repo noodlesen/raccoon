@@ -178,9 +178,10 @@ class QPXResponse(object):
                     'segments': segments,
                     'slice_stops': slice_stops
                 })
+
                 trip_info['origin']=trip_info['slices'][0]['segments'][0]['legs'][0]['origin']
                 trip_info['destination']=trip_info['slices'][0]['segments'][-1]['legs'][-1]['destination']
-                trip_info['return']=trip_info['slices'][-1]['segments'][-1]['legs'][-1]['return']
+                trip_info['return']=trip_info['slices'][-1]['segments'][-1]['legs'][-1]['destination']
 
 
             top_trips.append(trip_info)

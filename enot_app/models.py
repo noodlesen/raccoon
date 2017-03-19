@@ -1,12 +1,10 @@
-from django.db import models, connection
+import json
 from datetime import datetime
 from pytz import timezone
-
+from django.db import models, connection
 from .toolbox import dictfetchall, get_hash
 
 # Create your models here.
-
-#long_long_ago = datetime(1979, 6, 30, 9, 30, 0, 0, timezone('Europe/Moscow'))
 
 
 class GDirection(models.Model):
@@ -83,6 +81,26 @@ class Destination(models.Model):
 
 
         return res
+
+
+class Airport(models.Model):
+    name = models.CharField(max_length=50, null=True)
+    size = models.IntegerField(null=True)
+    rating = models.IntegerField(null=True)
+    iata = models.CharField(max_length=3, null=True)
+    city = models.CharField(max_length=50, null=True)
+    city_code = models.CharField(max_length=3, null=True)
+    country_code = models.CharField(max_length=2, null=True)
+    country = models.CharField(max_length=50, null=True)
+    lat = models.FloatField(null=True)
+    lng = models.FloatField(null=True)
+    alt = models.IntegerField(null=True)
+    icao = models.CharField(max_length=4, null=True)
+    timezone = models.IntegerField(null=True)
+    dst = models.CharField(max_length=1, null=True)
+    tzdata = models.CharField(max_length=50, null=True)
+
+
 
 
 class SpiderQueryTP(models.Model):
@@ -192,8 +210,6 @@ class Subscriber(models.Model):
 
 
 
-
-
 class Airline(models.Model):
     iata = models.CharField(max_length=2)
     name = models.CharField(max_length=50)
@@ -213,6 +229,113 @@ class Trip(models.Model):
     rt_comfort = models.IntegerField(default=0)
     rt_price = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    destination_name = models.CharField(max_length=50, null=True)
+    chd_days = models.IntegerField(null=True)
+    pre_rating = models.IntegerField(null=True)
+    distance = models.IntegerField(null=True)
+
+    benefits = models.TextField(null=True)
+
+    def get_slices(self):
+        return json.loads(self.slices)
+
+    def review(self):
+        benefits = []
+        penalties = []
+        rtc = 0  # comfort rating
+        rtp = 0  # price rating
+
+        slices = self.get_slices()
+
+        if self.departure.hour >= 12:
+            benefits.append[{
+                'kind': 'originDepartTime',
+                'message': 'Удобное время вылета из Москвы'
+            }]
+            rtc += 100
+
+        if self.arrival.hour in range(8, 21):
+            benefits.append[{
+                'kind': 'returnArrivalTime',
+                'message': 'Удобное время возвращения в Москву'
+            }]
+            rtc += 30
+
+        """ Destination arrival time """
+
+        dats = slices[0]['segments'][-1]['legs'][-1]['arrival']
+        dat = datetime.strptime(dats.replace(':', ''), '%Y-%m-%dT%H%M%z')
+        if dat.hour in range(10, 21):
+            benefits.append[{
+                'kind': 'destinationArrivalTime',
+                'message': 'Удобное время прибытия в пункт назначения'
+            }]
+            rtc += 100
+
+        """ Destination departure time """
+
+        ddts = slices[-1]['segments'][0]['legs'][0]['departure']
+        ddt = datetime.strptime(ddts.replace(':', ''), '%Y-%m-%dT%H%M%z')
+        if ddt.hour > 10:
+            benefits.append[{
+                'kind': 'destinationDepartureTime',
+                'message': 'Удобное время вылета обратно'
+            }]
+            rtc += 50
+
+        """ Number of stops """
+
+        tns = slices[0]['slice_stops']+slices[1]['slice_stops']
+        if tns == 0:
+            benefits.append[{
+                'kind': 'directFlight',
+                'message': 'Прямые рейсы в обе стороны'
+            }]
+            rtc += 200
+        elif tns == 1:
+            benefits.append[{
+                'kind': 'semiDirectFlight',
+                'message': 'Прямой рейс в одну сторону'
+            }]
+            rtc += 100
+        elif tns > 2:
+            penalties.append[{
+                'kind': 'moreThanTwoStops',
+                'message': 'Много стыковок'
+            }]
+            rtc -= 200
+
+
+
+
+        return True
+
+    @classmethod
+    def load_qpx(cls, qpx, bid_info={}):
+        """ Makes Trip object from QPX response trip
+        :param qpx: qpx trip dict
+        :param bid_info: dict with related bid info (from sql)
+        """
+        t = cls(
+            origin_code=qpx['origin'],
+            destination_code=qpx['destination'],
+            return_code=qpx['return'],
+            price=qpx['price'],
+            currency=qpx['currency'],
+            departure=qpx['trip_departure'],
+            arrival=qpx['trip_arrival'],
+            carriers=', '.join(qpx['carriers']),
+            slices=json.dumps(qpx['slices'])
+        )
+
+        if bid_info:
+            t.destination_name = bid_info['destination_name']
+            t.chd_days = bid_info['chd_days']
+            t.pre_rating = bid_info['pre_rating']
+            t.distance = bid_info['distance']
+
+        return t
 
 
 class Invite(models.Model):

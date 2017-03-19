@@ -4,14 +4,15 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 
 from datetime import datetime
 
-from .models import Bid, Destination#, GPlace, GCountry, GDirection
+from .models import Bid, Destination, Trip#, GPlace, GCountry, GDirection
 
 
 # Create your views here.
 
 @ensure_csrf_cookie
 def main_page(request):
-    return render(request, 'enot_app/pricelist.html')
+    trips = Trip.objects.all()[:12]
+    return render(request, 'enot_app/test_letter.html',  {'trips': trips})
 
 def structured_feed(request):
     bids = Bid.get_best()
