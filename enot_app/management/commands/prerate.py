@@ -5,7 +5,7 @@ from enot_app.rating import prerate
 
 
 class Command(BaseCommand):
-    """ Checks if Spiders TPQueries are up to date """
+    """ Force pre-rating on bids """
 
     def handle(self, *args, **options):
         bids = Bid.objects.all()

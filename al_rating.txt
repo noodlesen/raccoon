@@ -1,0 +1,100 @@
+1   Emirates    5
+2   Qatar Airways   1
+3   Singapore Airlines  2
+4   Cathay Pacific  3
+5   ANAs    7
+6   Etihad Airways  6
+7   Turkish Airlines    4
+8   EVA Air 9
+9   Qantas Airways  10
+10  Lufthansa   12
+11  Garuda Indonesia    8
+12  Hainan Airlines 22
+13  Thai Airways    19
+14  Air France  15
+15  Swiss Int'l Air Lines   14
+16  Asiana Airlines     11
+17  Air New Zealand 17
+18  Virgin Australia    16
+19  Austrian    13
+20  Bangkok Airways 23
+21  Japan Airlines  21
+22  Dragonair   18
+23  AirAsia 25
+24  KLM 28
+25  Virgin America  26
+26  British Airways 20
+27  Finnair 31
+28  Virgin Atlantic 37
+29  Hong Kong Airlines  30
+30  Norwegian   33
+31  Air Canada  27
+32  China Southern  36
+33  Aegean Airlines 29
+34  Malaysia Airlines   24
+35  Delta Air Lines 45
+36  Korean Air  38
+37  China Airlines  52
+38  easyJet 39
+39  SilkAir 42
+40  Aeroflot    46
+41  South African Airways   34
+42  Oman Air    35
+43  Air Astana  40
+44  Vietnam Airlines    55
+45  LAN Airlines    32
+46  Jetstar Airways 41
+47  Porter Airlines 48
+48  AirAsiaX    43
+49  Aer Lingus  61
+50  WestJet 47
+51  Indigo  44
+52  Iberia  56
+53  jetBlue Airways 50
+54  Jetstar Asia    53
+55  Azul Airlines   62
+56  Avianca 49
+57  TAM Airlines    51
+58  Alitalia    74
+59  Brussels Airlines   54
+60  Alaska Airlines 65
+61  Scoot   58
+62  SAS Scandinavian    57
+63  Air Seychelles  63
+64  TAP Air Portugal    70
+65  Thomson Airways 59
+66  Southwest Airlines  67
+67  SriLankan Airlines  73
+68  United Airlines 60
+69  Copa Airlines   64
+70  Azerbaijan Airlines 66
+71  Jet Airways 76
+72  Hawaiian Airlines   82
+73  Air Mauritius   69
+74  Air Berlin  71
+75  Eurowings   72
+76  Ethiopian Airlines  77
+77  American Airlines   79
+78  Peach   75
+79  China Eastern   85
+80  Gulf Air    88
+81  Icelandair  81
+82  Saudi Arabian Airlines  84
+83  Philippine Airlines 87
+84  American Eagle  78
+85  Kenya Airways   86
+86  TAAG Angola     90
+87  Air China   93
+88  Air Transat 80
+89  Air Nostrum 83
+90  Juneyao Airlines    89
+91  Fiji Airways    100
+92  LOT Polish  104
+93  Kulula  99
+94  Aeromexico  110
+95  Royal Brunei Airlines   112
+96  Tianjin Airlines    91
+97  Tiger Airways   95
+98  Mango   96
+99  Royal Jordanian 109
+100 SpiceJet    94

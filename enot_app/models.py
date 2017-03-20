@@ -213,6 +213,7 @@ class Subscriber(models.Model):
 class Airline(models.Model):
     iata = models.CharField(max_length=2)
     name = models.CharField(max_length=50)
+    rating = models.IntegerField(null=True)
 
 
 class Trip(models.Model):
@@ -236,6 +237,7 @@ class Trip(models.Model):
     distance = models.IntegerField(null=True)
 
     benefits = models.TextField(null=True)
+    penalties = models.TextField(null=True)
 
     def get_slices(self):
         return json.loads(self.slices)
@@ -249,17 +251,17 @@ class Trip(models.Model):
         slices = self.get_slices()
 
         if self.departure.hour >= 12:
-            benefits.append[{
+            benefits.append({
                 'kind': 'originDepartTime',
                 'message': 'Удобное время вылета из Москвы'
-            }]
+            })
             rtc += 100
 
         if self.arrival.hour in range(8, 21):
-            benefits.append[{
+            benefits.append({
                 'kind': 'returnArrivalTime',
                 'message': 'Удобное время возвращения в Москву'
-            }]
+            })
             rtc += 30
 
         """ Destination arrival time """
@@ -267,10 +269,10 @@ class Trip(models.Model):
         dats = slices[0]['segments'][-1]['legs'][-1]['arrival']
         dat = datetime.strptime(dats.replace(':', ''), '%Y-%m-%dT%H%M%z')
         if dat.hour in range(10, 21):
-            benefits.append[{
+            benefits.append({
                 'kind': 'destinationArrivalTime',
                 'message': 'Удобное время прибытия в пункт назначения'
-            }]
+            })
             rtc += 100
 
         """ Destination departure time """
@@ -278,38 +280,39 @@ class Trip(models.Model):
         ddts = slices[-1]['segments'][0]['legs'][0]['departure']
         ddt = datetime.strptime(ddts.replace(':', ''), '%Y-%m-%dT%H%M%z')
         if ddt.hour > 10:
-            benefits.append[{
+            benefits.append({
                 'kind': 'destinationDepartureTime',
                 'message': 'Удобное время вылета обратно'
-            }]
+            })
             rtc += 50
 
         """ Number of stops """
 
         tns = slices[0]['slice_stops']+slices[1]['slice_stops']
         if tns == 0:
-            benefits.append[{
+            benefits.append({
                 'kind': 'directFlight',
                 'message': 'Прямые рейсы в обе стороны'
-            }]
+            })
             rtc += 200
         elif tns == 1:
-            benefits.append[{
+            benefits.append({
                 'kind': 'semiDirectFlight',
                 'message': 'Прямой рейс в одну сторону'
-            }]
+            })
             rtc += 100
         elif tns > 2:
-            penalties.append[{
+            penalties.append({
                 'kind': 'moreThanTwoStops',
                 'message': 'Много стыковок'
-            }]
+            })
             rtc -= 200
 
-
-
-
-        return True
+        self.benefits = json.dumps(benefits)
+        self.penalties = json.dumps(penalties)
+        self.rt_comfort = rtc
+        self.rt_price = rtp
+        self.save()
 
     @classmethod
     def load_qpx(cls, qpx, bid_info={}):
