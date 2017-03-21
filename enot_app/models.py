@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 from pytz import timezone
 from django.db import models, connection
 from .toolbox import dictfetchall, get_hash
@@ -355,6 +355,23 @@ class Invite(models.Model):
         return inv
 
 
-class Stat(models.Model):
+class Status(models.Model):
     stat_date = models.DateField(unique=True)
     qpx_requests = models.IntegerField(default=0)
+    planner_started = models.BooleanField(default=False)
+    planner_finished = models.BooleanField(default=False)
+    loader_started = models.IntegerField(default=0)
+    loader_finished = models.IntegerField(default=0)
+
+    @classmethod
+    def get_today(cls):
+        stats, created = cls.objects.get_or_create(
+            stat_date=datetime.today()
+        )
+        return stats
+
+    @classmethod
+    def get_yesterday(cls):
+        stats = cls.objects.get(stat_date=datetime.today()-timedelta(days=1))
+        return stats
+

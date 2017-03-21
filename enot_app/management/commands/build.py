@@ -7,9 +7,10 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import connection
 from datetime import datetime
 
-from enot_app.models import Bid, Subscriber, Airline, Trip, Stat
+from enot_app.models import Bid, Subscriber, Airline, Trip, Status
 from enot_app.toolbox import dictfetchall
 from enot_app.qpxexpress import QPXExpressApi, QPXRequest, QPXResponse
+#from enot_app.common import get_current_stats
 from enot.settings import GOOGLE_API_KEY
 
 
@@ -57,7 +58,10 @@ class Command(BaseCommand):
         #v = bids[0]
 
 
-        for b in bids[:2]:
+        started = datetime.now()
+        for b in bids[:10]:
+
+            print (b)
 
             req = QPXRequest('MOW',
                              b['destination_code'],
@@ -65,9 +69,10 @@ class Command(BaseCommand):
                              1,
                              return_date=b['return_date']
                              )
-            stats, created = Stat.objects.get_or_create(
-                stat_date=datetime.today()
-            )
+            # stats, created = Status.objects.get_or_create(
+            #     stat_date=datetime.today()
+            # )
+            stats = Status.get_today()
             if stats.qpx_requests < 50:
                 resp = qpx.search(req)
                 stats.qpx_requests += 1
@@ -84,4 +89,7 @@ class Command(BaseCommand):
             else:
                 print ("REQUESTS LIMIT EXCEEDED")
 
+
+        finished = datetime.now()
+        print ('TIME ELAPSED: ', (finished-started).seconds)
 

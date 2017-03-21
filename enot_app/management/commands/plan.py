@@ -3,7 +3,8 @@ from datetime import datetime, timedelta
 import pytz
 from django.core.management.base import BaseCommand, CommandError
 
-from enot_app.models import Destination, SpiderQueryTP
+from enot_app.models import Destination, SpiderQueryTP, Status
+#from enot_app.common import get_current_std
 
 
 def plus_month(dt, n):
@@ -30,33 +31,50 @@ class Command(BaseCommand):
     """ Checks if Spiders TPQueries are up to date """
 
     def handle(self, *args, **options):
-        # get origin (Moscow is temp)
-        src = Destination.objects.get(code='MOW')
 
-        # get destinations
-        dests = Destination.objects.filter(enabled=True).exclude(code='MOW')
 
-        # delete obsolete entries
-        obs = SpiderQueryTP.objects.filter(expires_at__lte=now).delete()
+        std = Status.get_today()
+        syd = Status.get_yesterday()
 
-        # checking and adding queries
-        for d in dests:
+        if not std.planner_started:
+            if syd.planner_finished:
+                std.planner_started = True
+                std.save()
 
-            for m in months:
-                try:
-                    n = SpiderQueryTP.objects.get(start_date=m, origin=src, destination=d)
+                # get origin (Moscow is temp)
+                src = Destination.objects.get(code='MOW')
 
-                except SpiderQueryTP.DoesNotExist:
+                # get destinations
+                dests = Destination.objects.filter(enabled=True).exclude(code='MOW')
 
-                    exp_date = plus_month(m,1) - timedelta(days=1)
+                # delete obsolete entries
+                obs = SpiderQueryTP.objects.filter(expires_at__lte=now).delete()
 
-                    query=SpiderQueryTP(origin=src,
-                                        destination=d,
-                                        start_date=m,
-                                        requested_at=past,
-                                        expires_at=exp_date,
-                                        priority=1)
-                    query.save()
+                # checking and adding queries
+                for d in dests:
+
+                    for m in months:
+                        try:
+                            n = SpiderQueryTP.objects.get(start_date=m, origin=src, destination=d)
+
+                        except SpiderQueryTP.DoesNotExist:
+
+                            exp_date = plus_month(m,1) - timedelta(days=1)
+
+                            query=SpiderQueryTP(origin=src,
+                                                destination=d,
+                                                start_date=m,
+                                                requested_at=past,
+                                                expires_at=exp_date,
+                                                priority=1)
+                            query.save()
+
+                std.planner_finished = True
+                std.save()
+            else:
+                print ('planner has not finished ok yesterday')
+        else:
+            print ('planner has already stared today')
 
 
 

@@ -8,7 +8,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import IntegrityError
 from django.db.models import Q, F
 
-from enot_app.models import Bid, SpiderQueryTP, Destination
+from enot_app.models import Bid, SpiderQueryTP, Destination, Status
 from enot_app.tpapi import get_month_bids
 from enot_app.rating import prerate
 
@@ -29,7 +29,7 @@ def bid_cleanup(d):
 
 
 WORK_TIME_LIMIT = 3300
-REQUEST_DELAY = 1
+REQUEST_DELAY = 4
 BID_LIFETIME = 2
 
 
@@ -40,97 +40,111 @@ class Command(BaseCommand):
     #     parser.add_argument('poll_id', nargs='+', type=int)
 
     def handle(self, *args, **options):
-        started_at = datetime.now()
 
-        bid_cleanup(BID_LIFETIME)
+        st = Status.get_today()
 
-        tz = pytz.timezone('Europe/Moscow')
-        old_limit = tz.localize(datetime.now())-timedelta(days=1)
+        if st.loader_started == st.loader_finished:
 
-        print ("OLD ",old_limit)
+            st.loader_started += 1
+            st.save()
 
-        """ Browsing through queries """
-        queries = SpiderQueryTP.objects.filter(requested_at__lt=old_limit).order_by('start_date')[:200]
-        for q in queries:
-            sleep(REQUEST_DELAY)
-            if (datetime.now()-started_at).seconds >= WORK_TIME_LIMIT:
-                print ('Reached work time limit - ', WORK_TIME_LIMIT, " sec")
-                break
-            print (q.origin.code, " >>> ", q.destination.code, q.requested_at)
+            started_at = datetime.now()
 
-            month_bids = get_month_bids(
-                {"beginning_of_period": q.start_date.strftime('%Y-%m-%d'),
-                 "destination": q.destination.code,
-                 "origin": q.origin.code
-                 }
-            )
+            bid_cleanup(BID_LIFETIME)
 
-            q.requested_at=tz.localize(datetime.now())
-            q.save()
+            tz = pytz.timezone('Europe/Moscow')
+            old_limit = tz.localize(datetime.now())-timedelta(days=1)
 
-            dest = Destination.objects.get(code=q.destination.code)
+            print ("OLD ",old_limit)
 
-            sum_price = 0
-            sum_bids = 0
+            """ Browsing through queries """
+            queries = SpiderQueryTP.objects.filter(requested_at__lt=old_limit).order_by('start_date')[:200]
+            for q in queries:
+                sleep(REQUEST_DELAY)
+                if (datetime.now()-started_at).seconds >= WORK_TIME_LIMIT:
+                    print ('Reached work time limit - ', WORK_TIME_LIMIT, " sec")
+                    break
+                print (q.origin.code, " >>> ", q.destination.code, q.requested_at)
 
-            for b in month_bids['data']:
-                found_at = datetime.strptime(
-                    ':'.join(b['found_at'].split(':')[:-1])+'00',
-                    '%Y-%m-%dT%H:%M:%S%z'
-                )
-                #found_at = pytz.utc.localize(found_at)
-                departure_date = datetime.strptime(
-                    b['depart_date'],
-                    '%Y-%m-%d'
+                month_bids = get_month_bids(
+                    {"beginning_of_period": q.start_date.strftime('%Y-%m-%d'),
+                     "destination": q.destination.code,
+                     "origin": q.origin.code
+                     }
                 )
 
-                bid = Bid()
-                bid.origin_code = b['origin']
-                bid.destination_code = b['destination']
-                bid.destination_name = q.destination.name.upper()
+                q.requested_at=tz.localize(datetime.now())
+                q.save()
 
-                bid.origin = Destination.objects.get(code=bid.origin_code)
-                bid.destination = Destination.objects.get(code=bid.destination_code)
+                dest = Destination.objects.get(code=q.destination.code)
 
-                bid.one_way = month_bids['params']['one_way'] == 'true'
-                bid.price = b['value']
-                sum_price += b['value']
-                sum_bids += 1
-                bid.trip_class = b['trip_class']
-                bid.stops = b['number_of_changes']
-                bid.distance = b['distance']
-                bid.departure_date = departure_date
+                sum_price = 0
+                sum_bids = 0
 
-                bid.signature = b['origin']+b['destination']+str(b['value'])+str(b['number_of_changes'])+b['depart_date']
-
-                if 'return_date' in b.keys():
-                    bid.return_date = datetime.strptime(
-                        b['return_date'],
+                for b in month_bids['data']:
+                    found_at = datetime.strptime(
+                        ':'.join(b['found_at'].split(':')[:-1])+'00',
+                        '%Y-%m-%dT%H:%M:%S%z'
+                    )
+                    #found_at = pytz.utc.localize(found_at)
+                    departure_date = datetime.strptime(
+                        b['depart_date'],
                         '%Y-%m-%d'
                     )
-                    bid.signature += b['return_date']
 
-                bid.found_at = found_at
+                    bid = Bid()
+                    bid.origin_code = b['origin']
+                    bid.destination_code = b['destination']
+                    bid.destination_name = q.destination.name.upper()
 
-                # tmp:
-                bid.pre_rating = prerate(bid)
-                bid.chd_days = (bid.return_date-bid.departure_date).days 
-                bid.to_expose = True
+                    bid.origin = Destination.objects.get(code=bid.origin_code)
+                    bid.destination = Destination.objects.get(code=bid.destination_code)
 
-                try:
-                    bid.save()
-                except IntegrityError as e:
-                    print ("IntegrityError: ", bid.signature)
-                    pass
+                    bid.one_way = month_bids['params']['one_way'] == 'true'
+                    bid.price = b['value']
+                    sum_price += b['value']
+                    sum_bids += 1
+                    bid.trip_class = b['trip_class']
+                    bid.stops = b['number_of_changes']
+                    bid.distance = b['distance']
+                    bid.departure_date = departure_date
 
-            """ Updating destination stats """
-            nbc = dest.total_bid_count+sum_bids
-            if nbc >0:
-                dest.avg_price = int(
-                    (dest.average_price*dest.total_bid_count+sum_price)/nbc
-                )
-                dest.total_bid_count = nbc
-                dest.save()
+                    bid.signature = b['origin']+b['destination']+str(b['value'])+str(b['number_of_changes'])+b['depart_date']
+
+                    if 'return_date' in b.keys():
+                        bid.return_date = datetime.strptime(
+                            b['return_date'],
+                            '%Y-%m-%d'
+                        )
+                        bid.signature += b['return_date']
+
+                    bid.found_at = found_at
+
+                    # tmp:
+                    bid.pre_rating = prerate(bid)
+                    bid.chd_days = (bid.return_date-bid.departure_date).days 
+                    bid.to_expose = True
+
+                    try:
+                        bid.save()
+                    except IntegrityError as e:
+                        print ("IntegrityError: ", bid.signature)
+                        pass
+
+                """ Updating destination stats """
+                nbc = dest.total_bid_count+sum_bids
+                if nbc >0:
+                    dest.avg_price = int(
+                        (dest.average_price*dest.total_bid_count+sum_price)/nbc
+                    )
+                    dest.total_bid_count = nbc
+                    dest.save()
+
+            st.loader_finished += 1
+            st.save()
+
+        else:
+            print ('Something went wrong last time')
 
 
 

@@ -4,7 +4,7 @@ from enot_app.models import Trip
 
 
 class Command(BaseCommand):
-    """ Test rate trips"""
+    """ Force rating on trips"""
 
     def handle(self, *args, **options):
         trips = Trip.objects.all()
