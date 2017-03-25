@@ -33,48 +33,55 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
 
 
-        std = Status.get_today()
+        
         syd = Status.get_yesterday()
+        std = Status.get_today()
 
-        if not std.planner_started:
-            if syd.planner_finished:
-                std.planner_started = True
-                std.save()
+        if syd is not False:
 
-                # get origin (Moscow is temp)
-                src = Destination.objects.get(code='MOW')
+            if not std.planner_started:
+                if syd.planner_finished:
+                    std.planner_started = True
+                    std.save()
 
-                # get destinations
-                dests = Destination.objects.filter(enabled=True).exclude(code='MOW')
+                    # get origin (Moscow is temp)
+                    src = Destination.objects.get(code='MOW')
 
-                # delete obsolete entries
-                obs = SpiderQueryTP.objects.filter(expires_at__lte=now).delete()
+                    # get destinations
+                    dests = Destination.objects.filter(enabled=True).exclude(code='MOW')
 
-                # checking and adding queries
-                for d in dests:
+                    # delete obsolete entries
+                    obs = SpiderQueryTP.objects.filter(expires_at__lte=now).delete()
 
-                    for m in months:
-                        try:
-                            n = SpiderQueryTP.objects.get(start_date=m, origin=src, destination=d)
+                    # checking and adding queries
+                    for d in dests:
 
-                        except SpiderQueryTP.DoesNotExist:
+                        for m in months:
+                            try:
+                                SpiderQueryTP.objects.get(
+                                    start_date=m,
+                                    origin=src,
+                                    destination=d
+                                )
 
-                            exp_date = plus_month(m,1) - timedelta(days=1)
+                            except SpiderQueryTP.DoesNotExist:
 
-                            query=SpiderQueryTP(origin=src,
-                                                destination=d,
-                                                start_date=m,
-                                                requested_at=past,
-                                                expires_at=exp_date,
-                                                priority=1)
-                            query.save()
+                                exp_date = plus_month(m,1) - timedelta(days=1)
 
-                std.planner_finished = True
-                std.save()
+                                query=SpiderQueryTP(origin=src,
+                                                    destination=d,
+                                                    start_date=m,
+                                                    requested_at=past,
+                                                    expires_at=exp_date,
+                                                    priority=1)
+                                query.save()
+
+                    std.planner_finished = True
+                    std.save()
+                else:
+                    print ('planner has not finished ok yesterday')
             else:
-                print ('planner has not finished ok yesterday')
-        else:
-            print ('planner has already stared today')
+                print ('planner has already stared today')
 
 
 

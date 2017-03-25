@@ -372,6 +372,10 @@ class Status(models.Model):
 
     @classmethod
     def get_yesterday(cls):
-        stats = cls.objects.get(stat_date=datetime.today()-timedelta(days=1))
+        try:
+            stats = cls.objects.get(stat_date=datetime.today()-timedelta(days=1))
+        except cls.DoesNotExist:
+            print('Previous stats record does not exist')
+            return False
         return stats
 
