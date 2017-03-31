@@ -288,6 +288,7 @@ class Trip(models.Model):
 
         """ Number of stops """
 
+        """ total number of stops """
         tns = slices[0]['slice_stops']+slices[1]['slice_stops']
         if tns == 0:
             benefits.append({
@@ -307,6 +308,36 @@ class Trip(models.Model):
                 'message': 'Много стыковок'
             })
             rtc -= 200
+
+        for sln in range(0,2):
+            times = []
+            print('.')
+            # if slices[sln]['slice_stops']>0:
+            #     print('..')
+            #     #print(len(slices[sln]['segments']))
+            #     if len(slices[sln]['segments'])==1:
+            #         print('...')
+            #         legs = slices[sln]['segments'][0]['legs']
+            #         #legsn = len(legs)
+            #         for ln in range(0, len(legs)):
+            #             st = legs(ln)['arrival'] - legs(ln+1)['departure']
+            #             print ('STOP TIME: ', st.seconds)
+
+            for sg in slices[sln]['segments']:
+                for l in sg['legs']:
+                    times.append(l['departure'])
+                    times.append(l['arrival'])
+
+            print (times)
+
+            if len(times)>2:
+                for n in range(1,len(times)-1,2):
+                    t1 = datetime.strptime(times[n+1].replace(':', ''), '%Y-%m-%dT%H%M%z')
+                    t0 = datetime.strptime(times[n].replace(':', ''), '%Y-%m-%dT%H%M%z')
+                    st = (t1-t0).seconds
+                    print(int(st/3600), int(st%3600/60))
+
+    
 
         self.benefits = json.dumps(benefits)
         self.penalties = json.dumps(penalties)
@@ -362,6 +393,7 @@ class Status(models.Model):
     planner_finished = models.BooleanField(default=False)
     loader_started = models.IntegerField(default=0)
     loader_finished = models.IntegerField(default=0)
+    forced = models.BooleanField(default=False)
 
     @classmethod
     def get_today(cls):
@@ -371,11 +403,17 @@ class Status(models.Model):
         return stats
 
     @classmethod
-    def get_yesterday(cls):
+    def get_yesterday(cls, force=False):
+        yesterday = datetime.today()-timedelta(days=1)
         try:
-            stats = cls.objects.get(stat_date=datetime.today()-timedelta(days=1))
+            stats = cls.objects.get(stat_date=yesterday)
         except cls.DoesNotExist:
-            print('Previous stats record does not exist')
-            return False
+            if force is False:
+                print('Previous stats record does not exist')
+                return False
+            else:
+                stats = cls(stat_date=yesterday,
+                        forced=True)
+                stats.save()
         return stats
 

@@ -27,20 +27,33 @@ after_next_month_start = plus_month(this_month_start,2)
 months = [this_month_start, next_month_start, after_next_month_start]
 
 
+
 class Command(BaseCommand):
     """ Checks if Spiders TPQueries are up to date """
 
+
+    def add_arguments(self, parser):
+        parser.add_argument('-f',
+                            action='store_true',
+                            dest='force',
+                            default=False)
+
+        parser.add_argument('--force',
+                            action='store_true',
+                            dest='force',
+                            default=False)
+
     def handle(self, *args, **options):
 
-
+        isForced = options['force']
         
-        syd = Status.get_yesterday()
+        syd = Status.get_yesterday(isForced)
         std = Status.get_today()
 
-        if syd is not False:
+        if syd is not False or isForced:
 
-            if not std.planner_started:
-                if syd.planner_finished:
+            if not std.planner_started or isForced:
+                if syd.planner_finished or isForced:
                     std.planner_started = True
                     std.save()
 

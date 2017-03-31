@@ -28,7 +28,7 @@ def bid_cleanup(d):
                        ).delete()
 
 
-WORK_TIME_LIMIT = 3300
+WORK_TIME_LIMIT =  30 # 3300
 REQUEST_DELAY = 4
 BID_LIFETIME = 2
 

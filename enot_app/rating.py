@@ -21,6 +21,7 @@ def prerate(bid):
         rt += 100
         if days>60 or days<14:
             rt-=200
+
     rt += int(d/bid.price*1000)
 
     if days<3:
@@ -33,5 +34,9 @@ def prerate(bid):
         rt+=100
 
     rt = rt-bid.stops*100
+
+    ap = bid.destination.average_price
+
+    rt = rt + int((ap-bid.price)/ap*1000)
 
     return rt
