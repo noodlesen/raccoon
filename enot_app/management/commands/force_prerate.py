@@ -13,10 +13,5 @@ class Command(BaseCommand):
         for b in bids:
             print (i)
             i += 1
-            pr = prerate(b)
-            b.pre_rating = pr
-
-            # days = (b.return_date-b.departure_date).days  # move to loader
-            # b.chd_days=days
-
+            b.pre_rating = prerate(b)
             b.save()

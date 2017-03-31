@@ -55,11 +55,12 @@ class Command(BaseCommand):
 
         qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
 
-        #v = bids[0]
+        
+
 
 
         started = datetime.now()
-        for b in bids[:10]:
+        for b in bids[:50]:
 
             print (b)
 
@@ -69,21 +70,21 @@ class Command(BaseCommand):
                              1,
                              return_date=b['return_date']
                              )
-            # stats, created = Status.objects.get_or_create(
-            #     stat_date=datetime.today()
-            # )
+
             stats = Status.get_today()
             if stats.qpx_requests < 50:
                 resp = qpx.search(req)
                 stats.qpx_requests += 1
                 stats.save()
-                res = resp.top_trips(num=10)
+                res = resp.top_trips(num=30)
 
                 for r in res:
                     print()
                     print(r)
 
                     t = Trip.load_qpx(r, b)
+
+                    t.review()
 
                     t.save()
             else:

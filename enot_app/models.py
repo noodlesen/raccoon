@@ -242,108 +242,97 @@ class Trip(models.Model):
     def get_slices(self):
         return json.loads(self.slices)
 
-    def review(self):
-        benefits = []
-        penalties = []
-        rtc = 0  # comfort rating
-        rtp = 0  # price rating
+    # def review(self):
+    #     benefits = []
+    #     penalties = []
+    #     rtc = 0  # comfort rating
+    #     rtp = 0  # price rating
 
-        slices = self.get_slices()
+    #     slices = self.get_slices()
 
-        if self.departure.hour >= 12:
-            benefits.append({
-                'kind': 'originDepartTime',
-                'message': 'Удобное время вылета из Москвы'
-            })
-            rtc += 100
+    #     if self.departure.hour >= 12:
+    #         benefits.append({
+    #             'kind': 'originDepartTime',
+    #             'message': 'Удобное время вылета из Москвы'
+    #         })
+    #         rtc += 100
 
-        if self.arrival.hour in range(8, 21):
-            benefits.append({
-                'kind': 'returnArrivalTime',
-                'message': 'Удобное время возвращения в Москву'
-            })
-            rtc += 30
+    #     if self.arrival.hour in range(8, 21):
+    #         benefits.append({
+    #             'kind': 'returnArrivalTime',
+    #             'message': 'Удобное время возвращения в Москву'
+    #         })
+    #         rtc += 30
 
-        """ Destination arrival time """
+    #     """ Destination arrival time """
 
-        dats = slices[0]['segments'][-1]['legs'][-1]['arrival']
-        dat = datetime.strptime(dats.replace(':', ''), '%Y-%m-%dT%H%M%z')
-        if dat.hour in range(10, 21):
-            benefits.append({
-                'kind': 'destinationArrivalTime',
-                'message': 'Удобное время прибытия в пункт назначения'
-            })
-            rtc += 100
+    #     dats = slices[0]['segments'][-1]['legs'][-1]['arrival']
+    #     dat = datetime.strptime(dats.replace(':', ''), '%Y-%m-%dT%H%M%z')
+    #     if dat.hour in range(10, 21):
+    #         benefits.append({
+    #             'kind': 'destinationArrivalTime',
+    #             'message': 'Удобное время прибытия в пункт назначения'
+    #         })
+    #         rtc += 100
 
-        """ Destination departure time """
+    #     """ Destination departure time """
 
-        ddts = slices[-1]['segments'][0]['legs'][0]['departure']
-        ddt = datetime.strptime(ddts.replace(':', ''), '%Y-%m-%dT%H%M%z')
-        if ddt.hour > 10:
-            benefits.append({
-                'kind': 'destinationDepartureTime',
-                'message': 'Удобное время вылета обратно'
-            })
-            rtc += 50
+    #     ddts = slices[-1]['segments'][0]['legs'][0]['departure']
+    #     ddt = datetime.strptime(ddts.replace(':', ''), '%Y-%m-%dT%H%M%z')
+    #     if ddt.hour > 10:
+    #         benefits.append({
+    #             'kind': 'destinationDepartureTime',
+    #             'message': 'Удобное время вылета обратно'
+    #         })
+    #         rtc += 50
 
-        """ Number of stops """
+    #     """ Number of stops """
 
-        """ total number of stops """
-        tns = slices[0]['slice_stops']+slices[1]['slice_stops']
-        if tns == 0:
-            benefits.append({
-                'kind': 'directFlight',
-                'message': 'Прямые рейсы в обе стороны'
-            })
-            rtc += 200
-        elif tns == 1:
-            benefits.append({
-                'kind': 'semiDirectFlight',
-                'message': 'Прямой рейс в одну сторону'
-            })
-            rtc += 100
-        elif tns > 2:
-            penalties.append({
-                'kind': 'moreThanTwoStops',
-                'message': 'Много стыковок'
-            })
-            rtc -= 200
+    #     """ total number of stops """
+    #     tns = slices[0]['slice_stops']+slices[1]['slice_stops']
+    #     if tns == 0:
+    #         benefits.append({
+    #             'kind': 'directFlight',
+    #             'message': 'Прямые рейсы в обе стороны'
+    #         })
+    #         rtc += 200
+    #     elif tns == 1:
+    #         benefits.append({
+    #             'kind': 'semiDirectFlight',
+    #             'message': 'Прямой рейс в одну сторону'
+    #         })
+    #         rtc += 100
+    #     elif tns > 2:
+    #         penalties.append({
+    #             'kind': 'moreThanTwoStops',
+    #             'message': 'Много стыковок'
+    #         })
+    #         rtc -= 200
 
-        for sln in range(0,2):
-            times = []
-            print('.')
-            # if slices[sln]['slice_stops']>0:
-            #     print('..')
-            #     #print(len(slices[sln]['segments']))
-            #     if len(slices[sln]['segments'])==1:
-            #         print('...')
-            #         legs = slices[sln]['segments'][0]['legs']
-            #         #legsn = len(legs)
-            #         for ln in range(0, len(legs)):
-            #             st = legs(ln)['arrival'] - legs(ln+1)['departure']
-            #             print ('STOP TIME: ', st.seconds)
+    #     for sln in range(0,2):
+    #         times = []
 
-            for sg in slices[sln]['segments']:
-                for l in sg['legs']:
-                    times.append(l['departure'])
-                    times.append(l['arrival'])
+    #         for sg in slices[sln]['segments']:
+    #             for l in sg['legs']:
+    #                 times.append(l['departure'])
+    #                 times.append(l['arrival'])
 
-            print (times)
+    #         print (times)
 
-            if len(times)>2:
-                for n in range(1,len(times)-1,2):
-                    t1 = datetime.strptime(times[n+1].replace(':', ''), '%Y-%m-%dT%H%M%z')
-                    t0 = datetime.strptime(times[n].replace(':', ''), '%Y-%m-%dT%H%M%z')
-                    st = (t1-t0).seconds
-                    print(int(st/3600), int(st%3600/60))
+    #         if len(times)>2:
+    #             for n in range(1,len(times)-1,2):
+    #                 t1 = datetime.strptime(times[n+1].replace(':', ''), '%Y-%m-%dT%H%M%z')
+    #                 t0 = datetime.strptime(times[n].replace(':', ''), '%Y-%m-%dT%H%M%z')
+    #                 st = (t1-t0).seconds
+    #                 print(int(st/3600), int(st%3600/60))
 
     
 
-        self.benefits = json.dumps(benefits)
-        self.penalties = json.dumps(penalties)
-        self.rt_comfort = rtc
-        self.rt_price = rtp
-        self.save()
+    #     self.benefits = json.dumps(benefits)
+    #     self.penalties = json.dumps(penalties)
+    #     self.rt_comfort = rtc
+    #     self.rt_price = rtp
+    #     self.save()
 
     @classmethod
     def load_qpx(cls, qpx, bid_info={}):
