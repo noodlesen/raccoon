@@ -3,6 +3,7 @@
 import pytz
 from datetime import datetime, timedelta
 from time import sleep
+from random import choice
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import IntegrityError
@@ -20,6 +21,7 @@ def bid_cleanup(d):
     now = datetime.utcnow()
     today = datetime.today()
     last = now - timedelta(days=d)
+    print ('<<<', d, last)
     last = pytz.utc.localize(last)
 
     Bid.objects.filter(Q(found_at__lt=last)
@@ -36,10 +38,33 @@ BID_LIFETIME = 2
 class Command(BaseCommand):
     """ Preloads some new bids using tpapi """
 
-    # def add_arguments(self, parser):
-    #     parser.add_argument('poll_id', nargs='+', type=int)
+    def add_arguments(self, parser):
+
+        parser.add_argument('--limit',
+                            action='store',
+                            type=int,
+                            default=WORK_TIME_LIMIT,
+                            dest='wtl')
+
+        parser.add_argument('--delay',
+                            action='store',
+                            type=int,
+                            default=REQUEST_DELAY,
+                            dest='rd')
+
+        parser.add_argument('--lifetime',
+                            action='store',
+                            type=int,
+                            default=BID_LIFETIME,
+                            dest='lt')
 
     def handle(self, *args, **options):
+
+        wtl = options['wtl']
+        rd = options['rd']
+        lt = options['lt']
+
+        print ('wtl: %d, rd: %d, lt: %d' % (wtl, rd, lt))
 
         st = Status.get_today()
 
@@ -50,7 +75,7 @@ class Command(BaseCommand):
 
             started_at = datetime.now()
 
-            bid_cleanup(BID_LIFETIME)
+            bid_cleanup(lt)
 
             tz = pytz.timezone('Europe/Moscow')
             old_limit = tz.localize(datetime.now())-timedelta(days=1)
@@ -58,11 +83,14 @@ class Command(BaseCommand):
             print ("OLD ",old_limit)
 
             """ Browsing through queries """
-            queries = SpiderQueryTP.objects.filter(requested_at__lt=old_limit).order_by('start_date')[:200]
+            srt = choice(['', '-'])+choice(['start_date', 'destination', 'id'])
+            print('srt: ', srt)
+
+            queries = SpiderQueryTP.objects.filter(requested_at__lt=old_limit).order_by(srt)[:200]
             for q in queries:
-                sleep(REQUEST_DELAY)
-                if (datetime.now()-started_at).seconds >= WORK_TIME_LIMIT:
-                    print ('Reached work time limit - ', WORK_TIME_LIMIT, " sec")
+                sleep(rd)
+                if (datetime.now()-started_at).seconds >= wtl:
+                    print ('Reached work time limit - ', wtl, " sec")
                     break
                 print (q.origin.code, " >>> ", q.destination.code, q.requested_at)
 

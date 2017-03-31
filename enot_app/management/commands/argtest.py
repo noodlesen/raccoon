@@ -15,5 +15,11 @@ class Command(BaseCommand):
                             dest='force',
                             default=False)
 
+        parser.add_argument('-c',
+                            action='store',
+                            type=int,
+                            #default=0,
+                            dest='cnt')
+
     def handle(self, *args, **options):
-        print(options['force'])
+        print(options)
