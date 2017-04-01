@@ -232,9 +232,13 @@ class Trip(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     destination_name = models.CharField(max_length=50, null=True)
+    destination = models.ForeignKey(Destination, null=True)  # use later?
     chd_days = models.IntegerField(null=True)
     pre_rating = models.IntegerField(null=True)
     distance = models.IntegerField(null=True)
+    bid_price = models.IntegerField(null=True)
+
+    #average_price = models.IntegerField(null=True) # add later?
 
     benefits = models.TextField(null=True)
     penalties = models.TextField(null=True)

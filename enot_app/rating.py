@@ -86,7 +86,7 @@ def review(trip):
         })
         rtc += 30
 
-    """ Destination arrival time """
+    ### Destination arrival time
 
     dats = slices[0]['segments'][-1]['legs'][-1]['arrival']
     dat = datetime.strptime(dats.replace(':', ''), '%Y-%m-%dT%H%M%z')
@@ -97,7 +97,7 @@ def review(trip):
         })
         rtc += 100
 
-    """ Destination departure time """
+    ### Destination departure time
 
     ddts = slices[-1]['segments'][0]['legs'][0]['departure']
     ddt = datetime.strptime(ddts.replace(':', ''), '%Y-%m-%dT%H%M%z')
@@ -108,7 +108,7 @@ def review(trip):
         })
         rtc += 50
 
-    """ Number of stops """
+    ### Number of stops
 
     """ total number of stops """
     tns = slices[0]['slice_stops']+slices[1]['slice_stops']
@@ -131,6 +131,8 @@ def review(trip):
         })
         rtc -= 200
 
+    ### Stops duration
+
     for sln in range(0, 2):
         times = []
 
@@ -147,10 +149,26 @@ def review(trip):
                 t0 = datetime.strptime(times[n].replace(':', ''), '%Y-%m-%dT%H%M%z')
                 st = (t1-t0).seconds
                 print(int(st / 3600), int(st % 3600 / 60))
+                if st<4000:
+                    penalties.append({
+                        'kind': 'veryShortStop',
+                        'message': 'Очень короткая стыковка'
+                    })
+                    rtc -= 100
+                elif st>3600*5:
+                    penalties.append({
+                        'kind': 'veryLongStop',
+                        'message': 'Очень длинная стыковка'
+                    })
+                    rtc -= 200
+        
+
+
+
 
     return({
-        'benefits': json.dumps(benefits),
-        'penalties': json.dumps(penalties),
+        'benefits': benefits,#json.dumps(benefits),
+        'penalties': penalties,#json.dumps(penalties),
         'rt_comfort': rtc,
         'rt_price': rtp
     })
