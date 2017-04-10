@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from enot_app.models import Airline, Aircraft
 
 Z1 = 1200
 Z2 = 2100
@@ -72,7 +73,7 @@ def review(trip):
 
     slices = trip.get_slices()
 
-    rtc += days_to_distance()
+    rtc += days_to_distance(trip.chd_days, trip.distance)
 
     if trip.departure.hour >= 12:
         benefits.append({
@@ -133,7 +134,7 @@ def review(trip):
         })
         rtc -= 200
 
-    ### Stops duration
+    ### Stops duration and aircrafts
 
     for sln in range(0, 2):
         times = []
@@ -142,6 +143,16 @@ def review(trip):
             for l in sg['legs']:
                 times.append(l['departure'])
                 times.append(l['arrival'])
+
+                print('<>', l['aircraft'])
+                acr = Aircraft.objects.get(name=l['aircraft']).rating
+                if acr >= 150:
+                    benefits.append({
+                        'kind': 'ratedAircraft',
+                        'message': 'Хороший самолёт'
+                    })
+                rtc += acr
+
 
         print (times)
 
@@ -163,7 +174,37 @@ def review(trip):
                         'message': 'Очень длинная стыковка'
                     })
                     rtc -= 200
-        
+
+    ### Carriers
+
+    carriers = set(trip.carriers.split(', '))
+
+    lc = len(carriers)
+    rtc -= 150*(lc-1)
+    if lc > 1:
+        penalties.append({
+            'kind': 'differentCarriers',
+            'message': 'Несколько авиакомпаний'
+        })
+
+    for c in carriers:
+        try:
+            al = Airline.objects.get(iata=c)
+        except Airline.DoesNotExist:
+            rtc -= 100
+            penalties.append({
+                'kind': 'unknownCarrier',
+                'message': 'Неизвестная авиакомпания'
+            })
+        else:
+            alr = al.rating
+            rtc += alr*2
+            if alr > 50:
+                benefits.append({
+                    'kind': 'ratedCarrier',
+                    'message': 'Хорошая авиакомпания'
+                })
+
 
 
 

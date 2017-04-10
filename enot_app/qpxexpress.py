@@ -7,6 +7,8 @@ import json
 import re
 from datetime import datetime
 
+from enot_app.models import Aircraft
+
 
 class QPXExpressApi(object):
     """ QPX Express API """
@@ -165,6 +167,7 @@ class QPXResponse(object):
                             'destination': leg['destination'],
                             'aircraft': self.aircrafts[leg['aircraft']]
                         })
+                        Aircraft.spot(self.aircrafts[leg['aircraft']])  # For stats
                     segments.append({
                         'type': 'segment',
                         'carrier': segment['flight']['carrier'],

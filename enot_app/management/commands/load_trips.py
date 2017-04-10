@@ -12,12 +12,21 @@ from enot_app.toolbox import dictfetchall
 from enot_app.qpxexpress import QPXExpressApi, QPXRequest, QPXResponse
 #from enot_app.common import get_current_stats
 from enot.settings import GOOGLE_API_KEY
+from enot_app.rating import review
 
 
 
 
 
 class Command(BaseCommand):
+
+    def add_arguments(self, parser):
+
+        parser.add_argument('--limit',
+                            action='store',
+                            type=int,
+                            default=50,
+                            dest='req_lim')
 
     def handle(self, *args, **options):
         cursor = connection.cursor()
@@ -49,6 +58,10 @@ class Command(BaseCommand):
 
         bids = sorted(bids, key=itemgetter('rating'), reverse=True)[:50]
 
+        for b in bids:
+            avp = Bid.objects.get(pk=b['id']).destination.average_price
+            b['average_price'] = avp
+
         for i,r in enumerate(bids):
             print ('%d: [%d] %s | %dд | %d км | %dр | R%d | %dч ' %(i+1, r['id'], r['destination_name'], r['chd_days'], r['distance'], r['price'], r['rating'], r['age']))
 
@@ -60,7 +73,7 @@ class Command(BaseCommand):
 
 
         started = datetime.now()
-        for b in bids[:50]:
+        for b in bids[:options['req_lim']]:
 
             print (b)
 
@@ -84,7 +97,12 @@ class Command(BaseCommand):
 
                     t = Trip.load_qpx(r, b)
 
-                    t.review()
+                    rw = review(t)
+                    t.benefits = json.dumps(rw['benefits'])
+                    t.penalties = json.dumps(rw['penalties'])
+                    t.rt_comfort = rw['rt_comfort']
+                    t.rt_price = rw['rt_price']
+                    t.rating = rw['rt_price']+rw['rt_comfort']
 
                     t.save()
             else:
