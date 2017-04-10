@@ -259,6 +259,9 @@ class Trip(models.Model):
     benefits = models.TextField(null=True)
     penalties = models.TextField(null=True)
 
+    top_comfort = models.BooleanField(default=False)
+    top_price = models.BooleanField(default=False)
+
     def get_slices(self):
         return json.loads(self.slices)
 
@@ -272,7 +275,7 @@ class Trip(models.Model):
             origin_code=qpx['origin'],
             destination_code=qpx['destination'],
             return_code=qpx['return'],
-            price=qpx['price'],
+            price=int(qpx['price']),
             currency=qpx['currency'],
             departure=qpx['trip_departure'],
             arrival=qpx['trip_arrival'],
@@ -286,6 +289,8 @@ class Trip(models.Model):
             t.pre_rating = bid_info['pre_rating']
             t.distance = bid_info['distance']
             t.average_price = bid_info['average_price']
+            t.destination_id = bid_info['destination_id']
+            t.bid_price = bid_info['price']
 
         return t
 

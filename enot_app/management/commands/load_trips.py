@@ -32,6 +32,7 @@ class Command(BaseCommand):
         cursor = connection.cursor()
         query = """
                 SELECT id,
+                       destination_id,
                        destination_name,
                        destination_code,
                        departure_date,
@@ -67,8 +68,6 @@ class Command(BaseCommand):
 
 
         qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
-
-        
 
 
 

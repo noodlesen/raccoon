@@ -12,4 +12,8 @@ class Command(BaseCommand):
         for t in trips:
             r = review(t)
             print (r)
+            t.rt_price=r['rt_price']
+            t.rt_comfort=r['rt_comfort']
+            t.rating = r['rt_price']+r['rt_comfort']
+            t.save()
         

@@ -11,7 +11,8 @@ from .models import Bid, Destination, Trip#, GPlace, GCountry, GDirection
 
 @ensure_csrf_cookie
 def main_page(request):
-    trips = Trip.objects.all()[:12]
+    #trips = Trip.objects.all().order_by('-rating')[:12]
+    trips = Trip.objects.raw("""SELECT * FROM enot_app_trip GROUP BY destination_name ORDER BY rating DESC  LIMIT 12""")
     return render(request, 'enot_app/test_letter.html',  {'trips': trips})
 
 def structured_feed(request):

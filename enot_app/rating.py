@@ -71,6 +71,18 @@ def review(trip):
     rtc = 0  # comfort rating
     rtp = 0  # price rating
 
+    ### Price factors
+
+    # print (trip.distance, trip.price)
+    # print (type(trip.distance), type(trip.price))
+    rtp1 = int(trip.distance / trip.price * 500)
+    rtp2 = int((trip.average_price-trip.price)/trip.average_price*500)
+    rtp += rtp1 + rtp2
+
+    print ('RTP: ', rtp1,rtp2)
+
+    ### Comfort factors
+
     slices = trip.get_slices()
 
     rtc += days_to_distance(trip.chd_days, trip.distance)
