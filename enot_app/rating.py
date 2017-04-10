@@ -72,6 +72,8 @@ def review(trip):
 
     slices = trip.get_slices()
 
+    rtc += days_to_distance()
+
     if trip.departure.hour >= 12:
         benefits.append({
             'kind': 'originDepartTime',
