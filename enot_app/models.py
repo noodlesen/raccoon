@@ -174,6 +174,15 @@ class Bid(models.Model):
 
         return res
 
+    def __str__(self):
+        return ("%d: %s->%s >%d | %d" % (
+            self.id,
+            self.origin_code,
+            self.destination_code,
+            self.price,
+            self.pre_rating
+        ))
+
 
 class Subscriber(models.Model):
     name = models.CharField(max_length=50, default='')

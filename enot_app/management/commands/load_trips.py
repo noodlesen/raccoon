@@ -30,21 +30,49 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         cursor = connection.cursor()
+
+                #       SELECT id,
+                #        destination_id,
+                #        destination_name,
+                #        destination_code,
+                #        departure_date,
+                #        return_date,
+                #        distance,
+                #        price,
+                #        stops,
+                #        found_at,
+                #        pre_rating,
+                #        chd_days
+                # FROM enot_app_bid
+                # GROUP BY destination_name
+                # ORDER BY pre_rating DESC
+
         query = """
-                SELECT id,
-                       destination_id,
-                       destination_name,
-                       destination_code,
-                       departure_date,
-                       return_date,
-                       distance,
-                       price,
-                       stops,
-                       found_at,
-                       pre_rating,
-                       chd_days
-                FROM enot_app_bid
-                GROUP BY destination_name
+                SELECT 
+                   id,
+                   destination_id,
+                   destination_name,
+                   destination_code,
+                   departure_date,
+                   return_date,
+                   distance,
+                   price,
+                   stops,
+                   found_at,
+                   pre_rating,
+                   chd_days,
+                   Allbids.id,
+                   MAX(found_at) AS found_at
+                FROM (
+                  SELECT 
+                     destination_code as dc,
+                     MAX(pre_rating) as rating
+                  FROM enot_app_bid
+                  GROUP BY destination_code
+                ) AS Topbids
+                LEFT JOIN enot_app_bid AS Allbids
+                ON Topbids.dc = Allbids.destination_code AND Topbids.rating = Allbids.pre_rating
+                GROUP BY destination_code
                 ORDER BY pre_rating DESC
                 """
         cursor.execute(query)

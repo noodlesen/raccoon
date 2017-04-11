@@ -171,6 +171,8 @@ class Command(BaseCommand):
             st.loader_finished += 1
             st.save()
 
+            # Looking for best ones in each destination
+
         else:
             print ('Something went wrong last time')
 
