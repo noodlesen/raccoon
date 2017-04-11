@@ -32,6 +32,8 @@ class Command(BaseCommand):
         trip_list = [d['trip'] for d in dlist]
 
         for t in trip_list:
+            t.expose = True
+            t.save()
             print('%s->%s :%d | %d' % (
                 t.origin_code,
                 t.destination_code,

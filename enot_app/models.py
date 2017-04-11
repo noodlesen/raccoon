@@ -268,6 +268,8 @@ class Trip(models.Model):
     benefits = models.TextField(null=True)
     penalties = models.TextField(null=True)
 
+    expose = models.BooleanField(default=False)
+
     # top_comfort = models.BooleanField(default=False)
     # top_price = models.BooleanField(default=False)
 
@@ -302,6 +304,12 @@ class Trip(models.Model):
             t.bid_price = bid.price
 
         return t
+
+    def get_benefits(self):
+        return json.loads(self.benefits)
+
+    def get_penalties(self):
+        return json.loads(self.penalties)
 
 
 class Invite(models.Model):
