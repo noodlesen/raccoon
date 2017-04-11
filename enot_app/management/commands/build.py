@@ -1,32 +1,40 @@
 from django.core.management.base import BaseCommand
-from django.db import connection
-from enot_app.toolbox import dictfetchall
+
+from operator import itemgetter
 
 from enot_app.models import Trip
 
 
 class Command(BaseCommand):
-    """ Force rating on trips"""
+    """ Force pre-rating on bids """
 
     def handle(self, *args, **options):
-        pass
-        # cursor = connection.cursor()
-        # query = """
-        #         SELECT id,
-        #                destination_id,
-        #                destination_name,
-        #                destination_code,
-        #                departure_date,
-        #                return_date,
-        #                distance,
-        #                price,
-        #                stops,
-        #                found_at,
-        #                pre_rating,
-        #                chd_days
-        #         FROM enot_app_bid
-        #         GROUP BY destination_name
-        #         ORDER BY pre_rating DESC
-        #         """
-        # cursor.execute(query)
-        # bids = dictfetchall(cursor)
+        trips = Trip.objects.filter(rating__gt=0)
+        dests = {}
+        for t in trips:
+            if t.destination_code not in dests.keys():
+                dests[t.destination_code]=t
+            else:
+                r = dests[t.destination_code].rating
+                if t.rating > r:
+                    dests[t.destination_code]=t
+                elif t.rating == r:
+                    if t.price > dests[t.destination_code].price:
+                        dests[t.destination_code] = t
+
+        dlist = sorted(
+            [{"dest": k, "trip": v, "r": v.rating} for k,v in dests.items()],
+            key=itemgetter('r'),
+            reverse=True
+        )
+
+
+        trip_list = [d['trip'] for d in dlist]
+
+        for t in trip_list:
+            print('%s->%s :%d | %d' % (
+                t.origin_code,
+                t.destination_code,
+                t.price,
+                t.rating
+            ))

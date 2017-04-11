@@ -268,14 +268,14 @@ class Trip(models.Model):
     benefits = models.TextField(null=True)
     penalties = models.TextField(null=True)
 
-    top_comfort = models.BooleanField(default=False)
-    top_price = models.BooleanField(default=False)
+    # top_comfort = models.BooleanField(default=False)
+    # top_price = models.BooleanField(default=False)
 
     def get_slices(self):
         return json.loads(self.slices)
 
     @classmethod
-    def load_qpx(cls, qpx, bid_info={}):
+    def load_qpx(cls, qpx, bid={}):
         """ Makes Trip object from QPX response trip
         :param qpx: qpx trip dict
         :param bid_info: dict with related bid info (from sql)
@@ -292,14 +292,14 @@ class Trip(models.Model):
             slices=json.dumps(qpx['slices'])
         )
 
-        if bid_info:
-            t.destination_name = bid_info['destination_name']
-            t.chd_days = bid_info['chd_days']
-            t.pre_rating = bid_info['pre_rating']
-            t.distance = bid_info['distance']
-            t.average_price = bid_info['average_price']
-            t.destination_id = bid_info['destination_id']
-            t.bid_price = bid_info['price']
+        if bid:
+            t.destination_name = bid.destination_name
+            t.chd_days = bid.chd_days
+            t.pre_rating = bid.pre_rating
+            t.distance = bid.distance
+            t.average_price = bid.destination.average_price
+            t.destination_id = bid.destination_id
+            t.bid_price = bid.price
 
         return t
 

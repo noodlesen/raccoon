@@ -29,70 +29,103 @@ class Command(BaseCommand):
                             dest='req_lim')
 
     def handle(self, *args, **options):
-        cursor = connection.cursor()
+        # cursor = connection.cursor()
 
-                #       SELECT id,
-                #        destination_id,
-                #        destination_name,
-                #        destination_code,
-                #        departure_date,
-                #        return_date,
-                #        distance,
-                #        price,
-                #        stops,
-                #        found_at,
-                #        pre_rating,
-                #        chd_days
-                # FROM enot_app_bid
-                # GROUP BY destination_name
-                # ORDER BY pre_rating DESC
+        #         #       SELECT id,
+        #         #        destination_id,
+        #         #        destination_name,
+        #         #        destination_code,
+        #         #        departure_date,
+        #         #        return_date,
+        #         #        distance,
+        #         #        price,
+        #         #        stops,
+        #         #        found_at,
+        #         #        pre_rating,
+        #         #        chd_days
+        #         # FROM enot_app_bid
+        #         # GROUP BY destination_name
+        #         # ORDER BY pre_rating DESC
 
-        query = """
-                SELECT 
-                   id,
-                   destination_id,
-                   destination_name,
-                   destination_code,
-                   departure_date,
-                   return_date,
-                   distance,
-                   price,
-                   stops,
-                   found_at,
-                   pre_rating,
-                   chd_days,
-                   Allbids.id,
-                   MAX(found_at) AS found_at
-                FROM (
-                  SELECT 
-                     destination_code as dc,
-                     MAX(pre_rating) as rating
-                  FROM enot_app_bid
-                  GROUP BY destination_code
-                ) AS Topbids
-                LEFT JOIN enot_app_bid AS Allbids
-                ON Topbids.dc = Allbids.destination_code AND Topbids.rating = Allbids.pre_rating
-                GROUP BY destination_code
-                ORDER BY pre_rating DESC
-                """
-        cursor.execute(query)
-        bids = dictfetchall(cursor)
+        # query = """
+        #         SELECT 
+        #            id,
+        #            destination_id,
+        #            destination_name,
+        #            destination_code,
+        #            departure_date,
+        #            return_date,
+        #            distance,
+        #            price,
+        #            stops,
+        #            found_at,
+        #            pre_rating,
+        #            chd_days,
+        #            Allbids.id,
+        #            MAX(found_at) AS found_at
+        #         FROM (
+        #           SELECT 
+        #              destination_code as dc,
+        #              MAX(pre_rating) as rating
+        #           FROM enot_app_bid
+        #           GROUP BY destination_code
+        #         ) AS Topbids
+        #         LEFT JOIN enot_app_bid AS Allbids
+        #         ON Topbids.dc = Allbids.destination_code AND Topbids.rating = Allbids.pre_rating
+        #         GROUP BY destination_code
+        #         ORDER BY pre_rating DESC
+        #         """
+        # cursor.execute(query)
+        # bids = dictfetchall(cursor)
 
-        for r in bids:
-            rt = r['pre_rating']
-            age = int((datetime.utcnow()-r['found_at']).seconds/3600)
-            rt -= 10*age
-            r['age'] = age
-            r['rating']=rt
 
-        bids = sorted(bids, key=itemgetter('rating'), reverse=True)[:50]
-
+        bids = Bid.objects.filter(pre_rating__gt=0)
+        dests = {}
         for b in bids:
-            avp = Bid.objects.get(pk=b['id']).destination.average_price
-            b['average_price'] = avp
+            if b.destination_code not in dests.keys():
+                dests[b.destination_code]=b
+            else:
+                pr = dests[b.destination_code].pre_rating
+                fa = dests[b.destination_code].found_at
+                if b.pre_rating > pr:
+                    dests[b.destination_code]=b
+                elif b.pre_rating == pr:
+                    if b.found_at > fa:
+                        dests[b.destination_code]=b
 
-        for i,r in enumerate(bids):
-            print ('%d: [%d] %s | %dд | %d км | %dр | R%d | %dч ' %(i+1, r['id'], r['destination_name'], r['chd_days'], r['distance'], r['price'], r['rating'], r['age']))
+        dlist = sorted(
+            [{"dest": k, "bid": v, "pr": v.pre_rating} for k,v in dests.items()],
+            key=itemgetter('pr'),
+            reverse=True
+        )
+
+        bids = [d['bid'] for d in dlist][:50]
+
+        ####################
+
+        # for b in bids:
+        #     rt = b.pre_rating
+        #     age = int((datetime.utcnow()-b.found_at).seconds/3600)
+        #     rt -= 10*age
+        #     b.age = age
+        #     b.rating = rt
+
+        # bids = sorted(bids, key=itemgetter('rating'), reverse=True)[:50]
+
+        # for b in bids:
+        #     avp = Bid.objects.get(pk=b['id']).destination.average_price
+        #     b['average_price'] = avp
+
+        for i,b in enumerate(bids):
+            print ('%d: [%d] %s | %dд | %d км | %dр | R%d' % (
+                i+1,
+                b.id,
+                b.destination_name,
+                b.chd_days,
+                b.distance,
+                b.price,
+                b.pre_rating,
+            ))
 
 
         qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
@@ -105,10 +138,10 @@ class Command(BaseCommand):
             print (b)
 
             req = QPXRequest('MOW',
-                             b['destination_code'],
-                             b['departure_date'],
+                             b.destination_code,
+                             b.departure_date,
                              1,
-                             return_date=b['return_date']
+                             return_date=b.return_date
                              )
 
             stats = Status.get_today()
