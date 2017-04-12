@@ -75,8 +75,8 @@ def review(trip):
 
     # print (trip.distance, trip.price)
     # print (type(trip.distance), type(trip.price))
-    rtp1 = int(trip.distance / trip.price * 500)
-    rtp2 = int((trip.average_price-trip.price)/trip.average_price*500)
+    rtp1 = int(trip.distance / trip.price * 1000)
+    rtp2 = int((trip.average_price-trip.price)/trip.average_price*1000)
     rtp += rtp1 + rtp2
 
     print ('RTP: ', rtp1,rtp2)
@@ -218,6 +218,10 @@ def review(trip):
                 })
 
 
+    rtc = 0 if rtc < 0 else rtc
+    rtp = 0 if rtp < 0 else rtp
+    rt = int(rtc*rtp/1000)
+
 
 
 
@@ -225,5 +229,6 @@ def review(trip):
         'benefits': benefits,#json.dumps(benefits),
         'penalties': penalties,#json.dumps(penalties),
         'rt_comfort': rtc,
-        'rt_price': rtp
+        'rt_price': rtp,
+        'rt': rt
     })

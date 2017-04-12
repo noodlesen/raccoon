@@ -13,7 +13,7 @@ class Command(BaseCommand):
         Trip.objects.all().update(expose=False)
         midnight = datetime.now().replace(hour=0, minute=0)
         print ('>>>>>>', midnight)
-        Trip.objects.filter(created__lt=midnight).update(actual=False)
+        Trip.objects.filter(created_at__lt=midnight).update(actual=False)
         trips = Trip.objects.filter(rating__gt=0, actual=True)
         dests = {}
         for t in trips:

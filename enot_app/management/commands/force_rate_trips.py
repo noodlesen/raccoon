@@ -14,6 +14,6 @@ class Command(BaseCommand):
             print (r)
             t.rt_price=r['rt_price']
             t.rt_comfort=r['rt_comfort']
-            t.rating = r['rt_price']*2+r['rt_comfort']
+            t.rating = r['rt']
             t.save()
         

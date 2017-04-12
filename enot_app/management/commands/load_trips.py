@@ -162,7 +162,7 @@ class Command(BaseCommand):
                     t.penalties = json.dumps(rw['penalties'])
                     t.rt_comfort = rw['rt_comfort']
                     t.rt_price = rw['rt_price']
-                    t.rating = rw['rt_price']*2+rw['rt_comfort']
+                    t.rating = rw['rt']
 
                     t.save()
             else:
