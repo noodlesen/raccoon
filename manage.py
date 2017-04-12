@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 import os
 import sys
+import logging
+
+logger = logging.getLogger('enot_mail')
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "enot.settings")
@@ -19,4 +22,8 @@ if __name__ == "__main__":
                 "forget to activate a virtual environment?"
             )
         raise
-    execute_from_command_line(sys.argv)
+    try:
+        execute_from_command_line(sys.argv)
+    except Exception as e:
+        logger.error('Admin Command Error: %s', ' '.join(sys.argv), exc_info=sys.exc_info())
+        raise e

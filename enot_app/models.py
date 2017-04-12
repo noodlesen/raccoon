@@ -273,6 +273,8 @@ class Trip(models.Model):
     # top_comfort = models.BooleanField(default=False)
     # top_price = models.BooleanField(default=False)
 
+    actual = models.BooleanField(default=True)
+
     def get_slices(self):
         return json.loads(self.slices)
 
