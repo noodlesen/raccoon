@@ -232,3 +232,4 @@ def review(trip):
         'rt_price': rtp,
         'rt': rt
     })
+    
