@@ -48,7 +48,7 @@ class Command(BaseCommand):
         #         # ORDER BY pre_rating DESC
 
         # query = """
-        #         SELECT 
+        #         SELECT
         #            id,
         #            destination_id,
         #            destination_name,
@@ -64,7 +64,7 @@ class Command(BaseCommand):
         #            Allbids.id,
         #            MAX(found_at) AS found_at
         #         FROM (
-        #           SELECT 
+        #           SELECT
         #              destination_code as dc,
         #              MAX(pre_rating) as rating
         #           FROM enot_app_bid
@@ -135,7 +135,7 @@ class Command(BaseCommand):
         started = datetime.now()
         for b in bids[:options['req_lim']]:
 
-            print (b)
+            #print (b)
 
             req = QPXRequest('MOW',
                              b.destination_code,
@@ -152,8 +152,9 @@ class Command(BaseCommand):
                 res = resp.top_trips(num=30)
 
                 for r in res:
-                    print()
-                    print(r)
+
+                    #print()
+                    #print(r)
 
                     t = Trip.load_qpx(r, b)
 

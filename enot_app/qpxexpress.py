@@ -31,7 +31,7 @@ class QPXExpressApi(object):
         headers = {'content-type': 'application/json'}
         resp = requests.post(self.request_url, data=request.get_json(),
                              headers=headers)
-        print (resp.json())
+        #print (resp.json())
         self.request_count += 1
         return QPXResponse(resp.json())
 
