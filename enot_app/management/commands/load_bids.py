@@ -159,7 +159,7 @@ class Command(BaseCommand):
                     dest.total_bid_count = nbc
                     dest.save()
 
-                sentinel.finish('to_load_bids')
+            sentinel.finish('to_load_bids')
 
 
 

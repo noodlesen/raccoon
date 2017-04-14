@@ -13,7 +13,7 @@ from enot_app.qpxexpress import QPXExpressApi, QPXRequest, QPXResponse
 #from enot_app.common import get_current_stats
 from enot.settings import GOOGLE_API_KEY
 from enot_app.rating import review
-from enot_app.reporter import task_started, task_finished
+import enot_app.sentinel as sentinel
 
 
 
@@ -31,7 +31,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        task_started()
+        sentinel.inform('started_trip_loader')
 
         bids = Bid.objects.filter(pre_rating__gt=0)
         dests = {}
@@ -55,21 +55,6 @@ class Command(BaseCommand):
 
         bids = [d['bid'] for d in dlist][:50]
 
-        ####################
-
-        # for b in bids:
-        #     rt = b.pre_rating
-        #     age = int((datetime.utcnow()-b.found_at).seconds/3600)
-        #     rt -= 10*age
-        #     b.age = age
-        #     b.rating = rt
-
-        # bids = sorted(bids, key=itemgetter('rating'), reverse=True)[:50]
-
-        # for b in bids:
-        #     avp = Bid.objects.get(pk=b['id']).destination.average_price
-        #     b['average_price'] = avp
-
         for i,b in enumerate(bids):
             print ('%d: [%d] %s | %dд | %d км | %dр | R%d' % (
                 i+1,
@@ -89,8 +74,6 @@ class Command(BaseCommand):
         started = datetime.now()
         for b in bids[:options['req_lim']]:
 
-            #print (b)
-
             req = QPXRequest('MOW',
                              b.destination_code,
                              b.departure_date,
@@ -98,34 +81,25 @@ class Command(BaseCommand):
                              return_date=b.return_date
                              )
 
-            stats = Status.get_today()
-            if stats.qpx_requests < 50:
+            if sentinel.allows('to_request_qpx'):
                 resp = qpx.search(req)
-                stats.qpx_requests += 1
-                stats.save()
                 res = resp.top_trips(num=30)
 
                 for r in res:
-
-                    #print()
-                    #print(r)
-
                     t = Trip.load_qpx(r, b)
-
                     rw = review(t)
                     t.benefits = json.dumps(rw['benefits'])
                     t.penalties = json.dumps(rw['penalties'])
                     t.rt_comfort = rw['rt_comfort']
                     t.rt_price = rw['rt_price']
                     t.rating = rw['rt']
-
                     t.save()
-            else:
-                print ("REQUESTS LIMIT EXCEEDED")
 
 
         finished = datetime.now()
         print ('TIME ELAPSED: ', (finished-started).seconds)
 
-        task_finished()
+        sentinel.inform('finished_trip_loader')
+
+
 

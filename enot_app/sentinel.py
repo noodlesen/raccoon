@@ -5,27 +5,12 @@ from enot_app.models import Status
 def report(msg):
     print (msg)
 
-def report_start(task):
-
-    print()
-    print('===================================')
-    print('##', task)
-    print('## started: ', now_in_moscow())
-    print()
-
-def report_finish(task):
-
-    print()
-    print('##', task)
-    print('## finished: ', now_in_moscow())
-    print('===================================')
-    print()
-
 
 def allows(action):
 
+    allow = False
+
     if action == 'to_load_bids':
-        allow = False
         moscow_time = now_in_moscow()
         time_to_work = True if moscow_time.hour < 19 else False
         if time_to_work:  
@@ -38,8 +23,31 @@ def allows(action):
             else:
                 report('Something went wrong last time')
         else:
-            report('Bed time! zzz...')
-        return allow
+            report('Bed time! zzz...') 
+
+    if action == 'to_request_qpx':
+        stats = Status.get_today()
+        if stats.qpx_requests < 50:
+            allow = True
+            print('ALLOWED')
+            stats.qpx_requests += 1
+            stats.save()
+        else:
+            report('REQUEST LIMIT EXCEEDED')
+
+    return allow
+
+
+def inform(action, **kwargs):
+
+    if action == 'started_trip_loader':
+        report('Started trip loader task')
+    elif action == 'finished_trip_loader':
+        report('finished to load trips')
+
+    if 'extra' in kwargs.keys():
+        report(kwargs['extra'])
+
 
 def finish(action):
     if action == 'to_load_bids':
