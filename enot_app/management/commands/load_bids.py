@@ -12,7 +12,8 @@ from django.db.models import Q, F
 from enot_app.models import Bid, SpiderQueryTP, Destination, Status
 from enot_app.tpapi import get_month_bids
 from enot_app.rating import prerate
-
+from enot_app.toolbox import now_in_moscow
+import enot_app.sentinel as sentinel
 
 
 def bid_cleanup(d):
@@ -60,27 +61,20 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        wtl = options['wtl']
-        rd = options['rd']
-        lt = options['lt']
+        if sentinel.allows('to_load_bids'):
 
-        print ('wtl: %d, rd: %d, lt: %d' % (wtl, rd, lt))
-
-        st = Status.get_today()
-
-        if st.loader_started == st.loader_finished:
-
-            st.loader_started += 1
-            st.save()
+            wtl = options['wtl']
+            rd = options['rd']
+            lt = options['lt']
+            print ('wtl: %d, rd: %d, lt: %d' % (wtl, rd, lt))
 
             started_at = datetime.now()
 
+            moscow_time = now_in_moscow()
+
             bid_cleanup(lt)
 
-            tz = pytz.timezone('Europe/Moscow')
-            old_limit = tz.localize(datetime.now())-timedelta(days=1)
-
-            print ("OLD ",old_limit)
+            old_limit = moscow_time - timedelta(days=1)
 
             """ Browsing through queries """
             srt = choice(['', '-'])+choice(['start_date', 'destination', 'id'])
@@ -101,7 +95,7 @@ class Command(BaseCommand):
                      }
                 )
 
-                q.requested_at=tz.localize(datetime.now())
+                q.requested_at = moscow_time
                 q.save()
 
                 dest = Destination.objects.get(code=q.destination.code)
@@ -114,7 +108,6 @@ class Command(BaseCommand):
                         ':'.join(b['found_at'].split(':')[:-1])+'00',
                         '%Y-%m-%dT%H:%M:%S%z'
                     )
-                    #found_at = pytz.utc.localize(found_at)
                     departure_date = datetime.strptime(
                         b['depart_date'],
                         '%Y-%m-%d'
@@ -147,8 +140,6 @@ class Command(BaseCommand):
                         bid.signature += b['return_date']
 
                     bid.found_at = found_at
-
-                    # tmp:
                     bid.pre_rating = prerate(bid)
                     bid.chd_days = (bid.return_date-bid.departure_date).days 
                     bid.to_expose = True
@@ -156,7 +147,7 @@ class Command(BaseCommand):
                     try:
                         bid.save()
                     except IntegrityError as e:
-                        print ("IntegrityError: ", bid.signature)
+                        print ("Signature exists: ", bid.signature)
                         pass
 
                 """ Updating destination stats """
@@ -168,13 +159,7 @@ class Command(BaseCommand):
                     dest.total_bid_count = nbc
                     dest.save()
 
-            st.loader_finished += 1
-            st.save()
-
-            # Looking for best ones in each destination
-
-        else:
-            print ('Something went wrong last time')
+                sentinel.finish('to_load_bids')
 
 
 

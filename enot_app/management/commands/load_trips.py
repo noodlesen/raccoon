@@ -13,6 +13,7 @@ from enot_app.qpxexpress import QPXExpressApi, QPXRequest, QPXResponse
 #from enot_app.common import get_current_stats
 from enot.settings import GOOGLE_API_KEY
 from enot_app.rating import review
+from enot_app.reporter import task_started, task_finished
 
 
 
@@ -29,55 +30,8 @@ class Command(BaseCommand):
                             dest='req_lim')
 
     def handle(self, *args, **options):
-        # cursor = connection.cursor()
 
-        #         #       SELECT id,
-        #         #        destination_id,
-        #         #        destination_name,
-        #         #        destination_code,
-        #         #        departure_date,
-        #         #        return_date,
-        #         #        distance,
-        #         #        price,
-        #         #        stops,
-        #         #        found_at,
-        #         #        pre_rating,
-        #         #        chd_days
-        #         # FROM enot_app_bid
-        #         # GROUP BY destination_name
-        #         # ORDER BY pre_rating DESC
-
-        # query = """
-        #         SELECT
-        #            id,
-        #            destination_id,
-        #            destination_name,
-        #            destination_code,
-        #            departure_date,
-        #            return_date,
-        #            distance,
-        #            price,
-        #            stops,
-        #            found_at,
-        #            pre_rating,
-        #            chd_days,
-        #            Allbids.id,
-        #            MAX(found_at) AS found_at
-        #         FROM (
-        #           SELECT
-        #              destination_code as dc,
-        #              MAX(pre_rating) as rating
-        #           FROM enot_app_bid
-        #           GROUP BY destination_code
-        #         ) AS Topbids
-        #         LEFT JOIN enot_app_bid AS Allbids
-        #         ON Topbids.dc = Allbids.destination_code AND Topbids.rating = Allbids.pre_rating
-        #         GROUP BY destination_code
-        #         ORDER BY pre_rating DESC
-        #         """
-        # cursor.execute(query)
-        # bids = dictfetchall(cursor)
-
+        task_started()
 
         bids = Bid.objects.filter(pre_rating__gt=0)
         dests = {}
@@ -172,4 +126,6 @@ class Command(BaseCommand):
 
         finished = datetime.now()
         print ('TIME ELAPSED: ', (finished-started).seconds)
+
+        task_finished()
 

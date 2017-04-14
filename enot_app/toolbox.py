@@ -2,6 +2,7 @@ import hashlib
 from datetime import datetime
 from math import pi, cos, sin, sqrt, atan2
 from random import randint
+import pytz
 
 
 def dictfetchall(cursor):
@@ -119,3 +120,8 @@ def fib(n):
 def chances(p):
     n = randint(0, 100)
     return n < p
+
+
+def now_in_moscow():
+    tz = pytz.timezone('Europe/Moscow')
+    return tz.localize(datetime.now())

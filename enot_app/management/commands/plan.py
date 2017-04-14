@@ -57,6 +57,8 @@ class Command(BaseCommand):
                     std.planner_started = True
                     std.save()
 
+                    ####
+
                     # get origin (Moscow is temp)
                     src = Destination.objects.get(code='MOW')
 
@@ -89,6 +91,8 @@ class Command(BaseCommand):
                                                     priority=1)
                                 query.save()
 
+                    ####
+                    
                     std.planner_finished = True
                     std.save()
                 else:
