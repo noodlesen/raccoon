@@ -14,6 +14,7 @@ from enot_app.tpapi import get_month_bids
 from enot_app.rating import prerate
 from enot_app.toolbox import now_in_moscow
 import enot_app.sentinel as sentinel
+from enot_app.planner import make_TP_plan
 
 
 def bid_cleanup(d):
@@ -67,6 +68,14 @@ class Command(BaseCommand):
             rd = options['rd']
             lt = options['lt']
             print ('wtl: %d, rd: %d, lt: %d' % (wtl, rd, lt))
+
+            if sentinel.have('to_run_planner'):
+                if sentinel.allows('to_run_planner'):
+                    sentinel.report('Have to run planner first...')
+                    res = make_TP_plan()
+                    print (res)
+                    sentinel.finish('to_plan')
+
 
             started_at = datetime.now()
 

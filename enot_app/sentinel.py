@@ -4,6 +4,7 @@ from enot_app.models import Status
 import logging
 from django.core.mail import send_mail
 from enot.settings import ADMINS, DEFAULT_FROM_EMAIL
+from enot_app.planner import make_TP_plan
 
 def inform_admin(msg, subj=''):
     if subj != '':
@@ -37,8 +38,8 @@ def allows(action, **kwargs):
 
     if action == 'to_load_bids':
         moscow_time = now_in_moscow()
-        time_to_work = True if moscow_time.hour < 19 else False
-        if time_to_work:  
+        time_to_work = True if moscow_time.hour =21 else False
+        if time_to_work:
             st = Status.get_today()
             if st.loader_started == st.loader_finished:
                 allow = True
@@ -101,6 +102,15 @@ def finish(action):
         std = Status.get_today()
         std.planner_finished = True
         std.save()
+
+def have(action):
+    res = False
+    if action == 'to_run_planner':
+        st = Status.get_today()
+        if st.loader_started == 1:
+            res = True
+    return res
+
 
 
 
