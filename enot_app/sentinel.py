@@ -1,9 +1,30 @@
 from datetime import datetime
 from enot_app.toolbox import now_in_moscow
 from enot_app.models import Status
+import logging
+from django.core.mail import send_mail
+from enot.settings import ADMINS, DEFAULT_FROM_EMAIL
 
-def report(msg):
+def inform_admin(msg, subj=''):
+    if subj != '':
+        subj = ': '+subj
+    send_mail(
+        'Sentitnel report'+subj,
+        msg,
+        DEFAULT_FROM_EMAIL,
+        [a[1] for a in ADMINS],
+        fail_silently=False,
+    )
+
+def report(msg, **kwargs):
+    if 'mail' in kwargs and kwargs['mail'] is True:
+        if 'subj' in kwargs:
+            subj = kwargs['subj']
+        else:
+            subj = ''
+        inform_admin(msg, subj)
     print (msg)
+
 
 
 def allows(action):
@@ -21,7 +42,7 @@ def allows(action):
                 st.save()
                 report('Starting to load bids')
             else:
-                report('Something went wrong last time')
+                report('Something went wrong last time', mail=True)
         else:
             report('Bed time! zzz...') 
 
@@ -33,7 +54,7 @@ def allows(action):
             stats.qpx_requests += 1
             stats.save()
         else:
-            report('REQUEST LIMIT EXCEEDED')
+            report('REQUEST LIMIT EXCEEDED', mail=True)
 
     return allow
 
@@ -55,3 +76,7 @@ def finish(action):
         st.loader_finished += 1
         st.save()
         report('finished to load bids')
+
+
+
+
