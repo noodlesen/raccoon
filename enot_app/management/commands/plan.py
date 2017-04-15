@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from enot_app.models import Status
 from enot_app.planner import make_TP_plan
+import enot_app.sentinel as sentinel
 
 
 class Command(BaseCommand):
@@ -19,31 +20,12 @@ class Command(BaseCommand):
                             default=False)
 
     def handle(self, *args, **options):
-
-        isForced = options['force']
         
-        syd = Status.get_yesterday(isForced)
-        std = Status.get_today()
+        if sentinel.allows('to_run_planner', force=options['force']):
 
-        if syd is not False or isForced:
+            res = make_TP_plan()
 
-            if not std.planner_started or isForced:
-                if syd.planner_finished or isForced:
-                    
-                    std.planner_started = True
-                    std.save()
+            print ('Deleted ', res['deleted'])
+            print ('Added ', res['added'])
 
-                    res = make_TP_plan()
-
-                    print ('Deleted ', res['deleted'])
-                    print ('Added ', res['added'])
-
-                    std.planner_finished = True
-                    std.save()
-                else:
-                    print ('planner has not finished ok yesterday')
-            else:
-                print ('planner has already stared today')
-
-
-
+            sentinel.finish('to_plan')

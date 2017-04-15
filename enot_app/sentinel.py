@@ -31,6 +31,10 @@ def allows(action, **kwargs):
 
     allow = False
 
+    isForced = False
+    if 'force' in kwargs.keys():
+        isForced = kwargs['force']
+
     if action == 'to_load_bids':
         moscow_time = now_in_moscow()
         time_to_work = True if moscow_time.hour < 19 else False
@@ -56,6 +60,22 @@ def allows(action, **kwargs):
         else:
             report('REQUEST LIMIT EXCEEDED', mail=True)
 
+
+    if action == 'to_run_planner':
+        #isForced = options['force']
+        syd = Status.get_yesterday(isForced)
+        std = Status.get_today()
+        if syd is not False or isForced:
+            if not std.planner_started or isForced:
+                if syd.planner_finished or isForced:
+                    std.planner_started = True
+                    std.save()
+                    allow = True
+                else:
+                    report('planner has not finished ok yesterday')
+            else:
+                report('planner has already stared today')
+
     return allow
 
 
@@ -76,6 +96,11 @@ def finish(action):
         st.loader_finished += 1
         st.save()
         report('finished to load bids')
+
+    if action == 'to_plan':
+        std = Status.get_today()
+        std.planner_finished = True
+        std.save()
 
 
 

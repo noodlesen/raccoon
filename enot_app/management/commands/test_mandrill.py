@@ -9,7 +9,7 @@ class Command(BaseCommand):
     #     parser.add_argument('poll_id', nargs='+', type=int)
 
     def handle(self, *args, **options):
-        trips = Trip.objects.all()[:12]
+        trips = Trip.objects.filter(expose=True).order_by('-rating')[:12]
         send_email(sender="Улётные Билеты<mail@uletbilet.ru>",
                    to="k.lapshov@gmail.com",
                    subject="улетные билеты от 18 марта",
