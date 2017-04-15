@@ -34,9 +34,12 @@ def tp_request(endpoint, p={}):
 
     try:
         response = requests.get(api_request, headers=headers, timeout=15)
-    except requests.exceptions.ConnectionError:
-        print ("CONNECTION ERROR")
-        return {"data": [], "params": params}
+    except requests.exceptions.ConnectionError as e:
+        print("CE")
+        return {"data": [], "params": params, 'error': e, "etype": 'ConnectionError'}
+    except requests.exceptions.ReadTimeout as e:
+        print("RT")
+        return {"data": [], "params": params, 'error': e, "etype": 'ReadTimeout'}
 
     return {"data": json.loads(response.text)['data'], "params": params}
 

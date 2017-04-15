@@ -27,7 +27,7 @@ def report(msg, **kwargs):
 
 
 
-def allows(action):
+def allows(action, **kwargs):
 
     allow = False
 

@@ -1,12 +1,6 @@
-
-from django.core.management.base import BaseCommand, CommandError
-
+from django.core.management.base import BaseCommand
 from enot_app.models import Status
-#from enot_app.common import get_current_std
-
 from enot_app.planner import make_TP_plan
-
-
 
 
 class Command(BaseCommand):
@@ -35,6 +29,7 @@ class Command(BaseCommand):
 
             if not std.planner_started or isForced:
                 if syd.planner_finished or isForced:
+                    
                     std.planner_started = True
                     std.save()
 
