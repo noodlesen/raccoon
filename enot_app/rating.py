@@ -75,8 +75,8 @@ def review(trip):
 
     # print (trip.distance, trip.price)
     # print (type(trip.distance), type(trip.price))
-    rtp1 = int(trip.distance / trip.price * 1000)
-    rtp2 = int((trip.average_price-trip.price)/trip.average_price*1000)
+    rtp1 = int(trip.distance / trip.price * 1500)
+    rtp2 = int((trip.average_price-trip.price*0.8)/trip.average_price*500)
     rtp += rtp1 + rtp2
 
     print ('RTP: ', rtp1,rtp2)

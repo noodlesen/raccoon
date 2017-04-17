@@ -38,7 +38,7 @@ def allows(action, **kwargs):
 
     if action == 'to_load_bids':
         moscow_time = now_in_moscow()
-        time_to_work = True if moscow_time.hour < 24 else False
+        time_to_work = True if moscow_time.hour in range(7, 10) else False
         if time_to_work:  
             st = Status.get_today()
             if st.loader_started == st.loader_finished:

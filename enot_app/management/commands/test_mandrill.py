@@ -10,9 +10,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         trips = Trip.objects.filter(expose=True).order_by('-rating')[:12]
-        send_email(sender="Улётные Билеты<mail@uletbilet.ru>",
-                   to="k.lapshov@gmail.com",
-                   subject="улетные билеты от 18 марта",
-                   context={'trips': trips},
-                   template='enot_app/test_letter.html')
-        pass
+        addresses = ['k.lapshov@gmail.com', 'k.lapshov@yandex.ru']
+        for addr in addresses:
+            send_email(sender="Улётные Билеты<mail@uletbilet.ru>",
+                       to=addr,
+                       subject="улетные билеты от 18 марта",
+                       context={'trips': trips},
+                       template='enot_app/test_letter.html')
+      
