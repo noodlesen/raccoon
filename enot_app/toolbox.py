@@ -124,4 +124,5 @@ def chances(p):
 
 def now_in_moscow():
     tz = pytz.timezone('Europe/Moscow')
-    return tz.localize(datetime.now())
+    dt = pytz.utc.localize(datetime.utcnow())
+    return dt.astimezone(tz)

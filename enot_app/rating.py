@@ -92,14 +92,14 @@ def review(trip):
             'kind': 'originDepartTime',
             'message': 'Удобное время вылета из Москвы'
         })
-        rtc += 100
+        rtc += 50
 
     if trip.arrival.hour in range(8, 21):
         benefits.append({
             'kind': 'returnArrivalTime',
             'message': 'Удобное время возвращения в Москву'
         })
-        rtc += 30
+        rtc += 20
 
     ### Destination arrival time
 
@@ -110,7 +110,7 @@ def review(trip):
             'kind': 'destinationArrivalTime',
             'message': 'Удобное время прибытия в пункт назначения'
         })
-        rtc += 100
+        rtc += 50
 
     ### Destination departure time
 
@@ -121,7 +121,7 @@ def review(trip):
             'kind': 'destinationDepartureTime',
             'message': 'Удобное время вылета обратно'
         })
-        rtc += 50
+        rtc += 20
 
     ### Number of stops
 
@@ -144,7 +144,7 @@ def review(trip):
             'kind': 'moreThanTwoStops',
             'message': 'Много стыковок'
         })
-        rtc -= 200
+        rtc -= 250
 
     ### Stops duration and aircrafts
 
@@ -220,7 +220,13 @@ def review(trip):
 
     rtc = 0 if rtc < 0 else rtc
     rtp = 0 if rtp < 0 else rtp
+
     rt = int(rtc*rtp/1000)
+
+    if len(penalties)==0:
+        rt+=50
+    else:
+        rt-=50
 
 
 
