@@ -4,6 +4,7 @@ from operator import itemgetter
 from datetime import datetime
 
 from enot_app.models import Trip
+import pytz
 
 
 class Command(BaseCommand):
@@ -11,9 +12,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         Trip.objects.all().update(expose=False)
-        midnight = datetime.utcnow().replace(hour=0, minute=0)
+        midnight = pytz.utc.localize(datetime.utcnow().replace(hour=0, minute=0))
         print ('>>>>>>', midnight)
-        Trip.objects.filter(created_at__lt=midnight).update(actual=False)
+        Trip.objects.filter(created_at__lt=midnight).update(actual=False, expose=False)
         trips = Trip.objects.filter(rating__gt=0, actual=True)
         dests = {}
         for t in trips:
