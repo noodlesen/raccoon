@@ -12,6 +12,8 @@ from email.mime.text import MIMEText
 
 from enot.settings import MANDRILL_USERNAME, MANDRILL_PASSWORD
 
+from django.utils.translation import activate
+
 
 
 def send_email(**kwargs):
@@ -25,6 +27,8 @@ def send_email(**kwargs):
 
     text = "К сожалению, наша рассылка поддерживает только HTML формат письма"
     part1 = MIMEText(text, 'plain')
+
+    activate('ru')
 
     html = transform(
         get_template(kwargs['template']).render(Context(kwargs['context']))
