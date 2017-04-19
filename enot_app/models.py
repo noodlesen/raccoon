@@ -220,6 +220,11 @@ class Subscriber(models.Model):
 
 
 
+# class Airline(models.Model):
+#     iata = models.CharField(max_length=2)
+#     name = models.CharField(max_length=50)
+#     rating = models.IntegerField(null=True)
+
 class Carrier(models.Model):
     iata = models.CharField(max_length=2)
     name = models.CharField(max_length=50)
