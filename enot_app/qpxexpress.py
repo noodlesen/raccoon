@@ -102,8 +102,10 @@ class QPXResponse(object):
         self.raw_data = json_resp
         self.trip_options = json_resp.get('trips').get('tripOption')
         self.aircrafts = {}
-        for aircraft in json_resp.get('trips').get('data').get('aircraft'):
-            self.aircrafts[aircraft['code']] = aircraft['name']
+        aircrafts = json_resp.get('trips').get('data').get('aircraft')
+        if aircrafts:
+            for aircraft in aircrafts:
+                self.aircrafts[aircraft['code']] = aircraft['name']
 
     def sort_by_base_price(self):
         """ Sort all trips by base price, putting lowest first. """
