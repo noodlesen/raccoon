@@ -134,7 +134,7 @@ class QPXResponse(object):
         returns sorted list with some (but not all) details for easy reading
         """
         if not self.trip_options:
-            print('failed')
+            print('No results')
             return []
         if sort == 'price':
             self.sort_by_total_price()

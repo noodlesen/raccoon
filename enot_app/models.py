@@ -2,7 +2,7 @@ import json
 from datetime import datetime, timedelta
 from pytz import timezone
 from django.db import models, connection
-from .toolbox import dictfetchall, get_hash
+from .toolbox import dictfetchall, get_hash, russian_plurals, now_in_moscow
 
 # Create your models here.
 
@@ -220,7 +220,7 @@ class Subscriber(models.Model):
 
 
 
-class Airline(models.Model):
+class Carrier(models.Model):
     iata = models.CharField(max_length=2)
     name = models.CharField(max_length=50)
     rating = models.IntegerField(null=True)
@@ -244,6 +244,8 @@ class Aircraft(models.Model):
 class Trip(models.Model):
     origin_code = models.CharField(max_length=3)
     destination_code = models.CharField(max_length=3)
+    destination = models.ForeignKey(Destination, null=True)  # use later?
+    destination_name = models.CharField(max_length=50, null=True)
     return_code = models.CharField(max_length=3)
     price = models.IntegerField()
     currency = models.CharField(max_length=3)
@@ -251,29 +253,33 @@ class Trip(models.Model):
     arrival = models.DateTimeField()
     carriers = models.CharField(max_length=25)
     slices = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    """ Rating fields """
+    pre_rating = models.IntegerField(null=True)
     rating = models.IntegerField(default=0)
     rt_comfort = models.IntegerField(default=0)
     rt_price = models.IntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    destination_name = models.CharField(max_length=50, null=True)
-    destination = models.ForeignKey(Destination, null=True)  # use later?
-    chd_days = models.IntegerField(null=True)
-    pre_rating = models.IntegerField(null=True)
-    distance = models.IntegerField(null=True)
-    bid_price = models.IntegerField(null=True)
-
-    average_price = models.IntegerField(null=True) # add later?
-
+    rt_eff = models.IntegerField(default=0)
     benefits = models.TextField(null=True)
     penalties = models.TextField(null=True)
 
+    """ Trip status """
     expose = models.BooleanField(default=False)
-
-    # top_comfort = models.BooleanField(default=False)
-    # top_price = models.BooleanField(default=False)
-
     actual = models.BooleanField(default=True)
+
+    """ Additional fields """
+    average_price = models.IntegerField(null=True) # add later?
+    chd_days = models.IntegerField(null=True)
+    distance = models.IntegerField(null=True)
+    bid_price = models.IntegerField(null=True)
+
+    """ Template helpers """
+    days_text = models.CharField(max_length=10, null=True)
+    days_to_text = models.CharField(max_length=10, null=True)
+    carriers_names = models.TextField(null=True)
+    days_to = models.IntegerField(null=True)
+
 
     def get_slices(self):
         return json.loads(self.slices)
@@ -312,6 +318,12 @@ class Trip(models.Model):
 
     def get_penalties(self):
         return json.loads(self.penalties)
+
+    def supply(self):
+        self.days_text = str(self.chd_days)+" "+russian_plurals('день', self.chd_days)
+        self.days_to = (self.departure-now_in_moscow()).days
+        self.days_to_text = "через "+str(self.days_to)+" "+russian_plurals('день', self.days_to)
+        self.save()
 
 
 class Invite(models.Model):

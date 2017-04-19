@@ -5,15 +5,15 @@ from datetime import datetime, timedelta
 from time import sleep
 from random import choice
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.db import IntegrityError
 from django.db.models import Q, F
 
-from enot_app.models import Bid, SpiderQueryTP, Destination, Status
+import enot_app.sentinel as sentinel
+from enot_app.models import Bid, SpiderQueryTP, Destination
 from enot_app.tpapi import get_month_bids
 from enot_app.rating import prerate
 from enot_app.toolbox import now_in_moscow
-import enot_app.sentinel as sentinel
 from enot_app.planner import make_TP_plan
 
 
@@ -32,7 +32,7 @@ def bid_cleanup(d):
                        ).delete()
 
 
-WORK_TIME_LIMIT =  30 # 3300
+WORK_TIME_LIMIT = 30  # 3300
 REQUEST_DELAY = 4
 BID_LIFETIME = 2
 
@@ -75,7 +75,6 @@ class Command(BaseCommand):
                     res = make_TP_plan()
                     print (res)
                     sentinel.finish('to_plan')
-
 
             started_at = datetime.now()
 
@@ -150,18 +149,18 @@ class Command(BaseCommand):
 
                     bid.found_at = found_at
                     bid.pre_rating = prerate(bid)
-                    bid.chd_days = (bid.return_date-bid.departure_date).days 
+                    bid.chd_days = (bid.return_date-bid.departure_date).days
                     bid.to_expose = True
 
                     try:
                         bid.save()
-                    except IntegrityError as e:
+                    except IntegrityError:
                         print ("Signature exists: ", bid.signature)
                         pass
 
                 """ Updating destination stats """
                 nbc = dest.total_bid_count+sum_bids
-                if nbc >0:
+                if nbc > 0:
                     dest.avg_price = int(
                         (dest.average_price*dest.total_bid_count+sum_price)/nbc
                     )

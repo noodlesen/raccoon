@@ -3,6 +3,8 @@ from django.core.management.base import BaseCommand
 from enot_app.rating import review
 from enot_app.models import Trip
 
+import json
+
 
 class Command(BaseCommand):
     """ Force rating on trips"""
@@ -14,6 +16,9 @@ class Command(BaseCommand):
             print (r)
             t.rt_price=r['rt_price']
             t.rt_comfort=r['rt_comfort']
+            t.rt_eff=r['rt_eff']
             t.rating = r['rt']
+            t.benefits = json.dumps(r['benefits'])
+            t.penalties = json.dumps(r['penalties'])
             t.save()
         

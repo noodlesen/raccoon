@@ -1,22 +1,16 @@
 """ Builds the offers list for the mail """
 
 import json
-import pytz
 from operator import itemgetter
-from django.core.management.base import BaseCommand, CommandError
-from django.db import connection
 from datetime import datetime
 
-from enot_app.models import Bid, Subscriber, Airline, Trip, Status
-from enot_app.toolbox import dictfetchall
-from enot_app.qpxexpress import QPXExpressApi, QPXRequest, QPXResponse
-#from enot_app.common import get_current_stats
+from django.core.management.base import BaseCommand
+
 from enot.settings import GOOGLE_API_KEY
-from enot_app.rating import review
 import enot_app.sentinel as sentinel
-
-
-
+from enot_app.models import Bid, Trip
+from enot_app.qpxexpress import QPXExpressApi, QPXRequest
+from enot_app.rating import review
 
 
 class Command(BaseCommand):
@@ -37,25 +31,25 @@ class Command(BaseCommand):
         dests = {}
         for b in bids:
             if b.destination_code not in dests.keys():
-                dests[b.destination_code]=b
+                dests[b.destination_code] = b
             else:
                 pr = dests[b.destination_code].pre_rating
                 fa = dests[b.destination_code].found_at
                 if b.pre_rating > pr:
-                    dests[b.destination_code]=b
+                    dests[b.destination_code] = b
                 elif b.pre_rating == pr:
                     if b.found_at > fa:
-                        dests[b.destination_code]=b
+                        dests[b.destination_code] = b
 
         dlist = sorted(
-            [{"dest": k, "bid": v, "pr": v.pre_rating} for k,v in dests.items()],
+            [{"dest": k, "bid": v, "pr": v.pre_rating} for k, v in dests.items()],
             key=itemgetter('pr'),
             reverse=True
         )
 
         bids = [d['bid'] for d in dlist][:50]
 
-        for i,b in enumerate(bids):
+        for i, b in enumerate(bids):
             print ('%d: [%d] %s | %dд | %d км | %dр | R%d' % (
                 i+1,
                 b.id,
@@ -66,10 +60,7 @@ class Command(BaseCommand):
                 b.pre_rating,
             ))
 
-
         qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
-
-
 
         started = datetime.now()
         for b in bids[:options['req_lim']]:
@@ -92,14 +83,13 @@ class Command(BaseCommand):
                     t.penalties = json.dumps(rw['penalties'])
                     t.rt_comfort = rw['rt_comfort']
                     t.rt_price = rw['rt_price']
+                    t.rt_eff = rw['rt_eff']
                     t.rating = rw['rt']
                     t.save()
-
 
         finished = datetime.now()
         print ('TIME ELAPSED: ', (finished-started).seconds)
 
         sentinel.inform('finished_trip_loader')
-
 
 

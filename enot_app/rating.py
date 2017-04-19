@@ -1,6 +1,6 @@
 import json
 from datetime import datetime
-from enot_app.models import Airline, Aircraft
+from enot_app.models import Carrier, Aircraft
 
 Z1 = 1200
 Z2 = 2100
@@ -42,7 +42,8 @@ def prerate(bid):
     rt = days_to_distance(days, dist)
 
     # price to distance
-    rt += int(dist/bid.price*1000)
+    eff = int(dist/bid.price*1000)
+    rt += eff
 
     # penalty for shorties
     if days < 3:
@@ -75,7 +76,9 @@ def review(trip):
 
     # print (trip.distance, trip.price)
     # print (type(trip.distance), type(trip.price))
-    rtp1 = int(trip.distance / trip.price * 1500)
+
+    eff = int(trip.distance/trip.price*1000)
+    rtp1 = int(eff*1.5)
     rtp2 = int((trip.average_price-trip.price*0.8)/trip.average_price*500)
     rtp += rtp1 + rtp2
 
@@ -90,14 +93,14 @@ def review(trip):
     if trip.departure.hour >= 12:
         benefits.append({
             'kind': 'originDepartTime',
-            'message': 'Удобное время вылета из Москвы'
+            'message': 'Удобное время вылета из Москвы +50'
         })
         rtc += 50
 
     if trip.arrival.hour in range(8, 21):
         benefits.append({
             'kind': 'returnArrivalTime',
-            'message': 'Удобное время возвращения в Москву'
+            'message': 'Удобное время возвращения в Москву +20'
         })
         rtc += 20
 
@@ -108,7 +111,7 @@ def review(trip):
     if dat.hour in range(10, 21):
         benefits.append({
             'kind': 'destinationArrivalTime',
-            'message': 'Удобное время прибытия в пункт назначения'
+            'message': 'Удобное время прибытия в пункт назначения +50'
         })
         rtc += 50
 
@@ -119,7 +122,7 @@ def review(trip):
     if ddt.hour > 10:
         benefits.append({
             'kind': 'destinationDepartureTime',
-            'message': 'Удобное время вылета обратно'
+            'message': 'Удобное время вылета обратно +20'
         })
         rtc += 20
 
@@ -130,19 +133,19 @@ def review(trip):
     if tns == 0:
         benefits.append({
             'kind': 'directFlight',
-            'message': 'Прямые рейсы в обе стороны'
+            'message': 'Прямые рейсы в обе стороны +300'
         })
-        rtc += 200
+        rtc += 300
     elif tns == 1:
         benefits.append({
             'kind': 'semiDirectFlight',
-            'message': 'Прямой рейс в одну сторону'
+            'message': 'Прямой рейс в одну сторону +100'
         })
         rtc += 100
     elif tns > 2:
         penalties.append({
             'kind': 'moreThanTwoStops',
-            'message': 'Много стыковок'
+            'message': 'Много стыковок -250'
         })
         rtc -= 250
 
@@ -161,7 +164,7 @@ def review(trip):
                 if acr >= 150:
                     benefits.append({
                         'kind': 'ratedAircraft',
-                        'message': 'Хороший самолёт'
+                        'message': 'Хороший самолёт +'+str(acr)
                     })
                 rtc += acr
 
@@ -177,13 +180,13 @@ def review(trip):
                 if st<4000:
                     penalties.append({
                         'kind': 'veryShortStop',
-                        'message': 'Очень короткая стыковка'
+                        'message': 'Очень короткая стыковка -100'
                     })
                     rtc -= 100
                 elif st>3600*5:
                     penalties.append({
                         'kind': 'veryLongStop',
-                        'message': 'Очень длинная стыковка'
+                        'message': 'Очень длинная стыковка -200'
                     })
                     rtc -= 200
 
@@ -192,21 +195,22 @@ def review(trip):
     carriers = set(trip.carriers.split(', '))
 
     lc = len(carriers)
-    rtc -= 150*(lc-1)
+    pen = 150*(lc-1)
+    rtc -= pen
     if lc > 1:
         penalties.append({
             'kind': 'differentCarriers',
-            'message': 'Несколько авиакомпаний'
+            'message': 'Несколько авиакомпаний'+str(pen)
         })
 
     for c in carriers:
         try:
-            al = Airline.objects.get(iata=c)
-        except Airline.DoesNotExist:
+            al = Carrier.objects.get(iata=c)
+        except Carrier.DoesNotExist:
             rtc -= 100
             penalties.append({
                 'kind': 'unknownCarrier',
-                'message': 'Неизвестная авиакомпания'
+                'message': 'Неизвестная авиакомпания -100'
             })
         else:
             alr = al.rating
@@ -214,16 +218,16 @@ def review(trip):
             if alr > 50:
                 benefits.append({
                     'kind': 'ratedCarrier',
-                    'message': 'Хорошая авиакомпания'
+                    'message': 'Хорошая авиакомпания' +str(alr*2)
                 })
 
 
     rtc = 0 if rtc < 0 else rtc
     rtp = 0 if rtp < 0 else rtp
 
-    rt = int(rtc*rtp/1000)
+    rt = int(rtc*rtp/1000) if eff >= 100 else 0
 
-    if len(penalties)==0:
+    if len(penalties) == 0:
         rt+=50
     else:
         rt-=50
@@ -236,6 +240,7 @@ def review(trip):
         'penalties': penalties,#json.dumps(penalties),
         'rt_comfort': rtc,
         'rt_price': rtp,
+        'rt_eff': eff,
         'rt': rt
     })
     
