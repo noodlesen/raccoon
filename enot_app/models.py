@@ -324,6 +324,9 @@ class Trip(models.Model):
     def get_penalties(self):
         return json.loads(self.penalties)
 
+    def get_carriers(self):
+        return json.loads(self.carriers_names)
+
     def supply(self):
         self.days_text = str(self.chd_days)+" "+russian_plurals('день', self.chd_days)
         self.days_to = (self.departure-now_in_moscow()).days

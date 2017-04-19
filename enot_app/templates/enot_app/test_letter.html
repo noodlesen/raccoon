@@ -57,10 +57,12 @@
 </div>
 {% for t in trips %}
 <div>
+    R: {{t.rating}} > E:{{t.rt_eff}} C:{{t.rt_comfort}} - P:{{t.rt_price}}
     <h2>{{ t.destination.name }}, {{t.destination.place.gcountry.rus_name}} — {{t.price}}</h2>
-    > {{t.rt_eff}}
-    R: {{t.rating}} C:{{t.rt_comfort}} - P:{{t.rt_price}}
-    {{t.chd_days}}д. {{ t.departure|date:"d E(D)" }} - {{ t.arrival|date:"d E(D)" }} 
+    
+    
+    {{t.days_text}} {{ t.departure|date:"d E(D)" }} - {{ t.arrival|date:"d E(D)" }} 
+    <div>{% for c in t.get_carriers %}{{c}}{% endfor %}</div>
     {% for b in t.get_benefits %}
         <div style="color:green">+{{b.message }}</div>
     {% endfor %}
