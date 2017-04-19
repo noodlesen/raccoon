@@ -203,9 +203,10 @@ def review(trip):
             'message': 'Несколько авиакомпаний'+str(pen)
         })
 
+    cn = []
     for c in carriers:
         try:
-            al = Carrier.objects.get(iata=c)
+            co = Carrier.objects.get(iata=c)
         except Carrier.DoesNotExist:
             rtc -= 100
             penalties.append({
@@ -213,12 +214,13 @@ def review(trip):
                 'message': 'Неизвестная авиакомпания -100'
             })
         else:
-            alr = al.rating
-            rtc += alr*2
-            if alr > 50:
+            cor = co.rating
+            cn.append(co.name)
+            rtc += cor*2
+            if cor > 50:
                 benefits.append({
                     'kind': 'ratedCarrier',
-                    'message': 'Хорошая авиакомпания' +str(alr*2)
+                    'message': 'Хорошая авиакомпания' +str(cor*2)
                 })
 
 
@@ -241,6 +243,7 @@ def review(trip):
         'rt_comfort': rtc,
         'rt_price': rtp,
         'rt_eff': eff,
-        'rt': rt
+        'rt': rt,
+        'carriers':cn
     })
     

@@ -18,7 +18,10 @@ class Command(BaseCommand):
             t.rt_comfort=r['rt_comfort']
             t.rt_eff=r['rt_eff']
             t.rating = r['rt']
+
+            t.carriers_names = json.dumps(r['carriers'])
             t.benefits = json.dumps(r['benefits'])
             t.penalties = json.dumps(r['penalties'])
+            t.supply()
             t.save()
         

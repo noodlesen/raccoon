@@ -81,10 +81,12 @@ class Command(BaseCommand):
                     rw = review(t)
                     t.benefits = json.dumps(rw['benefits'])
                     t.penalties = json.dumps(rw['penalties'])
+                    t.carriers_names = json.dumps(rw['carriers'])
                     t.rt_comfort = rw['rt_comfort']
                     t.rt_price = rw['rt_price']
                     t.rt_eff = rw['rt_eff']
                     t.rating = rw['rt']
+                    t.supply()
                     t.save()
 
         finished = datetime.now()

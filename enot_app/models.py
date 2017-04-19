@@ -323,7 +323,6 @@ class Trip(models.Model):
         self.days_text = str(self.chd_days)+" "+russian_plurals('день', self.chd_days)
         self.days_to = (self.departure-now_in_moscow()).days
         self.days_to_text = "через "+str(self.days_to)+" "+russian_plurals('день', self.days_to)
-        self.save()
 
 
 class Invite(models.Model):
