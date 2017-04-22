@@ -142,6 +142,7 @@ class Bid(models.Model):
     pre_rating = models.IntegerField(default=0)
     chd_days = models.IntegerField(default=0)  # cached days count for return flights
 
+
     @classmethod
     def get_best(cls):
         cursor = connection.cursor()
@@ -281,7 +282,7 @@ class Trip(models.Model):
 
     """ Template helpers """
     days_text = models.CharField(max_length=10, null=True)
-    days_to_text = models.CharField(max_length=10, null=True)
+    days_to_text = models.CharField(max_length=50, null=True)
     carriers_names = models.TextField(null=True)
     days_to = models.IntegerField(null=True)
 

@@ -1,6 +1,6 @@
 from datetime import datetime
 from enot_app.toolbox import now_in_moscow
-from enot_app.models import Status
+from enot_app.models import Status, Bid, Trip
 import logging
 from django.core.mail import send_mail
 from enot.settings import ADMINS, DEFAULT_FROM_EMAIL
@@ -46,6 +46,8 @@ def allows(action, **kwargs):
                 st.loader_started += 1
                 st.save()
                 report('Starting to load bids')
+                if st.loader_finished == 0:
+                    Bid.objects.all().delete()
             else:
                 report('Something went wrong last time', mail=True)
         else:
@@ -55,9 +57,10 @@ def allows(action, **kwargs):
         stats = Status.get_today()
         if stats.qpx_requests < 50:
             allow = True
-            print('ALLOWED')
             stats.qpx_requests += 1
             stats.save()
+            if stats.qpx_requests == 0:
+                Trip.objects.all().delete()
         else:
             report('REQUEST LIMIT EXCEEDED', mail=True)
 

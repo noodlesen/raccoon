@@ -82,7 +82,7 @@ def review(trip):
     rtp2 = int((trip.average_price-trip.price*0.8)/trip.average_price*500)
     rtp += rtp1 + rtp2
 
-    print ('RTP: ', rtp1,rtp2)
+    #print ('RTP: ', rtp1,rtp2)
 
     ### Comfort factors
 
@@ -159,7 +159,7 @@ def review(trip):
                 times.append(l['departure'])
                 times.append(l['arrival'])
 
-                print('<>', l['aircraft'])
+                #print('<>', l['aircraft'])
                 acr = Aircraft.objects.get(name=l['aircraft']).rating
                 if acr >= 150:
                     benefits.append({
@@ -169,14 +169,14 @@ def review(trip):
                 rtc += acr
 
 
-        print (times)
+        #print (times)
 
         if len(times) > 2:
             for n in range(1, len(times)-1, 2):
                 t1 = datetime.strptime(times[n+1].replace(':', ''), '%Y-%m-%dT%H%M%z')
                 t0 = datetime.strptime(times[n].replace(':', ''), '%Y-%m-%dT%H%M%z')
                 st = (t1-t0).seconds
-                print(int(st / 3600), int(st % 3600 / 60))
+                #print(int(st / 3600), int(st % 3600 / 60))
                 if st<4000:
                     penalties.append({
                         'kind': 'veryShortStop',

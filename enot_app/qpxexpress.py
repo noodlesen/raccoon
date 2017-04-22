@@ -99,13 +99,17 @@ class QPXRequest(object):
 class QPXResponse(object):
     """ QPX Response object. """
     def __init__(self, json_resp):
-        self.raw_data = json_resp
-        self.trip_options = json_resp.get('trips').get('tripOption')
-        self.aircrafts = {}
-        aircrafts = json_resp.get('trips').get('data').get('aircraft')
-        if aircrafts:
-            for aircraft in aircrafts:
-                self.aircrafts[aircraft['code']] = aircraft['name']
+        self.failed = False
+        if json_resp:
+            self.raw_data = json_resp
+            self.trip_options = json_resp.get('trips').get('tripOption')
+            self.aircrafts = {}
+            aircrafts = json_resp.get('trips').get('data').get('aircraft')
+            if aircrafts:
+                for aircraft in aircrafts:
+                    self.aircrafts[aircraft['code']] = aircraft['name']
+        else:
+            self.failed = True
 
     def sort_by_base_price(self):
         """ Sort all trips by base price, putting lowest first. """
@@ -133,7 +137,7 @@ class QPXResponse(object):
 
         returns sorted list with some (but not all) details for easy reading
         """
-        if not self.trip_options:
+        if self.failed or not self.trip_options:
             print('No results')
             return []
         if sort == 'price':
