@@ -185,41 +185,6 @@ class Bid(models.Model):
         ))
 
 
-class Subscriber(models.Model):
-    name = models.CharField(max_length=50, default='')
-    email = models.CharField(max_length=50)
-    interval = models.IntegerField(default=1)
-    confirmed = models.BooleanField(default=False)
-    active = models.BooleanField(default=True)
-    premium = models.BooleanField(default=False)
-    tester = models.BooleanField(default=False)
-    last_mail_sent_at = models.DateTimeField(null=True)
-    invite_code = models.CharField(max_length=50)
-    hsh = models.CharField(max_length=50, default='')
-    joined_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.email
-
-    @classmethod
-    def create(cls, email, invite, **kwargs):
-        s = cls(email=email, invite_code=invite)
-        s.email = email
-        s.invite = invite
-        if 'interval' in kwargs:
-            s.interval = kwargs['interval']
-        if 'premium' in kwargs:
-            s.premium = kwargs['premium']
-        if 'tester' in kwargs:
-            s.tester = kwargs['tester']
-        if 'name' in kwargs:
-            s.name = kwargs['name']
-
-        s.hsh = get_hash(email)
-
-        return s
-
-
 
 # class Airline(models.Model):
 #     iata = models.CharField(max_length=2)
@@ -334,18 +299,7 @@ class Trip(models.Model):
         self.days_to_text = "через "+str(self.days_to)+" "+russian_plurals('день', self.days_to)
 
 
-class Invite(models.Model):
-    code = models.CharField(max_length=50)
-    emitter = models.ForeignKey(Subscriber)
-    created_at = models.DateTimeField(auto_now_add=True)
-    released = models.BooleanField(default=False)
-    released_at = models.DateTimeField(null=True)
 
-    @classmethod
-    def create(cls, emitter):
-        inv = cls(emitter=emitter)
-        inv.code = get_hash(str(inv.id))
-        return inv
 
 
 class Status(models.Model):
@@ -356,6 +310,7 @@ class Status(models.Model):
     loader_started = models.IntegerField(default=0)
     loader_finished = models.IntegerField(default=0)
     forced = models.BooleanField(default=False)
+    build = models.TextField(null=True)
 
     @classmethod
     def get_today(cls):
@@ -375,7 +330,72 @@ class Status(models.Model):
                 return False
             else:
                 stats = cls(stat_date=yesterday,
-                        forced=True)
+                            forced=True
+                            )
                 stats.save()
         return stats
+
+
+class City(models.Model):
+    name = models.CharField(max_length=30)
+    code = models.CharField(max_length=3)
+    last_issue = models.IntegerField(null=True)
+
+
+class Issue(models.Model):
+    city = models.ForeignKey(City)
+    name = models.CharField(max_length=30)
+    number = models.IntegerField(null=True)
+    build = models.TextField(null=True)
+
+
+class Subscriber(models.Model):
+    name = models.CharField(max_length=50, default='')
+    email = models.CharField(max_length=50)
+    city = models.ForeignKey(City, null=True)
+    interval = models.IntegerField(default=1)
+    confirmed = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
+    premium = models.BooleanField(default=False)
+    tester = models.BooleanField(default=False)
+    last_mail_sent_at = models.DateTimeField(null=True)
+    invite_code = models.CharField(max_length=50)
+    hsh = models.CharField(max_length=50, default='')
+    joined_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
+    @classmethod
+    def create(cls, email, invite, **kwargs):
+        s = cls(email=email, invite_code=invite)
+        s.email = email
+        s.invite = invite
+        if 'interval' in kwargs:
+            s.interval = kwargs['interval']
+        if 'premium' in kwargs:
+            s.premium = kwargs['premium']
+        if 'tester' in kwargs:
+            s.tester = kwargs['tester']
+        if 'name' in kwargs:
+            s.name = kwargs['name']
+
+        s.hsh = get_hash(email)
+
+        return s
+
+class Invite(models.Model):
+    code = models.CharField(max_length=50)
+    emitter = models.ForeignKey(Subscriber)
+    created_at = models.DateTimeField(auto_now_add=True)
+    released = models.BooleanField(default=False)
+    released_at = models.DateTimeField(null=True)
+
+    @classmethod
+    def create(cls, emitter):
+        inv = cls(emitter=emitter)
+        inv.code = get_hash(str(inv.id))
+        return inv
+
+
 

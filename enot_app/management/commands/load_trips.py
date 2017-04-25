@@ -23,6 +23,10 @@ class Command(BaseCommand):
                             default=50,
                             dest='req_lim')
 
+        parser.add_argument('--test',
+                            action='store_true',
+                            dest='test')
+
     def handle(self, *args, **options):
 
         sentinel.inform('started_trip_loader')
@@ -60,38 +64,41 @@ class Command(BaseCommand):
                 b.pre_rating,
             ))
 
-        qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
+        if not options['test']:
+            qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
 
-        started = datetime.now()
-        for b in bids[:options['req_lim']]:
+            started = datetime.now()
+            for b in bids[:options['req_lim']]:
 
-            req = QPXRequest('MOW',
-                             b.destination_code,
-                             b.departure_date,
-                             1,
-                             return_date=b.return_date
-                             )
+                req = QPXRequest('MOW',
+                                 b.destination_code,
+                                 b.departure_date,
+                                 1,
+                                 return_date=b.return_date
+                                 )
 
-            if sentinel.allows('to_request_qpx'):
-                resp = qpx.search(req)
-                res = resp.top_trips(num=30)
+                if sentinel.allows('to_request_qpx'):
+                    resp = qpx.search(req)
+                    res = resp.top_trips(num=30)
 
-                for r in res:
-                    t = Trip.load_qpx(r, b)
-                    rw = review(t)
-                    t.benefits = json.dumps(rw['benefits'])
-                    t.penalties = json.dumps(rw['penalties'])
-                    t.carriers_names = json.dumps(rw['carriers'])
-                    t.rt_comfort = rw['rt_comfort']
-                    t.rt_price = rw['rt_price']
-                    t.rt_eff = rw['rt_eff']
-                    t.rating = rw['rt']
-                    t.supply()
-                    t.save()
+                    for r in res:
+                        t = Trip.load_qpx(r, b)
+                        rw = review(t)
+                        t.benefits = json.dumps(rw['benefits'])
+                        t.penalties = json.dumps(rw['penalties'])
+                        t.carriers_names = json.dumps(rw['carriers'])
+                        t.rt_comfort = rw['rt_comfort']
+                        t.rt_price = rw['rt_price']
+                        t.rt_eff = rw['rt_eff']
+                        t.rating = rw['rt']
+                        t.supply()
+                        t.save()
 
-        finished = datetime.now()
-        print ('TIME ELAPSED: ', (finished-started).seconds)
+            finished = datetime.now()
+            print ('TIME ELAPSED: ', (finished-started).seconds)
 
-        sentinel.inform('finished_trip_loader')
+            sentinel.inform('finished_trip_loader')
+        else:
+            print('TEST MODE')
 
 

@@ -3,8 +3,9 @@ from django.core.management.base import BaseCommand
 from operator import itemgetter
 from datetime import datetime
 
-from enot_app.models import Trip
+from enot_app.models import Trip, Status
 import pytz
+import json
 
 
 class Command(BaseCommand):
@@ -37,6 +38,9 @@ class Command(BaseCommand):
 
         trip_list = [d['trip'] for d in dlist]
 
+
+        build = []
+
         for t in trip_list:
             t.expose = True
             t.save()
@@ -46,3 +50,10 @@ class Command(BaseCommand):
                 t.price,
                 t.rating
             ))
+            build.append(t.destination_code)
+
+        st = Status.get_today()
+        st.build = json.dumps(build)
+        st.save()
+
+
