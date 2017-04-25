@@ -2,7 +2,8 @@ import json
 from datetime import datetime, timedelta
 from pytz import timezone
 from django.db import models, connection
-from .toolbox import dictfetchall, get_hash, russian_plurals, now_in_moscow
+from .toolbox import dictfetchall, get_hash, russian_plurals, now_in_moscow, week_day_name
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
@@ -339,7 +340,29 @@ class Status(models.Model):
 class City(models.Model):
     name = models.CharField(max_length=30)
     code = models.CharField(max_length=3)
-    last_issue = models.IntegerField(null=True)
+    last_issue_number = models.IntegerField(null=True)
+
+    def __str__(self):
+        return ('%s (%s)' % (self.name, self.code))
+
+
+class DayJob(models.Model):
+    day_number = models.IntegerField(
+        unique=True,
+        validators=[
+            MaxValueValidator(6),
+            MinValueValidator(0)
+        ]
+    )
+    city = models.ForeignKey(City)
+
+    def __str__(self):
+        return ('%s(%d): %s' % (
+            week_day_name(self.day_number),
+            self.day_number,
+            self.city.name
+        ))
+            
 
 
 class Issue(models.Model):
@@ -350,7 +373,7 @@ class Issue(models.Model):
 
 
 class Subscriber(models.Model):
-    name = models.CharField(max_length=50, default='')
+    name = models.CharField(max_length=50, null=True)
     email = models.CharField(max_length=50)
     city = models.ForeignKey(City, null=True)
     interval = models.IntegerField(default=1)

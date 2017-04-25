@@ -126,3 +126,33 @@ def now_in_moscow():
     tz = pytz.timezone('Europe/Moscow')
     dt = pytz.utc.localize(datetime.utcnow())
     return dt.astimezone(tz)
+
+
+def week_day_name(n, lang='ru', form='full'):
+    names = {
+        'ru':{
+            'short': ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
+            'full': [
+                'Понедельник',
+                'Вторник',
+                'Среда',
+                'Четверг',
+                'Пятница',
+                'Суббота',
+                'Воскресенье'
+            ]
+        },
+        'en':{
+            'short': ['Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat', 'Sun'],
+            'full': [
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday',
+                'Saturday',
+                'Sunday'
+            ]
+        }
+    }
+    return names[lang][form][n]
