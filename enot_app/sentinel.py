@@ -18,13 +18,16 @@ def inform_admin(msg, subj=''):
     )
 
 def report(msg, **kwargs):
+    src=''
+    if 'src' in kwargs:
+        src = kwargs['src'].split('.')[-1].upper()+": "
     if 'mail' in kwargs and kwargs['mail'] is True:
         if 'subj' in kwargs:
             subj = kwargs['subj']
         else:
             subj = ''
-        inform_admin(msg, subj)
-    print (msg)
+        inform_admin(msg, src+subj)
+    print (src+msg)
 
 
 
@@ -35,11 +38,12 @@ def allows(action, **kwargs):
     isForced = False
     if 'force' in kwargs.keys():
         isForced = kwargs['force']
+        report('FORCED')
 
     if action == 'to_load_bids':
         moscow_time = now_in_moscow()
         time_to_work = True if moscow_time.hour in range(7, 10) else False
-        if time_to_work:  
+        if time_to_work or isForced:  
             st = Status.get_today()
             if st.loader_started == st.loader_finished:
                 allow = True

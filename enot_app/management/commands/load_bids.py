@@ -10,7 +10,7 @@ from django.db import IntegrityError
 from django.db.models import Q, F
 
 import enot_app.sentinel as sentinel
-from enot_app.models import Bid, SpiderQueryTP, Destination
+from enot_app.models import Bid, SpiderQueryTP, Destination, DayJob
 from enot_app.tpapi import get_month_bids
 from enot_app.rating import prerate
 from enot_app.toolbox import now_in_moscow
@@ -42,7 +42,7 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
 
-        parser.add_argument('--limit',
+        parser.add_argument('--time',
                             action='store',
                             type=int,
                             default=WORK_TIME_LIMIT,
@@ -60,9 +60,13 @@ class Command(BaseCommand):
                             default=BID_LIFETIME,
                             dest='lt')
 
+        parser.add_argument('--force',
+                            action='store_true',
+                            dest='force')
+
     def handle(self, *args, **options):
 
-        if sentinel.allows('to_load_bids'):
+        if sentinel.allows('to_load_bids', force=True):
 
             wtl = options['wtl']
             rd = options['rd']
@@ -88,7 +92,14 @@ class Command(BaseCommand):
             srt = choice(['', '-'])+choice(['start_date', 'destination', 'id'])
             print('srt: ', srt)
 
-            queries = SpiderQueryTP.objects.filter(requested_at__lt=old_limit).order_by(srt)[:200]
+            target_code = DayJob.get_target_code()
+            sentinel.report("Today's code: "+target_code, src=__name__)
+            target = Destination.objects.get(code=target_code)
+
+            queries = SpiderQueryTP.objects.filter(
+                requested_at__lt=old_limit,
+                origin=target
+            ).order_by(srt)[:500]
             for q in queries:
                 sleep(rd)
                 if (datetime.now()-started_at).seconds >= wtl:

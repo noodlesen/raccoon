@@ -362,7 +362,20 @@ class DayJob(models.Model):
             self.day_number,
             self.city.name
         ))
-            
+
+    @classmethod
+    def get_target_code(cls):
+        today = now_in_moscow().weekday()
+        dj = cls.objects.get(day_number=today)
+        return dj.city.code
+
+    @classmethod
+    def get_all_codes(cls):
+        return set([j.city.code for j in cls.objects.all()])
+
+    @classmethod
+    def get_all_origins(cls):
+        return Destination.objects.filter(code__in=cls.get_all_codes())
 
 
 class Issue(models.Model):
