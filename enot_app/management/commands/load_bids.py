@@ -66,7 +66,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        if sentinel.allows('to_load_bids', force=True):
+        if sentinel.allows('to_load_bids', force=options['force']):
 
             wtl = options['wtl']
             rd = options['rd']
@@ -90,7 +90,7 @@ class Command(BaseCommand):
 
             """ Browsing through queries """
             srt = choice(['', '-'])+choice(['start_date', 'destination', 'id'])
-            print('srt: ', srt)
+            sentinel.report('Sorting order: %s' % srt)
 
             target_code = DayJob.get_target_code()
             sentinel.report("Today's code: "+target_code, src=__name__)
@@ -105,7 +105,7 @@ class Command(BaseCommand):
                 if (datetime.now()-started_at).seconds >= wtl:
                     print ('Reached work time limit - ', wtl, " sec")
                     break
-                print (q.origin.code, " >>> ", q.destination.code, q.requested_at)
+                sentinel.report(q.origin.code+" >>> "+q.destination.code)
 
                 month_bids = get_month_bids(
                     {"beginning_of_period": q.start_date.strftime('%Y-%m-%d'),
@@ -122,61 +122,62 @@ class Command(BaseCommand):
                 sum_price = 0
                 sum_bids = 0
 
-                for b in month_bids['data']:
-                    found_at = datetime.strptime(
-                        ':'.join(b['found_at'].split(':')[:-1])+'00',
-                        '%Y-%m-%dT%H:%M:%S%z'
-                    )
-                    departure_date = datetime.strptime(
-                        b['depart_date'],
-                        '%Y-%m-%d'
-                    )
-
-                    bid = Bid()
-                    bid.origin_code = b['origin']
-                    bid.destination_code = b['destination']
-                    bid.destination_name = q.destination.name.upper()
-
-                    bid.origin = Destination.objects.get(code=bid.origin_code)
-                    bid.destination = Destination.objects.get(code=bid.destination_code)
-
-                    bid.one_way = month_bids['params']['one_way'] == 'true'
-                    bid.price = b['value']
-                    sum_price += b['value']
-                    sum_bids += 1
-                    bid.trip_class = b['trip_class']
-                    bid.stops = b['number_of_changes']
-                    bid.distance = b['distance']
-                    bid.departure_date = departure_date
-
-                    bid.signature = b['origin']+b['destination']+str(b['value'])+str(b['number_of_changes'])+b['depart_date']
-
-                    if 'return_date' in b.keys():
-                        bid.return_date = datetime.strptime(
-                            b['return_date'],
+                if month_bids['data']:
+                    for b in month_bids['data']:
+                        found_at = datetime.strptime(
+                            ':'.join(b['found_at'].split(':')[:-1])+'00',
+                            '%Y-%m-%dT%H:%M:%S%z'
+                        )
+                        departure_date = datetime.strptime(
+                            b['depart_date'],
                             '%Y-%m-%d'
                         )
-                        bid.signature += b['return_date']
 
-                    bid.found_at = found_at
-                    bid.pre_rating = prerate(bid)
-                    bid.chd_days = (bid.return_date-bid.departure_date).days
-                    bid.to_expose = True
+                        bid = Bid()
+                        bid.origin_code = b['origin']
+                        bid.destination_code = b['destination']
+                        bid.destination_name = q.destination.name.upper()
 
-                    try:
-                        bid.save()
-                    except IntegrityError:
-                        print ("Signature exists: ", bid.signature)
-                        pass
+                        bid.origin = Destination.objects.get(code=bid.origin_code)
+                        bid.destination = Destination.objects.get(code=bid.destination_code)
 
-                """ Updating destination stats """
-                nbc = dest.total_bid_count+sum_bids
-                if nbc > 0:
-                    dest.avg_price = int(
-                        (dest.average_price*dest.total_bid_count+sum_price)/nbc
-                    )
-                    dest.total_bid_count = nbc
-                    dest.save()
+                        bid.one_way = month_bids['params']['one_way'] == 'true'
+                        bid.price = b['value']
+                        sum_price += b['value']
+                        sum_bids += 1
+                        bid.trip_class = b['trip_class']
+                        bid.stops = b['number_of_changes']
+                        bid.distance = b['distance']
+                        bid.departure_date = departure_date
+
+                        bid.signature = b['origin']+b['destination']+str(b['value'])+str(b['number_of_changes'])+b['depart_date']
+
+                        if 'return_date' in b.keys():
+                            bid.return_date = datetime.strptime(
+                                b['return_date'],
+                                '%Y-%m-%d'
+                            )
+                            bid.signature += b['return_date']
+
+                        bid.found_at = found_at
+                        bid.pre_rating = prerate(bid)
+                        bid.chd_days = (bid.return_date-bid.departure_date).days
+                        bid.to_expose = True
+
+                        try:
+                            bid.save()
+                        except IntegrityError:
+                            print ("Signature exists: ", bid.signature)
+                            pass
+
+                    """ Updating destination stats """
+                    nbc = dest.total_bid_count+sum_bids
+                    if nbc > 0:
+                        dest.avg_price = int(
+                            (dest.average_price*dest.total_bid_count+sum_price)/nbc
+                        )
+                        dest.total_bid_count = nbc
+                        dest.save()
 
             sentinel.finish('to_load_bids')
 

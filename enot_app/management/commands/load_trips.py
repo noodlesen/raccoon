@@ -8,7 +8,7 @@ from django.core.management.base import BaseCommand
 
 from enot.settings import GOOGLE_API_KEY
 import enot_app.sentinel as sentinel
-from enot_app.models import Bid, Trip
+from enot_app.models import Bid, Trip, DayJob, Issue
 from enot_app.qpxexpress import QPXExpressApi, QPXRequest
 from enot_app.rating import review
 
@@ -51,7 +51,7 @@ class Command(BaseCommand):
             reverse=True
         )
 
-        bids = [d['bid'] for d in dlist][:50]
+        bids = [d['bid'] for d in dlist][:100]
 
         for i, b in enumerate(bids):
             print ('%d: [%d] %s | %dд | %d км | %dр | R%d' % (
@@ -67,32 +67,46 @@ class Command(BaseCommand):
         if not options['test']:
             qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
 
+            target_city = DayJob.get_target()
+
+            stop_list = Issue.get_last_stoplist(target_city)
+
+            print('STOPLIST')
+            print(stop_list)
+
             started = datetime.now()
             for b in bids[:options['req_lim']]:
 
-                req = QPXRequest('MOW',
-                                 b.destination_code,
-                                 b.departure_date,
-                                 1,
-                                 return_date=b.return_date
-                                 )
+                if b.destination_code not in stop_list:
 
-                if sentinel.allows('to_request_qpx'):
-                    resp = qpx.search(req)
-                    res = resp.top_trips(num=30)
+                    req = QPXRequest(target_city.code,
+                                     b.destination_code,
+                                     b.departure_date,
+                                     1,
+                                     return_date=b.return_date
+                                     )
 
-                    for r in res:
-                        t = Trip.load_qpx(r, b)
-                        rw = review(t)
-                        t.benefits = json.dumps(rw['benefits'])
-                        t.penalties = json.dumps(rw['penalties'])
-                        t.carriers_names = json.dumps(rw['carriers'])
-                        t.rt_comfort = rw['rt_comfort']
-                        t.rt_price = rw['rt_price']
-                        t.rt_eff = rw['rt_eff']
-                        t.rating = rw['rt']
-                        t.supply()
-                        t.save()
+                    if sentinel.allows('to_request_qpx'):
+
+                        resp = qpx.search(req)
+                        res = resp.top_trips(num=30)
+
+                        for r in res:
+                            t = Trip.load_qpx(r, b)
+                            rw = review(t)
+                            t.origin_city = target_city
+                            t.benefits = json.dumps(rw['benefits'])
+                            t.penalties = json.dumps(rw['penalties'])
+                            t.carriers_names = json.dumps(rw['carriers'])
+                            t.rt_comfort = rw['rt_comfort']
+                            t.rt_price = rw['rt_price']
+                            t.rt_eff = rw['rt_eff']
+                            t.rating = rw['rt']
+                            t.supply()
+                            t.save()
+
+                else:
+                    print(b.destination_code, 'is in the stop list — PASS')
 
             finished = datetime.now()
             print ('TIME ELAPSED: ', (finished-started).seconds)

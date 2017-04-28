@@ -212,9 +212,18 @@ class Aircraft(models.Model):
             ac.save()
 
 
+class City(models.Model):
+    name = models.CharField(max_length=30)
+    code = models.CharField(max_length=3)
+    last_issue_number = models.IntegerField(null=True)
+
+    def __str__(self):
+        return ('%s (%s)' % (self.name, self.code))
+
 
 class Trip(models.Model):
     origin_code = models.CharField(max_length=3)
+    origin_city = models.ForeignKey(City, null=True)
     destination_code = models.CharField(max_length=3)
     destination = models.ForeignKey(Destination, null=True)  # use later?
     destination_name = models.CharField(max_length=50, null=True)
@@ -337,14 +346,6 @@ class Status(models.Model):
         return stats
 
 
-class City(models.Model):
-    name = models.CharField(max_length=30)
-    code = models.CharField(max_length=3)
-    last_issue_number = models.IntegerField(null=True)
-
-    def __str__(self):
-        return ('%s (%s)' % (self.name, self.code))
-
 
 class DayJob(models.Model):
     day_number = models.IntegerField(
@@ -370,6 +371,12 @@ class DayJob(models.Model):
         return dj.city.code
 
     @classmethod
+    def get_target(cls):
+        today = now_in_moscow().weekday()
+        dj = cls.objects.get(day_number=today)
+        return dj.city
+
+    @classmethod
     def get_all_codes(cls):
         return set([j.city.code for j in cls.objects.all()])
 
@@ -383,6 +390,13 @@ class Issue(models.Model):
     name = models.CharField(max_length=30)
     number = models.IntegerField(null=True)
     build = models.TextField(null=True)
+    stop_list = models.TextField(null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    @classmethod
+    def get_last_stoplist(cls, tgt):
+        last_issue = cls.objects.filter(city=tgt).latest('created_at')
+        return json.loads(last_issue.stop_list)
 
 
 class Subscriber(models.Model):

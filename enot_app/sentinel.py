@@ -6,6 +6,9 @@ from django.core.mail import send_mail
 from enot.settings import ADMINS, DEFAULT_FROM_EMAIL
 from enot_app.planner import make_TP_plan
 
+logger = logging.getLogger('elog')
+
+
 def inform_admin(msg, subj=''):
     if subj != '':
         subj = ': '+subj
@@ -27,7 +30,9 @@ def report(msg, **kwargs):
         else:
             subj = ''
         inform_admin(msg, src+subj)
-    print (src+msg)
+    smsg = src+msg
+    print(smsg)
+    logger.info(smsg)
 
 
 
@@ -36,8 +41,8 @@ def allows(action, **kwargs):
     allow = False
 
     isForced = False
-    if 'force' in kwargs.keys():
-        isForced = kwargs['force']
+    if kwargs.get('force') is True:
+        isForced = True
         report('FORCED')
 
     if action == 'to_load_bids':
@@ -60,11 +65,11 @@ def allows(action, **kwargs):
     if action == 'to_request_qpx':
         stats = Status.get_today()
         if stats.qpx_requests < 50:
-            allow = True
-            stats.qpx_requests += 1
-            stats.save()
             if stats.qpx_requests == 0:
                 Trip.objects.all().delete()
+            allow = True
+            stats.qpx_requests += 1
+            stats.save()   
         else:
             report('REQUEST LIMIT EXCEEDED', mail=True)
 

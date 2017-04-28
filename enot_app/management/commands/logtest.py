@@ -9,6 +9,6 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
-
         
-        sentinel.inform_admin('Tadaaaah!!!!', 'message')
+        logger = logging.getLogger('elog')
+        logger.info('this is info')
