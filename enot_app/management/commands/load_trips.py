@@ -51,7 +51,14 @@ class Command(BaseCommand):
             reverse=True
         )
 
-        bids = [d['bid'] for d in dlist][:100]
+        target_city = DayJob.get_target()
+
+        stop_list = Issue.get_last_stoplist(target_city)
+
+        print('STOPLIST')
+        print(stop_list)
+
+        bids = [d['bid'] for d in dlist if d['bid'].destination_code not in stop_list]#[:100]
 
         for i, b in enumerate(bids):
             print ('%d: [%d] %s | %dд | %d км | %dр | R%d' % (
@@ -67,12 +74,7 @@ class Command(BaseCommand):
         if not options['test']:
             qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
 
-            target_city = DayJob.get_target()
-
-            stop_list = Issue.get_last_stoplist(target_city)
-
-            print('STOPLIST')
-            print(stop_list)
+            
 
             started = datetime.now()
             for b in bids[:options['req_lim']]:
