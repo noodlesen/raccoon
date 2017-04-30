@@ -1,11 +1,14 @@
-from django.core.management.base import BaseCommand
+import pytz
+import json
 
 from operator import itemgetter
 from datetime import datetime
 
+from django.core.management.base import BaseCommand
+
 from enot_app.models import Trip, Status, Issue
-import pytz
-import json
+import enot_app.sentinel as sentinel
+
 
 
 class Command(BaseCommand):
@@ -38,34 +41,36 @@ class Command(BaseCommand):
 
         trip_list = [d['trip'] for d in dlist]
 
-        stop_list = []
-        build = []
+        if len(trip_list) > 0:
 
-        for t in trip_list:
-            t.expose = True
-            t.save()
-            b = '%s->%s :%d | %d' % (
-                t.origin_code,
-                t.destination_code,
-                t.price,
-                t.rating
-            )
-            build.append(b)
-            stop_list.append(t.destination_code)
+            stop_list = []
+            build = []
 
-        iss = Issue()
-        iss.build = json.dumps(build)
-        iss.stop_list = json.dumps(stop_list)
-        city = trip_list[0].origin_city
-        city.last_issue_number += 1
-        city.save()
-        iss.city=city
-        iss.number = city.last_issue_number
-        iss.name = 'test name'
-        iss.save()
+            for t in trip_list:
+                t.expose = True
+                t.save()
+                b = '%s->%s :%d | %d' % (
+                    t.origin_code,
+                    t.destination_code,
+                    t.price,
+                    t.rating
+                )
+                build.append(b)
+                stop_list.append(t.destination_code)
 
-        # st = Status.get_today()
-        # st.build = json.dumps(build)
-        # st.save()
+            iss = Issue()
+            iss.build = json.dumps(build)
+            iss.stop_list = json.dumps(stop_list)
+            city = trip_list[0].origin_city
+            city.last_issue_number += 1
+            city.save()
+            iss.city=city
+            iss.number = city.last_issue_number
+            iss.name = 'test name'
+            iss.save()
+
+        else:
+            sentinel.report('No trips...')
+
 
 

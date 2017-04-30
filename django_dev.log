@@ -1,0 +1,19 @@
+[2017-04-28 17:17:28] INFO [elog.report:35] FORCED
+[2017-04-28 17:17:28] INFO [elog.report:35] Starting to load bids
+[2017-04-28 17:17:28] INFO [elog.report:35] Sorting order: -id
+[2017-04-28 17:17:28] INFO [elog.report:35] LOAD_BIDS: Today's code: MOW
+[2017-04-28 17:17:33] INFO [elog.report:35] MOW >>> LPL
+[2017-04-28 17:17:37] INFO [elog.report:35] MOW >>> TRD
+[2017-04-28 17:17:41] INFO [elog.report:35] MOW >>> TRD
+[2017-04-28 17:17:45] INFO [elog.report:35] MOW >>> TRD
+[2017-04-28 17:17:49] INFO [elog.report:35] MOW >>> NCL
+[2017-04-28 17:17:54] INFO [elog.report:35] MOW >>> NCL
+[2017-04-28 17:17:58] INFO [elog.report:35] MOW >>> NCL
+[2017-04-28 17:18:02] INFO [elog.report:35] MOW >>> SVG
+[2017-04-28 17:18:06] INFO [elog.report:35] MOW >>> SVG
+[2017-04-28 17:18:11] INFO [elog.report:35] MOW >>> SVG
+[2017-04-28 17:18:15] INFO [elog.report:35] MOW >>> EAP
+[2017-04-28 17:18:19] INFO [elog.report:35] MOW >>> EAP
+[2017-04-28 17:18:23] INFO [elog.report:35] MOW >>> EAP
+[2017-04-28 17:18:28] INFO [elog.report:35] MOW >>> SNN
+[2017-04-28 17:18:32] INFO [elog.report:35] finished to load bids

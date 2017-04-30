@@ -125,7 +125,7 @@ class Bid(models.Model):
                                related_name='bid_origin'
     )
     destination_code = models.CharField(max_length=3)
-    destination = models.ForeignKey(Destination, 
+    destination = models.ForeignKey(Destination,
                                     default=1,
                                     related_name='bid_destination'
     )
@@ -395,9 +395,13 @@ class Issue(models.Model):
 
     @classmethod
     def get_last_stoplist(cls, tgt):
-        last_issue = cls.objects.filter(city=tgt).latest('created_at')
-        return json.loads(last_issue.stop_list)
-
+        try:
+            last_issue = cls.objects.filter(city=tgt).latest('created_at')
+        except cls.DoesNotExist:
+            sl = []
+        else:
+            sl = json.loads(last_issue.stop_list)
+        return sl
 
 class Subscriber(models.Model):
     name = models.CharField(max_length=50, null=True)

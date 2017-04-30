@@ -1,0 +1,730 @@
+28.04 10:39:42> FORCED
+28.04 10:39:42> Starting to load bids
+28.04 10:39:42> LOAD_BIDS: Today's code: MOW
+28.04 10:40:43> finished to load bids
+28.04 10:42:26> FORCED
+28.04 10:42:26> Starting to load bids
+28.04 10:42:26> LOAD_BIDS: Today's code: MOW
+28.04 10:42:50> FORCED
+28.04 10:42:52> Something went wrong last time
+28.04 10:43:02> FORCED
+28.04 10:43:03> Something went wrong last time
+28.04 10:47:47> FORCED
+28.04 10:47:48> Something went wrong last time
+28.04 10:50:22> Bed time! zzz...
+28.04 10:50:39> FORCED
+28.04 10:50:41> Something went wrong last time
+28.04 10:50:56> FORCED
+28.04 10:50:56> Starting to load bids
+28.04 10:50:56> LOAD_BIDS: Today's code: MOW
+28.04 10:51:00> MOW >>> ROM
+28.04 10:51:05> MOW >>> ROM
+28.04 10:51:09> MOW >>> PAR
+28.04 10:51:13> MOW >>> PAR
+28.04 10:51:18> MOW >>> RIO
+28.04 10:51:22> MOW >>> RIO
+28.04 10:51:26> MOW >>> LED
+28.04 10:51:31> MOW >>> LED
+28.04 10:51:35> MOW >>> IST
+28.04 10:51:39> MOW >>> IST
+28.04 10:51:43> MOW >>> LON
+28.04 10:51:48> MOW >>> LON
+28.04 10:51:52> MOW >>> SPU
+28.04 10:51:56> finished to load bids
+28.04 10:59:01> FORCED
+28.04 10:59:01> Starting to load bids
+28.04 10:59:02> LOAD_BIDS: Today's code: MOW
+28.04 10:59:06> MOW >>> BER
+28.04 10:59:10> MOW >>> AMS
+28.04 10:59:15> MOW >>> RAK
+28.04 10:59:20> MOW >>> MAD
+28.04 10:59:24> MOW >>> VCE
+28.04 10:59:28> MOW >>> SEL
+28.04 10:59:33> MOW >>> VIE
+28.04 10:59:38> MOW >>> BUE
+28.04 10:59:42> MOW >>> KRK
+28.04 10:59:46> MOW >>> BEG
+28.04 10:59:50> MOW >>> TBS
+28.04 10:59:55> MOW >>> SCL
+28.04 10:59:59> MOW >>> BUS
+28.04 11:00:03> MOW >>> DEL
+28.04 11:00:07> MOW >>> CAN
+28.04 11:00:11> MOW >>> WAW
+28.04 11:00:16> MOW >>> SGN
+28.04 11:00:20> MOW >>> LAX
+28.04 11:00:25> MOW >>> CNX
+28.04 11:00:29> MOW >>> BJS
+28.04 11:00:33> MOW >>> DXB
+28.04 11:00:37> MOW >>> NCE
+28.04 11:00:42> MOW >>> NAP
+28.04 11:00:46> MOW >>> RMI
+28.04 11:00:50> MOW >>> OPO
+28.04 11:00:54> MOW >>> PMO
+28.04 11:00:59> MOW >>> ZAG
+28.04 11:01:03> finished to load bids
+28.04 11:19:54> FORCED
+28.04 11:19:54> Starting to load bids
+28.04 11:19:54> LOAD_BIDS: Today's code: MOW
+28.04 11:19:58> MOW >>> STO
+28.04 11:20:03> MOW >>> MPL
+28.04 11:20:07> MOW >>> IKT
+28.04 11:20:12> MOW >>> KIV
+28.04 11:20:18> MOW >>> ZQN
+28.04 11:20:22> MOW >>> SJO
+28.04 11:20:26> MOW >>> SXB
+28.04 11:20:31> MOW >>> CSX
+28.04 11:20:35> MOW >>> PER
+28.04 11:20:40> MOW >>> DLC
+28.04 11:20:44> MOW >>> VOZ
+28.04 11:20:48> MOW >>> KOS
+28.04 11:20:53> MOW >>> GOA
+28.04 11:20:57> MOW >>> ABZ
+28.04 11:21:02> MOW >>> NBO
+28.04 11:21:06> MOW >>> LIL
+28.04 11:21:10> MOW >>> ADL
+28.04 11:21:15> MOW >>> UDR
+28.04 11:21:34> MOW >>> PMI
+28.04 11:26:03> FORCED
+28.04 11:26:03> Starting to load bids
+28.04 11:26:03> Sorting order: id
+28.04 11:26:03> LOAD_BIDS: Today's code: MOW
+28.04 11:26:07> MOW >>> BCN
+28.04 11:26:12> MOW >>> MIL
+28.04 11:26:17> MOW >>> FLR
+28.04 11:26:21> MOW >>> BUD
+28.04 11:26:25> MOW >>> PRG
+28.04 11:26:30> MOW >>> LIS
+28.04 11:26:35> MOW >>> DBV
+28.04 11:26:39> MOW >>> BER
+28.04 11:26:43> MOW >>> AMS
+28.04 11:26:48> MOW >>> RAK
+28.04 11:26:52> MOW >>> MAD
+28.04 11:26:57> MOW >>> VCE
+28.04 11:27:01> MOW >>> SEL
+28.04 11:27:06> finished to load bids
+28.04 12:04:42> FORCED
+28.04 12:04:42> Starting to load bids
+28.04 12:04:42> Sorting order: -destination
+28.04 12:04:42> LOAD_BIDS: Today's code: MOW
+28.04 12:04:46> MOW >>> IEV
+28.04 12:04:50> MOW >>> IEV
+28.04 12:04:55> MOW >>> IEV
+28.04 12:04:59> MOW >>> CEB
+28.04 12:05:04> MOW >>> CEB
+28.04 12:05:08> MOW >>> CEB
+28.04 12:05:12> MOW >>> LBA
+28.04 12:05:17> MOW >>> LBA
+28.04 12:05:21> MOW >>> NQT
+28.04 12:05:25> MOW >>> NQT
+28.04 12:05:30> MOW >>> NQT
+28.04 12:05:34> MOW >>> SXM
+28.04 12:05:38> MOW >>> SXM
+28.04 12:05:43> finished to load bids
+28.04 12:06:50> FORCED
+28.04 12:06:50> Starting to load bids
+28.04 12:06:50> Sorting order: -destination
+28.04 12:06:50> LOAD_BIDS: Today's code: MOW
+28.04 12:06:54> MOW >>> SXM
+28.04 12:06:59> MOW >>> BLL
+28.04 12:07:03> MOW >>> BLL
+28.04 12:07:07> MOW >>> BLL
+28.04 12:07:11> MOW >>> BFS
+28.04 12:07:15> MOW >>> BFS
+28.04 12:07:19> MOW >>> BFS
+28.04 12:07:24> MOW >>> BRE
+28.04 12:07:28> MOW >>> BRE
+28.04 12:07:32> MOW >>> BRE
+28.04 12:07:36> MOW >>> SKG
+28.04 12:07:41> MOW >>> SKG
+28.04 12:07:45> MOW >>> SKG
+28.04 12:07:50> MOW >>> DKR
+28.04 12:07:54> finished to load bids
+28.04 12:08:16> FORCED
+28.04 12:08:16> Starting to load bids
+28.04 12:08:16> Sorting order: id
+28.04 12:08:16> LOAD_BIDS: Today's code: MOW
+28.04 12:08:20> MOW >>> VIE
+28.04 12:08:25> MOW >>> BUE
+28.04 12:08:29> MOW >>> KRK
+28.04 12:08:33> MOW >>> BEG
+28.04 12:08:38> MOW >>> TBS
+28.04 12:08:42> MOW >>> SCL
+28.04 12:08:46> MOW >>> BUS
+28.04 12:08:50> MOW >>> DEL
+28.04 12:08:55> MOW >>> CAN
+28.04 12:08:59> MOW >>> WAW
+28.04 12:09:03> MOW >>> SGN
+28.04 12:09:08> MOW >>> LAX
+28.04 12:09:12> MOW >>> CNX
+28.04 12:09:16> MOW >>> BJS
+28.04 12:09:21> MOW >>> DXB
+28.04 12:09:25> MOW >>> NCE
+28.04 12:09:29> MOW >>> NAP
+28.04 12:09:34> MOW >>> RMI
+28.04 12:09:38> MOW >>> OPO
+28.04 12:09:43> MOW >>> PMO
+28.04 12:09:48> MOW >>> ZAG
+28.04 12:09:52> MOW >>> NYC
+28.04 12:09:56> MOW >>> NYC
+28.04 12:10:01> MOW >>> BRU
+28.04 12:10:05> MOW >>> BRU
+28.04 12:10:10> MOW >>> HAN
+28.04 12:10:16> MOW >>> HAN
+28.04 12:10:20> MOW >>> SAO
+28.04 12:10:24> MOW >>> SAO
+28.04 12:10:29> MOW >>> LIM
+28.04 12:10:35> MOW >>> LIM
+28.04 12:10:40> MOW >>> TYO
+28.04 12:10:46> MOW >>> TYO
+28.04 12:10:51> MOW >>> BOG
+28.04 12:10:59> MOW >>> BOG
+28.04 12:11:04> MOW >>> VRN
+28.04 12:11:08> MOW >>> VRN
+28.04 12:11:12> MOW >>> EDI
+28.04 12:11:17> MOW >>> EDI
+28.04 12:11:21> MOW >>> CTU
+28.04 12:11:26> MOW >>> CTU
+28.04 12:11:30> MOW >>> REP
+28.04 12:11:34> MOW >>> REP
+28.04 12:11:38> MOW >>> TLV
+28.04 12:11:43> MOW >>> TLV
+28.04 12:11:48> MOW >>> SYD
+28.04 12:11:52> MOW >>> SYD
+28.04 12:11:56> MOW >>> KUL
+28.04 12:12:00> MOW >>> KUL
+28.04 12:12:05> MOW >>> MSQ
+28.04 12:12:09> MOW >>> MSQ
+28.04 12:12:13> MOW >>> MEL
+28.04 12:12:17> MOW >>> MEL
+28.04 12:12:22> MOW >>> HKG
+28.04 12:12:27> MOW >>> HKG
+28.04 12:12:31> MOW >>> SJJ
+28.04 12:12:35> MOW >>> SJJ
+28.04 12:12:39> MOW >>> ORL
+28.04 12:12:44> MOW >>> ORL
+28.04 12:12:49> MOW >>> HGH
+28.04 12:12:54> MOW >>> HGH
+28.04 12:12:59> MOW >>> EVN
+28.04 12:13:03> MOW >>> EVN
+28.04 12:13:08> MOW >>> PNH
+28.04 12:13:12> MOW >>> PNH
+28.04 12:13:16> MOW >>> RIX
+28.04 12:13:21> MOW >>> RIX
+28.04 12:13:25> MOW >>> SVX
+28.04 12:13:30> MOW >>> SVX
+28.04 12:13:34> MOW >>> BLQ
+28.04 12:13:38> MOW >>> BLQ
+28.04 12:13:43> MOW >>> MEX
+28.04 12:13:47> MOW >>> MEX
+28.04 12:13:52> MOW >>> BLR
+28.04 12:13:56> MOW >>> BLR
+28.04 12:14:01> MOW >>> MNL
+28.04 12:14:05> MOW >>> MNL
+28.04 12:14:10> MOW >>> TPE
+28.04 12:14:15> MOW >>> TPE
+28.04 12:14:19> MOW >>> VNO
+28.04 12:14:23> MOW >>> VNO
+28.04 12:14:28> MOW >>> JKT
+28.04 12:14:32> MOW >>> JKT
+28.04 12:14:36> MOW >>> TRN
+28.04 12:14:41> MOW >>> TRN
+28.04 12:14:45> MOW >>> SIN
+28.04 12:14:49> MOW >>> SIN
+28.04 12:14:54> MOW >>> TLL
+28.04 12:14:59> MOW >>> TLL
+28.04 12:15:03> MOW >>> SVQ
+28.04 12:15:07> MOW >>> SVQ
+28.04 12:15:12> MOW >>> UTP
+28.04 12:15:17> MOW >>> UTP
+28.04 12:15:22> MOW >>> HOU
+28.04 12:15:26> MOW >>> HOU
+28.04 12:15:30> MOW >>> AYT
+28.04 12:15:34> MOW >>> AYT
+28.04 12:15:39> MOW >>> ODS
+28.04 12:15:44> MOW >>> ODS
+28.04 12:15:48> MOW >>> HAM
+28.04 12:15:53> MOW >>> HAM
+28.04 12:15:58> MOW >>> SFO
+28.04 12:16:03> MOW >>> SFO
+28.04 12:16:07> MOW >>> AGP
+28.04 12:16:12> MOW >>> AGP
+28.04 12:16:16> MOW >>> NHA
+28.04 12:16:20> MOW >>> NHA
+28.04 12:16:24> MOW >>> LWO
+28.04 12:16:29> MOW >>> LWO
+28.04 12:16:33> MOW >>> SOF
+28.04 12:16:37> MOW >>> SOF
+28.04 12:16:42> MOW >>> YTO
+28.04 12:16:47> MOW >>> YTO
+28.04 12:16:51> MOW >>> LYS
+28.04 12:16:55> MOW >>> LYS
+28.04 12:16:59> MOW >>> UIO
+28.04 12:17:05> MOW >>> UIO
+28.04 12:17:10> MOW >>> MAA
+28.04 12:17:14> MOW >>> MAA
+28.04 12:17:18> MOW >>> DUS
+28.04 12:17:23> MOW >>> DUS
+28.04 12:17:28> MOW >>> KZN
+28.04 12:17:33> MOW >>> KZN
+28.04 12:17:37> MOW >>> GDZ
+28.04 12:17:41> MOW >>> GDZ
+28.04 12:17:46> MOW >>> FNC
+28.04 12:17:51> MOW >>> FNC
+28.04 12:17:56> MOW >>> TSE
+28.04 12:18:01> MOW >>> TSE
+28.04 12:18:06> MOW >>> KTM
+28.04 12:18:11> MOW >>> KTM
+28.04 12:18:16> MOW >>> ALA
+28.04 12:18:21> finished to load bids
+28.04 12:28:52> FORCED
+28.04 12:28:52> Starting to load bids
+28.04 12:28:52> Sorting order: destination
+28.04 12:28:52> LOAD_BIDS: Today's code: MOW
+28.04 12:28:56> MOW >>> SPU
+28.04 12:29:01> MOW >>> SPU
+28.04 12:29:05> MOW >>> BCN
+28.04 12:29:09> MOW >>> MIL
+28.04 12:29:14> MOW >>> FLR
+28.04 12:29:18> MOW >>> BUD
+28.04 12:29:23> MOW >>> PRG
+28.04 12:29:28> MOW >>> LIS
+28.04 12:29:32> MOW >>> DBV
+28.04 12:29:37> MOW >>> ZAD
+28.04 12:29:41> MOW >>> ZAD
+28.04 12:29:46> MOW >>> ZAD
+28.04 12:29:50> MOW >>> PUY
+28.04 12:29:54> finished to load bids
+28.04 12:30:09> Started trip loader task
+28.04 12:33:14> finished to load trips
+28.04 12:48:29> Admin Command Error: manage.py build
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/build.py", line 56, in handle
+    iss = Issue()
+NameError: name 'Issue' is not defined
+28.04 15:09:48> FORCED
+28.04 15:09:48> Starting to load bids
+28.04 15:09:48> Sorting order: -start_date
+28.04 15:09:48> LOAD_BIDS: Today's code: MOW
+28.04 15:09:52> MOW >>> SOF
+28.04 15:09:58> MOW >>> AAQ
+28.04 15:10:02> MOW >>> KRR
+28.04 15:10:06> MOW >>> KLV
+28.04 15:10:11> MOW >>> PFO
+28.04 15:10:16> MOW >>> BNE
+28.04 15:10:21> MOW >>> OVB
+28.04 15:10:25> MOW >>> NKG
+28.04 15:10:30> MOW >>> FRA
+28.04 15:10:35> MOW >>> HRG
+28.04 15:10:40> MOW >>> COK
+28.04 15:10:45> MOW >>> ATH
+28.04 15:10:50> finished to load bids
+28.04 15:10:54> FORCED
+28.04 15:10:54> Starting to load bids
+28.04 15:10:55> Sorting order: destination
+28.04 15:10:55> LOAD_BIDS: Today's code: MOW
+28.04 15:10:59> MOW >>> PUY
+28.04 15:11:03> MOW >>> PUY
+28.04 15:11:08> MOW >>> BER
+28.04 15:11:13> MOW >>> AMS
+28.04 15:11:18> MOW >>> RAK
+28.04 15:11:23> MOW >>> MAD
+28.04 15:11:27> MOW >>> VCE
+28.04 15:11:32> MOW >>> SEL
+28.04 15:11:37> MOW >>> VIE
+28.04 15:11:42> MOW >>> BUE
+28.04 15:11:46> MOW >>> KRK
+28.04 15:11:51> MOW >>> BEG
+28.04 15:11:56> finished to load bids
+28.04 15:12:04> FORCED
+28.04 15:12:04> Starting to load bids
+28.04 15:12:04> Sorting order: -destination
+28.04 15:12:04> LOAD_BIDS: Today's code: MOW
+28.04 15:12:08> MOW >>> DKR
+28.04 15:12:12> MOW >>> DKR
+28.04 15:12:16> MOW >>> HAV
+28.04 15:12:21> MOW >>> HAV
+28.04 15:12:25> MOW >>> HAV
+28.04 15:12:30> MOW >>> EIN
+28.04 15:12:34> MOW >>> EIN
+28.04 15:12:38> MOW >>> EIN
+28.04 15:12:42> MOW >>> MCT
+28.04 15:12:47> MOW >>> MCT
+28.04 15:12:52> MOW >>> MCT
+28.04 15:12:56> MOW >>> LPL
+28.04 15:13:01> MOW >>> LPL
+28.04 15:13:06> finished to load bids
+28.04 15:13:49> FORCED
+28.04 15:13:49> Starting to load bids
+28.04 15:13:49> Sorting order: id
+28.04 15:13:49> LOAD_BIDS: Today's code: MOW
+28.04 15:13:53> MOW >>> ALA
+28.04 15:13:58> MOW >>> BOM
+28.04 15:14:02> MOW >>> BOM
+28.04 15:14:07> MOW >>> DUB
+28.04 15:14:12> MOW >>> DUB
+28.04 15:14:16> MOW >>> ATH
+28.04 15:14:20> MOW >>> ATH
+28.04 15:14:26> MOW >>> AAQ
+28.04 15:14:31> MOW >>> AAQ
+28.04 15:14:36> MOW >>> KRR
+28.04 15:14:40> MOW >>> KRR
+28.04 15:14:45> MOW >>> KLV
+28.04 15:14:49> MOW >>> KLV
+28.04 15:14:54> finished to load bids
+28.04 15:15:15> FORCED
+28.04 15:15:15> Starting to load bids
+28.04 15:15:15> Sorting order: destination
+28.04 15:15:15> LOAD_BIDS: Today's code: MOW
+28.04 15:15:19> MOW >>> TBS
+28.04 15:15:24> MOW >>> CEQ
+28.04 15:15:28> MOW >>> CEQ
+28.04 15:15:32> MOW >>> CEQ
+28.04 15:15:36> MOW >>> SCL
+28.04 15:15:41> MOW >>> BUS
+28.04 15:15:46> MOW >>> DEL
+28.04 15:15:51> MOW >>> CAN
+28.04 15:15:56> MOW >>> WAW
+28.04 15:16:01> MOW >>> SGN
+28.04 15:16:06> MOW >>> LAX
+28.04 15:16:11> MOW >>> CNX
+28.04 15:16:15> finished to load bids
+28.04 15:16:21> FORCED
+28.04 15:16:21> Starting to load bids
+28.04 15:16:21> Sorting order: start_date
+28.04 15:16:21> LOAD_BIDS: Today's code: MOW
+28.04 15:16:25> MOW >>> HUI
+28.04 15:16:29> MOW >>> MID
+28.04 15:16:33> MOW >>> FLL
+28.04 15:16:37> MOW >>> BPS
+28.04 15:16:41> MOW >>> TUN
+28.04 15:16:46> MOW >>> BSB
+28.04 15:16:50> MOW >>> BAH
+28.04 15:16:55> MOW >>> PUJ
+28.04 15:16:59> MOW >>> SGD
+28.04 15:17:04> MOW >>> CTA
+28.04 15:17:09> MOW >>> CAS
+28.04 15:17:13> MOW >>> ACA
+28.04 15:17:18> MOW >>> PTY
+28.04 15:17:22> finished to load bids
+28.04 15:22:17> FORCED
+28.04 15:22:17> Starting to load bids
+28.04 15:22:17> Sorting order: destination
+28.04 15:22:17> LOAD_BIDS: Today's code: MOW
+28.04 15:22:21> MOW >>> BJS
+28.04 15:22:26> MOW >>> DXB
+28.04 15:22:31> MOW >>> NCE
+28.04 15:22:35> MOW >>> NAP
+28.04 15:22:39> MOW >>> RMI
+28.04 15:22:44> MOW >>> OPO
+28.04 15:22:49> MOW >>> PMO
+28.04 15:22:54> MOW >>> ZAG
+28.04 15:22:58> MOW >>> NYC
+28.04 15:23:03> MOW >>> BRU
+28.04 15:23:07> MOW >>> HAN
+28.04 15:23:12> MOW >>> SAO
+28.04 15:23:16> MOW >>> LIM
+28.04 15:23:21> finished to load bids
+28.04 15:34:28> Started trip loader task
+28.04 15:34:28> Admin Command Error: manage.py load_trips --limit 25
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/load_trips.py", line 72, in handle
+    stop_list = Issue.get_last_stoplist(target_city)
+NameError: name 'Issue' is not defined
+28.04 15:34:44> Started trip loader task
+28.04 15:35:31> finished to load trips
+28.04 15:36:49> FORCED
+28.04 15:36:49> Starting to load bids
+28.04 15:36:49> Sorting order: destination
+28.04 15:36:49> LOAD_BIDS: Today's code: MOW
+28.04 15:36:53> MOW >>> TYO
+28.04 15:36:58> MOW >>> PBS
+28.04 15:37:02> MOW >>> PBS
+28.04 15:37:06> MOW >>> PBS
+28.04 15:37:10> MOW >>> BOG
+28.04 15:37:15> MOW >>> VRN
+28.04 15:37:20> MOW >>> EDI
+28.04 15:37:24> MOW >>> CTU
+28.04 15:37:29> MOW >>> REP
+28.04 15:37:34> MOW >>> FOR
+28.04 15:37:39> MOW >>> FOR
+28.04 15:37:43> MOW >>> FOR
+28.04 15:37:48> MOW >>> SIA
+28.04 15:37:52> MOW >>> SIA
+28.04 15:37:57> MOW >>> SIA
+28.04 15:38:01> MOW >>> TLV
+28.04 15:38:06> MOW >>> SYD
+28.04 15:38:11> MOW >>> FLN
+28.04 15:38:15> MOW >>> FLN
+28.04 15:38:19> MOW >>> FLN
+28.04 15:38:23> MOW >>> KUL
+28.04 15:38:28> MOW >>> MSQ
+28.04 15:38:33> MOW >>> MEL
+28.04 15:38:38> MOW >>> HKG
+28.04 15:38:43> MOW >>> CUZ
+28.04 15:38:48> MOW >>> CUZ
+28.04 15:38:53> MOW >>> CUZ
+28.04 15:38:57> MOW >>> SJJ
+28.04 15:39:02> MOW >>> ORL
+28.04 15:39:06> MOW >>> HGH
+28.04 15:39:10> MOW >>> AHO
+28.04 15:39:14> MOW >>> AHO
+28.04 15:39:19> MOW >>> AHO
+28.04 15:39:23> MOW >>> EVN
+28.04 15:39:27> MOW >>> PNH
+28.04 15:39:31> MOW >>> RIX
+28.04 15:39:37> MOW >>> SZX
+28.04 15:39:41> MOW >>> SZX
+28.04 15:39:46> MOW >>> SZX
+28.04 15:39:50> MOW >>> SVX
+28.04 15:39:54> MOW >>> BLQ
+28.04 15:39:59> MOW >>> MEX
+28.04 15:40:04> MOW >>> BLR
+28.04 15:40:09> MOW >>> MNL
+28.04 15:40:14> MOW >>> TPE
+28.04 15:40:19> MOW >>> LJG
+28.04 15:40:23> MOW >>> LJG
+28.04 15:40:27> MOW >>> LJG
+28.04 15:40:32> MOW >>> VNO
+28.04 15:40:37> MOW >>> JKT
+28.04 15:40:42> MOW >>> TRN
+28.04 15:40:47> MOW >>> BRC
+28.04 15:40:51> MOW >>> BRC
+28.04 15:40:55> MOW >>> BRC
+28.04 15:41:00> MOW >>> SIN
+28.04 15:41:05> MOW >>> TLL
+28.04 15:41:09> MOW >>> SVQ
+28.04 15:41:14> MOW >>> UTP
+28.04 15:41:19> MOW >>> JAI
+28.04 15:41:23> MOW >>> JAI
+28.04 15:41:28> MOW >>> JAI
+28.04 15:41:32> MOW >>> HOU
+28.04 15:41:37> MOW >>> AYT
+28.04 15:41:42> MOW >>> ODS
+28.04 15:41:47> MOW >>> HAM
+28.04 15:41:51> MOW >>> SFO
+28.04 15:41:56> MOW >>> AGP
+28.04 15:42:00> MOW >>> NHA
+28.04 15:42:05> MOW >>> TAO
+28.04 15:42:09> MOW >>> TAO
+28.04 15:42:14> MOW >>> TAO
+28.04 15:42:18> MOW >>> LWO
+28.04 15:42:22> MOW >>> TZX
+28.04 15:42:26> MOW >>> TZX
+28.04 15:42:31> MOW >>> TZX
+28.04 15:42:35> MOW >>> RUH
+28.04 15:42:39> MOW >>> RUH
+28.04 15:42:43> MOW >>> RUH
+28.04 15:42:48> MOW >>> YTO
+28.04 15:42:52> MOW >>> CAG
+28.04 15:42:56> MOW >>> CAG
+28.04 15:43:02> MOW >>> CAG
+28.04 15:43:07> MOW >>> SAN
+28.04 15:43:12> MOW >>> SAN
+28.04 15:43:16> MOW >>> SAN
+28.04 15:43:20> MOW >>> GRX
+28.04 15:43:25> MOW >>> GRX
+28.04 15:43:29> MOW >>> GRX
+28.04 15:43:34> MOW >>> MMH
+28.04 15:43:39> MOW >>> MMH
+28.04 15:43:43> MOW >>> MMH
+28.04 15:43:47> MOW >>> EAS
+28.04 15:43:51> MOW >>> EAS
+28.04 15:43:55> MOW >>> EAS
+28.04 15:44:00> MOW >>> LYS
+28.04 15:44:05> MOW >>> UIO
+28.04 15:44:10> MOW >>> BDO
+28.04 15:44:15> MOW >>> BDO
+28.04 15:44:19> MOW >>> BDO
+28.04 15:44:23> MOW >>> MAA
+28.04 15:44:27> MOW >>> DUS
+28.04 15:44:32> MOW >>> MYR
+28.04 15:44:36> MOW >>> MYR
+28.04 15:44:41> MOW >>> MYR
+28.04 15:44:45> MOW >>> KZN
+28.04 15:44:50> MOW >>> GDZ
+28.04 15:44:56> MOW >>> FNC
+28.04 15:45:03> MOW >>> TSE
+28.04 15:45:08> MOW >>> KTM
+28.04 15:45:13> MOW >>> SAT
+28.04 15:45:17> MOW >>> SAT
+28.04 15:45:22> MOW >>> SAT
+28.04 15:45:26> MOW >>> JOG
+28.04 15:45:30> MOW >>> JOG
+28.04 15:45:34> MOW >>> JOG
+28.04 15:45:38> MOW >>> ALA
+28.04 15:45:43> MOW >>> BOM
+28.04 15:45:48> MOW >>> DUB
+28.04 15:45:52> MOW >>> POZ
+28.04 15:45:56> MOW >>> POZ
+28.04 15:46:01> MOW >>> POZ
+28.04 15:46:06> MOW >>> DLI
+28.04 15:46:10> MOW >>> DLI
+28.04 15:46:15> MOW >>> DLI
+28.04 15:46:19> MOW >>> NAT
+28.04 15:46:23> MOW >>> NAT
+28.04 15:46:27> MOW >>> NAT
+28.04 15:46:31> MOW >>> PFO
+28.04 15:46:35> MOW >>> PFO
+28.04 15:46:40> MOW >>> BNE
+28.04 15:46:45> MOW >>> BNE
+28.04 15:46:50> finished to load bids
+28.04 15:47:09> FORCED
+28.04 15:47:09> Starting to load bids
+28.04 15:47:09> Sorting order: destination
+28.04 15:47:09> LOAD_BIDS: Today's code: MOW
+28.04 15:47:13> MOW >>> MDE
+28.04 15:47:17> MOW >>> MDE
+28.04 15:47:22> MOW >>> MDE
+28.04 15:47:26> MOW >>> OVB
+28.04 15:47:31> MOW >>> OVB
+28.04 15:47:36> MOW >>> CKG
+28.04 15:47:41> MOW >>> CKG
+28.04 15:47:45> MOW >>> CKG
+28.04 15:47:49> MOW >>> NKG
+28.04 15:47:54> MOW >>> NKG
+28.04 15:47:58> MOW >>> FRA
+28.04 15:48:02> MOW >>> FRA
+28.04 15:48:07> MOW >>> HRG
+28.04 15:48:11> MOW >>> HRG
+28.04 15:48:16> MOW >>> PVR
+28.04 15:48:20> MOW >>> PVR
+28.04 15:48:25> MOW >>> PVR
+28.04 15:48:29> MOW >>> COK
+28.04 15:48:33> MOW >>> COK
+28.04 15:48:38> MOW >>> PUS
+28.04 15:48:43> MOW >>> PUS
+28.04 15:48:48> MOW >>> PUS
+28.04 15:48:53> MOW >>> BOD
+28.04 15:48:57> MOW >>> BOD
+28.04 15:49:02> MOW >>> BOD
+28.04 15:49:07> MOW >>> MRS
+28.04 15:49:12> MOW >>> MRS
+28.04 15:49:17> MOW >>> MRS
+28.04 15:49:22> MOW >>> OSA
+28.04 15:49:26> MOW >>> OSA
+28.04 15:49:30> MOW >>> OSA
+28.04 15:49:35> MOW >>> LAS
+28.04 15:49:39> MOW >>> LAS
+28.04 15:49:44> MOW >>> LAS
+28.04 15:49:49> MOW >>> ADZ
+28.04 15:49:53> MOW >>> ADZ
+28.04 15:49:58> MOW >>> ADZ
+28.04 15:50:02> MOW >>> SXR
+28.04 15:50:06> MOW >>> SXR
+28.04 15:50:11> MOW >>> SXR
+28.04 15:50:15> MOW >>> YMQ
+28.04 15:50:20> MOW >>> YMQ
+28.04 15:50:24> MOW >>> YMQ
+28.04 15:50:29> MOW >>> GOJ
+28.04 15:50:34> MOW >>> GOJ
+28.04 15:50:39> MOW >>> GOJ
+28.04 15:50:44> MOW >>> WRO
+28.04 15:50:48> MOW >>> WRO
+28.04 15:50:54> MOW >>> WRO
+28.04 15:50:58> MOW >>> VAR
+28.04 15:51:03> MOW >>> VAR
+28.04 15:51:08> MOW >>> VAR
+28.04 15:51:14> MOW >>> DRS
+28.04 15:51:18> MOW >>> DRS
+28.04 15:51:22> MOW >>> DRS
+28.04 15:51:27> MOW >>> SZV
+28.04 15:51:31> MOW >>> SZV
+28.04 15:51:35> MOW >>> SZV
+28.04 15:51:39> MOW >>> REK
+28.04 15:51:44> MOW >>> REK
+28.04 15:51:49> MOW >>> REK
+28.04 15:51:53> MOW >>> AKL
+28.04 15:51:57> MOW >>> AKL
+28.04 15:52:02> MOW >>> AKL
+28.04 15:52:07> MOW >>> CUN
+28.04 15:52:12> MOW >>> CUN
+28.04 15:52:17> MOW >>> CUN
+28.04 15:52:22> MOW >>> SBZ
+28.04 15:52:26> MOW >>> SBZ
+28.04 15:52:30> MOW >>> SBZ
+28.04 15:52:34> MOW >>> LPQ
+28.04 15:52:39> MOW >>> LPQ
+28.04 15:52:43> MOW >>> LPQ
+28.04 15:52:48> MOW >>> JNB
+28.04 15:52:52> MOW >>> JNB
+28.04 15:52:57> MOW >>> JNB
+28.04 15:53:01> MOW >>> HNL
+28.04 15:53:06> MOW >>> HNL
+28.04 15:53:11> MOW >>> HNL
+28.04 15:53:16> MOW >>> SMR
+28.04 15:53:20> MOW >>> SMR
+28.04 15:53:24> MOW >>> SMR
+28.04 15:53:28> MOW >>> WUH
+28.04 15:53:33> MOW >>> WUH
+28.04 15:53:38> MOW >>> WUH
+28.04 15:53:43> MOW >>> JHM
+28.04 15:53:47> MOW >>> JHM
+28.04 15:53:51> MOW >>> JHM
+28.04 15:53:55> MOW >>> CHI
+28.04 15:54:00> MOW >>> CHI
+28.04 15:54:04> MOW >>> CHI
+28.04 15:54:08> MOW >>> PSA
+28.04 15:54:12> MOW >>> PSA
+28.04 15:54:18> MOW >>> PSA
+28.04 15:54:23> MOW >>> ROV
+28.04 15:54:27> MOW >>> ROV
+28.04 15:54:31> MOW >>> ROV
+28.04 15:54:36> MOW >>> TIV
+28.04 15:54:41> MOW >>> TIV
+28.04 15:54:46> MOW >>> TIV
+28.04 15:54:50> MOW >>> JRS
+28.04 15:54:55> MOW >>> JRS
+28.04 15:54:59> MOW >>> JRS
+28.04 15:55:03> MOW >>> UFA
+28.04 15:55:08> MOW >>> UFA
+28.04 15:55:13> MOW >>> UFA
+28.04 15:55:18> MOW >>> WAS
+28.04 15:55:23> MOW >>> WAS
+28.04 15:55:28> MOW >>> WAS
+28.04 15:55:33> MOW >>> MDQ
+28.04 15:55:37> MOW >>> MDQ
+28.04 15:55:41> MOW >>> MDQ
+28.04 15:55:45> MOW >>> CAI
+28.04 15:55:50> MOW >>> CAI
+28.04 15:55:55> MOW >>> CAI
+28.04 15:56:00> MOW >>> CLJ
+28.04 15:56:05> MOW >>> CLJ
+28.04 15:56:09> MOW >>> CLJ
+28.04 15:56:14> MOW >>> AQP
+28.04 15:56:18> MOW >>> AQP
+28.04 15:56:22> MOW >>> AQP
+28.04 15:56:26> MOW >>> HYD
+28.04 15:56:31> MOW >>> HYD
+28.04 15:56:35> MOW >>> HYD
+28.04 15:56:39> MOW >>> YQB
+28.04 15:56:43> MOW >>> YQB
+28.04 15:56:48> MOW >>> YQB
+28.04 15:56:52> MOW >>> PNQ
+28.04 15:56:56> MOW >>> PNQ
+28.04 15:57:01> MOW >>> PNQ
+28.04 15:57:05> MOW >>> CMB
+28.04 15:57:10> finished to load bids
+28.04 17:38:25> Started trip loader task
+28.04 17:38:35> finished to load trips
+28.04 17:38:59> Started trip loader task
+28.04 17:39:33> finished to load trips

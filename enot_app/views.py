@@ -11,7 +11,7 @@ from .models import Bid, Destination, Trip#, GPlace, GCountry, GDirection
 
 @ensure_csrf_cookie
 def main_page(request):
-    trips = Trip.objects.filter(expose=True).order_by('-rating')
+    trips = Trip.objects.filter(expose=True).order_by('price')
     return render(request, 'enot_app/test_letter.html',  {'trips': trips})
 
 def structured_feed(request):
@@ -23,10 +23,10 @@ def bid_feed(request):
     for b in bids:
         dd_url = datetime.strftime(b['departure_date'], '%Y-%m-%d')
         b['departure_date'] = datetime.strftime(b['departure_date'], '%b %d')
-        
+
         rd_url = datetime.strftime(b['return_date'], '%Y-%m-%d')
         b['return_date']= datetime.strftime(b['return_date'], '%b %d')
-        
+
         tpurl="http://aviasales.ru/?marker=14721&origin_iata=MOW"
         b['href']=tpurl+"&destination_iata=%s&depart_date=%s&return_date=%s" % (b['destination_code'],dd_url, rd_url)
 
