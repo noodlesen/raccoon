@@ -309,9 +309,6 @@ class Trip(models.Model):
         self.days_to_text = "через "+str(self.days_to)+" "+russian_plurals('день', self.days_to)
 
 
-
-
-
 class Status(models.Model):
     stat_date = models.DateField(unique=True)
     qpx_requests = models.IntegerField(default=0)
@@ -344,7 +341,6 @@ class Status(models.Model):
                             )
                 stats.save()
         return stats
-
 
 
 class DayJob(models.Model):
@@ -403,6 +399,7 @@ class Issue(models.Model):
             sl = json.loads(last_issue.stop_list)
         return sl
 
+
 class Subscriber(models.Model):
     name = models.CharField(max_length=50, null=True)
     email = models.CharField(max_length=50)
@@ -437,6 +434,7 @@ class Subscriber(models.Model):
         s.hsh = get_hash(email)
 
         return s
+
 
 class Invite(models.Model):
     code = models.CharField(max_length=50)
