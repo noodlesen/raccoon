@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from enot_app.mandrill import send_email
 from enot_app.models import Trip
+from enot.settings import DEBUG
 
 
 class Command(BaseCommand):
@@ -18,6 +19,6 @@ class Command(BaseCommand):
             send_email(sender="Улётные Билеты<mail@uletbilet.ru>",
                        to=addr,
                        subject=subj,
-                       context={'trips': trips},
+                       context={'trips': trips, 'debug': DEBUG},
                        template='enot_app/test_letter.html')
       

@@ -164,7 +164,7 @@ def review(trip):
                 if acr >= 150:
                     benefits.append({
                         'kind': 'ratedAircraft',
-                        'message': 'Хороший самолёт +'+str(acr)
+                        'message': 'Хороший самолёт: '+l['aircraft']
                     })
                 rtc += acr
 

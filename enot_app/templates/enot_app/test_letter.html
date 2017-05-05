@@ -57,7 +57,9 @@
 </div>
 {% for t in trips %}
 <div>
-    R: {{t.rating}} > E:{{t.rt_eff}} C:{{t.rt_comfort}} - P:{{t.rt_price}}
+    {% if debug %}
+        R: {{t.rating}} > E:{{t.rt_eff}} C:{{t.rt_comfort}} - P:{{t.rt_price}}
+    {% endif %}
     <h2>{{forloop.counter}}: {{ t.destination.name }}, {{t.destination.place.gcountry.rus_name}} — {{t.price}}</h2>
 
 

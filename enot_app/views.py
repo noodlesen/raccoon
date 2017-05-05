@@ -4,6 +4,8 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 
 from datetime import datetime
 
+from enot.settings import DEBUG
+
 from .models import Bid, Destination, Trip#, GPlace, GCountry, GDirection
 
 
@@ -12,7 +14,7 @@ from .models import Bid, Destination, Trip#, GPlace, GCountry, GDirection
 @ensure_csrf_cookie
 def main_page(request):
     trips = Trip.objects.filter(expose=True, price__lt=35000, rating__gt=50).order_by('price')
-    return render(request, 'enot_app/test_letter.html',  {'trips': trips})
+    return render(request, 'enot_app/test_letter.html',  {'trips': trips, 'debug': DEBUG})
 
 def structured_feed(request):
     bids = Bid.get_best()
