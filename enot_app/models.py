@@ -235,6 +235,7 @@ class Trip(models.Model):
     carriers = models.CharField(max_length=25)
     slices = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(unique=True)
 
     """ Rating fields """
     pre_rating = models.IntegerField(null=True)
@@ -291,6 +292,8 @@ class Trip(models.Model):
             t.average_price = bid.destination.average_price
             t.destination_id = bid.destination_id
             t.bid_price = bid.price
+
+        t.slug = get_hash(t.id)
 
         return t
 
@@ -352,6 +355,9 @@ class DayJob(models.Model):
         ]
     )
     city = models.ForeignKey(City)
+
+    ALGORITHMS = (('TP', 'Aviasales only'), ('OTHER','Other'))
+    algorithm = models.CharField(max_length=10, choices=ALGORITHMS, default='TP')
 
     def __str__(self):
         return ('%s(%d): %s' % (
