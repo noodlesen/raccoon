@@ -1,0 +1,1582 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pa",
+				"paginator"
+			],
+			[
+				"Pa",
+				"PageNotAnInteger"
+			],
+			[
+				"se",
+				"sentinel"
+			],
+			[
+				"stop",
+				"stop_list"
+			],
+			[
+				"create",
+				"created_at"
+			],
+			[
+				"da",
+				"data"
+			],
+			[
+				"Da",
+				"DateTimeField"
+			],
+			[
+				"creat",
+				"created_at"
+			],
+			[
+				"st",
+				"stop_list"
+			],
+			[
+				"orig",
+				"origin"
+			],
+			[
+				"b",
+				"build"
+			],
+			[
+				"get_a",
+				"get_all_codes"
+			],
+			[
+				"delete",
+				"deleted"
+			],
+			[
+				"day",
+				"day_number"
+			],
+			[
+				"cit",
+				"city"
+			],
+			[
+				"load",
+				"loader_finished"
+			],
+			[
+				"jso",
+				"json_resp"
+			],
+			[
+				"car",
+				"carriers_names"
+			],
+			[
+				"days",
+				"days_to"
+			],
+			[
+				"tex",
+				"days_text"
+			],
+			[
+				"rus",
+				"russian_plurals"
+			],
+			[
+				"Te",
+				"TextField"
+			],
+			[
+				"de",
+				"default"
+			],
+			[
+				"inte",
+				"IntegerField"
+			],
+			[
+				"a",
+				"addresses"
+			],
+			[
+				"to",
+				"to_run_planner"
+			],
+			[
+				"run",
+				"run_planner"
+			],
+			[
+				"ma",
+				"make_TP_plan"
+			],
+			[
+				"pla",
+				"planner"
+			],
+			[
+				"infor",
+				"inform_admin"
+			],
+			[
+				"fini",
+				"finished"
+			],
+			[
+				"re",
+				"report"
+			],
+			[
+				"to_",
+				"to_load_bids"
+			],
+			[
+				"ac",
+				"action"
+			],
+			[
+				"ta",
+				"task_finished"
+			],
+			[
+				"now",
+				"now_in_Moscow"
+			],
+			[
+				"DE",
+				"DEBUG"
+			],
+			[
+				"MA",
+				"MANDRILL_PASSWORD"
+			],
+			[
+				"F",
+				"False"
+			],
+			[
+				"mai",
+				"mail_admins"
+			],
+			[
+				"EMA",
+				"EMAIL_HOST_USER"
+			],
+			[
+				"pro",
+				"production_logfile"
+			],
+			[
+				"deve",
+				"development_logfile"
+			],
+			[
+				"trip",
+				"trip_list"
+			],
+			[
+				"rev",
+				"reverse"
+			],
+			[
+				"des",
+				"destination_code"
+			],
+			[
+				"bid",
+				"bid_list"
+			],
+			[
+				"item",
+				"itemgetter"
+			],
+			[
+				"aver",
+				"average_price"
+			],
+			[
+				"rt",
+				"rtc_comfort"
+			],
+			[
+				"dis",
+				"distance"
+			],
+			[
+				"sort",
+				"sort_base"
+			],
+			[
+				"sta",
+				"start_date"
+			],
+			[
+				"is",
+				"isForced"
+			],
+			[
+				"planner_",
+				"planner_finished"
+			],
+			[
+				"get",
+				"get_current_stats"
+			],
+			[
+				"nr",
+				"nrobj"
+			],
+			[
+				"bi",
+				"bid_info"
+			],
+			[
+				"pre",
+				"pre_rating"
+			],
+			[
+				"dic",
+				"dict"
+			],
+			[
+				"city",
+				"city_code"
+			],
+			[
+				"In",
+				"IntegerField"
+			],
+			[
+				"in",
+				"invite"
+			],
+			[
+				"sl",
+				"slice_stops"
+			],
+			[
+				"airc",
+				"aircraft"
+			],
+			[
+				"js",
+				"json_resp"
+			],
+			[
+				"carri",
+				"carriers"
+			],
+			[
+				"flig",
+				"flight_info"
+			],
+			[
+				"fli",
+				"flight_info"
+			],
+			[
+				"fl",
+				"flight_info"
+			],
+			[
+				"exc",
+				"exception"
+			],
+			[
+				"origin",
+				"origin_code"
+			],
+			[
+				"test",
+				"tester"
+			],
+			[
+				"S",
+				"Subscriber"
+			],
+			[
+				"class",
+				"classmethod"
+			],
+			[
+				"Q",
+				"QPXRequest"
+			],
+			[
+				"QP",
+				"QPXExpressApi"
+			],
+			[
+				"s",
+				"subscribers"
+			],
+			[
+				"fo",
+				"found_at"
+			],
+			[
+				"mo",
+				"month_bids"
+			],
+			[
+				"q",
+				"queries"
+			],
+			[
+				"Date",
+				"DateTimeField"
+			],
+			[
+				"co",
+				"countries"
+			],
+			[
+				"pad",
+				"padding-left"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"drn",
+				"drn"
+			],
+			[
+				"C",
+				"CharField"
+			],
+			[
+				"sa",
+				"sample_a"
+			],
+			[
+				"su",
+				"success"
+			],
+			[
+				"chec",
+				"check_subscriber"
+			],
+			[
+				"send",
+				"send_confirmation_email"
+			],
+			[
+				"sen",
+				"send_confirmation_email"
+			],
+			[
+				"max",
+				"maxprice"
+			],
+			[
+				"make",
+				"make_hash"
+			],
+			[
+				"ch",
+				"check_subscriber"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"ex",
+				"execute"
+			],
+			[
+				"ra",
+				"rating"
+			],
+			[
+				"MAN",
+				"MANDRILL_PASSWORD"
+			],
+			[
+				"show",
+				"showBlock"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"req",
+				"request_destination"
+			],
+			[
+				"th",
+				"this_month_start"
+			],
+			[
+				"eng",
+				"eng_name"
+			],
+			[
+				"com",
+				"command"
+			],
+			[
+				"tag",
+				"taglines"
+			],
+			[
+				"tip",
+				"tip_res"
+			],
+			[
+				"new",
+				"new_comments"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"selected",
+				"selectedTags"
+			],
+			[
+				"tags",
+				"tagsFilter"
+			],
+			[
+				"sho",
+				"showingShare"
+			],
+			[
+				"coll",
+				"collapsedMessage"
+			],
+			[
+				"rel",
+				"related"
+			],
+			[
+				"rela",
+				"relatedUsers"
+			],
+			[
+				"allow",
+				"allowTipFilters"
+			],
+			[
+				"all",
+				"allowTipFilters"
+			],
+			[
+				"pend",
+				"pendingCommentDelete"
+			],
+			[
+				"cac",
+				"cache"
+			],
+			[
+				"date",
+				"datetime"
+			],
+			[
+				"modi",
+				"modified_at"
+			],
+			[
+				"G",
+				"G_places"
+			],
+			[
+				"json",
+				"json_tip"
+			],
+			[
+				"user",
+				"user_subscribe"
+			],
+			[
+				"length",
+				"length-1"
+			],
+			[
+				"preS",
+				"preSelected"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/lapshov/Documents/dve/mysite/blog/views.py",
+			"settings":
+			{
+				"buffer_size": 1048,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/lapshov/Documents/dve/mysite/blog/templates/blog/post/list.html",
+			"settings":
+			{
+				"buffer_size": 425,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/lapshov/Documents/dve/mysite/blog/templates/blog/pagination.html",
+			"settings":
+			{
+				"buffer_size": 422,
+				"line_ending": "Unix",
+				"name": "pagination.html"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Method"
+			]
+		],
+		"width": 521.0
+	},
+	"console":
+	{
+		"height": 146.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": true,
+		"show_open_files": false,
+		"show_tabs": true,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/lapshov/Documents/dve/enot/enot/settings.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/mandrill.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/templates/enot_app/base_letter.html",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/test_log.py",
+		"/Users/lapshov/Documents/dve/enot/manage.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/logtest.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/time_test.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/tmp_best_bids.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/test_mandrill.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/force_rate_trips.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/templates/enot_app/test_letter.html",
+		"/Users/lapshov/Documents/dve/enot/enot_app/qpxexpress.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/rating.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/subscribe.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/timetest.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/views.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/force_prerate.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/build.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/admin.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/toolbox.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/tpapi.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/load_trips.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/plan.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/planner.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/load_bids.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/sentinel.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/models.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/purge.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/tmp_check_may.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/argtest.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/updest.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/load.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/prerate.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/templates/enot_app/pricelist.html",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/makeinvite.py",
+		"/Users/lapshov/Documents/dve/enot/al_rating.txt",
+		"/Users/lapshov/Documents/dve/enot/enot_app/common.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/loadal.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/rate.py",
+		"/Users/lapshov/Desktop/resp.json",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/aim.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/urls.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/static/js/pricelist.js",
+		"/Users/lapshov/Documents/dve/enot/enot_app/management/commands/test_tpapi.py",
+		"/Users/lapshov/Documents/dve/enot/enot_app/templates/enot_app/base.html",
+		"/Users/lapshov/Documents/dve/enot/enot_app/static/lib/vue.min.js",
+		"/Users/lapshov/Documents/dve/enot/enot_app/static/css/scss/main.scss",
+		"/Users/lapshov/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/lapshov/Documents/dve/enot/enot_app/templates/enot_app/main_page.html",
+		"/Users/lapshov/Documents/dve/enot/enot_app/static/js/common.js",
+		"/Users/lapshov/Documents/dve/enot/.gitignore",
+		"/Users/lapshov/Documents/dve/mysite/blog/models.py",
+		"/Users/lapshov/Documents/dve/enot/enot/urls.py",
+		"/Users/lapshov/Desktop/db_spider_18.02.17_localhost",
+		"/Users/lapshov/Documents/venv/utils/wordstat.py",
+		"/Users/lapshov/Downloads/Catch-Landing/Create-Your-Own-Color/layout1.html",
+		"/Users/lapshov/Documents/venv/spider/spider/__init__.py",
+		"/Users/lapshov/Documents/venv/spider/spider/requester.py",
+		"/Users/lapshov/Documents/venv/spider/spider/mandrill.py",
+		"/Users/lapshov/Documents/venv/spider/spider/config.py",
+		"/Users/lapshov/Documents/venv/spider/spider/templates/metrica_counter.html",
+		"/Users/lapshov/Documents/venv/spider/spider/templates/base.html",
+		"/Users/lapshov/Documents/venv/spider/spider/static/css/scss/main.scss",
+		"/Users/lapshov/Documents/venv/spider/spider/templates/main.html",
+		"/Users/lapshov/Documents/venv/spider/spider/tpapi.py",
+		"/Users/lapshov/Documents/venv/spider/spider/logger.py",
+		"/Users/lapshov/Documents/venv/spider/spider/static/js/main.js",
+		"/Users/lapshov/Documents/venv/spider/spider/templates/letter.html",
+		"/Users/lapshov/Documents/venv/spider/manage.py",
+		"/Users/lapshov/Documents/venv/spider/spider/templates/maintenance.html",
+		"/Users/lapshov/Documents/venv/spider/spider/templates/unsubscribed.html",
+		"/Users/lapshov/Desktop/requester.py",
+		"/Users/lapshov/Documents/venv/spider/spider/templates/mail2.html",
+		"/Users/lapshov/Documents/venv/spider/spider/templates/mail3.html",
+		"/Users/lapshov/Documents/venv/spider/spider/templates/mail.html",
+		"/Users/lapshov/Documents/venv/mango/excluded.txt",
+		"/Users/lapshov/Desktop/www_kudaby_ru_2017_11_27.crt",
+		"/Users/lapshov/Desktop/root_pem_thawte_ssl123_1.crt",
+		"/Users/lapshov/Desktop/intermediate_pem_thawte_ssl123_1.crt",
+		"/Users/lapshov/Desktop/kudaby.ru.combined.cert",
+		"/Users/lapshov/Desktop/ssl",
+		"/Users/lapshov/Documents/venv/mango/mango/templates/nojsbase.html",
+		"/Users/lapshov/Documents/venv/mango/mango/templates/ntb_base.html",
+		"/Users/lapshov/Documents/venv/mango/mango/templates/test_users.html",
+		"/Users/lapshov/Documents/venv/mango/mango/social/views.py",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/templates/login_modal.html",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/views.py",
+		"/Users/lapshov/Documents/venv/mango/mango/static/js/common.js",
+		"/Users/lapshov/Documents/venv/mango/mango/templates/404.html",
+		"/Users/lapshov/Documents/venv/mango/mango/social/static/css/scss/public_profile.scss",
+		"/Users/lapshov/Documents/venv/mango/mango/social/templates/public_profile.html",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/templates/alt_single_tip.html",
+		"/Users/lapshov/Documents/venv/mango/mango/__init__.py",
+		"/Users/lapshov/Documents/venv/mango/mango/static/css/base.css",
+		"/Users/lapshov/Documents/venv/mango/mango/templates/base.html",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/static/js/tipsflow.js",
+		"/Users/lapshov/Documents/venv/mango/mango/templates/macros.html",
+		"/Users/lapshov/Documents/venv/mango/mango/templates/maintenance.html",
+		"/Users/lapshov/Documents/venv/mango/mango/static/js/base.js",
+		"/Users/lapshov/Documents/venv/mango/mango/static/css/scss/main.scss",
+		"/Users/lapshov/Documents/venv/mango/mango/static/css/scss/base.scss",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/static/css/scss/tipsflow.scss",
+		"/Users/lapshov/Documents/venv/mango/mango/static/css/scss/_config.scss",
+		"/Users/lapshov/Documents/venv/mango/mango/templates/main.html",
+		"/Users/lapshov/Documents/venv/mango/mango/static/robots.txt",
+		"/Volumes/P/air",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/static/js/single_tip.js",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/static/css/scss/alt_single_tip.scss",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/static/css/scss/login_modal.scss",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/templates/place.html",
+		"/Users/lapshov/Documents/venv/mango/mango/social/templates/macros.html",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/static/css/scss/place.scss",
+		"/Users/lapshov/Documents/venv/mango/mango/cache.py",
+		"/Users/lapshov/Documents/venv/mango/mango/db.py",
+		"/Users/lapshov/Documents/venv/mango/mango/logger.py",
+		"/Users/lapshov/Documents/venv/mango/mango/mailer.py",
+		"/Users/lapshov/Documents/venv/mango/mango/tp_api.py",
+		"/Users/lapshov/Documents/venv/mango/manage.py",
+		"/Users/lapshov/Documents/venv/mango/mango/social/models.py",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/models.py",
+		"/Users/lapshov/Documents/venv/mango/mango/admin/views.py",
+		"/Users/lapshov/Documents/venv/mango/mango/admin/__init__.py",
+		"/Users/lapshov/Documents/venv/mango/mango/config.py",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/templates/single_tip.html",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/static/css/scss/single_tip.scss",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/static/js/place.js",
+		"/Users/lapshov/Documents/venv/mango/mango/geo/static/css/single_tip.css",
+		"/Users/lapshov/Documents/venv/mango/mango/toolbox.py"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/Users/lapshov/Documents/dve/enot",
+			"/Users/lapshov/Documents/venv/mango",
+			"/Users/lapshov/Documents/venv/score",
+			"/Users/lapshov/Documents/venv/seasia",
+			"/Users/lapshov/Documents/venv/fkdb",
+			"/Users/lapshov/Documents/kdblocal/application/config",
+			"/Users/lapshov/Documents/autoservice/application/controllers",
+			"/Users/lapshov/Documents/autoservice/application/models",
+			"/Users/lapshov/Documents/autoservice/application/views",
+			"/Users/lapshov/Documents/autoservice/application/controllers",
+			"<open folders>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"page.",
+			"log",
+			"delete()",
+			"isForced",
+			"print",
+			"Airline",
+			"Carrier",
+			"Airline",
+			"sort_by_total_price",
+			"expose",
+			"localize",
+			"moscow_time",
+			"time",
+			"moscow_time",
+			"task_finished",
+			"b.",
+			"_info",
+			"']",
+			"['",
+			"age",
+			"itemgetter",
+			"score",
+			"ZONES",
+			"trip.",
+			": ",
+			" = ",
+			"self",
+			" d ",
+			"REQUEST_DELAY",
+			"BID_LIFETIME",
+			"WORK_TIME_LIMIT",
+			"force",
+			"Stat",
+			"stats",
+			"stat_date",
+			"Stat",
+			"}]",
+			"[{",
+			"DoesNotExist",
+			"rows",
+			" = ",
+			"r[",
+			"t.",
+			"Bid",
+			">\n",
+			"timezone",
+			"self",
+			"flight",
+			"flight_info",
+			"top_flights",
+			"rt",
+			"requested_at",
+			"title",
+			"ensure_csrf_cookie",
+			"drn",
+			"crn",
+			"drn",
+			"bid_feed",
+			"make_hash",
+			"score",
+			"stat",
+			"new_bid_count",
+			"random_request",
+			"unidecode",
+			"border",
+			"search_field",
+			"white",
+			"expand",
+			"flask.ext.",
+			"flask.ext",
+			"facebook",
+			"publi",
+			"page",
+			"alert",
+			"is_mine",
+			"relatedUsers",
+			"form",
+			"commentToSave",
+			"Сохранить",
+			"print",
+			"RTS",
+			"UsersLog",
+			"randint",
+			"is_mine",
+			"add_",
+			"add-comment__button",
+			"addCommentForm",
+			"comments",
+			".downVote",
+			".upVote",
+			"downVote",
+			"upVote",
+			"avatar_picture_upload",
+			">\\",
+			"timestamp",
+			"Rts",
+			"ion.add",
+			"db.ses",
+			"green",
+			"file)",
+			"file ",
+			"file.",
+			"active",
+			"desc",
+			"notif",
+			"eNotificationsUpdated",
+			"noti",
+			"logged",
+			"signed_in",
+			"noti",
+			"length",
+			"rem",
+			"AddTipForm",
+			"allowEd",
+			"favorite",
+			"my",
+			"            <a class=\"inline-menu__item \n                {% if page=='subscriptions' %}\n                inline-menu__item--selected\n                {% endif %}\" href=\"{{url_for('social.subscriptions')}}\">Подписки</a>",
+			"upvote",
+			"fave",
+			"sortT",
+			"narrow",
+			"tipflow",
+			"addTipFormShowing",
+			"showAll",
+			"get_tips_data",
+			"-list",
+			"loggedIn",
+			"jd["
+		],
+		"highlight": true,
+		"in_selection": true,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"posts.",
+			"Carrier",
+			"Airline",
+			"Carrier",
+			"now_in_moscow",
+			"t.",
+			"",
+			".",
+			"'",
+			"': ",
+			": ",
+			"trip",
+			" dist ",
+			"dist",
+			"lt",
+			"wtl",
+			"Status",
+			"std",
+			"})",
+			"({",
+			"bids",
+			"=",
+			"qpx[",
+			"",
+			"s",
+			"trip",
+			"trip_info",
+			"top_trips",
+			"ttl",
+			"cslug",
+			"dslug",
+			"get_hash",
+			"black",
+			"flask_",
+			"commentForm",
+			".downvoted",
+			".upvoted",
+			"downvoted",
+			"upvoted",
+			">",
+			"logged_at",
+			"RTS",
+			"red",
+			"f)",
+			"f ",
+			"f.",
+			"TipForm",
+			"dislike",
+			"like",
+			"downvote",
+			"upvote",
+			"showingAddTipForm",
+			"signedIn",
+			"td[",
+			"upVote",
+			"downVote",
+			"UpVote",
+			"upVote",
+			"DownVote",
+			"downVote",
+			"vk",
+			"jd",
+			"f.write",
+			"write",
+			"newTipForm.tagsText",
+			"newTipForm.popularTags",
+			"newTipForm.acTags",
+			"tagsFilter",
+			"filter.",
+			"filters.message",
+			"self",
+			"dislike",
+			"like",
+			"",
+			".back-color",
+			"dark",
+			"pale",
+			"$light-",
+			".color-light",
+			"pale",
+			"$light-",
+			"light-",
+			".color-light",
+			"Place",
+			"geo",
+			"pale",
+			"s",
+			"points",
+			"@vueadmin",
+			"eCustomClickOutside",
+			"presets",
+			"showDropdown(",
+			"hideDropdown(",
+			"hideDropdown",
+			"uiChackAc",
+			"uiAcSelect",
+			"_reset",
+			"_reset:",
+			"_submit",
+			"updateScreen",
+			"updateTable",
+			"'off'",
+			"cbtxt",
+			"\"mark=\"cnt\"></c-checkbox>",
+			"mark=\"cnt\"></c-checkbox>",
+			"<c-checkbox txt=\"",
+			"c-checkbox",
+			"h2",
+			"seasia",
+			"-inline",
+			"</a><a class=\"plate-link\" href=\"{{url_for('explore.explore_country', cnt = 'china')}}\">",
+			"auth.g_login",
+			"auth.f_login",
+			"auth.g_login",
+			"('explore.explore_main')",
+			"=================================================================",
+			"",
+			"draw",
+			"========================================================================",
+			"===============================",
+			"section-header",
+			"",
+			"`','`",
+			"cnt",
+			"explore_country",
+			"riid",
+			"addr['riid']",
+			"explore_country"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/lapshov/Documents/dve/mysite/blog/views.py",
+					"settings":
+					{
+						"buffer_size": 1048,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								634,
+								634
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/lapshov/Documents/dve/mysite/blog/templates/blog/post/list.html",
+					"settings":
+					{
+						"buffer_size": 425,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								375,
+								375
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/lapshov/Documents/dve/mysite/blog/templates/blog/pagination.html",
+					"settings":
+					{
+						"buffer_size": 422,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								422,
+								422
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"auto_name": "pagination.html",
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/lapshov/Documents/venv/mango.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 271.0,
+	"status_bar_visible": true
+}

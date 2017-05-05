@@ -20,3 +20,16 @@
 03.05 07:40:33> MOW >>> ROM
 03.05 07:40:38> MOW >>> PAR
 03.05 07:40:42> MOW >>> RIO
+03.05 08:58:38> FORCED
+03.05 08:58:40> Something went wrong last time
+03.05 08:58:48> FORCED
+03.05 08:58:48> Starting to load bids
+03.05 08:58:48> Sorting order: id
+03.05 08:58:48> LOAD_BIDS: Today's code: MOW
+03.05 08:58:52> MOW >>> ROM
+03.05 08:59:02> MOW >>> PAR
+03.05 08:59:06> MOW >>> RIO
+03.05 08:59:10> MOW >>> LED
+03.05 08:59:14> MOW >>> IST
+03.05 08:59:19> MOW >>> LON
+03.05 08:59:23> MOW >>> BCN
