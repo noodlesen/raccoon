@@ -102,7 +102,10 @@ class QPXResponse(object):
         self.failed = False
         if json_resp:
             self.raw_data = json_resp
-            self.trip_options = json_resp.get('trips').get('tripOption')
+            try:
+                self.trip_options = json_resp.get('trips').get('tripOption')
+            except AttributeError:
+                self.failed = True
             self.aircrafts = {}
             aircrafts = json_resp.get('trips').get('data').get('aircraft')
             if aircrafts:
