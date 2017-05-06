@@ -293,7 +293,7 @@ class Trip(models.Model):
             t.destination_id = bid.destination_id
             t.bid_price = bid.price
 
-        t.slug = get_hash(t.id)
+        #t.slug = get_hash(t.id)
 
         return t
 

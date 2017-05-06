@@ -11,6 +11,7 @@ import enot_app.sentinel as sentinel
 from enot_app.models import Bid, Trip, DayJob, Issue
 from enot_app.qpxexpress import QPXExpressApi, QPXRequest
 from enot_app.rating import review
+from enot_app.toolbox import get_hash
 
 
 class Command(BaseCommand):
@@ -105,6 +106,8 @@ class Command(BaseCommand):
                             t.rt_eff = rw['rt_eff']
                             t.rating = rw['rt']
                             t.supply()
+                            t.save()
+                            t.slug = get_hash(str(t.id))
                             t.save()
 
                 else:
