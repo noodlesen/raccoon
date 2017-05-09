@@ -24,6 +24,12 @@ class Command(BaseCommand):
                             default=50,
                             dest='req_lim')
 
+        parser.add_argument('--shift',
+                            action='store',
+                            type=int,
+                            default=0,
+                            dest='bid_shift')
+
         parser.add_argument('--test',
                             action='store_true',
                             dest='test')
@@ -54,12 +60,14 @@ class Command(BaseCommand):
 
         target_city = DayJob.get_target()
 
-        stop_list = Issue.get_last_stoplist(target_city)
+        # stop_list = Issue.get_last_stoplist(target_city)
 
-        print('STOPLIST')
-        print(stop_list)
+        # print('STOPLIST')
+        # print(stop_list)
 
-        bids = [d['bid'] for d in dlist if d['bid'].destination_code not in stop_list]#[:100]
+        # bids = [d['bid'] for d in dlist if d['bid'].destination_code not in stop_list][bs:]
+        bs = options['bid_shift']
+        bids = [d['bid'] for d in dlist][bs:]
 
         for i, b in enumerate(bids):
             print ('%d: [%d] %s | %dд | %d км | %dр | R%d' % (
@@ -73,9 +81,7 @@ class Command(BaseCommand):
             ))
 
         if not options['test']:
-            qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)
-
-            
+            qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)  
 
             started = datetime.now()
             for b in bids[:options['req_lim']]:
