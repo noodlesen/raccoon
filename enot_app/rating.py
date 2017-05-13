@@ -72,19 +72,19 @@ def review(trip):
     rtc = 0  # comfort rating
     rtp = 0  # price rating
 
-    ### Price factors
 
-    # print (trip.distance, trip.price)
-    # print (type(trip.distance), type(trip.price))
+    ###
+    ### Price factors
+    ###
 
     eff = int(trip.distance/trip.price*1000)
     rtp1 = int(eff*1.5)
     rtp2 = int((trip.average_price-trip.price*0.8)/trip.average_price*500)
     rtp += rtp1 + rtp2
 
-    #print ('RTP: ', rtp1,rtp2)
-
-    ### Comfort factors
+    ###
+    ### Comfort factors 
+    ###
 
     slices = trip.get_slices()
 
@@ -122,7 +122,7 @@ def review(trip):
     if ddt.hour > 10:
         benefits.append({
             'kind': 'destinationDepartureTime',
-            'message': 'Удобное время вылета обратно +20'
+            'message': 'Удобное время вылета обратно'
         })
         rtc += 20
 
@@ -133,19 +133,19 @@ def review(trip):
     if tns == 0:
         benefits.append({
             'kind': 'directFlight',
-            'message': 'Прямые рейсы в обе стороны +300'
+            'message': 'Прямые рейсы в обе стороны'
         })
         rtc += 300
     elif tns == 1:
         benefits.append({
             'kind': 'semiDirectFlight',
-            'message': 'Прямой рейс в одну сторону +100'
+            'message': 'Прямой рейс в одну сторону'
         })
         rtc += 100
     elif tns > 2:
         penalties.append({
             'kind': 'moreThanTwoStops',
-            'message': 'Много стыковок -250'
+            'message': 'Много стыковок'
         })
         rtc -= 250
 
@@ -168,8 +168,6 @@ def review(trip):
                     })
                 rtc += acr
 
-
-        #print (times)
 
         if len(times) > 2:
             for n in range(1, len(times)-1, 2):
@@ -200,7 +198,7 @@ def review(trip):
     if lc > 1:
         penalties.append({
             'kind': 'differentCarriers',
-            'message': 'Несколько авиакомпаний'+str(pen)
+            'message': 'Несколько авиакомпаний'
         })
 
     cn = []
@@ -211,7 +209,7 @@ def review(trip):
             rtc -= 100
             penalties.append({
                 'kind': 'unknownCarrier',
-                'message': 'Неизвестная авиакомпания -100'
+                'message': 'Неизвестная авиакомпания'
             })
         else:
             cor = co.rating
@@ -220,7 +218,7 @@ def review(trip):
             if cor > 50:
                 benefits.append({
                     'kind': 'ratedCarrier',
-                    'message': 'Хорошая авиакомпания' +str(cor*2)
+                    'message': 'Хорошая авиакомпания'
                 })
 
 

@@ -1,5 +1,8 @@
 {% extends 'enot_app/base_letter.html' %}
 
+{% load my_filters %}
+
+
 {% block title %}
 Улётные Билеты
 {% endblock %}
@@ -56,29 +59,41 @@
     </table> -->
 </div>
 {% for t in trips %}
-<div>
-    {% if debug %}
+
+<div style="margin-bottom: 1em">
+<!--     {% if debug %}
         R: {{t.rating}} > E:{{t.rt_eff}} C:{{t.rt_comfort}} - P:{{t.rt_price}}
-    {% endif %}
-    <h2>{{forloop.counter}}: {{ t.destination.name }}, {{t.destination.place.gcountry.rus_name}} — {{t.price}}</h2>
+    {% endif %} -->
+    <h2>
+        <!-- {{forloop.counter}}:  -->{{ t.destination.name }}, {{t.destination.place.gcountry.rus_name}}:
+         {{t.price}}<span style="font-size:60%">&#8381;
+    </h2>
+    <div style="padding-left: .5em">
+        {{t.days_text}} 
+        {% for n in t.chd_days|create_range %}
+        <div style="width:5px; height:10px; background-color: blue; display:inline-block; margin-left:-2px"></div>
+        {% endfor %}
+        <div>
+        {{ t.departure|date:"d E(D)" }} -> {{ t.arrival|date:"d E(D)" }}
+        </div>
+        <div>{% for c in t.get_carriers %}{{c}} {% endfor %}</div>
+    </div>
 
-
-    {{t.days_text}} {{ t.departure|date:"d E(D)" }} - {{ t.arrival|date:"d E(D)" }}
-    <div>{% for c in t.get_carriers %}{{c}}{% endfor %}</div>
-    {% for b in t.get_benefits %}
+<!--     {% for b in t.get_benefits %}
         <div style="color:green">+{{b.message }}</div>
     {% endfor %}
     {% for b in t.get_penalties %}
         <div style="color:red">-{{b.message }}</div>
-    {% endfor %}
-    {% for sl in t.get_slices %}
+    {% endfor %} -->
+
+    <!-- {% for sl in t.get_slices %}
         {% for s in sl.segments %}
             {% for l in s.legs %}
                 <p>{{l.origin}} -> {{l.destination}}</p>
             {% endfor %}
         {% endfor %}
         ...
-    {% endfor %}
+    {% endfor %} -->
 
 </div>
 {% endfor %}

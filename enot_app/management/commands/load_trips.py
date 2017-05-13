@@ -86,7 +86,7 @@ class Command(BaseCommand):
             started = datetime.now()
             for b in bids[:options['req_lim']]:
 
-                if b.destination_code not in stop_list:
+                if True:  #b.destination_code not in stop_list:
 
                     req = QPXRequest(target_city.code,
                                      b.destination_code,

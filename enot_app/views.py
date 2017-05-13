@@ -13,7 +13,7 @@ from .models import Bid, Destination, Trip#, GPlace, GCountry, GDirection
 
 @ensure_csrf_cookie
 def main_page(request):
-    trips = Trip.objects.filter(expose=True, price__lt=35000, rating__gt=50).order_by('price')
+    trips = Trip.objects.filter(expose=True, price__lt=35000, rating__gt=50).order_by('-rating')[:12]
     return render(request, 'enot_app/test_letter.html',  {'trips': trips, 'debug': DEBUG})
 
 def structured_feed(request):
