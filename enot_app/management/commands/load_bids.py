@@ -86,7 +86,7 @@ class Command(BaseCommand):
 
             bid_cleanup(lt)
 
-            old_limit = moscow_time - timedelta(days=1)
+            #old_limit = moscow_time - timedelta(days=1)
 
             """ Browsing through queries """
             srt = choice(['', '-'])+choice(['start_date', 'destination', 'id'])
@@ -97,7 +97,7 @@ class Command(BaseCommand):
             target = Destination.objects.get(code=target_code)
 
             queries = SpiderQueryTP.objects.filter(
-                requested_at__lt=old_limit,
+                #requested_at__lt=old_limit,
                 origin=target
             ).order_by(srt)[:500]
             for q in queries:
