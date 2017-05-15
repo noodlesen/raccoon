@@ -6,7 +6,7 @@ from datetime import datetime
 
 from enot.settings import DEBUG
 
-from .models import Bid, Destination, Trip#, GPlace, GCountry, GDirection
+from .models import Bid, Destination, Trip, Subscriber#, GPlace, GCountry, GDirection
 
 
 # Create your views here.
@@ -36,4 +36,13 @@ def bid_feed(request):
     return JsonResponse({'success':True, 'bids': bids}, safe=False)
 
 def pricelist(request):
+    return render(request, 'enot_app/pricelist.html', {})
+
+def unsubscribe(request, hsh):
+    try:
+        s = Subscriber.objects.get(hsh=hsh)
+    except Subscriber.DoesNotExist:
+        pass
+    else:
+        s.delete()
     return render(request, 'enot_app/pricelist.html', {})

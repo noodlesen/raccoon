@@ -13,7 +13,8 @@
     {% block head %}
     {% endblock %}
 </head>
-<body>
+<body style="background-image:url({% static 'img/sky_bg.png' %}); background-repeat:no-repeat; background-size: 100% auto">
+    <img style="display:block;margin:auto; width:360px" src="{% static 'img/logo.png' %}">
     {% block main %}
     {% endblock %}
     {% block scripts %}

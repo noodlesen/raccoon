@@ -408,7 +408,7 @@ class Issue(models.Model):
 
 class Subscriber(models.Model):
     name = models.CharField(max_length=50, null=True)
-    email = models.CharField(max_length=50)
+    email = models.CharField(max_length=50, unique=True)
     city = models.ForeignKey(City, null=True)
     interval = models.IntegerField(default=1)
     confirmed = models.BooleanField(default=False)
@@ -417,7 +417,7 @@ class Subscriber(models.Model):
     tester = models.BooleanField(default=False)
     last_mail_sent_at = models.DateTimeField(null=True)
     invite_code = models.CharField(max_length=50)
-    hsh = models.CharField(max_length=50, default='')
+    hsh = models.CharField(max_length=50, unique=True)
     joined_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -452,6 +452,7 @@ class Invite(models.Model):
     @classmethod
     def create(cls, emitter):
         inv = cls(emitter=emitter)
+        inv.save()
         inv.code = get_hash(str(inv.id))
         return inv
 
