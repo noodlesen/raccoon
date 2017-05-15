@@ -34,3 +34,6 @@ def bid_feed(request):
 
         b['found_at']='none'
     return JsonResponse({'success':True, 'bids': bids}, safe=False)
+
+def pricelist(request):
+    return render(request, 'enot_app/pricelist.html', {})

@@ -70,7 +70,7 @@ class Command(BaseCommand):
         bids = [d['bid'] for d in dlist][bs:]
 
         for i, b in enumerate(bids):
-            print ('%d: [%d] %s | %dд | %d км | %dр | R%d' % (
+            sentinel.report('%d: [%d] %s | %dд | %d км | %dр | R%d' % (
                 i+1,
                 b.id,
                 b.destination_name,

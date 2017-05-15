@@ -67,7 +67,7 @@ var cDir = Vue.extend({
                             <div class="place__name"> <a href="#"> {{p.name}} </a> </div>\
                             <div class="place__price"><a href="#">{{p.price}}</a></div>\
                             <div class="place__stops"><a href="#">1C</a></div>\
-                            <div class="place__more"><a href="#">23+</a></div>\
+                            <div class="place__more"><a href="#">{{p.pcount}}+</a></div>\
                             <div class="clearfix"></div>\
                         </div>\
                     </div>\

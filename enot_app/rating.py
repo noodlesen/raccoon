@@ -42,7 +42,7 @@ def prerate(bid):
     rt = days_to_distance(days, dist)
 
     # price to distance
-    eff = int(dist/bid.price*1000)
+    eff = int(dist/bid.price*3000)
     rt += eff
 
     # penalty for shorties
@@ -62,6 +62,9 @@ def prerate(bid):
     # check average price
     ap = bid.destination.average_price
     rt = rt + int((ap-bid.price)/ap*1000)
+
+    if bid.price<15000:
+        rt*=1.5
 
     return rt
 

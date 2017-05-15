@@ -148,14 +148,14 @@ class Bid(models.Model):
     def get_best(cls):
         cursor = connection.cursor()
         query = """
-                SELECT b.destination_name as name, min(b.price) as price, c.rus_name as crn, dir.rus_name as drn, dir.id as did
+                SELECT b.destination_name as name, min(b.price) as price, c.rus_name as crn, dir.rus_name as drn, dir.id as did, count(b.price) as pcount
                 FROM enot_app_bid as b
                 JOIN enot_app_destination as d ON d.code = b.destination_code
                 JOIN enot_app_gplace as p ON p.id=d.place_id
                 JOIN enot_app_gcountry as c ON c.id=p.gcountry_id
                 JOIN `enot_app_gdirection` as dir ON dir.id=c.`gdirection_id`
                 GROUP BY b.destination_code
-                ORDER BY name
+                ORDER BY price
                 """
         cursor.execute(query)
         rows = dictfetchall(cursor)
