@@ -64,10 +64,9 @@ var cDir = Vue.extend({
                     <div class="country" v-for="b in bids">\
                         <h2>{{b.name}}</h2>\
                         <div class="place" v-for="p in b.places">\
-                            <div class="place__name"> <a href="#"> {{p.name}} </a> </div>\
+                            <div class="place__name"> <a href="#"> <strong>{{p.name}}</strong> ({{p.pcount}}) </a> </div>\
                             <div class="place__price"><a href="#">{{p.price}}</a></div>\
                             <div class="place__stops"><a href="#">1C</a></div>\
-                            <div class="place__more"><a href="#">{{p.pcount}}+</a></div>\
                             <div class="clearfix"></div>\
                         </div>\
                     </div>\

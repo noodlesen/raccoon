@@ -79,21 +79,21 @@
         <div>{% for c in t.get_carriers %}{{c}} {% endfor %}</div>
     </div>
 
-<!--     {% for b in t.get_benefits %}
+    {% for b in t.get_benefits %}
         <div style="color:green">+{{b.message }}</div>
     {% endfor %}
     {% for b in t.get_penalties %}
         <div style="color:red">-{{b.message }}</div>
-    {% endfor %} -->
+    {% endfor %}
 
-    <!-- {% for sl in t.get_slices %}
+    {% for sl in t.get_slices %}
         {% for s in sl.segments %}
             {% for l in s.legs %}
                 <p>{{l.origin}} -> {{l.destination}}</p>
             {% endfor %}
         {% endfor %}
         ...
-    {% endfor %} -->
+    {% endfor %}
 
 </div>
 {% endfor %}

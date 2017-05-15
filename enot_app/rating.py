@@ -96,14 +96,14 @@ def review(trip):
     if trip.departure.hour >= 12:
         benefits.append({
             'kind': 'originDepartTime',
-            'message': 'Удобное время вылета из Москвы +50'
+            'message': 'Удобное время вылета из Москвы'
         })
         rtc += 50
 
     if trip.arrival.hour in range(8, 21):
         benefits.append({
             'kind': 'returnArrivalTime',
-            'message': 'Удобное время возвращения в Москву +20'
+            'message': 'Удобное время возвращения в Москву'
         })
         rtc += 20
 
@@ -114,7 +114,7 @@ def review(trip):
     if dat.hour in range(10, 21):
         benefits.append({
             'kind': 'destinationArrivalTime',
-            'message': 'Удобное время прибытия в пункт назначения +50'
+            'message': 'Удобное время прибытия в пункт назначения'
         })
         rtc += 50
 
@@ -155,6 +155,8 @@ def review(trip):
     ### Stops duration and aircrafts
 
     for sln in range(0, 2):
+        sldr = ['туда', 'обратно']
+        drs = sldr[sln]
         times = []
 
         for sg in slices[sln]['segments']:
@@ -162,12 +164,11 @@ def review(trip):
                 times.append(l['departure'])
                 times.append(l['arrival'])
 
-                #print('<>', l['aircraft'])
                 acr = Aircraft.objects.get(name=l['aircraft']).rating
                 if acr >= 150:
                     benefits.append({
                         'kind': 'ratedAircraft',
-                        'message': 'Хороший самолёт: '+l['aircraft']
+                        'message': 'Хороший самолёт %s: %s' %(drs, l['aircraft'])
                     })
                 rtc += acr
 
@@ -177,17 +178,17 @@ def review(trip):
                 t1 = datetime.strptime(times[n+1].replace(':', ''), '%Y-%m-%dT%H%M%z')
                 t0 = datetime.strptime(times[n].replace(':', ''), '%Y-%m-%dT%H%M%z')
                 st = (t1-t0).seconds
-                #print(int(st / 3600), int(st % 3600 / 60))
+                fst = '%dч%dм' % (int(st / 3600), int(st % 3600 / 60))
                 if st<4000:
                     penalties.append({
                         'kind': 'veryShortStop',
-                        'message': 'Очень короткая стыковка -100'
+                        'message': 'Очень короткая стыковка %s: %s' %(drs, fst)
                     })
                     rtc -= 100
                 elif st>3600*5:
                     penalties.append({
                         'kind': 'veryLongStop',
-                        'message': 'Очень длинная стыковка -200'
+                        'message': 'Очень длинная стыковка %s: %s' %(drs, fst)
                     })
                     rtc -= 200
 
@@ -221,7 +222,7 @@ def review(trip):
             if cor > 50:
                 benefits.append({
                     'kind': 'ratedCarrier',
-                    'message': 'Хорошая авиакомпания'
+                    'message': 'Хорошая авиакомпания: %s' % co.name
                 })
 
 
