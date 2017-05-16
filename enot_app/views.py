@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.cache import cache_page
 
 from datetime import datetime
 
@@ -11,7 +12,7 @@ from .models import Bid, Destination, Trip, Subscriber#, GPlace, GCountry, GDire
 
 # Create your views here.
 
-#@ensure_csrf_cookie
+
 def letter_page(request):
     trips = Trip.objects.filter(expose=True, price__lt=35000, rating__gt=50).order_by('price')[:12]
     return render(request, 'enot_app/test_letter.html',  {'trips': trips, 'debug': DEBUG})
@@ -20,8 +21,11 @@ def main_page(request):
     trips = Trip.objects.filter(expose=True, price__lt=35000, rating__gt=50).order_by('price')[:12]
     return render(request, 'enot_app/test_letter.html',  {'trips': trips, 'debug': DEBUG})
 
+@ensure_csrf_cookie
+@cache_page(3600)
 def structured_feed(request):
     bids = Bid.get_best()
+    #bids = Bid.get_best_for_each_dest()
     return JsonResponse({'success':True, 'bids':bids}, safe=False)
 
 # def bid_feed(request):
@@ -38,6 +42,7 @@ def structured_feed(request):
 
 #         b['found_at']='none'
 #     return JsonResponse({'success':True, 'bids': bids}, safe=False)
+
 
 def pricelist(request):
     return render(request, 'enot_app/pricelist.html', {})

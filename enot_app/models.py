@@ -1,5 +1,6 @@
 import json
 from datetime import datetime, timedelta
+from operator import itemgetter
 from pytz import timezone
 from django.db import models, connection
 from .toolbox import dictfetchall, get_hash, russian_plurals, now_in_moscow, week_day_name
@@ -177,8 +178,47 @@ class Bid(models.Model):
         return res
 
     @classmethod
-    def get_best_for_each_dest(cls):
-        pass
+    def get_best_for_each_dest(cls, sort='pre_rating'):
+        bids = cls.objects.filter(pre_rating__gt=0)
+        if sort=='price':
+            reverse = False
+            attr = 'price'
+            sort_key = 'price'
+        else:
+            reverse = True
+            attr = 'pre_rating'
+            sort_key = 'pr'
+
+        dests = {}
+
+        for b in bids:
+            print (b.id)
+            if b.destination_code not in dests.keys():
+                dests[b.destination_code] = b
+            else:
+                pr = getattr(dests[b.destination_code], attr)
+                fa = dests[b.destination_code].found_at
+                if getattr(b, attr) > pr:
+                    dests[b.destination_code] = b
+                elif getattr(b, attr) == pr:
+                    if b.found_at > fa:
+                        dests[b.destination_code] = b
+
+        dlist = sorted(
+            [
+                {
+                    "dest": k,
+                    "bid": v,
+                    "pr": v.pre_rating,
+                    "price": v.price,
+                    "country": v.destination.place.gcountry,
+                    "direction": v.destination.place.gcountry.gdirection
+                } for k, v in dests.items()
+            ],
+            key=itemgetter(sort_key),
+            reverse=reverse
+        )
+        return dlist
 
     def __str__(self):
         return ("%d: %s->%s >%d | %d" % (

@@ -38,27 +38,29 @@ class Command(BaseCommand):
 
         sentinel.inform('started_trip_loader')
 
-        dests = {}
-
         
-        bids = Bid.objects.filter(pre_rating__gt=0)
-        for b in bids:
-            if b.destination_code not in dests.keys():
-                dests[b.destination_code] = b
-            else:
-                pr = dests[b.destination_code].pre_rating
-                fa = dests[b.destination_code].found_at
-                if b.pre_rating > pr:
-                    dests[b.destination_code] = b
-                elif b.pre_rating == pr:
-                    if b.found_at > fa:
-                        dests[b.destination_code] = b
 
-        dlist = sorted(
-            [{"dest": k, "bid": v, "pr": v.pre_rating} for k, v in dests.items()],
-            key=itemgetter('pr'),
-            reverse=True
-        )
+
+        # bids = Bid.objects.filter(pre_rating__gt=0)
+        # for b in bids:
+        #     if b.destination_code not in dests.keys():
+        #         dests[b.destination_code] = b
+        #     else:
+        #         pr = dests[b.destination_code].pre_rating
+        #         fa = dests[b.destination_code].found_at
+        #         if b.pre_rating > pr:
+        #             dests[b.destination_code] = b
+        #         elif b.pre_rating == pr:
+        #             if b.found_at > fa:
+        #                 dests[b.destination_code] = b
+
+        # dlist = sorted(
+        #     [{"dest": k, "bid": v, "pr": v.pre_rating} for k, v in dests.items()],
+        #     key=itemgetter('pr'),
+        #     reverse=True
+        # )
+
+        dlist = Bid.get_best_for_each_dest()
 
         target_city = DayJob.get_target()
 

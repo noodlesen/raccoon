@@ -20,17 +20,16 @@ var cDir = Vue.extend({
         return {
         };
     },
-    template: ' <div class="direction">\
-                    <h1>{{ttl}}</h1>\
+    template: '<div class="direction">\
+                <h1>{{ttl}}</h1>\
                     <div class="country" v-for="b in bids">\
                         <h2 style="color:#f6931f">\
                           {{b.name}}\
                           </h2>\
                         <div class="place" v-for="p in b.places">\
-                            <div v-if="p.price<15000">\
-                            <div class="place__name"> <a href="#"> <strong>{{p.name}}</strong> ({{p.pcount}}) </a> </div>\
+                            <div v-if="p.price<35000">\
+                            <div class="place__name"> <a href="#"> <strong>{{p.name}}</strong></a> </div>\
                             <div class="place__price"><a href="#">{{p.price}}</a></div>\
-                            <div class="place__stops"><a href="#">1C</a></div>\
                             <div class="clearfix"></div>\
                             </div>\
                         </div>\
@@ -130,13 +129,13 @@ Vue.component('slider', {
           range: "min",
           value: this.initvalue,
           min: 5000,
-          max: 100000
+          max: 60000
       })
       .on('slidestop', function(event, ui){
         vm.$parent.$emit('slide', ui.value);
       })
       .on('slide', function(event, ui){
-        vm.value = ui.value;
+        vm.value = Math.floor(ui.value/5000)*5000;
       })
       // emit event on change.
    /*   .on('change', function () {

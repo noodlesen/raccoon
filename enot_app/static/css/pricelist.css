@@ -628,17 +628,12 @@ h2 {
 /* line 306, scss/pricelist.scss */
 .place__name {
   float: left;
-  width: 50%;
+  width: 70%;
 }
 
 /* line 311, scss/pricelist.scss */
 .place__price {
   float: left;
   width: 30%;
-}
-
-/* line 316, scss/pricelist.scss */
-.place__stops, .place__more {
-  float: left;
-  width: 10%;
+  text-align: right;
 }

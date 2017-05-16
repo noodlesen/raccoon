@@ -305,15 +305,12 @@ h2 {
 
 .place__name{
   float: left;
-  width: 50%;
+  width: 70%;
 }
 
 .place__price{
   float: left;
   width: 30%;
+  text-align: right;
 }
 
-.place__stops, .place__more{
-  float: left;
-  width: 10%;
-}

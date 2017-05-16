@@ -31,7 +31,7 @@ def report(msg, **kwargs):
             subj = ''
         inform_admin(msg, src+subj)
     smsg = src+msg
-    print(smsg)
+    #print(smsg)
     logger.info(smsg)
 
 
