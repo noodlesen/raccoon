@@ -1,5 +1,4 @@
 $( function() {
-    console.log('hello!')
     $( "#slider-range-min" ).slider({
       range: "min",
       value: 37,
@@ -45,7 +44,7 @@ var directions = new Vue({
     data: {
         bids:{}
     },
-    ready: function(){
+    mounted: function(){
         var self = this;
         getResults('/structured-feed', 'json', {}, function(res){
             if (res.success){
@@ -74,4 +73,98 @@ var directions = new Vue({
                 <c-dir ttl="Африка" :bids="bids[\'Африка\'][\'countries\']"></c-dir>\
             </div>\
         </div>'
+});
+
+
+Vue.component('select2', {
+  props: ['options', 'value'],
+  template: '#select2-template',
+  mounted: function () {
+    var vm = this
+    $(this.$el)
+      // init select2
+      .select2({ data: this.options })
+      .val(this.value)
+      .trigger('change')
+      // emit event on change.
+      .on('change', function () {
+        vm.$emit('input', this.value)
+      })
+  },
+  watch: {
+    value: function (value) {
+      // update value
+      $(this.$el).val(value).trigger('change');
+    },
+    options: function (options) {
+      // update options
+      $(this.$el).select2({ data: options })
+    }
+  },
+  destroyed: function () {
+    $(this.$el).off().select2('destroy')
+  }
+})
+
+Vue.component('slider', {
+  props: ['range', 'value', 'min', 'max'],
+  template: '#slider-template',
+  mounted: function () {
+    var vm = this
+    $(this.$el)
+      // init select2
+      /*.select2({ data: this.options })
+      .val(this.value)
+      .trigger('change')*/
+      .slider({
+          range: "min",
+          value: 37,
+          min: 1,
+          max: 700/*,
+          slide: function( event, ui ) {
+            $( "#amount" ).val( "$" + ui.value );
+          }*/
+      })
+      .on('slide', function(event, ui){
+        console.log('slide');
+        vm.$parent.$emit('slide', ui.value);
+      })
+      // emit event on change.
+   /*   .on('change', function () {
+        vm.$emit('input', this.value)
+      })*/
+  },
+  watch: {
+    value: function (value) {
+      // update value
+      $(this.$el).val(value).trigger('change');
+    },
+    options: function (options) {
+      // update options
+      $(this.$el).select2({ data: options })
+    }/*,
+    slide: function(value){
+      console.log('ddd')
+    }*/
+  },
+  destroyed: function () {
+    $(this.$el).off().select2('destroy')
+  }
+})
+
+var vm = new Vue({
+  el: '#el',
+  template: '#demo-template',
+  data: {
+    selected: 2,
+    options: [
+      { id: 1, text: 'Hello' },
+      { id: 2, text: 'World' }
+    ]
+  },
+  created: function(){
+    this.$on('slide', function(value){
+      console.log(value);
+    });
+  }
 });
