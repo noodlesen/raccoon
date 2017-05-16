@@ -620,20 +620,24 @@ h2 {
 .place {
   padding-left: .3em;
 }
+/* line 301, scss/pricelist.scss */
+.place a {
+  text-decoration: none;
+}
 
-/* line 303, scss/pricelist.scss */
+/* line 306, scss/pricelist.scss */
 .place__name {
   float: left;
   width: 50%;
 }
 
-/* line 308, scss/pricelist.scss */
+/* line 311, scss/pricelist.scss */
 .place__price {
   float: left;
   width: 30%;
 }
 
-/* line 313, scss/pricelist.scss */
+/* line 316, scss/pricelist.scss */
 .place__stops, .place__more {
   float: left;
   width: 10%;

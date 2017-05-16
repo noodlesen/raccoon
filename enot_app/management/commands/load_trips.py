@@ -38,8 +38,10 @@ class Command(BaseCommand):
 
         sentinel.inform('started_trip_loader')
 
-        bids = Bid.objects.filter(pre_rating__gt=0)
         dests = {}
+
+        
+        bids = Bid.objects.filter(pre_rating__gt=0)
         for b in bids:
             if b.destination_code not in dests.keys():
                 dests[b.destination_code] = b

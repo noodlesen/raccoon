@@ -176,6 +176,10 @@ class Bid(models.Model):
 
         return res
 
+    @classmethod
+    def get_best_for_each_dest(cls):
+        pass
+
     def __str__(self):
         return ("%d: %s->%s >%d | %d" % (
             self.id,

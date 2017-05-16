@@ -23,7 +23,9 @@ var cDir = Vue.extend({
     template: ' <div class="direction">\
                     <h1>{{ttl}}</h1>\
                     <div class="country" v-for="b in bids">\
-                        <h2>{{b.name}}</h2>\
+                        <h2 style="color:#f6931f">\
+                          {{b.name}}\
+                          </h2>\
                         <div class="place" v-for="p in b.places">\
                             <div v-if="p.price<15000">\
                             <div class="place__name"> <a href="#"> <strong>{{p.name}}</strong> ({{p.pcount}}) </a> </div>\
