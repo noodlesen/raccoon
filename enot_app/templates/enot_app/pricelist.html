@@ -5,11 +5,21 @@
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'css/pricelist.css' %}">
 <title>Обзор цен</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 {% endblock %}
 
 {% block main %}
 
 <div class="container">
+    <div class="row">
+        <p>
+          <label for="amount">Maximum price:</label>
+          <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+        </p>
+         
+        <div id="slider-range-min"></div>
+    </div>
     <div class="row" id="directions">
 
     </div>
@@ -19,5 +29,6 @@
 
 {% block scripts %}
     {{ block.super }}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src ="{% static 'js/pricelist.js' %}" type="text/javascript"></script>
 {% endblock %}

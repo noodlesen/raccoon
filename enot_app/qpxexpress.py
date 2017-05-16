@@ -108,6 +108,7 @@ class QPXResponse(object):
                 aircrafts = json_resp.get('trips').get('data').get('aircraft')
             except AttributeError:
                 self.failed = True
+                aircrafts = None
             if aircrafts:
                 for aircraft in aircrafts:
                     self.aircrafts[aircraft['code']] = aircraft['name']
