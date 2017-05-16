@@ -1,4 +1,4 @@
-$( function() {
+/*$( function() {
     $( "#slider-range-min" ).slider({
       range: "min",
       value: 37,
@@ -10,7 +10,7 @@ $( function() {
     });
     $( "#amount" ).val( "$" + $( "#slider-range-min" ).slider( "value" ) );
   }
-);
+);*/
 
 
 
@@ -25,10 +25,12 @@ var cDir = Vue.extend({
                     <div class="country" v-for="b in bids">\
                         <h2>{{b.name}}</h2>\
                         <div class="place" v-for="p in b.places">\
+                            <div v-if="p.price<15000">\
                             <div class="place__name"> <a href="#"> <strong>{{p.name}}</strong> ({{p.pcount}}) </a> </div>\
                             <div class="place__price"><a href="#">{{p.price}}</a></div>\
                             <div class="place__stops"><a href="#">1C</a></div>\
                             <div class="clearfix"></div>\
+                            </div>\
                         </div>\
                     </div>\
                 </div>'
@@ -107,27 +109,32 @@ Vue.component('select2', {
 })
 
 Vue.component('slider', {
-  props: ['range', 'value', 'min', 'max'],
+  props: ['range', 'initvalue', 'min', 'max'],
   template: '#slider-template',
+  data: function(){
+    return {
+      value: this.initvalue
+    }
+  },
   mounted: function () {
-    var vm = this
-    $(this.$el)
+    var vm = this;
+    console.log(this.$el);
+    $(this.$el).find('.wrapped-slider')
       // init select2
       /*.select2({ data: this.options })
       .val(this.value)
       .trigger('change')*/
       .slider({
           range: "min",
-          value: 37,
-          min: 1,
-          max: 700/*,
-          slide: function( event, ui ) {
-            $( "#amount" ).val( "$" + ui.value );
-          }*/
+          value: this.initvalue,
+          min: 5000,
+          max: 100000
+      })
+      .on('slidestop', function(event, ui){
+        vm.$parent.$emit('slide', ui.value);
       })
       .on('slide', function(event, ui){
-        console.log('slide');
-        vm.$parent.$emit('slide', ui.value);
+        vm.value = ui.value;
       })
       // emit event on change.
    /*   .on('change', function () {
@@ -153,14 +160,14 @@ Vue.component('slider', {
 })
 
 var vm = new Vue({
-  el: '#el',
-  template: '#demo-template',
+  el: '#cpanel',
+  template: '#cpanel-template',
   data: {
-    selected: 2,
+/*    selected: 2,
     options: [
       { id: 1, text: 'Hello' },
       { id: 2, text: 'World' }
-    ]
+    ]*/
   },
   created: function(){
     this.$on('slide', function(value){

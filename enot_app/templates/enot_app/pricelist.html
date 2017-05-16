@@ -4,7 +4,6 @@
 {% block head %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'css/pricelist.css' %}">
-<link rel="stylesheet" href="{% static 'css/lib/select2.min.css' %}">
 <title>Обзор цен</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
@@ -15,29 +14,30 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-4">
-            <p>
+    <!--         <p>
               <label for="amount">Цена до:</label>
               <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
             </p>
-            <div id="slider-range-min"></div>
+            <div id="slider-range-min"></div> -->
         </div>
         <div class="col-lg-4">
-            <div id="el"></div>
-            <script type="text/x-template" id="demo-template">
+            <div id="cpanel"></div>
+            <script type="text/x-template" id="cpanel-template">
               <div>
-                <slider>
+                <slider :initvalue="30000">
                 </slider>
               </div>
             </script>
 
-            <script type="text/x-template" id="select2-template">
-              <select>
-                <slot></slot>
-              </select>
-            </script>
 
             <script type="text/x-template" id="slider-template">
-              <div></div>
+              <div>
+              <p>
+              <label for="amount">Цена до:</label>
+              <input type="text" v-model="value" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" >
+              </p>
+              <div class="wrapped-slider"></div>
+              </div>
             </script>
         </div>
     </div>
@@ -52,6 +52,5 @@
 {% block scripts %}
     {{ block.super }}
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src ="{% static 'lib/select2.js' %}" type="text/javascript"></script>
     <script src ="{% static 'js/pricelist.js' %}" type="text/javascript"></script>
 {% endblock %}
