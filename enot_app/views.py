@@ -7,7 +7,7 @@ from datetime import datetime
 
 from enot.settings import DEBUG
 
-from .models import Bid, Destination, Trip, Subscriber#, GPlace, GCountry, GDirection
+from .models import Bid, Destination, Trip, Subscriber, GCountry, GDirection
 
 
 # Create your views here.
@@ -22,11 +22,25 @@ def main_page(request):
     return render(request, 'enot_app/test_letter.html',  {'trips': trips, 'debug': DEBUG})
 
 @ensure_csrf_cookie
-@cache_page(3600)
+#@cache_page(3600)
 def structured_feed(request):
-    bids = Bid.get_best()
-    #bids = Bid.get_best_for_each_dest()
-    return JsonResponse({'success':True, 'bids':bids}, safe=False)
+    feed_src = {}
+    bids = Bid.get_best_for_each_dest()
+    dirs = GDirection.objects.all()
+    for d in dirs:
+        feed_src[d.slug]={"rus_name": d.rus_name, "countries":{}, "places_count": 0}
+        for c in d.gcountry_set.all():
+            feed_src[d.slug][c.slug]={"rus_name": c.rus_name, "places":[]}
+
+    for b in bids:
+        feed_src[b['direction'].slug][b['country'].slug]["places"].append(
+            {
+                "destination": b['dest'],
+                "price": b['price']
+            }
+        )
+
+    return JsonResponse({'success':True, 'bids':feed_src}, safe=False)
 
 # def bid_feed(request):
 #     bids = list(Bid.objects.all().values()[:50])

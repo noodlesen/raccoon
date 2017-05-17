@@ -48,42 +48,41 @@ class Destination(models.Model):
     name = models.CharField(max_length=50)
     code = models.CharField(max_length=3)
     tmp_country = models.CharField(max_length=50)
-    #score = models.IntegerField()
     place = models.ForeignKey(GPlace)
     total_bid_count = models.IntegerField()
     average_price = models.IntegerField()
     enabled = models.BooleanField(default=True)
     rating = models.IntegerField(null=True)
 
-    @classmethod
-    def get_structured(cls):
-        cursor = connection.cursor()
-        query = """
-                SELECT ds.name, ds.code, p.slug as pslug, c.rus_name as cslug, c.id as cid, c.slug as cslug, d.rus_name as drn, d.id as did, d.slug as dslug
-                FROM `enot_app_destination` as ds
-                JOIN `enot_app_gplace` as p ON p.id = ds.place_id
-                JOIN `enot_app_gcountry` as c ON c.id = p.gcountry_id
-                JOIN `enot_app_gdirection` as d ON d.id = c.gdirection_id
-                """
-        cursor.execute(query)
-        rows = dictfetchall(cursor)
+    # @classmethod
+    # def get_structured(cls):
+    #     cursor = connection.cursor()
+    #     query = """
+    #             SELECT ds.name, ds.code, p.slug as pslug, c.rus_name as cslug, c.id as cid, c.slug as cslug, d.rus_name as drn, d.id as did, d.slug as dslug
+    #             FROM `enot_app_destination` as ds
+    #             JOIN `enot_app_gplace` as p ON p.id = ds.place_id
+    #             JOIN `enot_app_gcountry` as c ON c.id = p.gcountry_id
+    #             JOIN `enot_app_gdirection` as d ON d.id = c.gdirection_id
+    #             """
+    #     cursor.execute(query)
+    #     rows = dictfetchall(cursor)
 
-        res={}
+    #     res={}
 
-        for r in rows:
-            rd = {"name": r['name'], "code": r['code'], "slug": r['pslug']}
+    #     for r in rows:
+    #         rd = {"name": r['name'], "code": r['code'], "slug": r['pslug']}
 
-            if r['dslug'] in res.keys():
-                if r['cslug'] in res[r['dslug']].keys():
-                    res[r['dslug']] [r['cslug']] ['places'].append(rd)
-                else:
-                    res[r['dslug']] [r['cslug']]={"places": [rd] }
-            else:
-                res[r['dslug']]={}
-                res[r['dslug']][r['cslug']]={"places": [rd] }
+    #         if r['dslug'] in res.keys():
+    #             if r['cslug'] in res[r['dslug']].keys():
+    #                 res[r['dslug']] [r['cslug']] ['places'].append(rd)
+    #             else:
+    #                 res[r['dslug']] [r['cslug']]={"places": [rd] }
+    #         else:
+    #             res[r['dslug']]={}
+    #             res[r['dslug']][r['cslug']]={"places": [rd] }
 
 
-        return res
+    #     return res
 
 
 class Airport(models.Model):
