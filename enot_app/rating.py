@@ -46,7 +46,11 @@ def prerate(bid):
     rt += eff
 
     # penalty for shorties
-    if days < 3:
+    if days < 4:
+        rt -= 300
+
+    # penalty for longs
+    if days > 31:
         rt -= 300
 
     # check weekdays
