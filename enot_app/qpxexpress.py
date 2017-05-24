@@ -164,7 +164,8 @@ class QPXResponse(object):
                          'trip_departure': dt,
                          'trip_arrival': at,
                          'slices': [],
-                         'carriers': []}
+                         'carriers': [],
+                         'route_points': []}
 
             for _slice in trip['slice']:
                 segments = []
@@ -180,6 +181,9 @@ class QPXResponse(object):
                             'destination': leg['destination'],
                             'aircraft': self.aircrafts[leg['aircraft']]
                         })
+
+                        trip_info['route_points'].append((leg['origin'], leg['destination']))
+
                         Aircraft.spot(self.aircrafts[leg['aircraft']])  # For stats
                     segments.append({
                         'type': 'segment',

@@ -102,6 +102,12 @@ class Airport(models.Model):
     dst = models.CharField(max_length=1, null=True)
     tzdata = models.CharField(max_length=50, null=True)
 
+    def form_from(self):
+        if self.iata == 'ZIA':
+            return 'Жуковского'
+        else:
+            return self.name
+
 
 
 
@@ -277,6 +283,7 @@ class Trip(models.Model):
     arrival = models.DateTimeField()
     carriers = models.CharField(max_length=25)
     slices = models.TextField()
+    route_points = models.TextField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True)
 
@@ -324,6 +331,7 @@ class Trip(models.Model):
             departure=qpx['trip_departure'],
             arrival=qpx['trip_arrival'],
             carriers=', '.join(qpx['carriers']),
+            route_points=json.dumps(qpx['route_points']),
             slices=json.dumps(qpx['slices'])
         )
 
@@ -353,6 +361,17 @@ class Trip(models.Model):
         self.days_text = str(self.chd_days)+" "+russian_plurals('день', self.chd_days)
         self.days_to = (self.departure-now_in_moscow()).days
         self.days_to_text = "через "+str(self.days_to)+" "+russian_plurals('день', self.days_to)
+
+    def get_origin_airport_name(self, form=''):
+        try:
+            ap = Airport.objects.get(iata=self.origin_code)
+        except Airport.DoesNotExist:
+            return 'unknown'
+        else:
+            if form == 'from':
+                return ap.form_from()
+            else:
+                return ap.name
 
 
 class Status(models.Model):
@@ -451,7 +470,7 @@ class Issue(models.Model):
 
 class Subscriber(models.Model):
     name = models.CharField(max_length=50, null=True)
-    email = models.CharField(max_length=50, unique=True)
+    email = models.CharField(max_length=50, unique=True, null=True)
     city = models.ForeignKey(City, null=True)
     interval = models.IntegerField(default=1)
     confirmed = models.BooleanField(default=False)
@@ -460,7 +479,7 @@ class Subscriber(models.Model):
     tester = models.BooleanField(default=False)
     last_mail_sent_at = models.DateTimeField(null=True)
     invite_code = models.CharField(max_length=50)
-    hsh = models.CharField(max_length=50, unique=True)
+    hsh = models.CharField(max_length=50, unique=True, null=True)
     joined_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

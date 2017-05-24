@@ -10,38 +10,6 @@
 {% block content %}
 <h1>Улётные билеты</h1>
 <div>
-  <!--   <h2>БАНГКОК: 32000р</h2>
-    <h2>Emirates со стыковкой в Дубаи</h2>
-    <div>26 дней: 23 апреля —19 мая</div>
-
-    <table>
-        <tr>
-            <td width="50%">
-                <h3>Туда</h3>
-                <p>
-                    Вылет 19:30 из Домодедово<br/>
-                    Москва — 5ч 30мин — Дубаи<br/>
-                    Стыковка 3ч30мин<br/>
-                    Дубай — 6ч 30мин — Бангкок<br/>
-                    Прилетаем в 10:20
-                </p>
-            </td>
-            <td width="50%">
-                <h3>Обратно</h3>
-                    <p>
-                    Вылет 10:05<br/>
-
-                    Бангкок  - Дубай 6ч 30мин<br/>
-                    Стыковка 4ч30мин<br/>
-                    Дубай - Москва 5ч 30мин<br/>
-
-                    Прилетаем в Домодедово
-                    в 18:05
-                    </p>
-
-            </td>
-        </tr>
-    </table> -->
 <!--     <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
       <tbody>
         <tr>
@@ -61,9 +29,9 @@
 {% for t in trips %}
 
 <div style="margin-bottom: 1em">
-<!--     {% if debug %}
+    {% if debug %}
         R: {{t.rating}} > E:{{t.rt_eff}} C:{{t.rt_comfort}} - P:{{t.rt_price}}
-    {% endif %} -->
+    {% endif %}
     <h2>
         <!-- {{forloop.counter}}:  -->{{ t.destination.name }}, {{t.destination.place.gcountry.rus_name}}:
          {{t.price}}<span style="font-size:60%">&#8381;
@@ -74,9 +42,17 @@
         <div style="width:5px; height:10px; background-color: blue; display:inline-block; margin-left:-2px"></div>
         {% endfor %}
         <div>
-        {{ t.departure|date:"d E(D)" }} -> {{ t.arrival|date:"d E(D)" }}
+        {{ t.departure|date:"d E(D)" }} -> {{ t.arrival|date:"d E(D)" }} | {{t.days_to_text}}
         </div>
-        <div>{% for c in t.get_carriers %}{{c}} {% endfor %}</div>
+        <div>
+            {% for c in t.get_carriers %}
+                {{c}}
+                {% if forloop.last %}
+                {% else %}
+                    /
+                {% endif %}
+            {% endfor %}из {{t.get_origin_airport_name}}
+        </div>
     </div>
 
     {% for b in t.get_benefits %}
@@ -86,14 +62,15 @@
         <div style="color:red">-{{b.message }}</div>
     {% endfor %}
 
-    {% for sl in t.get_slices %}
+<!--     {% for sl in t.get_slices %}
         {% for s in sl.segments %}
             {% for l in s.legs %}
                 <p>{{l.origin}} -> {{l.destination}}</p>
             {% endfor %}
         {% endfor %}
         ...
-    {% endfor %}
+    {% endfor %} -->
+
 
 </div>
 {% endfor %}
