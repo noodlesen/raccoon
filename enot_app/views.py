@@ -14,7 +14,7 @@ from .models import Bid, Destination, Trip, Subscriber, GCountry, GDirection
 
 
 def letter_page(request):
-    trips = Trip.objects.filter(expose=True, price__lt=35000, rating__gt=50).order_by('price')[:12]
+    trips = Trip.objects.filter(expose=True, price__lt=35000, rating__gt=100).order_by('price')#[:25]
     return render(request, 'enot_app/test_letter.html',  {'trips': trips, 'debug': DEBUG})
 
 def main_page(request):

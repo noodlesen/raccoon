@@ -73,6 +73,8 @@ class Command(BaseCommand):
         bs = options['bid_shift']
         bids = [d['bid'] for d in dlist][bs:]
 
+        
+
         for i, b in enumerate(bids):
             sentinel.report('%d: [%d] %s | %dд | %d км | %dр | R%d' % (
                 i+1,
@@ -101,6 +103,7 @@ class Command(BaseCommand):
 
                     if sentinel.allows('to_request_qpx'):
 
+                        print('search')
                         resp = qpx.search(req)
                         res = resp.top_trips(num=30)
 

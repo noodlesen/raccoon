@@ -123,6 +123,7 @@ class Command(BaseCommand):
                 sum_bids = 0
 
                 if month_bids['data']:
+                    bid_num = 0
                     for b in month_bids['data']:
                         found_at = datetime.strptime(
                             ':'.join(b['found_at'].split(':')[:-1])+'00',
@@ -164,11 +165,16 @@ class Command(BaseCommand):
                         bid.chd_days = (bid.return_date-bid.departure_date).days
                         bid.to_expose = True
 
+                        if bid_num == 0:
+                            bid.best_price = True
+
                         try:
                             bid.save()
                         except IntegrityError:
                             print ("Signature exists: ", bid.signature)
                             pass
+
+                        bid_num += 1
 
                     """ Updating destination stats """
                     nbc = dest.total_bid_count+sum_bids

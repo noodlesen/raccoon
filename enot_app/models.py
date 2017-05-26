@@ -148,6 +148,7 @@ class Bid(models.Model):
     signature = models.CharField(max_length=50, unique=True)
     pre_rating = models.IntegerField(default=0)
     chd_days = models.IntegerField(default=0)  # cached days count for return flights
+    best_price = models.BooleanField(default=False)
 
 
     @classmethod
