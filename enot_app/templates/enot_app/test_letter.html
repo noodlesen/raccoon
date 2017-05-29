@@ -32,9 +32,31 @@
 <!--     {% if debug %}
         R: {{t.rating}} > E:{{t.rt_eff}} C:{{t.rt_comfort}} - P:{{t.rt_price}}
     {% endif %} -->
-    <h2>
-        <!-- {{forloop.counter}}:  -->{{ t.destination.name }}, {{t.destination.place.gcountry.rus_name}}:
-         {{t.price}}<span style="font-size:60%">&#8381;
+    <h2>{{ t.destination.name }}, {{t.destination.place.gcountry.rus_name}}: {{t.price}}<span style="font-size:60%">&#8381;</span></h2>
+        <div style="padding-left: .5em; border-width: 0 0 0 1px; border-color: gray; border-style: solid">
+        <!-- {{ t.departure|date:"d E(D)" }} -->
+        <div><strong>
+        {{ t.departure|date:"d E" }} - {{ t.arrival|date:"d E" }}
+        </strong>
+        </div>
+        {{t.days_text}}
+        {% for n in t.chd_days|create_range %}
+        <div style="width:5px; height:10px; background-color: blue; display:inline-block; margin-left:-2px"></div>
+        {% endfor %}
+        <div>
+            {% for c in t.get_carriers %}
+                {{c}}
+                {% if forloop.last %}
+                {% else %}
+                    /
+                {% endif %}
+            {% endfor %}
+        </div>
+        Вылет {{t.days_to_text}} из {{t.get_origin_airport_name}}
+    </div>
+<!--     <h2>
+        {{forloop.counter}}: {{ t.destination.name }}, {{t.destination.place.gcountry.rus_name}}:
+         {{t.price}}<span style="font-size:60%">&#8381;</span>
     </h2>
     <div style="padding-left: .5em">
         {{t.days_text}} 
@@ -61,7 +83,7 @@
     {% for b in t.get_penalties %}
         <div style="color:red">-{{b.message }}</div>
     {% endfor %}
-
+ -->
 <!--     {% for sl in t.get_slices %}
         {% for s in sl.segments %}
             {% for l in s.legs %}
