@@ -102,14 +102,14 @@ def review(trip):
             'kind': 'originDepartTime',
             'message': 'Удобное время вылета из Москвы'
         })
-        rtc += 50
+        #rtc += 50
 
     if trip.arrival.hour in range(8, 21):
         benefits.append({
             'kind': 'returnArrivalTime',
             'message': 'Удобное время возвращения в Москву'
         })
-        rtc += 20
+        #rtc += 20
 
     ### Destination arrival time
 
@@ -120,7 +120,7 @@ def review(trip):
             'kind': 'destinationArrivalTime',
             'message': 'Удобное время прибытия в пункт назначения'
         })
-        rtc += 50
+        #rtc += 50
 
     ### Destination departure time
 
@@ -131,7 +131,7 @@ def review(trip):
             'kind': 'destinationDepartureTime',
             'message': 'Удобное время вылета обратно'
         })
-        rtc += 20
+        #rtc += 20
 
     ### Number of stops
 
