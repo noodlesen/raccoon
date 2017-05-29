@@ -89,6 +89,10 @@ def allows(action, **kwargs):
             else:
                 report('planner has already stared today')
 
+    if action == 'to_make_bid_request':
+        std = Status.get_today()
+        allow = False if std.api_request_in_progress else True
+
     return allow
 
 

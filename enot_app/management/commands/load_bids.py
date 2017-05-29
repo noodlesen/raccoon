@@ -100,6 +100,8 @@ class Command(BaseCommand):
                 requested_at__lt=old_limit,
                 origin=target
             ).order_by(srt)[:500]
+
+
             for q in queries:
                 sleep(rd)
                 if (datetime.now()-started_at).seconds >= wtl:
@@ -107,6 +109,9 @@ class Command(BaseCommand):
                     break
                 sentinel.report(q.origin.code+" >>> "+q.destination.code)
 
+                """ making a request """
+                while not sentinel.allows('to_make_bid_request'):
+                    sleep(1)
                 month_bids = get_month_bids(
                     {"beginning_of_period": q.start_date.strftime('%Y-%m-%d'),
                      "destination": q.destination.code,

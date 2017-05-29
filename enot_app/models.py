@@ -384,6 +384,7 @@ class Status(models.Model):
     loader_finished = models.IntegerField(default=0)
     forced = models.BooleanField(default=False)
     build = models.TextField(null=True)
+    api_request_in_progress = models.BooleanField(default=False)
 
     @classmethod
     def get_today(cls):
