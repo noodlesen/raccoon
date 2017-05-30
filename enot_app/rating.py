@@ -74,6 +74,9 @@ def prerate(bid):
 
 
 def review(trip):
+
+    print (trip.id)
+    print (str(trip.days_to))
     benefits = []
     penalties = []
     rtc = 0  # comfort rating
@@ -100,14 +103,16 @@ def review(trip):
     if trip.departure.hour >= 12:
         benefits.append({
             'kind': 'originDepartTime',
-            'message': 'Удобное время вылета из Москвы'
+            'message': 'Удобное время вылета из Москвы',
+            'show': False
         })
         rtc += 50
 
     if trip.arrival.hour in range(8, 21):
         benefits.append({
             'kind': 'returnArrivalTime',
-            'message': 'Удобное время возвращения в Москву'
+            'message': 'Удобное время возвращения в Москву',
+            'show': False
         })
         rtc += 20
 
@@ -118,7 +123,8 @@ def review(trip):
     if dat.hour in range(10, 21):
         benefits.append({
             'kind': 'destinationArrivalTime',
-            'message': 'Удобное время прибытия в пункт назначения'
+            'message': 'Удобное время прибытия в пункт назначения',
+            'show': False
         })
         rtc += 50
 
@@ -129,7 +135,8 @@ def review(trip):
     if ddt.hour > 10:
         benefits.append({
             'kind': 'destinationDepartureTime',
-            'message': 'Удобное время вылета обратно'
+            'message': 'Удобное время вылета обратно',
+            'show': False
         })
         rtc += 20
 
@@ -140,19 +147,22 @@ def review(trip):
     if tns == 0:
         benefits.append({
             'kind': 'directFlight',
-            'message': 'Прямые рейсы в обе стороны'
+            'message': 'Прямые рейсы в обе стороны',
+            'show': True
         })
         rtc += 300
     elif tns == 1:
         benefits.append({
             'kind': 'semiDirectFlight',
-            'message': 'Прямой рейс в одну сторону'
+            'message': 'Прямой рейс в одну сторону',
+            'show': True
         })
         rtc += 100
     elif tns > 2:
         penalties.append({
             'kind': 'moreThanTwoStops',
-            'message': 'Много стыковок'
+            'message': 'Много стыковок',
+            'show': True
         })
         rtc -= 250
 
@@ -172,7 +182,8 @@ def review(trip):
                 if acr >= 150:
                     benefits.append({
                         'kind': 'ratedAircraft',
-                        'message': 'Хороший самолёт %s: %s' %(drs, l['aircraft'])
+                        'message': 'Хороший самолёт %s: %s' %(drs, l['aircraft']),
+                        'show': True
                     })
                 rtc += acr
 
@@ -186,13 +197,15 @@ def review(trip):
                 if st<4000:
                     penalties.append({
                         'kind': 'veryShortStop',
-                        'message': 'Очень короткая стыковка %s: %s' %(drs, fst)
+                        'message': 'Очень короткая стыковка %s: %s' %(drs, fst),
+                        'show': True
                     })
                     rtc -= 100
                 elif st>3600*5:
                     penalties.append({
                         'kind': 'veryLongStop',
-                        'message': 'Очень длинная стыковка %s: %s' %(drs, fst)
+                        'message': 'Очень длинная стыковка %s: %s' %(drs, fst),
+                        'show': True
                     })
                     rtc -= 200
 
@@ -206,7 +219,8 @@ def review(trip):
     if lc > 1:
         penalties.append({
             'kind': 'differentCarriers',
-            'message': 'Несколько авиакомпаний'
+            'message': 'Несколько авиакомпаний',
+            'show': True
         })
 
     cn = []
@@ -226,7 +240,8 @@ def review(trip):
             if cor > 50:
                 benefits.append({
                     'kind': 'ratedCarrier',
-                    'message': 'Хорошая авиакомпания: %s' % co.name
+                    'message': 'Хорошая авиакомпания: %s' % co.name,
+                    'show': True
                 })
 
 

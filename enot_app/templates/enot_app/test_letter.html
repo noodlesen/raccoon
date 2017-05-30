@@ -54,6 +54,40 @@
         </div>
         Вылет {{t.days_to_text}} из {{t.get_origin_airport_name}}
     </div>
+
+    {% for b in t.get_benefits %}
+        {% if b.show %}
+            <div style="color:green">+{{b.message }}</div>
+        {% endif %}
+    {% endfor %}
+    {% for b in t.get_penalties %}
+        {% if b.show %}
+            <div style="color:red">-{{b.message }}</div>
+        {% endif %}
+    {% endfor %}
+ 
+<!--     {% for sl in t.get_slices %}
+        {% for s in sl.segments %}
+            {% for l in s.legs %}
+                <p>{{l.origin}} -> {{l.destination}}</p>
+            {% endfor %}
+        {% endfor %}
+        ...
+    {% endfor %} -->
+
+    <a href="#">Найти на Aviasales >>></a>
+
+
+
+</div>
+{% endfor %}
+{% endblock %}
+
+{% block footer %}
+(C) footer 2017
+{% endblock %}
+
+
 <!--     <h2>
         {{forloop.counter}}: {{ t.destination.name }}, {{t.destination.place.gcountry.rus_name}}:
          {{t.price}}<span style="font-size:60%">&#8381;</span>
@@ -75,29 +109,5 @@
                 {% endif %}
             {% endfor %}из {{t.get_origin_airport_name}}
         </div>
-    </div>
+    </div>-->
 
-    {% for b in t.get_benefits %}
-        <div style="color:green">+{{b.message }}</div>
-    {% endfor %}
-    {% for b in t.get_penalties %}
-        <div style="color:red">-{{b.message }}</div>
-    {% endfor %}
- -->
-<!--     {% for sl in t.get_slices %}
-        {% for s in sl.segments %}
-            {% for l in s.legs %}
-                <p>{{l.origin}} -> {{l.destination}}</p>
-            {% endfor %}
-        {% endfor %}
-        ...
-    {% endfor %} -->
-
-
-</div>
-{% endfor %}
-{% endblock %}
-
-{% block footer %}
-(C) footer 2017
-{% endblock %}

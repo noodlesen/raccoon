@@ -101,12 +101,32 @@ class Airport(models.Model):
     timezone = models.IntegerField(null=True)
     dst = models.CharField(max_length=1, null=True)
     tzdata = models.CharField(max_length=50, null=True)
+    place = models.ForeignKey(GPlace, null=True)
 
     def form_from(self):
         if self.iata == 'ZIA':
             return 'Жуковского'
         else:
             return self.name
+
+    # def tmp_find_place(self):
+    #     try:
+    #         p = GPlace.objects.get(city_code=self.city_code)
+    #     except GPlace.DoesNotExist:
+    #         #print (self.city_code, " NOT FOUND")
+    #         pass
+    #     except GPlace.MultipleObjectsReturned:
+    #         print (self.city_code, " MULTIPLE !!!!")
+    #         ps = GPlace.objects.filter(city_code=self.city_code).order_by('-b_number')
+    #         for p in ps:
+    #             print('>',p.rus_name, p.b_number )
+    #         self.place = ps[0]
+    #         self.save()
+    #         print()
+    #     else:
+    #         #print (self.city_code, " FOUND: ", p.rus_name)
+    #         self.place = p
+    #         self.save()
 
 
 
@@ -361,6 +381,12 @@ class Trip(models.Model):
     def supply(self):
         self.days_text = str(self.chd_days)+" "+russian_plurals('день', self.chd_days)
         self.days_to = (self.departure-now_in_moscow()).days
+        # move to another block VVVVV
+        if self.days_to <= 0:
+            self.days_to = 0
+            self.actual = False
+            self.expose = False
+        # ...........................
         self.days_to_text = "через "+str(self.days_to)+" "+russian_plurals('день', self.days_to)
 
     def get_origin_airport_name(self, form=''):
@@ -373,6 +399,10 @@ class Trip(models.Model):
                 return ap.form_from()
             else:
                 return ap.name
+
+    # def get_stop_names(self):
+    #     rp = json.loads(self.route_points)
+        
 
 
 class Status(models.Model):
