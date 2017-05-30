@@ -8,6 +8,9 @@ Z3 = 4000
 Z4 = 8000
 
 
+def parse_qpx_datetime(qdt):
+    return datetime.strptime(qdt.replace(':', ''), '%Y-%m-%dT%H%M%z')
+
 def days_to_distance(days, dist):
     rt = 0
 
@@ -67,16 +70,14 @@ def prerate(bid):
     ap = bid.destination.average_price
     rt = rt + int((ap-bid.price)/ap*1000)
 
-    if bid.price<15000:
-        rt*=1.5
+    if bid.price < 15000:
+        rt *= 1.5
 
     return rt
 
 
 def review(trip):
 
-    print (trip.id)
-    print (str(trip.days_to))
     benefits = []
     penalties = []
     rtc = 0  # comfort rating
@@ -168,51 +169,103 @@ def review(trip):
 
     ### Stops duration and aircrafts
 
-    for sln in range(0, 2):
-        sldr = ['туда', 'обратно']
+    details = [{}, {}]
+    sldr = ['туда', 'обратно']
+    all_carriers = []
+
+    for sln in range(0, 2):  # browse slices
         drs = sldr[sln]
+        details[sln]['name'] = drs
         times = []
 
-        for sg in slices[sln]['segments']:
-            for l in sg['legs']:
-                times.append(l['departure'])
-                times.append(l['arrival'])
+        all_legs = []
 
-                acr = Aircraft.objects.get(name=l['aircraft']).rating
-                if acr >= 150:
+        for sg in slices[sln]['segments']:  # browse segments
+
+            for l in sg['legs']:
+                l['carrier'] = sg['carrier']  # marking legs with the carrier's code
+
+                """ Parsing time format """
+                l['departure'] = parse_qpx_datetime(l['departure'])
+                l['arrival'] = parse_qpx_datetime(l['arrival'])
+
+            all_legs.extend(sg['legs'])  # getting rid of segments
+
+        legs_count = len(all_legs)
+        hd_legs = []
+
+        for ln in range(0, legs_count):  # browse all slice's legs
+
+            this_leg = {}
+
+            # checking aircraft
+            acr = Aircraft.objects.get(name=l['aircraft']).rating
+            if acr >= 150:
+                benefits.append({
+                    'kind': 'ratedAircraft',
+                    'message': 'Хороший самолёт %s: %s' % (drs, l['aircraft']),
+                    'show': True
+                })
+            rtc += acr
+            this_leg['aircraft'] = l['aircraft']
+            
+
+            try:
+                co = Carrier.objects.get(iata=c)
+            except Carrier.DoesNotExist:
+                rtc -= 100
+                penalties.append({
+                    'kind': 'unknownCarrier',
+                    'message': 'Неизвестная авиакомпания',
+                    'show': False
+                })
+                cname = 'Неизвестно'
+            else:
+                cor = co.rating
+                rtc += cor*2
+                if cor > 50:
                     benefits.append({
-                        'kind': 'ratedAircraft',
-                        'message': 'Хороший самолёт %s: %s' %(drs, l['aircraft']),
+                        'kind': 'ratedCarrier',
+                        'message': 'Хорошая авиакомпания: %s' % co.name,
                         'show': True
                     })
-                rtc += acr
+                cname = co.name
 
+            this_carrier = {'code': l['carrier'], 'name': cname}
+            this_leg['carrier'] = this_carrier
+            all_carriers.append(this_carrier)
 
-        if len(times) > 2:
-            for n in range(1, len(times)-1, 2):
-                t1 = datetime.strptime(times[n+1].replace(':', ''), '%Y-%m-%dT%H%M%z')
-                t0 = datetime.strptime(times[n].replace(':', ''), '%Y-%m-%dT%H%M%z')
+            if legs_count > 1 and ln < legs_count-1:  # if this slice have stops and this leg isn't the last one
+                t1 = parse_qpx_datetime(all_legs[ln+1]['departure'])
+                t0 = parse_qpx_datetime(all_legs[ln]['arrival'])
                 st = (t1-t0).seconds
                 fst = '%dч%dм' % (int(st / 3600), int(st % 3600 / 60))
-                if st<4000:
+
+                this_leg['stop_time'] = st
+                this_leg['text_stop_time'] = fst
+
+                if st < 4000:
                     penalties.append({
                         'kind': 'veryShortStop',
-                        'message': 'Очень короткая стыковка %s: %s' %(drs, fst),
+                        'message': 'Очень короткая стыковка %s: %s' % (drs, fst),
                         'show': True
                     })
                     rtc -= 100
-                elif st>3600*5:
+                elif st > 3600 * 5:
                     penalties.append({
                         'kind': 'veryLongStop',
-                        'message': 'Очень длинная стыковка %s: %s' %(drs, fst),
+                        'message': 'Очень длинная стыковка %s: %s' % (drs, fst),
                         'show': True
                     })
                     rtc -= 200
 
-    ### Carriers
+            hd_legs.append(this_leg)
 
-    carriers = set(trip.carriers.split(', '))
+        details[sln]['legs'] = hd_legs
 
+    ### Carriers number
+
+    carriers = set(all_carriers)
     lc = len(carriers)
     pen = 150*(lc-1)
     rtc -= pen
@@ -223,26 +276,6 @@ def review(trip):
             'show': True
         })
 
-    cn = []
-    for c in carriers:
-        try:
-            co = Carrier.objects.get(iata=c)
-        except Carrier.DoesNotExist:
-            rtc -= 100
-            penalties.append({
-                'kind': 'unknownCarrier',
-                'message': 'Неизвестная авиакомпания'
-            })
-        else:
-            cor = co.rating
-            cn.append(co.name)
-            rtc += cor*2
-            if cor > 50:
-                benefits.append({
-                    'kind': 'ratedCarrier',
-                    'message': 'Хорошая авиакомпания: %s' % co.name,
-                    'show': True
-                })
 
 
     rtc = 0 if rtc < 0 else rtc
@@ -251,20 +284,19 @@ def review(trip):
     rt = int(rtc*rtp/1000) if eff >= 100 else 0
 
     if len(penalties) == 0:
-        rt+=50
+        rt += 50
     else:
-        rt-=50
-
-
-
+        rt -= 50
 
     return({
-        'benefits': benefits,
-        'penalties': penalties,
         'rt_comfort': rtc,
         'rt_price': rtp,
         'rt_eff': eff,
         'rt': rt,
-        'carriers':cn
+        'hd': {
+            'benefits': benefits,
+            'penalties': penalties,
+            'carriers': all_carriers
+        }
     })
     

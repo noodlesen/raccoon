@@ -6,7 +6,7 @@ from django.db import models, connection
 from .toolbox import dictfetchall, get_hash, russian_plurals, now_in_moscow, week_day_name
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-# Create your models here.
+#from .rating import days_to_distance
 
 
 class GDirection(models.Model):
@@ -20,7 +20,7 @@ class GCountry(models.Model):
     eng_name = models.CharField(max_length=50)
     gdirection = models.ForeignKey(GDirection)
     rus_name = models.CharField(max_length=50)
-    kdb_id = models.IntegerField()  # -
+    kdb_id = models.IntegerField()  # LEGACY RESERVED
     slug = models.SlugField(max_length=50)
 
 
@@ -33,14 +33,14 @@ class GPlace(models.Model):
     b_number = models.IntegerField()
     lat = models.FloatField()
     lng = models.FloatField()
-    gcountry = models.ForeignKey(GCountry)  # !!!
+    gcountry = models.ForeignKey(GCountry)
     UFI = models.IntegerField()
     types = models.CharField(max_length=100)
     google_place_id = models.CharField(max_length=50)
-    image = models.CharField(max_length=50)  # ?
-    fpid = models.IntegerField()  # -
-    dup = models.IntegerField()  # -
-    chd_airports = models.TextField()
+    image = models.CharField(max_length=50)  # LEGACY RESERVED
+    fpid = models.IntegerField()  # LEGACY RESERVED
+    dup = models.IntegerField()  # RM
+    chd_airports = models.TextField()  # change to many-to-many
     city_code = models.CharField(max_length=3)
 
 
@@ -54,36 +54,6 @@ class Destination(models.Model):
     enabled = models.BooleanField(default=True)
     rating = models.IntegerField(null=True)
 
-    # @classmethod
-    # def get_structured(cls):
-    #     cursor = connection.cursor()
-    #     query = """
-    #             SELECT ds.name, ds.code, p.slug as pslug, c.rus_name as cslug, c.id as cid, c.slug as cslug, d.rus_name as drn, d.id as did, d.slug as dslug
-    #             FROM `enot_app_destination` as ds
-    #             JOIN `enot_app_gplace` as p ON p.id = ds.place_id
-    #             JOIN `enot_app_gcountry` as c ON c.id = p.gcountry_id
-    #             JOIN `enot_app_gdirection` as d ON d.id = c.gdirection_id
-    #             """
-    #     cursor.execute(query)
-    #     rows = dictfetchall(cursor)
-
-    #     res={}
-
-    #     for r in rows:
-    #         rd = {"name": r['name'], "code": r['code'], "slug": r['pslug']}
-
-    #         if r['dslug'] in res.keys():
-    #             if r['cslug'] in res[r['dslug']].keys():
-    #                 res[r['dslug']] [r['cslug']] ['places'].append(rd)
-    #             else:
-    #                 res[r['dslug']] [r['cslug']]={"places": [rd] }
-    #         else:
-    #             res[r['dslug']]={}
-    #             res[r['dslug']][r['cslug']]={"places": [rd] }
-
-
-    #     return res
-
 
 class Airport(models.Model):
     name = models.CharField(max_length=50, null=True)
@@ -93,7 +63,7 @@ class Airport(models.Model):
     city = models.CharField(max_length=50, null=True)
     city_code = models.CharField(max_length=3, null=True)
     country_code = models.CharField(max_length=2, null=True)
-    country = models.CharField(max_length=50, null=True)
+    country = models.CharField(max_length=50, null=True)  # RM later
     lat = models.FloatField(null=True)
     lng = models.FloatField(null=True)
     alt = models.IntegerField(null=True)
@@ -109,27 +79,6 @@ class Airport(models.Model):
         else:
             return self.name
 
-    # def tmp_find_place(self):
-    #     try:
-    #         p = GPlace.objects.get(city_code=self.city_code)
-    #     except GPlace.DoesNotExist:
-    #         #print (self.city_code, " NOT FOUND")
-    #         pass
-    #     except GPlace.MultipleObjectsReturned:
-    #         print (self.city_code, " MULTIPLE !!!!")
-    #         ps = GPlace.objects.filter(city_code=self.city_code).order_by('-b_number')
-    #         for p in ps:
-    #             print('>',p.rus_name, p.b_number )
-    #         self.place = ps[0]
-    #         self.save()
-    #         print()
-    #     else:
-    #         #print (self.city_code, " FOUND: ", p.rus_name)
-    #         self.place = p
-    #         self.save()
-
-
-
 
 class SpiderQueryTP(models.Model):
     origin = models.ForeignKey(Destination, related_name='tpr_origin')
@@ -137,9 +86,11 @@ class SpiderQueryTP(models.Model):
                                     related_name='tpr_destination'
                                     )
     start_date = models.DateField()
-    requested_at = models.DateTimeField(default=datetime(1979,6,30,9,30,0,0,
-                                        timezone('Europe/Moscow'))
-                                        )
+    requested_at = models.DateTimeField(
+        default=datetime(1979, 6, 30, 9, 30, 0, 0,
+                         timezone('Europe/Moscow')
+                         )
+        )
     expires_at = models.DateField()
     priority = models.IntegerField(default=0)
 
@@ -149,12 +100,12 @@ class Bid(models.Model):
     origin = models.ForeignKey(Destination,
                                default=1,
                                related_name='bid_origin'
-    )
+                               )
     destination_code = models.CharField(max_length=3)
     destination = models.ForeignKey(Destination,
                                     default=1,
                                     related_name='bid_destination'
-    )
+                                    )
     destination_name = models.CharField(max_length=35)
     one_way = models.BooleanField()
     departure_date = models.DateField()
@@ -170,9 +121,13 @@ class Bid(models.Model):
     chd_days = models.IntegerField(default=0)  # cached days count for return flights
     best_price = models.BooleanField(default=False)
 
+    @classmethod
+    def mark_best(cls):
+        """later"""
+        return None
 
     @classmethod
-    def get_best(cls):
+    def get_best(cls):  # RM later
         cursor = connection.cursor()
         query = """
                 SELECT b.destination_name as name, min(b.price) as price, c.rus_name as crn, dir.rus_name as drn, dir.id as did, count(b.price) as pcount
@@ -187,8 +142,6 @@ class Bid(models.Model):
         cursor.execute(query)
         rows = dictfetchall(cursor)
 
-
-        #return rows
         res={}
         for r in rows:
             if r['drn'] not in res.keys():
@@ -203,7 +156,7 @@ class Bid(models.Model):
 
         return res
 
-    @classmethod
+    @classmethod  # RM later
     def get_best_for_each_dest(cls, sort='pre_rating'):
         bids = cls.objects.filter(pre_rating__gt=0)
         if sort=='price':
@@ -256,16 +209,11 @@ class Bid(models.Model):
         ))
 
 
-
-# class Airline(models.Model):
-#     iata = models.CharField(max_length=2)
-#     name = models.CharField(max_length=50)
-#     rating = models.IntegerField(null=True)
-
 class Carrier(models.Model):
     iata = models.CharField(max_length=2)
     name = models.CharField(max_length=50)
     rating = models.IntegerField(null=True)
+
 
 class Aircraft(models.Model):
     name = models.CharField(max_length=50)
@@ -292,7 +240,7 @@ class City(models.Model):
 
 
 class Trip(models.Model):
-    origin_code = models.CharField(max_length=3)
+    origin_code = models.CharField(max_length=3) #?
     origin_city = models.ForeignKey(City, null=True)
     destination_code = models.CharField(max_length=3)
     destination = models.ForeignKey(Destination, null=True)  # use later?
@@ -302,9 +250,9 @@ class Trip(models.Model):
     currency = models.CharField(max_length=3)
     departure = models.DateTimeField()
     arrival = models.DateTimeField()
-    carriers = models.CharField(max_length=25)
+    #carriers = models.CharField(max_length=25)  #RM
     slices = models.TextField()
-    route_points = models.TextField(null=True)
+    #route_points = models.TextField(null=True)  # RM
     created_at = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True)
 
@@ -313,9 +261,9 @@ class Trip(models.Model):
     rating = models.IntegerField(default=0)
     rt_comfort = models.IntegerField(default=0)
     rt_price = models.IntegerField(default=0)
-    rt_eff = models.IntegerField(default=0) 
-    benefits = models.TextField(null=True)  # RM
-    penalties = models.TextField(null=True)  # RM
+    rt_eff = models.IntegerField(default=0)
+    #benefits = models.TextField(null=True)  # RM
+    #penalties = models.TextField(null=True)  # RM
 
     """ Trip status """
     expose = models.BooleanField(default=False)
@@ -328,16 +276,15 @@ class Trip(models.Model):
     bid_price = models.IntegerField(null=True)
 
     """ Template helpers """
-    days_text = models.CharField(max_length=10, null=True)  # RM
-    days_to_text = models.CharField(max_length=50, null=True)  # RM
-    carriers_names = models.TextField(null=True)  # RM
-    days_to = models.IntegerField(null=True)  # RM
+    #days_text = models.CharField(max_length=10, null=True)  # RM
+    #days_to_text = models.CharField(max_length=50, null=True)  # RM
+    #carriers_names = models.TextField(null=True)  # RM
+    #days_to = models.IntegerField(null=True)  # RM
 
     """ Human data """
     hd = models.TextField()
 
-
-    def get_slices(self):
+    def get_slices(self):  # RM?
         return json.loads(self.slices)
 
     @classmethod
@@ -354,8 +301,8 @@ class Trip(models.Model):
             currency=qpx['currency'],
             departure=qpx['trip_departure'],
             arrival=qpx['trip_arrival'],
-            carriers=', '.join(qpx['carriers']),
-            route_points=json.dumps(qpx['route_points']),
+            #carriers=', '.join(qpx['carriers']),
+            #route_points=json.dumps(qpx['route_points']),
             slices=json.dumps(qpx['slices'])
         )
 
@@ -368,31 +315,23 @@ class Trip(models.Model):
             t.destination_id = bid.destination_id
             t.bid_price = bid.price
 
-        #t.slug = get_hash(t.id)
-
         return t
 
-    def get_benefits(self):
-        return json.loads(self.benefits)
+    # def get_benefits(self):  # RM
+    #     return json.loads(self.benefits)
 
-    def get_penalties(self):
-        return json.loads(self.penalties)
+    # def get_penalties(self):  # RM
+    #     return json.loads(self.penalties)
 
-    def get_carriers(self):
-        return json.loads(self.carriers_names)
+    # def get_carriers(self):  # RM
+    #     return json.loads(self.carriers_names)
 
-    def supply(self):
-        self.days_text = str(self.chd_days)+" "+russian_plurals('день', self.chd_days)
-        self.days_to = (self.departure-now_in_moscow()).days
-        # move to another block VVVVV
-        if self.days_to <= 0:
-            self.days_to = 0
-            self.actual = False
-            self.expose = False
-        # ...........................
-        self.days_to_text = "через "+str(self.days_to)+" "+russian_plurals('день', self.days_to)
+    # def supply(self):  # RM
+    #     self.days_text = str(self.chd_days)+" "+russian_plurals('день', self.chd_days)
+    #     self.days_to = (self.departure-now_in_moscow()).days
+    #     self.days_to_text = "через "+str(self.days_to)+" "+russian_plurals('день', self.days_to)
 
-    def get_origin_airport_name(self, form=''):
+    def get_origin_airport_name(self, form=''):  # RM
         try:
             ap = Airport.objects.get(iata=self.origin_code)
         except Airport.DoesNotExist:
@@ -403,8 +342,10 @@ class Trip(models.Model):
             else:
                 return ap.name
 
-    # def get_stop_names(self):
-    #     rp = json.loads(self.route_points)
+
+### END OF TRIP MODEL
+
+
 
 
 
