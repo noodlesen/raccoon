@@ -259,8 +259,8 @@ def review(trip):
 
 
     return({
-        'benefits': benefits,#json.dumps(benefits),
-        'penalties': penalties,#json.dumps(penalties),
+        'benefits': benefits,
+        'penalties': penalties,
         'rt_comfort': rtc,
         'rt_price': rtp,
         'rt_eff': eff,

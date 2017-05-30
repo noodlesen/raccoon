@@ -313,25 +313,28 @@ class Trip(models.Model):
     rating = models.IntegerField(default=0)
     rt_comfort = models.IntegerField(default=0)
     rt_price = models.IntegerField(default=0)
-    rt_eff = models.IntegerField(default=0)
-    benefits = models.TextField(null=True)
-    penalties = models.TextField(null=True)
+    rt_eff = models.IntegerField(default=0) 
+    benefits = models.TextField(null=True)  # RM
+    penalties = models.TextField(null=True)  # RM
 
     """ Trip status """
     expose = models.BooleanField(default=False)
     actual = models.BooleanField(default=True)
 
     """ Additional fields """
-    average_price = models.IntegerField(null=True) # add later?
+    average_price = models.IntegerField(null=True)  # add later?
     chd_days = models.IntegerField(null=True)
     distance = models.IntegerField(null=True)
     bid_price = models.IntegerField(null=True)
 
     """ Template helpers """
-    days_text = models.CharField(max_length=10, null=True)
-    days_to_text = models.CharField(max_length=50, null=True)
-    carriers_names = models.TextField(null=True)
-    days_to = models.IntegerField(null=True)
+    days_text = models.CharField(max_length=10, null=True)  # RM
+    days_to_text = models.CharField(max_length=50, null=True)  # RM
+    carriers_names = models.TextField(null=True)  # RM
+    days_to = models.IntegerField(null=True)  # RM
+
+    """ Human data """
+    hd = models.TextField()
 
 
     def get_slices(self):
@@ -402,7 +405,7 @@ class Trip(models.Model):
 
     # def get_stop_names(self):
     #     rp = json.loads(self.route_points)
-        
+
 
 
 class Status(models.Model):

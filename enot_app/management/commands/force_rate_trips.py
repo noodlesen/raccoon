@@ -14,7 +14,6 @@ class Command(BaseCommand):
         for t in trips:
             r = review(t)
             
-            print (r)
             t.rt_price=r['rt_price']
             t.rt_comfort=r['rt_comfort']
             t.rt_eff=r['rt_eff']
@@ -24,8 +23,6 @@ class Command(BaseCommand):
             t.benefits = json.dumps(r['benefits'])
             t.penalties = json.dumps(r['penalties'])
 
-            #t.save()
-            print(t.id, t.chd_days, t.days_to)
             t.supply()
             t.save()
         
