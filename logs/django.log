@@ -274,3 +274,163 @@ Traceback (most recent call last):
   File "/Users/lapshov/Documents/dve/enot/enot_app/rating.py", line 3, in <module>
     from enot_app.models import Carrier, Aircraft
 ImportError: cannot import name 'Carrier'
+30.05 18:02:12> Admin Command Error: manage.py force_rate_trips
+Traceback (most recent call last):
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'enot_app_trip.hd' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/force_rate_trips.py", line 14, in handle
+    for t in trips:
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/models/query.py", line 256, in __iter__
+    self._fetch_all()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/models/query.py", line 1087, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/models/query.py", line 54, in __iter__
+    results = compiler.execute_sql()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/models/sql/compiler.py", line 835, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/utils/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'enot_app_trip.hd' in 'field list'")
+30.05 18:03:36> Admin Command Error: manage.py force_rate_trips
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/force_rate_trips.py", line 15, in handle
+    r = review(t)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/rating.py", line 215, in review
+    co = Carrier.objects.get(iata=c)
+NameError: name 'c' is not defined
+30.05 18:04:37> Admin Command Error: manage.py force_rate_trips
+Traceback (most recent call last):
+  File "/Users/lapshov/Documents/dve/enot/enot_app/rating.py", line 243, in review
+    ap = Airport.objects.get(iata=l['origin'])
+NameError: name 'Airport' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/force_rate_trips.py", line 15, in handle
+    r = review(t)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/rating.py", line 244, in review
+    except Airport.DoesNotExist:
+NameError: name 'Airport' is not defined
+30.05 18:04:55> Admin Command Error: manage.py force_rate_trips
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/force_rate_trips.py", line 15, in handle
+    r = review(t)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/rating.py", line 297, in review
+    carriers = set(all_carriers)
+TypeError: unhashable type: 'dict'
+30.05 18:06:08> Admin Command Error: manage.py force_rate_trips
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/force_rate_trips.py", line 15, in handle
+    r = review(t)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/rating.py", line 271, in review
+    'city': this_leg['destination_city'],
+KeyError: 'destination_city'
+30.05 18:06:42> Admin Command Error: manage.py force_rate_trips
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/force_rate_trips.py", line 15, in handle
+    r = review(t)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/rating.py", line 247, in review
+    this_leg['origin'] = { 'airport': ap.name, 'city': ap.place.rus_name }
+AttributeError: 'NoneType' object has no attribute 'rus_name'

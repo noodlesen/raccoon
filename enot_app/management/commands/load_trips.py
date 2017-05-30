@@ -111,15 +111,11 @@ class Command(BaseCommand):
                             t = Trip.load_qpx(r, b)
                             rw = review(t)
                             t.origin_city = target_city
-                            #t.benefits = json.dumps(rw['benefits'])
-                            #t.penalties = json.dumps(rw['penalties'])
-                            #t.carriers_names = json.dumps(rw['carriers'])
                             t.rt_comfort = rw['rt_comfort']
                             t.rt_price = rw['rt_price']
                             t.rt_eff = rw['rt_eff']
                             t.rating = rw['rt']
-                            t.hd = rw['hd']
-                            #t.supply()
+                            t.hd = json.dumps(rw['hd'])
                             t.save()
                             t.slug = get_hash(str(t.id))
                             t.save()

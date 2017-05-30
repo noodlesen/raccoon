@@ -1,6 +1,6 @@
 import json
 from datetime import datetime
-from enot_app.models import Carrier, Aircraft
+from enot_app.models import Carrier, Aircraft, Airport
 
 Z1 = 1200
 Z2 = 2100
@@ -176,7 +176,8 @@ def review(trip):
     for sln in range(0, 2):  # browse slices
         drs = sldr[sln]
         details[sln]['name'] = drs
-        times = []
+        details[sln]['layovers'] = []
+        #times = []
 
         all_legs = []
 
@@ -211,7 +212,7 @@ def review(trip):
             
 
             try:
-                co = Carrier.objects.get(iata=c)
+                co = Carrier.objects.get(iata=l['carrier'])
             except Carrier.DoesNotExist:
                 rtc -= 100
                 penalties.append({
@@ -235,29 +236,66 @@ def review(trip):
             this_leg['carrier'] = this_carrier
             all_carriers.append(this_carrier)
 
-            if legs_count > 1 and ln < legs_count-1:  # if this slice have stops and this leg isn't the last one
-                t1 = parse_qpx_datetime(all_legs[ln+1]['departure'])
-                t0 = parse_qpx_datetime(all_legs[ln]['arrival'])
-                st = (t1-t0).seconds
-                fst = '%dч%dм' % (int(st / 3600), int(st % 3600 / 60))
+            this_leg['origin_code'] = l['origin']
+            this_leg['destination_code'] = l['destination']
 
-                this_leg['stop_time'] = st
-                this_leg['text_stop_time'] = fst
+            ### DRY VVV
+            try:
+                ap = Airport.objects.get(iata=l['origin'])
+            except Airport.DoesNotExist:
+                pass
+            else:
+                if ap.place:
+                    city = ap.place.rus_name
+                else:
+                    city = ap.city
+                this_leg['origin'] = { 'airport': ap.name, 'city': city }
 
-                if st < 4000:
-                    penalties.append({
-                        'kind': 'veryShortStop',
-                        'message': 'Очень короткая стыковка %s: %s' % (drs, fst),
-                        'show': True
+            try:
+                ap = Airport.objects.get(iata=l['destination'])
+            except Airport.DoesNotExist:
+                pass
+            else:
+                if ap.place:
+                    city = ap.place.rus_name
+                else:
+                    city = ap.city
+                this_leg['destination'] = { 'airport': ap.name, 'city': city }
+
+
+
+            if legs_count > 1:  # if this slice have stops 
+
+                if ln < legs_count-1:  # and this leg isn't the last one
+
+                    t1 = all_legs[ln+1]['departure']
+                    t0 = all_legs[ln]['arrival']
+                    st = (t1-t0).seconds
+                    fst = '%dч%dм' % (int(st / 3600), int(st % 3600 / 60))
+
+                    this_leg['stop_time'] = st
+                    this_leg['text_stop_time'] = fst
+
+                    details[sln]['layovers'].append({
+                        'city': this_leg['destination']['city'],
+                        'stop_time': st,
+                        'text_stop_time': fst
                     })
-                    rtc -= 100
-                elif st > 3600 * 5:
-                    penalties.append({
-                        'kind': 'veryLongStop',
-                        'message': 'Очень длинная стыковка %s: %s' % (drs, fst),
-                        'show': True
-                    })
-                    rtc -= 200
+
+                    if st < 4000:
+                        penalties.append({
+                            'kind': 'veryShortStop',
+                            'message': 'Очень короткая стыковка %s: %s' % (drs, fst),
+                            'show': True
+                        })
+                        rtc -= 100
+                    elif st > 3600 * 5:
+                        penalties.append({
+                            'kind': 'veryLongStop',
+                            'message': 'Очень длинная стыковка %s: %s' % (drs, fst),
+                            'show': True
+                        })
+                        rtc -= 200
 
             hd_legs.append(this_leg)
 
@@ -265,7 +303,7 @@ def review(trip):
 
     ### Carriers number
 
-    carriers = set(all_carriers)
+    carriers = set([c['name'] for c in all_carriers])
     lc = len(carriers)
     pen = 150*(lc-1)
     rtc -= pen
@@ -296,7 +334,8 @@ def review(trip):
         'hd': {
             'benefits': benefits,
             'penalties': penalties,
-            'carriers': all_carriers
+            'carriers': all_carriers,
+            'details': details
         }
     })
     
