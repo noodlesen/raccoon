@@ -156,3 +156,10 @@ def week_day_name(n, lang='ru', form='full'):
         }
     }
     return names[lang][form][n]
+
+def get_russian_form(word, form, **kwargs):
+    CONSONANTS = 'бвгджзклмнпрстфхцчшщ'
+    word = word.lower()
+    last = word[-1:]
+    if last in CONSONANTS:
+        print('в', word.capitalize()+'е')

@@ -284,6 +284,9 @@ class Trip(models.Model):
     """ Human data """
     hd = models.TextField()
 
+    def get_hd(self):
+        return json.loads(self.hd)
+
     def get_slices(self):  # RM?
         return json.loads(self.slices)
 

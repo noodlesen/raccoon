@@ -39,28 +39,29 @@
         {{ t.departure|date:"d E" }} - {{ t.arrival|date:"d E" }}
         </strong>
         </div>
-        {{t.days_text}}
+        {{t.get_hd.days_text}}
         {% for n in t.chd_days|create_range %}
         <div style="width:5px; height:10px; background-color: blue; display:inline-block; margin-left:-2px"></div>
         {% endfor %}
         <div>
-            {% for c in t.get_carriers %}
-                {{c}}
+            {{t.get_hd.carriers}}
+<!--             {% for c in t.get_hd.carriers %}
+                {{c.name}}
                 {% if forloop.last %}
                 {% else %}
                     /
                 {% endif %}
-            {% endfor %}
+            {% endfor %} -->
         </div>
         Вылет {{t.days_to_text}} из {{t.get_origin_airport_name}}
     </div>
 
-    {% for b in t.get_benefits %}
+    {% for b in t.get_hd.benefits %}
         {% if b.show %}
             <div style="color:green">+{{b.message }}</div>
         {% endif %}
     {% endfor %}
-    {% for b in t.get_penalties %}
+    {% for b in t.get_hd.penalties %}
         {% if b.show %}
             <div style="color:red">-{{b.message }}</div>
         {% endif %}

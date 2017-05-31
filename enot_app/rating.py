@@ -2,6 +2,8 @@ import json
 from datetime import datetime
 from enot_app.models import Carrier, Aircraft, Airport
 
+from .toolbox import russian_plurals, now_in_moscow
+
 Z1 = 1200
 Z2 = 2100
 Z3 = 4000
@@ -303,7 +305,11 @@ def review(trip):
 
     ### Carriers number
 
-    carriers = set([c['name'] for c in all_carriers])
+    carriers_list = set([c['name'] for c in all_carriers])
+    carriers = []
+    carriers = [c for c in carriers_list if c not in carriers]
+    carriers_text = ', '.join(carriers)
+
     lc = len(carriers)
     pen = 150*(lc-1)
     rtc -= pen
@@ -326,6 +332,15 @@ def review(trip):
     else:
         rt -= 50
 
+    days_text = str(trip.chd_days)+" "+russian_plurals('день', trip.chd_days)
+    days_to = (trip.departure-now_in_moscow()).days
+    if days_to <= 0:
+        days_to = 0
+        trip.actual = False
+        trip.expose = False
+        trip.save()
+    days_to_text = "через "+str(days_to)+" "+russian_plurals('день', days_to)
+
     return({
         'rt_comfort': rtc,
         'rt_price': rtp,
@@ -334,8 +349,11 @@ def review(trip):
         'hd': {
             'benefits': benefits,
             'penalties': penalties,
-            'carriers': all_carriers,
-            'details': details
+            'carriers': carriers_text,
+            'details': details,
+            'days_text': days_text,
+            'days_to': days_to,
+            'days_to_text': days_to_text
         }
     })
     
