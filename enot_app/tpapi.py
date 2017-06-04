@@ -41,10 +41,13 @@ def tp_request(endpoint, p={}):
         print("RT")
         return {"data": [], "params": params, 'error': e, "etype": 'ReadTimeout'}
 
-
     #print (json.loads(response.text)['data'])
+    if response.text:
+        data = json.loads(response.text)['data']
+    else:
+        data = []
 
-    return {"data": json.loads(response.text)['data'], "params": params}
+    return {"data": data, "params": params}
 
     
 
