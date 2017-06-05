@@ -43,6 +43,13 @@ class GPlace(models.Model):
     chd_airports = models.TextField()  # change to many-to-many
     city_code = models.CharField(max_length=3)
 
+    def __str__(self):
+        return ('%s, %s' % (self.rus_name, self.gcountry.rus_name))
+
+    @staticmethod
+    def autocomplete_search_fields():
+        return ('id__iexact', 'rus_name__icontains',)
+
 
 class Destination(models.Model):
     name = models.CharField(max_length=50)
@@ -120,6 +127,8 @@ class Bid(models.Model):
     pre_rating = models.IntegerField(default=0)
     chd_days = models.IntegerField(default=0)  # cached days count for return flights
     best_price = models.BooleanField(default=False)
+
+    place = models.ForeignKey(GPlace, null=True)
 
     @classmethod
     def mark_best(cls):
@@ -497,5 +506,31 @@ class Invite(models.Model):
         inv.code = get_hash(str(inv.id))
         return inv
 
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+    color = models.CharField(max_length=20)
+
+    @staticmethod
+    def autocomplete_search_fields():
+        return ('id__iexact', 'name__icontains',)
+
+    def __str__(self):
+        return self.name
+
+
+class Quote(models.Model):
+    place = models.ForeignKey(GPlace, null=True)
+    text = models.TextField()
+    chd_data = models.TextField()  # RM?
+    chd_rating = models.IntegerField(default=0)
+    tags = models.ManyToManyField(Tag)
+
+
+class Card(models.Model):
+    text = models.TextField()
+    link = models.CharField(max_length=255)
+    tags = models.ManyToManyField(Tag)
+    place = models.ForeignKey(GPlace, null=True)
 
 

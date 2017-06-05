@@ -1,0 +1,108 @@
+31.05 10:03:14> Admin Command Error: manage.py force_rate_trips
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/force_rate_trips.py", line 15, in handle
+    r = review(t)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/rating.py", line 332, in review
+    days_to = (trip.departure-now_in_moscow()).days
+NameError: name 'now_in_moscow' is not defined
+31.05 10:03:36> Admin Command Error: manage.py force_rate_trips
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/force_rate_trips.py", line 15, in handle
+    r = review(t)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/rating.py", line 333, in review
+    days_to_text = "через "+str(trip.days_to)+" "+russian_plurals('день', trip.days_to)
+AttributeError: 'Trip' object has no attribute 'days_to'
+31.05 10:04:07> Admin Command Error: manage.py force_rate_trips
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/force_rate_trips.py", line 15, in handle
+    r = review(t)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/rating.py", line 333, in review
+    days_to_text = "через "+str(days_to)+" "+russian_plurals('день', days_to)
+TypeError: Can't convert 'NoneType' object to str implicitly
+31.05 10:14:11> Admin Command Error: manage.py force_rate_trips
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/force_rate_trips.py", line 21, in handle
+    t.hd = json.dumps(r['hd'])
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/json/__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/json/encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/json/encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/json/encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: {'S7'} is not JSON serializable
+31.05 10:16:25> Admin Command Error: manage.py force_rate_trips
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/force_rate_trips.py", line 15, in handle
+    r = review(t)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/rating.py", line 309, in review
+    carriers = [c for c in carriers_list if c not in carriers]
+  File "/Users/lapshov/Documents/dve/enot/enot_app/rating.py", line 309, in <listcomp>
+    carriers = [c for c in carriers_list if c not in carriers]
+NameError: free variable 'carriers' referenced before assignment in enclosing scope
+31.05 10:56:42> Admin Command Error: manage.py test_forms --word Бангкок
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/test_forms.py", line 27, in handle
+    get_russian_form(options['word'])
+TypeError: get_russian_form() missing 1 required positional argument: 'form'

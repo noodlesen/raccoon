@@ -16,7 +16,13 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+# from djadmin2.site import djadmin2_site
+
+# djadmin2_site.autodiscover()
+
 urlpatterns = [
+    url(r'^grappelli/', include('grappelli.urls')), 
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('enot_app.urls', namespace='enot_app', app_name='enot_app'))
+    url(r'^', include('enot_app.urls', namespace='enot_app', app_name='enot_app')),
+    # url(r'^admin2/', include(djadmin2_site.urls)),
 ]
