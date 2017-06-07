@@ -27,19 +27,19 @@
     </table> -->
 </div>
 {% for t in trips %}
-
+&nbsp;<br/>
 <div style="margin-bottom: 1em">
 <!--     {% if debug %}
         R: {{t.rating}} > E:{{t.rt_eff}} C:{{t.rt_comfort}} - P:{{t.rt_price}}
     {% endif %} -->
-    <h2>📍{{ t.destination.name }}, {{t.destination.place.gcountry.rus_name}}: {{t.price}}<span style="font-size:60%">&#8381;</span></h2>
+    <h2>🔵 {{ t.destination.name }}, {{t.destination.place.gcountry.rus_name}}: {{t.price}}<span style="font-size:60%">&#8381;</span></h2>&nbsp;<br/>
         <div style="padding-left: .5em; border-width: 0 0 0 1px; border-color: gray; border-style: solid">
         <!-- {{ t.departure|date:"d E(D)" }} -->
         <div><strong>
-        {{ t.departure|date:"d E" }} - {{ t.arrival|date:"d E" }}
+        🗓{{ t.departure|date:"d E" }} - {{ t.arrival|date:"d E" }}
         </strong>
         </div>
-        {{t.get_hd.days_text}}
+        🗓 {{t.get_hd.days_text}}
         {% for n in t.chd_days|create_range %}●
         <!-- <div style="width:5px; height:10px; background-color: blue; display:inline-block; margin-left:-2px"></div> -->
         {% endfor %}
@@ -53,17 +53,17 @@
                 {% endif %}
             {% endfor %} -->
         </div>
-        Вылет {{t.days_to_text}} из {{t.get_origin_airport_name}}
+        🛫 Вылет {{t.get_hd.days_to_text}} из {{t.get_origin_airport_name}}
     </div>
 
     {% for b in t.get_hd.benefits %}
         {% if b.show %}
-            <div style="color:green">+{{b.message }}</div>
+            <div style="color:green">&nbsp;&nbsp;+{{b.message }}</div>
         {% endif %}
     {% endfor %}
     {% for b in t.get_hd.penalties %}
         {% if b.show %}
-            <div style="color:red">-{{b.message }}</div>
+            <div style="color:red">&nbsp;&nbsp;-{{b.message }}</div>
         {% endif %}
     {% endfor %}
  
@@ -78,7 +78,7 @@
 
     <!-- <a href="#">Найти на Aviasales >>></a> -->
     <div>
-    http://{{ request.get_host }}{% url 'enot_app:ticketno' t.id %}
+    🔎 http://{{ request.get_host }}{% url 'enot_app:ticketno' t.id %}
     </div>
 </div>
 &nbsp;<br/>

@@ -78,7 +78,28 @@ def prerate(bid):
     return rt
 
 
+################################################
+
+class Note:
+    def __init__(self):
+        self.benefits = []
+        self.penalties = []
+        self.messages = []
+
+    def append_benefit(self, b):
+        if b['message'] not in self.messages:
+            self.benefits.append(b)
+            self.messages.append(b['message'])
+
+    def append_penalty(self, p):
+        if p['message'] not in self.messages:
+            self.penalties.append(p)
+            self.messages.append(p['message'])
+
+
 def review(trip):
+
+    note = Note()
 
     benefits = []
     penalties = []
@@ -104,7 +125,7 @@ def review(trip):
     rtc += days_to_distance(trip.chd_days, trip.distance)
 
     if trip.departure.hour >= 12:
-        benefits.append({
+        note.append_benefit({
             'kind': 'originDepartTime',
             'message': 'Удобное время вылета из Москвы',
             'show': False
@@ -112,7 +133,7 @@ def review(trip):
         rtc += 50
 
     if trip.arrival.hour in range(8, 21):
-        benefits.append({
+        note.append_benefit({
             'kind': 'returnArrivalTime',
             'message': 'Удобное время возвращения в Москву',
             'show': False
@@ -124,7 +145,7 @@ def review(trip):
     dats = slices[0]['segments'][-1]['legs'][-1]['arrival']
     dat = datetime.strptime(dats.replace(':', ''), '%Y-%m-%dT%H%M%z')
     if dat.hour in range(10, 21):
-        benefits.append({
+        note.append_benefit({
             'kind': 'destinationArrivalTime',
             'message': 'Удобное время прибытия в пункт назначения',
             'show': False
@@ -136,7 +157,7 @@ def review(trip):
     ddts = slices[-1]['segments'][0]['legs'][0]['departure']
     ddt = datetime.strptime(ddts.replace(':', ''), '%Y-%m-%dT%H%M%z')
     if ddt.hour > 10:
-        benefits.append({
+        note.append_benefit({
             'kind': 'destinationDepartureTime',
             'message': 'Удобное время вылета обратно',
             'show': False
@@ -148,21 +169,21 @@ def review(trip):
     """ total number of stops """
     tns = slices[0]['slice_stops']+slices[1]['slice_stops']
     if tns == 0:
-        benefits.append({
+        note.append_benefit({
             'kind': 'directFlight',
             'message': 'Прямые рейсы в обе стороны',
             'show': True
         })
         rtc += 300
     elif tns == 1:
-        benefits.append({
+        note.append_benefit({
             'kind': 'semiDirectFlight',
             'message': 'Прямой рейс в одну сторону',
             'show': True
         })
         rtc += 100
     elif tns > 2:
-        penalties.append({
+        note.append_penalty({
             'kind': 'moreThanTwoStops',
             'message': 'Много стыковок',
             'show': True
@@ -204,7 +225,7 @@ def review(trip):
             # checking aircraft
             acr = Aircraft.objects.get(name=l['aircraft']).rating
             if acr >= 150:
-                benefits.append({
+                note.append_benefit({
                     'kind': 'ratedAircraft',
                     'message': 'Хороший самолёт %s: %s' % (drs, l['aircraft']),
                     'show': True
@@ -217,7 +238,7 @@ def review(trip):
                 co = Carrier.objects.get(iata=l['carrier'])
             except Carrier.DoesNotExist:
                 rtc -= 100
-                penalties.append({
+                note.append_penalty({
                     'kind': 'unknownCarrier',
                     'message': 'Неизвестная авиакомпания',
                     'show': False
@@ -227,7 +248,7 @@ def review(trip):
                 cor = co.rating
                 rtc += cor*2
                 if cor > 50:
-                    benefits.append({
+                    note.append_benefit({
                         'kind': 'ratedCarrier',
                         'message': 'Хорошая авиакомпания: %s' % co.name,
                         'show': True
@@ -285,14 +306,14 @@ def review(trip):
                     })
 
                     if st < 4000:
-                        penalties.append({
+                        note.append_penalty({
                             'kind': 'veryShortStop',
                             'message': 'Очень короткая стыковка %s: %s' % (drs, fst),
                             'show': True
                         })
                         rtc -= 100
                     elif st > 3600 * 5:
-                        penalties.append({
+                        note.append_penalty({
                             'kind': 'veryLongStop',
                             'message': 'Очень длинная стыковка %s: %s' % (drs, fst),
                             'show': True
@@ -314,7 +335,7 @@ def review(trip):
     pen = 150*(lc-1)
     rtc -= pen
     if lc > 1:
-        penalties.append({
+        note.append_penalty({
             'kind': 'differentCarriers',
             'message': 'Несколько авиакомпаний',
             'show': True
@@ -341,14 +362,20 @@ def review(trip):
         trip.save()
     days_to_text = "через "+str(days_to)+" "+russian_plurals('день', days_to)
 
+    # benefits_text = []
+    # filtered_benefits = [b for b in benefits if b not in filtered_benefits]
+
+    # filtered_penalties = []
+    # filtered_penalties = [b for b in penalties if b not in filtered_penalties]
+
     return({
         'rt_comfort': rtc,
         'rt_price': rtp,
         'rt_eff': eff,
         'rt': rt,
         'hd': {
-            'benefits': benefits,
-            'penalties': penalties,
+            'benefits': note.benefits,
+            'penalties': note.penalties,
             'carriers': carriers_text,
             'details': details,
             'days_text': days_text,
