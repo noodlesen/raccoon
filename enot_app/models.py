@@ -293,6 +293,9 @@ class Trip(models.Model):
     """ Human data """
     hd = models.TextField()
 
+    def __str__(self):
+        return('%s %d (%s - %s) %dд' % (self.destination_name, self.price, self.departure.strftime('%d/%m'), self.arrival.strftime('%d/%m'), self.chd_days))
+
     def get_hd(self):
         return json.loads(self.hd)
 

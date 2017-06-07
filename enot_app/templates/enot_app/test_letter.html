@@ -76,7 +76,8 @@
         ...
     {% endfor %} -->
 
-    <a href="#">Найти на Aviasales >>></a>
+    <!-- <a href="#">Найти на Aviasales >>></a> -->
+    http://{{ request.get_host }}{% url 'enot_app:ticketno' t.id %}
 
 
 

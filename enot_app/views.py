@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.cache import cache_page
@@ -17,8 +17,10 @@ def letter_page(request):
     trips = Trip.objects.filter(expose=True, price__lt=35000, rating__gt=100).order_by('price')#[:25]
     return render(request, 'enot_app/test_letter.html',  {'trips': trips, 'debug': DEBUG})
 
+
 def main_page(request):
     return render(request, 'enot_app/main.html',  {})
+
 
 def unsubscribe(request, hsh):
     try:
@@ -28,6 +30,12 @@ def unsubscribe(request, hsh):
     else:
         s.delete()
     return render(request, 'enot_app/pricelist.html', {})
+
+
+def ticket_no(request, no):
+    #return redirect('https://aviasales.ru')
+    return JsonResponse({'no': no})
+
 
 # @ensure_csrf_cookie
 # #@cache_page(3600)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Subscriber
-from enot_app.models import City, DayJob, Bid, Card, GPlace, Tag, Hotel, Quote
+from enot_app.models import City, DayJob, Bid, Card, GPlace, Tag, Hotel, Quote, Trip
 
 # Register your models here.
 
@@ -32,6 +32,7 @@ admin.site.register(Subscriber)
 admin.site.register(City)
 admin.site.register(DayJob)
 admin.site.register(Bid)
+admin.site.register(Trip)
 admin.site.register(Tag)
 admin.site.register(Card, CardAdmin)
 admin.site.register(GPlace)
