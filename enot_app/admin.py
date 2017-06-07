@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Subscriber
-from enot_app.models import City, DayJob, Bid, Card, GPlace, Tag, Hotel
+from enot_app.models import City, DayJob, Bid, Card, GPlace, Tag, Hotel, Quote
 
 # Register your models here.
 
