@@ -48,7 +48,7 @@ class GPlace(models.Model):
 
     @staticmethod
     def autocomplete_search_fields():
-        return ('id__iexact', 'rus_name__icontains',)
+        return ('id__iexact', 'rus_name__icontains', 'eng_name__icontains')
 
 
 class Destination(models.Model):
@@ -532,5 +532,22 @@ class Card(models.Model):
     link = models.CharField(max_length=255)
     tags = models.ManyToManyField(Tag)
     place = models.ForeignKey(GPlace, null=True)
+
+    def __str__(self):
+        return '%s | %s - %s...' % (self.link, self.place.rus_name, self.text[:50])
+
+
+class Hotel(models.Model):
+    name = models.CharField(max_length=50)
+    address = models.CharField(max_length=100)
+    description = models.TextField()
+    SEGMENT_CHOICES = (
+        ('low', 'LOW'),
+        ('mid', 'MID'),
+        ('high', 'HIGH'),
+    )
+    segment = models.CharField(max_length=5, choices=SEGMENT_CHOICES, default='mid')
+    blink = models.CharField(max_length=100)
+    place = models.ForeignKey(GPlace)
 
 

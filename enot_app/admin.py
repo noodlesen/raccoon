@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Subscriber
-from enot_app.models import City, DayJob, Bid, Card, GPlace, Tag
+from enot_app.models import City, DayJob, Bid, Card, GPlace, Tag, Hotel
 
 # Register your models here.
 
@@ -14,6 +14,13 @@ class CardAdmin(admin.ModelAdmin):
         'm2m': ['tags'],
     }
 
+class HotelAdmin(admin.ModelAdmin):
+    raw_id_fields=('place',)
+    autocomplete_lookup_fields = {
+        'fk': ['place'],
+        #'m2m': ['tags'],
+    }
+
 admin.site.register(Subscriber)
 admin.site.register(City)
 admin.site.register(DayJob)
@@ -21,3 +28,4 @@ admin.site.register(Bid)
 admin.site.register(Tag)
 admin.site.register(Card, CardAdmin)
 admin.site.register(GPlace)
+admin.site.register(Hotel, HotelAdmin)
