@@ -24,6 +24,24 @@ class GCountry(models.Model):
     slug = models.SlugField(max_length=50)
 
 
+# class PlaceKeys(models.Model):
+#     see = models.IntegerField(default=0)
+#     bch = models.IntegerField(default=0)
+#     fod = models.IntegerField(default=0)
+#     ski = models.IntegerField(default=0)
+#     nlf = models.IntegerField(default=0)
+#     hst = models.IntegerField(default=0)
+#     dve = models.IntegerField(default=0)
+#     shp = models.IntegerField(default=0)
+#     kid = models.IntegerField(default=0)
+#     bea = models.IntegerField(default=0)
+#     mnt = models.IntegerField(default=0)
+#     isl = models.IntegerField(default=0)
+#     mar = models.IntegerField(default=0)
+    # novisa = models.IntegerField(default=0)
+    # nopass = models.IntegerField(default=0)
+
+
 class GPlace(models.Model):
     eng_name = models.CharField(max_length=50)
     rus_name = models.CharField(max_length=50)
@@ -42,6 +60,21 @@ class GPlace(models.Model):
     dup = models.IntegerField()  # RM
     chd_airports = models.TextField()  # change to many-to-many
     city_code = models.CharField(max_length=3)
+    #keys = models.OneToOneField(PlaceKeys, null=True)
+
+    key_see = models.IntegerField(default=0)
+    key_bch = models.IntegerField(default=0)
+    key_fod = models.IntegerField(default=0)
+    key_ski = models.IntegerField(default=0)
+    key_nlf = models.IntegerField(default=0)
+    key_hst = models.IntegerField(default=0)
+    key_dve = models.IntegerField(default=0)
+    key_shp = models.IntegerField(default=0)
+    key_kid = models.IntegerField(default=0)
+    key_bea = models.IntegerField(default=0)
+    key_mnt = models.IntegerField(default=0)
+    key_isl = models.IntegerField(default=0)
+    key_mar = models.IntegerField(default=0)
 
     def __str__(self):
         return ('%s, %s' % (self.rus_name, self.gcountry.rus_name))
@@ -528,6 +561,10 @@ class Quote(models.Model):
     chd_data = models.TextField()  # RM?
     chd_rating = models.IntegerField(default=0)
     tags = models.ManyToManyField(Tag)
+    sex = models.CharField(max_length=1, null=True)
+
+    def __str__(self):
+        return '%s: %s... > %s' % (self.place.rus_name, self.text[:70],'| ' + ' | '.join([t.name for t in self.tags.all()]))
 
 
 class Card(models.Model):
