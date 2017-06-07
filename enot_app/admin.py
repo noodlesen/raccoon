@@ -21,6 +21,13 @@ class HotelAdmin(admin.ModelAdmin):
         #'m2m': ['tags'],
     }
 
+class QuoteAdmin(admin.ModelAdmin):
+    raw_id_fields=('place',)
+    autocomplete_lookup_fields = {
+        'fk': ['place'],
+        #'m2m': ['tags'],
+    }
+
 admin.site.register(Subscriber)
 admin.site.register(City)
 admin.site.register(DayJob)
@@ -29,3 +36,4 @@ admin.site.register(Tag)
 admin.site.register(Card, CardAdmin)
 admin.site.register(GPlace)
 admin.site.register(Hotel, HotelAdmin)
+admin.site.register(Quote, QuoteAdmin)
