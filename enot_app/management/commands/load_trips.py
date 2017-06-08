@@ -115,7 +115,7 @@ class Command(BaseCommand):
                             t.rt_price = rw['rt_price']
                             t.rt_eff = rw['rt_eff']
                             t.rating = rw['rt']
-                            t.tplinl = rw['tplink']
+                            t.tplink = rw['tplink']
                             t.hd = json.dumps(rw['hd'])
                             t.save()
                             t.slug = get_hash(str(t.id))
