@@ -109,8 +109,8 @@ class Command(BaseCommand):
 
                         for r in res:
                             t = Trip.load_qpx(r, b)
-                            rw = review(t)
                             t.origin_city = target_city
+                            rw = review(t)
                             t.rt_comfort = rw['rt_comfort']
                             t.rt_price = rw['rt_price']
                             t.rt_eff = rw['rt_eff']
