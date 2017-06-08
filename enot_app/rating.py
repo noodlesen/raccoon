@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 from enot_app.models import Carrier, Aircraft, Airport
+from enot.settings import TRAVEL_PAYOUTS_MARKER
 
 from .toolbox import russian_plurals, now_in_moscow
 
@@ -362,17 +363,22 @@ def review(trip):
         trip.save()
     days_to_text = "через "+str(days_to)+" "+russian_plurals('день', days_to)
 
-    # benefits_text = []
-    # filtered_benefits = [b for b in benefits if b not in filtered_benefits]
+    ddate_url = datetime.strftime(trip.departure, '%Y-%m-%d')
+    adate_url = datetime.strftime(trip.arrival, '%Y-%m-%d')
 
-    # filtered_penalties = []
-    # filtered_penalties = [b for b in penalties if b not in filtered_penalties]
+    tplink = "http://www.aviasales.ru/?marker=%d" % TRAVEL_PAYOUTS_MARKER
+    tplink += "&origin_iata=%s&destination_iata=%s&depart_date=%s&return_date=%s" % (
+        trip.origin_city.code, trip.destination_code, ddate_url, adate_url
+    )
+
+    #print (tplink, len(tplink))
 
     return({
         'rt_comfort': rtc,
         'rt_price': rtp,
         'rt_eff': eff,
         'rt': rt,
+        'tplink': tplink,
         'hd': {
             'benefits': note.benefits,
             'penalties': note.penalties,

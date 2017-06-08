@@ -33,8 +33,11 @@ def unsubscribe(request, hsh):
 
 
 def ticket_no(request, no):
-    #return redirect('https://aviasales.ru')
-    return JsonResponse({'no': no})
+    try:
+        t = Trip.objects.get(id=no)
+    except Trip.DoesNotExist:
+        return redirect('enot_app:main_page')
+    return redirect(t.tplink)
 
 
 # @ensure_csrf_cookie

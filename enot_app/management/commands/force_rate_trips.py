@@ -17,6 +17,7 @@ class Command(BaseCommand):
             t.rt_comfort = r['rt_comfort']
             t.rt_eff = r['rt_eff']
             t.rating = r['rt']
+            t.tplink = r['tplink']
 
             t.hd = json.dumps(r['hd'])
 

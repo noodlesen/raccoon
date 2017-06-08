@@ -297,6 +297,7 @@ class Trip(models.Model):
     #route_points = models.TextField(null=True)  # RM
     created_at = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True)
+    tplink = models.CharField(max_length=255, null = True)
 
     """ Rating fields """
     pre_rating = models.IntegerField(null=True)
