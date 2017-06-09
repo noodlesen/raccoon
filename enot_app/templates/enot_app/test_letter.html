@@ -28,7 +28,7 @@
 </div>
 
 {% for t in trips %}
-    {{t.destination_name}}
+    {{t.destination_name|title}}: {{t.price}}<!-- &#8381; -->
     {% if forloop.last %}
     {% else %}
     , 
