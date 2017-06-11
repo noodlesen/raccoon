@@ -32,6 +32,7 @@ class QuoteAdmin(admin.ModelAdmin):
     }
     search_fields = ['text', 'place__rus_name']
     list_display = ('place', 'text',)
+    fields = ['place', 'text', 'tags']
 
 admin.site.register(Subscriber)
 admin.site.register(City)
