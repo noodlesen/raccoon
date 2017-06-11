@@ -13,6 +13,9 @@ class CardAdmin(admin.ModelAdmin):
         'fk': ['place'],
         'm2m': ['tags'],
     }
+    list_display = ('place', 'text', 'link', 'published',)
+    search_fields = ['text', 'place__rus_name', 'link']
+    #list_filter = ['place']
 
 class HotelAdmin(admin.ModelAdmin):
     raw_id_fields=('place',)
@@ -27,6 +30,8 @@ class QuoteAdmin(admin.ModelAdmin):
         'fk': ['place'],
         'm2m': ['tags'],
     }
+    search_fields = ['text', 'place__rus_name']
+    list_display = ('place', 'text',)
 
 admin.site.register(Subscriber)
 admin.site.register(City)
