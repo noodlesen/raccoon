@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.cache import cache_page
+from django.contrib.auth.decorators import login_required
 
 from datetime import datetime
 
@@ -12,7 +13,7 @@ from .models import Bid, Destination, Trip, Subscriber, GCountry, GDirection
 
 # Create your views here.
 
-
+@login_required
 def letter_page(request):
     trips = Trip.objects.filter(expose=True, price__lt=35000, rating__gt=100).order_by('price')#[:25]
     return render(request, 'enot_app/test_letter.html',  {'trips': trips, 'debug': DEBUG})
@@ -36,8 +37,12 @@ def ticket_no(request, no):
     try:
         t = Trip.objects.get(id=no)
     except Trip.DoesNotExist:
-        return redirect('enot_app:main_page')
+        return redirect('enot_app:outdated')
     return redirect(t.tplink)
+
+
+def outdated(request):
+    return render(request, 'enot_app/outdated.html', {})
 
 
 # @ensure_csrf_cookie

@@ -47,6 +47,9 @@ def prerate(bid):
     # days to distance
     rt = days_to_distance(days, dist)
 
+    if dist > Z3:  # bonus for long distances
+        rt += 200
+
     # price to distance
     eff = int(dist/bid.price*3000)
     rt += eff
@@ -60,20 +63,21 @@ def prerate(bid):
         rt -= 300
 
     # check weekdays
-    wd = bid.departure_date.weekday()
-    if wd == 3:
-        rt += 50
-    elif wd == 4 or wd == 5:
-        rt += 100
+    # wd = bid.departure_date.weekday()
+    # if wd == 3:
+    #     rt += 50
+    # elif wd == 4 or wd == 5:
+    #     rt += 100
 
     # check stops
-    rt = rt-bid.stops*100
+    stop_penalty = int((10000-dist)/80)
+    rt = rt-bid.stops*stop_penalty
 
     # check average price
     ap = bid.destination.average_price
     rt = rt + int((ap-bid.price)/ap*1000)
 
-    if bid.price < 15000:
+    if bid.price < 30000:
         rt *= 1.5
 
     return rt
