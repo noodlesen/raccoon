@@ -1,0 +1,17 @@
+.plate {
+    background-color: white;
+    border-radius: 2em;
+    text-align: center;
+    padding:2em
+}
+
+.group-links{
+    margin-bottom: 3em;
+    margin-top: 3em;
+}
+
+.group-links a{
+    font-size: 180%;
+    font-weight: bolder;
+    display: block;
+}
