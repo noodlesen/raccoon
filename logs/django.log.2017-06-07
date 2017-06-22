@@ -1,0 +1,30 @@
+07.06 20:03:28> Admin Command Error: manage.py show_tags
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/show_tags.py", line 34, in handle
+    tag = Tag.objects.get(id=t['id'])
+NameError: name 'Tag' is not defined
+07.06 20:14:48> Admin Command Error: manage.py show_tags
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/enot/enot_app/management/commands/show_tags.py", line 34, in handle
+    tag = Tag.objects.get(id=t['id'])
+NameError: name 'Tag' is not defined

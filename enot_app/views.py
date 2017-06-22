@@ -15,7 +15,36 @@ from .models import Bid, Destination, Trip, Subscriber, GCountry, GDirection
 
 @login_required
 def letter_page(request):
-    trips = Trip.objects.filter(expose=True, price__lt=35000, rating__gt=100).order_by('price')#[:25]
+
+    preset = {'expose': True, 'price__lt': 35000, 'rating__gt': 100}
+
+    g = request.GET
+    sort = g.get('sort', 'rating')
+    if sort != 'price':
+        sort = '-rating'
+
+    preset['price__lt'] = int(g.get('limit', 35000))
+
+    c = g.get('country')
+    if c:
+        preset['destination__place__gcountry__slug'] = c
+
+    d = g.get('dir')
+    if d:
+        preset['destination__place__gcountry__gdirection__slug'] = d
+
+
+    md = g.get('min_distance')
+    if md:
+        preset['distance__gt'] = int(md)
+
+    md = g.get('max_distance')
+    if md:
+        preset['distance__lt'] = int(md)
+
+
+    
+    trips = Trip.objects.filter(**preset).order_by(sort)  # [:25]
     return render(request, 'enot_app/test_letter.html',  {'trips': trips, 'debug': DEBUG})
 
 
