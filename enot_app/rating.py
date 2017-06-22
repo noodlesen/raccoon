@@ -2,6 +2,7 @@ import json
 from datetime import datetime
 from enot_app.models import Carrier, Aircraft, Airport
 from enot.settings import TRAVEL_PAYOUTS_MARKER
+import pytz
 
 from .toolbox import russian_plurals, now_in_moscow
 
@@ -103,6 +104,8 @@ class Note:
 
 
 def review(trip):
+
+    tz = pytz.timezone('Europe/Moscow')
 
     note = Note()
 
@@ -383,6 +386,7 @@ def review(trip):
         'rt_eff': eff,
         'rt': rt,
         'tplink': tplink,
+        'direct': True if tns == 0 else False,
         'hd': {
             'benefits': note.benefits,
             'penalties': note.penalties,

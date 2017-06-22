@@ -116,6 +116,7 @@ class Command(BaseCommand):
                             t.rt_eff = rw['rt_eff']
                             t.rating = rw['rt']
                             t.tplink = rw['tplink']
+                            t.direct = rw['direct']
                             t.hd = json.dumps(rw['hd'])
                             t.save()
                             t.slug = get_hash(str(t.id))
