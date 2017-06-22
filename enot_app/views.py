@@ -44,8 +44,11 @@ def letter_page(request):
 
     m = g.get('month')
     if m:
-        preset['departure__month'] = int(m)
-        #preset['arrival__month'] = int(m)
+        preset['departure__month'] = int(m) # make tz aware in DB
+
+    d = g.get('direct')
+    if d:
+        preset['direct'] = True
     
     trips = Trip.objects.filter(**preset).order_by(sort)  # [:25]
     return render(request, 'enot_app/test_letter.html',  {'trips': trips, 'debug': DEBUG})
