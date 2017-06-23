@@ -319,6 +319,7 @@ class Trip(models.Model):
     distance = models.IntegerField(null=True)
     bid_price = models.IntegerField(null=True)
     direct = models.BooleanField(default=False)
+    new = models.BooleanField(default=False)
 
     """ Template helpers """
     #days_text = models.CharField(max_length=10, null=True)  # RM

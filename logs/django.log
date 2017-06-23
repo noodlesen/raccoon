@@ -69,3 +69,10 @@ Traceback (most recent call last):
   File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/pytz/tzinfo.py", line 304, in localize
     raise ValueError('Not naive datetime (tzinfo is already set)')
 ValueError: Not naive datetime (tzinfo is already set)
+23.06 10:51:22> Started trip loader task
+23.06 10:51:22> 1: [122897] СПЛИТ | 14д | 2035 км | 14351р | R1251
+23.06 10:51:22> 2: [122757] РИМ | 15д | 2377 км | 11170р | R1200
+23.06 10:51:22> 3: [122807] РИО-ДЕ-ЖАНЕЙРО | 28д | 11542 км | 51861р | R1137
+23.06 10:51:22> 4: [122777] ПАРИЖ | 6д | 2487 км | 12121р | R1035
+23.06 10:51:22> 5: [122868] ЛОНДОН | 15д | 2489 км | 12343р | R903
+23.06 10:51:22> 6: [122837] СТАМБУЛ | 186д | 1764 км | 7035р | R891

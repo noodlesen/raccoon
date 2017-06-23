@@ -44,16 +44,24 @@ def letter_page(request):
 
     m = g.get('month')
     if m:
-        # preset['departure__month'] = int(m) # make tz aware in DB
         m = int(m)
         now = datetime.utcnow()
         ldn = calendar.monthrange(now.year,m)[1]
-        fd = datetime(now.year, m, 1)
-        ld = datetime(now.year, m, ldn)
-        print (fd)
-        print (ld)
+        year = now.year
+        if m < now.month:
+            year += 1
+        fd = datetime(year, m, 1)
+        ld = datetime(year, m, ldn)
         preset['departure__gte'] = fd
         preset['departure__lte'] = ld
+
+    dm = g.get('days_min')
+    if dm:
+        preset['chd_days__gte'] = int(dm)
+
+    dm = g.get('days_max')
+    if dm:
+        preset['chd_days__lte'] = int(dm)
 
 
     d = g.get('direct')

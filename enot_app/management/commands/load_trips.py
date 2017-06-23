@@ -64,7 +64,7 @@ class Command(BaseCommand):
 
         target_city = DayJob.get_target()
 
-        # stop_list = Issue.get_last_stoplist(target_city)
+        stop_list = Issue.get_last_stoplist(target_city)
 
         # print('STOPLIST')
         # print(stop_list)
@@ -107,6 +107,8 @@ class Command(BaseCommand):
                         resp = qpx.search(req)
                         res = resp.top_trips(num=30)
 
+                        
+
                         for r in res:
                             t = Trip.load_qpx(r, b)
                             t.origin_city = target_city
@@ -118,6 +120,8 @@ class Command(BaseCommand):
                             t.tplink = rw['tplink']
                             t.direct = rw['direct']
                             t.hd = json.dumps(rw['hd'])
+                            if b.destination_code not in stop_list:
+                                t.new = True
                             t.save()
                             t.slug = get_hash(str(t.id))
                             t.save()
