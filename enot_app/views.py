@@ -5,7 +5,7 @@ from django.views.decorators.cache import cache_page
 from django.contrib.auth.decorators import login_required
 
 from datetime import datetime
-
+import calendar
 from enot.settings import DEBUG
 
 from .models import Bid, Destination, Trip, Subscriber, GCountry, GDirection
@@ -44,7 +44,17 @@ def letter_page(request):
 
     m = g.get('month')
     if m:
-        preset['departure__month'] = int(m) # make tz aware in DB
+        # preset['departure__month'] = int(m) # make tz aware in DB
+        m = int(m)
+        now = datetime.utcnow()
+        ldn = calendar.monthrange(now.year,m)[1]
+        fd = datetime(now.year, m, 1)
+        ld = datetime(now.year, m, ldn)
+        print (fd)
+        print (ld)
+        preset['departure__gte'] = fd
+        preset['departure__lte'] = ld
+
 
     d = g.get('direct')
     if d:

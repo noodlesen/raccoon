@@ -24,7 +24,7 @@ class Command(BaseCommand):
         trips = Trip.objects.all()
         tz = pytz.timezone('Europe/Moscow')
         for t in trips:
-            t.departure = tz.localize(t.departure)
-            t.arrival = tz.localize(t.arrival)
+            t.departure = t.departure.astimezone(tz)
+            t.arrival = t.arrival.astimezone(tz)
             t.save()
         
