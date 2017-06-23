@@ -1,7 +1,8 @@
 import json
 from datetime import datetime, timedelta
 from operator import itemgetter
-from pytz import timezone
+#from pytz import timezone
+import pytz
 from django.db import models, connection
 from .toolbox import dictfetchall, get_hash, russian_plurals, now_in_moscow, week_day_name
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -128,7 +129,7 @@ class SpiderQueryTP(models.Model):
     start_date = models.DateField()
     requested_at = models.DateTimeField(
         default=datetime(1979, 6, 30, 9, 30, 0, 0,
-                         timezone('Europe/Moscow')
+                         pytz.timezone('Europe/Moscow')
                          )
         )
     expires_at = models.DateField()
@@ -343,6 +344,9 @@ class Trip(models.Model):
         :param qpx: qpx trip dict
         :param bid_info: dict with related bid info (from sql)
         """
+
+        tz = pytz.timezone('Europe/Moscow')
+
         t = cls(
             origin_code=qpx['origin'],
             destination_code=qpx['destination'],
@@ -351,8 +355,6 @@ class Trip(models.Model):
             currency=qpx['currency'],
             departure=qpx['trip_departure'],
             arrival=qpx['trip_arrival'],
-            #carriers=', '.join(qpx['carriers']),
-            #route_points=json.dumps(qpx['route_points']),
             slices=json.dumps(qpx['slices'])
         )
 
