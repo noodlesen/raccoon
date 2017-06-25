@@ -63,10 +63,13 @@ def letter_page(request):
     if dm:
         preset['chd_days__lte'] = int(dm)
 
-
     d = g.get('direct')
     if d:
         preset['direct'] = True
+
+    n = g.get('new')
+    if n:
+        preset['new'] = True
     
     trips = Trip.objects.filter(**preset).order_by(sort)  # [:25]
     return render(request, 'enot_app/test_letter.html',  {'trips': trips, 'debug': DEBUG})
