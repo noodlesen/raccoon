@@ -1,0 +1,1291 @@
+30.04 00:01:41> Bed time! zzz...
+30.04 00:15:47> Bed time! zzz...
+30.04 00:30:45> Bed time! zzz...
+30.04 00:45:37> Bed time! zzz...
+30.04 01:01:45> Bed time! zzz...
+30.04 01:15:43> Bed time! zzz...
+30.04 01:30:48> Bed time! zzz...
+30.04 01:45:37> Bed time! zzz...
+30.04 02:02:59> Bed time! zzz...
+30.04 02:15:53> Bed time! zzz...
+30.04 02:30:52> Bed time! zzz...
+30.04 02:45:35> Bed time! zzz...
+30.04 03:01:40> Bed time! zzz...
+30.04 03:15:46> Bed time! zzz...
+30.04 03:30:47> Bed time! zzz...
+30.04 03:45:36> Bed time! zzz...
+30.04 04:01:37> Starting to load bids
+30.04 04:01:37> planner has not finished ok yesterday
+30.04 04:01:37> Sorting order: -destination
+30.04 04:01:37> LOAD_BIDS: Today's code: LED
+30.04 04:01:41> LED >>> SOU
+30.04 04:01:45> LED >>> SOU
+30.04 04:01:50> LED >>> SOU
+30.04 04:01:54> LED >>> IEV
+30.04 04:01:58> LED >>> IEV
+30.04 04:02:03> LED >>> IEV
+30.04 04:02:10> LED >>> CEB
+30.04 04:02:14> LED >>> CEB
+30.04 04:02:18> LED >>> CEB
+30.04 04:02:22> LED >>> CBR
+30.04 04:02:27> LED >>> CBR
+30.04 04:02:31> LED >>> CBR
+30.04 04:02:35> LED >>> JED
+30.04 04:02:39> LED >>> JED
+30.04 04:02:44> LED >>> JED
+30.04 04:02:48> LED >>> MMA
+30.04 04:02:52> LED >>> MMA
+30.04 04:02:56> LED >>> MMA
+30.04 04:03:00> LED >>> LBA
+30.04 04:03:05> LED >>> LBA
+30.04 04:03:09> LED >>> LBA
+30.04 04:03:13> LED >>> NQT
+30.04 04:03:17> LED >>> NQT
+30.04 04:03:22> LED >>> NQT
+30.04 04:03:26> LED >>> SXM
+30.04 04:03:30> LED >>> SXM
+30.04 04:03:34> LED >>> SXM
+30.04 04:03:39> LED >>> BLL
+30.04 04:03:43> LED >>> BLL
+30.04 04:03:47> LED >>> BLL
+30.04 04:03:51> LED >>> BFS
+30.04 04:03:56> LED >>> BFS
+30.04 04:04:00> LED >>> BFS
+30.04 04:04:04> LED >>> BRE
+30.04 04:04:09> LED >>> BRE
+30.04 04:04:13> LED >>> BRE
+30.04 04:04:17> LED >>> SKG
+30.04 04:04:21> LED >>> SKG
+30.04 04:04:26> LED >>> SKG
+30.04 04:04:31> LED >>> DKR
+30.04 04:04:35> LED >>> DKR
+30.04 04:04:39> LED >>> DKR
+30.04 04:04:43> LED >>> HAV
+30.04 04:04:48> LED >>> HAV
+30.04 04:04:52> LED >>> HAV
+30.04 04:04:57> LED >>> EIN
+30.04 04:05:01> LED >>> EIN
+30.04 04:05:05> LED >>> EIN
+30.04 04:05:09> LED >>> MCT
+30.04 04:05:14> LED >>> MCT
+30.04 04:05:18> LED >>> MCT
+30.04 04:05:22> LED >>> LPL
+30.04 04:05:26> LED >>> LPL
+30.04 04:05:31> LED >>> LPL
+30.04 04:05:35> LED >>> TUN
+30.04 04:05:39> LED >>> TUN
+30.04 04:05:43> LED >>> TUN
+30.04 04:05:48> LED >>> TRD
+30.04 04:05:52> LED >>> TRD
+30.04 04:05:56> LED >>> TRD
+30.04 04:06:00> LED >>> BAH
+30.04 04:06:05> LED >>> BAH
+30.04 04:06:09> LED >>> BAH
+30.04 04:06:13> LED >>> NCL
+30.04 04:06:17> LED >>> NCL
+30.04 04:06:21> LED >>> NCL
+30.04 04:06:26> LED >>> PUJ
+30.04 04:06:30> LED >>> PUJ
+30.04 04:06:34> LED >>> PUJ
+30.04 04:06:39> LED >>> CTA
+30.04 04:06:43> LED >>> CTA
+30.04 04:06:48> LED >>> CTA
+30.04 04:06:52> LED >>> CAS
+30.04 04:06:56> LED >>> CAS
+30.04 04:07:01> LED >>> CAS
+30.04 04:07:05> LED >>> SVG
+30.04 04:07:09> LED >>> SVG
+30.04 04:07:13> LED >>> SVG
+30.04 04:07:18> LED >>> PTY
+30.04 04:07:22> LED >>> PTY
+30.04 04:07:26> LED >>> PTY
+30.04 04:07:30> LED >>> EAP
+30.04 04:07:35> LED >>> EAP
+30.04 04:07:39> LED >>> EAP
+30.04 04:07:43> LED >>> SNN
+30.04 04:07:48> LED >>> SNN
+30.04 04:07:52> LED >>> SNN
+30.04 04:07:56> LED >>> CHC
+30.04 04:08:00> LED >>> CHC
+30.04 04:08:05> LED >>> CHC
+30.04 04:08:09> LED >>> TCI
+30.04 04:08:13> LED >>> TCI
+30.04 04:08:18> LED >>> TCI
+30.04 04:08:22> LED >>> BUH
+30.04 04:08:27> LED >>> BUH
+30.04 04:08:31> LED >>> BUH
+30.04 04:08:35> LED >>> LJU
+30.04 04:08:39> LED >>> LJU
+30.04 04:08:44> LED >>> LJU
+30.04 04:08:48> LED >>> NAS
+30.04 04:08:52> LED >>> NAS
+30.04 04:08:57> LED >>> NAS
+30.04 04:09:01> LED >>> FAO
+30.04 04:09:05> LED >>> FAO
+30.04 04:09:09> LED >>> FAO
+30.04 04:09:14> LED >>> GOT
+30.04 04:09:18> LED >>> GOT
+30.04 04:09:22> LED >>> GOT
+30.04 04:09:27> LED >>> HER
+30.04 04:09:31> LED >>> HER
+30.04 04:09:35> LED >>> HER
+30.04 04:09:40> LED >>> PWM
+30.04 04:09:44> LED >>> PWM
+30.04 04:09:49> LED >>> PWM
+30.04 04:09:53> LED >>> RIC
+30.04 04:09:57> LED >>> RIC
+30.04 04:10:01> LED >>> RIC
+30.04 04:10:06> LED >>> MLA
+30.04 04:10:10> LED >>> MLA
+30.04 04:10:15> LED >>> MLA
+30.04 04:10:20> LED >>> BGO
+30.04 04:10:24> LED >>> BGO
+30.04 04:10:28> LED >>> BGO
+30.04 04:10:32> LED >>> AUH
+30.04 04:10:37> LED >>> AUH
+30.04 04:10:41> LED >>> AUH
+30.04 04:10:45> LED >>> BHX
+30.04 04:10:49> LED >>> BHX
+30.04 04:10:54> LED >>> BHX
+30.04 04:10:58> LED >>> LPA
+30.04 04:11:02> LED >>> LPA
+30.04 04:11:06> LED >>> LPA
+30.04 04:11:11> LED >>> STR
+30.04 04:11:15> LED >>> STR
+30.04 04:11:19> LED >>> STR
+30.04 04:11:23> LED >>> DPS
+30.04 04:11:28> LED >>> DPS
+30.04 04:11:32> LED >>> DPS
+30.04 04:11:37> LED >>> OKC
+30.04 04:11:41> finished to load bids
+30.04 04:15:44> Starting to load bids
+30.04 04:15:44> Sorting order: -id
+30.04 04:15:44> LOAD_BIDS: Today's code: LED
+30.04 04:15:49> LED >>> OKC
+30.04 04:15:53> LED >>> OKC
+30.04 04:15:57> LED >>> CPT
+30.04 04:16:01> LED >>> CPT
+30.04 04:16:06> LED >>> CPT
+30.04 04:16:10> LED >>> RNO
+30.04 04:16:14> LED >>> RNO
+30.04 04:16:18> LED >>> RNO
+30.04 04:16:23> LED >>> YEA
+30.04 04:16:27> LED >>> YEA
+30.04 04:16:31> LED >>> YEA
+30.04 04:16:35> LED >>> ANC
+30.04 04:16:40> LED >>> ANC
+30.04 04:16:44> LED >>> ANC
+30.04 04:16:48> LED >>> CGN
+30.04 04:16:52> LED >>> CGN
+30.04 04:16:57> LED >>> CGN
+30.04 04:17:01> LED >>> YWG
+30.04 04:17:05> LED >>> YWG
+30.04 04:17:09> LED >>> YWG
+30.04 04:17:14> LED >>> SJU
+30.04 04:17:18> LED >>> SJU
+30.04 04:17:22> LED >>> SJU
+30.04 04:17:26> LED >>> SHA
+30.04 04:17:31> LED >>> SHA
+30.04 04:17:36> LED >>> SHA
+30.04 04:17:40> LED >>> MKE
+30.04 04:17:44> LED >>> MKE
+30.04 04:17:48> LED >>> MKE
+30.04 04:17:53> LED >>> ABQ
+30.04 04:17:57> LED >>> ABQ
+30.04 04:18:01> LED >>> ABQ
+30.04 04:18:05> LED >>> IND
+30.04 04:18:10> LED >>> IND
+30.04 04:18:14> LED >>> IND
+30.04 04:18:18> LED >>> YOW
+30.04 04:18:22> LED >>> YOW
+30.04 04:18:27> LED >>> YOW
+30.04 04:18:31> LED >>> CLE
+30.04 04:18:35> LED >>> CLE
+30.04 04:18:40> LED >>> CLE
+30.04 04:18:44> LED >>> HEL
+30.04 04:18:48> LED >>> HEL
+30.04 04:18:53> LED >>> HEL
+30.04 04:18:57> LED >>> GVA
+30.04 04:19:01> LED >>> GVA
+30.04 04:19:06> LED >>> GVA
+30.04 04:19:10> LED >>> MKC
+30.04 04:19:14> LED >>> MKC
+30.04 04:19:18> LED >>> MKC
+30.04 04:19:23> LED >>> BNA
+30.04 04:19:27> LED >>> BNA
+30.04 04:19:31> LED >>> BNA
+30.04 04:19:35> LED >>> OSL
+30.04 04:19:40> LED >>> OSL
+30.04 04:19:44> LED >>> OSL
+30.04 04:19:48> LED >>> YYC
+30.04 04:19:52> LED >>> YYC
+30.04 04:19:56> LED >>> YYC
+30.04 04:20:01> LED >>> MEM
+30.04 04:20:05> LED >>> MEM
+30.04 04:20:09> LED >>> MEM
+30.04 04:20:13> LED >>> SJC
+30.04 04:20:18> LED >>> SJC
+30.04 04:20:22> LED >>> SJC
+30.04 04:20:26> LED >>> PIT
+30.04 04:20:30> LED >>> PIT
+30.04 04:20:35> LED >>> PIT
+30.04 04:20:39> LED >>> OAK
+30.04 04:20:43> LED >>> OAK
+30.04 04:20:47> LED >>> OAK
+30.04 04:20:52> LED >>> BKK
+30.04 04:20:56> LED >>> BKK
+30.04 04:21:01> LED >>> BKK
+30.04 04:21:05> LED >>> CVG
+30.04 04:21:09> LED >>> CVG
+30.04 04:21:13> LED >>> CVG
+30.04 04:21:17> LED >>> PDX
+30.04 04:21:22> LED >>> PDX
+30.04 04:21:26> LED >>> PDX
+30.04 04:21:30> LED >>> BWI
+30.04 04:21:34> LED >>> BWI
+30.04 04:21:39> LED >>> BWI
+30.04 04:21:43> LED >>> STL
+30.04 04:21:47> LED >>> STL
+30.04 04:21:51> LED >>> STL
+30.04 04:21:55> LED >>> SLC
+30.04 04:22:00> LED >>> SLC
+30.04 04:22:04> LED >>> SLC
+30.04 04:22:08> LED >>> CPH
+30.04 04:22:12> LED >>> CPH
+30.04 04:22:17> LED >>> CPH
+30.04 04:22:21> LED >>> YVR
+30.04 04:22:25> LED >>> YVR
+30.04 04:22:29> LED >>> YVR
+30.04 04:22:34> LED >>> MSP
+30.04 04:22:38> LED >>> MSP
+30.04 04:22:42> LED >>> MSP
+30.04 04:22:46> LED >>> MUC
+30.04 04:22:51> LED >>> MUC
+30.04 04:22:55> LED >>> MUC
+30.04 04:22:59> LED >>> DTT
+30.04 04:23:04> LED >>> DTT
+30.04 04:23:08> LED >>> DTT
+30.04 04:23:12> LED >>> CLT
+30.04 04:23:16> LED >>> CLT
+30.04 04:23:21> LED >>> CLT
+30.04 04:23:25> LED >>> PHL
+30.04 04:23:29> LED >>> PHL
+30.04 04:23:33> LED >>> PHL
+30.04 04:23:38> LED >>> PHX
+30.04 04:23:42> LED >>> PHX
+30.04 04:23:46> LED >>> PHX
+30.04 04:23:50> LED >>> SEA
+30.04 04:23:54> LED >>> SEA
+30.04 04:23:59> LED >>> SEA
+30.04 04:24:03> LED >>> DEN
+30.04 04:24:07> LED >>> DEN
+30.04 04:24:11> LED >>> DEN
+30.04 04:24:16> LED >>> IAG
+30.04 04:24:20> LED >>> IAG
+30.04 04:24:24> LED >>> IAG
+30.04 04:24:28> LED >>> CPC
+30.04 04:24:32> LED >>> CPC
+30.04 04:24:37> LED >>> CPC
+30.04 04:24:41> LED >>> KMG
+30.04 04:24:45> LED >>> KMG
+30.04 04:24:49> LED >>> KMG
+30.04 04:24:54> LED >>> ACA
+30.04 04:24:58> LED >>> ACA
+30.04 04:25:02> LED >>> ACA
+30.04 04:25:06> LED >>> LCA
+30.04 04:25:11> LED >>> LCA
+30.04 04:25:16> LED >>> LCA
+30.04 04:25:20> LED >>> SGD
+30.04 04:25:25> LED >>> SGD
+30.04 04:25:29> LED >>> SGD
+30.04 04:25:33> LED >>> BSB
+30.04 04:25:38> LED >>> BSB
+30.04 04:25:42> LED >>> BSB
+30.04 04:25:46> finished to load bids
+30.04 04:30:58> Starting to load bids
+30.04 04:30:58> Sorting order: -id
+30.04 04:30:58> LOAD_BIDS: Today's code: LED
+30.04 04:31:02> LED >>> BPS
+30.04 04:31:07> LED >>> BPS
+30.04 04:31:11> LED >>> BPS
+30.04 04:31:15> LED >>> BOS
+30.04 04:31:19> LED >>> BOS
+30.04 04:31:24> LED >>> BOS
+30.04 04:31:28> LED >>> ALC
+30.04 04:31:32> LED >>> ALC
+30.04 04:31:37> LED >>> ALC
+30.04 04:31:41> LED >>> FLL
+30.04 04:31:45> LED >>> FLL
+30.04 04:31:50> LED >>> FLL
+30.04 04:31:54> LED >>> PEE
+30.04 04:31:58> LED >>> PEE
+30.04 04:32:03> LED >>> PEE
+30.04 04:32:07> LED >>> MID
+30.04 04:32:11> LED >>> MID
+30.04 04:32:16> LED >>> MID
+30.04 04:32:20> LED >>> HKT
+30.04 04:32:25> LED >>> HKT
+30.04 04:32:29> LED >>> HKT
+30.04 04:32:33> LED >>> SDQ
+30.04 04:32:38> LED >>> SDQ
+30.04 04:32:42> LED >>> SDQ
+30.04 04:32:46> LED >>> GLA
+30.04 04:32:50> LED >>> GLA
+30.04 04:32:55> LED >>> GLA
+30.04 04:32:59> LED >>> NQY
+30.04 04:33:03> LED >>> NQY
+30.04 04:33:07> LED >>> NQY
+30.04 04:33:11> LED >>> DFW
+30.04 04:33:16> LED >>> DFW
+30.04 04:33:20> LED >>> DFW
+30.04 04:33:24> LED >>> VNS
+30.04 04:33:28> LED >>> VNS
+30.04 04:33:33> LED >>> VNS
+30.04 04:33:37> LED >>> OAX
+30.04 04:33:41> LED >>> OAX
+30.04 04:33:45> LED >>> OAX
+30.04 04:33:49> LED >>> MAN
+30.04 04:33:54> LED >>> MAN
+30.04 04:33:58> LED >>> MAN
+30.04 04:34:02> LED >>> AVN
+30.04 04:34:06> LED >>> AVN
+30.04 04:34:11> LED >>> AVN
+30.04 04:34:15> LED >>> BAK
+30.04 04:34:20> LED >>> BAK
+30.04 04:34:24> LED >>> BAK
+30.04 04:34:28> LED >>> ANR
+30.04 04:34:33> LED >>> ANR
+30.04 04:34:37> LED >>> ANR
+30.04 04:34:41> LED >>> TIA
+30.04 04:34:45> LED >>> TIA
+30.04 04:34:50> LED >>> TIA
+30.04 04:34:54> LED >>> DLC
+30.04 04:34:58> LED >>> DLC
+30.04 04:35:02> LED >>> DLC
+30.04 04:35:07> LED >>> PER
+30.04 04:35:11> LED >>> PER
+30.04 04:35:15> LED >>> PER
+30.04 04:35:19> LED >>> AGR
+30.04 04:35:24> LED >>> AGR
+30.04 04:35:28> LED >>> AGR
+30.04 04:35:32> LED >>> KHH
+30.04 04:35:36> LED >>> KHH
+30.04 04:35:41> LED >>> KHH
+30.04 04:35:45> LED >>> GDL
+30.04 04:35:49> LED >>> GDL
+30.04 04:35:53> LED >>> GDL
+30.04 04:35:57> LED >>> SXB
+30.04 04:36:02> LED >>> SXB
+30.04 04:36:06> LED >>> SXB
+30.04 04:36:10> LED >>> ABZ
+30.04 04:36:14> LED >>> ABZ
+30.04 04:36:19> LED >>> ABZ
+30.04 04:36:23> LED >>> LIL
+30.04 04:36:27> LED >>> LIL
+30.04 04:36:31> LED >>> LIL
+30.04 04:36:36> LED >>> UDR
+30.04 04:36:40> LED >>> UDR
+30.04 04:36:44> LED >>> UDR
+30.04 04:36:48> LED >>> SJO
+30.04 04:36:52> LED >>> SJO
+30.04 04:36:57> LED >>> SJO
+30.04 04:37:01> LED >>> KIV
+30.04 04:37:06> LED >>> KIV
+30.04 04:37:10> LED >>> KIV
+30.04 04:37:14> LED >>> BES
+30.04 04:37:19> LED >>> BES
+30.04 04:37:23> LED >>> BES
+30.04 04:37:27> LED >>> MPL
+30.04 04:37:31> LED >>> MPL
+30.04 04:37:35> LED >>> MPL
+30.04 04:37:40> LED >>> ZQN
+30.04 04:37:44> LED >>> ZQN
+30.04 04:37:48> LED >>> ZQN
+30.04 04:37:52> LED >>> CSX
+30.04 04:37:57> LED >>> CSX
+30.04 04:38:01> LED >>> CSX
+30.04 04:38:05> LED >>> OST
+30.04 04:38:09> LED >>> OST
+30.04 04:38:14> LED >>> OST
+30.04 04:38:18> LED >>> MCZ
+30.04 04:38:22> LED >>> MCZ
+30.04 04:38:26> LED >>> MCZ
+30.04 04:38:31> LED >>> JMK
+30.04 04:38:35> LED >>> JMK
+30.04 04:38:39> LED >>> JMK
+30.04 04:38:43> LED >>> IKT
+30.04 04:38:48> LED >>> IKT
+30.04 04:38:52> LED >>> IKT
+30.04 04:38:56> LED >>> VTE
+30.04 04:39:01> LED >>> VTE
+30.04 04:39:05> LED >>> VTE
+30.04 04:39:09> LED >>> VOZ
+30.04 04:39:14> LED >>> VOZ
+30.04 04:39:18> LED >>> VOZ
+30.04 04:39:22> LED >>> REC
+30.04 04:39:26> LED >>> REC
+30.04 04:39:31> LED >>> REC
+30.04 04:39:35> LED >>> KOS
+30.04 04:39:39> LED >>> KOS
+30.04 04:39:43> LED >>> KOS
+30.04 04:39:48> LED >>> NUE
+30.04 04:39:52> LED >>> NUE
+30.04 04:39:56> LED >>> NUE
+30.04 04:40:00> LED >>> HUI
+30.04 04:40:05> LED >>> HUI
+30.04 04:40:09> LED >>> HUI
+30.04 04:40:13> LED >>> PMI
+30.04 04:40:18> LED >>> PMI
+30.04 04:40:23> LED >>> PMI
+30.04 04:40:27> LED >>> TSN
+30.04 04:40:31> LED >>> TSN
+30.04 04:40:35> LED >>> TSN
+30.04 04:40:40> LED >>> ADL
+30.04 04:40:44> LED >>> ADL
+30.04 04:40:48> LED >>> ADL
+30.04 04:40:52> LED >>> BKI
+30.04 04:40:56> LED >>> BKI
+30.04 04:41:01> finished to load bids
+30.04 04:45:33> Starting to load bids
+30.04 04:45:33> Sorting order: start_date
+30.04 04:45:33> LOAD_BIDS: Today's code: LED
+30.04 04:45:37> LED >>> KLV
+30.04 04:45:42> LED >>> LYS
+30.04 04:45:46> LED >>> EAS
+30.04 04:45:50> LED >>> MMH
+30.04 04:45:54> LED >>> GRX
+30.04 04:45:59> LED >>> CCU
+30.04 04:46:03> LED >>> SAN
+30.04 04:46:07> LED >>> CAG
+30.04 04:46:11> LED >>> YTO
+30.04 04:46:16> LED >>> RUH
+30.04 04:46:20> LED >>> TZX
+30.04 04:46:24> LED >>> SOF
+30.04 04:46:28> LED >>> LWO
+30.04 04:46:32> LED >>> TAO
+30.04 04:46:37> LED >>> NHA
+30.04 04:46:41> LED >>> AGP
+30.04 04:46:45> LED >>> SFO
+30.04 04:46:49> LED >>> HAM
+30.04 04:46:53> LED >>> UIO
+30.04 04:46:58> LED >>> BDO
+30.04 04:47:02> LED >>> MAA
+30.04 04:47:06> LED >>> DLI
+30.04 04:47:10> LED >>> KRR
+30.04 04:47:15> LED >>> AAQ
+30.04 04:47:19> LED >>> POZ
+30.04 04:47:23> LED >>> ATH
+30.04 04:47:27> LED >>> DUB
+30.04 04:47:32> LED >>> BOM
+30.04 04:47:36> LED >>> ALA
+30.04 04:47:40> LED >>> JOG
+30.04 04:47:44> LED >>> SAT
+30.04 04:47:48> LED >>> KTM
+30.04 04:47:53> LED >>> TSE
+30.04 04:47:57> LED >>> FNC
+30.04 04:48:01> LED >>> GDZ
+30.04 04:48:06> LED >>> KZN
+30.04 04:48:10> LED >>> MYR
+30.04 04:48:14> LED >>> DUS
+30.04 04:48:18> LED >>> ODS
+30.04 04:48:22> LED >>> AYT
+30.04 04:48:27> LED >>> EVN
+30.04 04:48:31> LED >>> AHO
+30.04 04:48:35> LED >>> HGH
+30.04 04:48:39> LED >>> ORL
+30.04 04:48:44> LED >>> SJJ
+30.04 04:48:48> LED >>> CUZ
+30.04 04:48:52> LED >>> HKG
+30.04 04:48:56> LED >>> MEL
+30.04 04:49:00> LED >>> MSQ
+30.04 04:49:05> LED >>> KUL
+30.04 04:49:09> LED >>> FLN
+30.04 04:49:13> LED >>> SYD
+30.04 04:49:17> LED >>> TLV
+30.04 04:49:22> LED >>> SIA
+30.04 04:49:26> LED >>> FOR
+30.04 04:49:30> LED >>> REP
+30.04 04:49:34> LED >>> CTU
+30.04 04:49:38> LED >>> PNH
+30.04 04:49:43> LED >>> RIX
+30.04 04:49:47> LED >>> SZX
+30.04 04:49:51> LED >>> HOU
+30.04 04:49:55> LED >>> JAI
+30.04 04:50:00> LED >>> UTP
+30.04 04:50:04> LED >>> SVQ
+30.04 04:50:08> LED >>> TLL
+30.04 04:50:12> LED >>> SIN
+30.04 04:50:17> LED >>> BRC
+30.04 04:50:21> LED >>> TRN
+30.04 04:50:25> LED >>> JKT
+30.04 04:50:29> LED >>> VNO
+30.04 04:50:34> LED >>> LJG
+30.04 04:50:38> LED >>> TPE
+30.04 04:50:42> LED >>> MNL
+30.04 04:50:46> LED >>> BLR
+30.04 04:50:51> LED >>> MEX
+30.04 04:50:55> LED >>> BLQ
+30.04 04:50:59> LED >>> SVX
+30.04 04:51:03> LED >>> EDI
+30.04 04:51:08> LED >>> NAT
+30.04 04:51:12> LED >>> BKI
+30.04 04:51:16> LED >>> AMM
+30.04 04:51:20> LED >>> SHE
+30.04 04:51:25> LED >>> TLS
+30.04 04:51:29> LED >>> BIQ
+30.04 04:51:33> LED >>> DUR
+30.04 04:51:37> LED >>> KWL
+30.04 04:51:42> LED >>> CJU
+30.04 04:51:46> LED >>> MSY
+30.04 04:51:50> LED >>> HAJ
+30.04 04:51:54> LED >>> CMB
+30.04 04:51:59> LED >>> PNQ
+30.04 04:52:03> LED >>> YQB
+30.04 04:52:07> LED >>> HYD
+30.04 04:52:11> LED >>> AQP
+30.04 04:52:16> LED >>> CLJ
+30.04 04:52:20> LED >>> CAI
+30.04 04:52:24> LED >>> MDQ
+30.04 04:52:28> LED >>> LEJ
+30.04 04:52:33> LED >>> ATL
+30.04 04:52:37> LED >>> SZG
+30.04 04:52:41> LED >>> NBO
+30.04 04:52:45> LED >>> GOA
+30.04 04:52:49> LED >>> SLA
+30.04 04:52:54> LED >>> AUS
+30.04 04:52:58> LED >>> IBZ
+30.04 04:53:02> LED >>> BHZ
+30.04 04:53:07> LED >>> COR
+30.04 04:53:11> LED >>> STO
+30.04 04:53:15> LED >>> RGN
+30.04 04:53:19> LED >>> MIA
+30.04 04:53:23> LED >>> BRQ
+30.04 04:53:28> LED >>> CHQ
+30.04 04:53:32> LED >>> BWK
+30.04 04:53:36> LED >>> SSH
+30.04 04:53:40> LED >>> MDZ
+30.04 04:53:45> LED >>> BTS
+30.04 04:53:49> LED >>> ZRH
+30.04 04:53:53> LED >>> WAS
+30.04 04:53:57> LED >>> UFA
+30.04 04:54:01> LED >>> YMQ
+30.04 04:54:06> LED >>> SXR
+30.04 04:54:10> LED >>> ADZ
+30.04 04:54:14> LED >>> LAS
+30.04 04:54:18> LED >>> OSA
+30.04 04:54:23> LED >>> MRS
+30.04 04:54:27> LED >>> BOD
+30.04 04:54:31> LED >>> PUS
+30.04 04:54:35> LED >>> COK
+30.04 04:54:39> LED >>> PVR
+30.04 04:54:44> LED >>> HRG
+30.04 04:54:48> LED >>> FRA
+30.04 04:54:52> LED >>> NKG
+30.04 04:54:56> LED >>> CKG
+30.04 04:55:01> LED >>> OVB
+30.04 04:55:05> LED >>> MDE
+30.04 04:55:09> LED >>> BNE
+30.04 04:55:14> LED >>> GOJ
+30.04 04:55:18> LED >>> WRO
+30.04 04:55:22> LED >>> VAR
+30.04 04:55:26> LED >>> JRS
+30.04 04:55:31> LED >>> TIV
+30.04 04:55:35> finished to load bids
+30.04 05:01:24> Starting to load bids
+30.04 05:01:24> Sorting order: id
+30.04 05:01:24> LOAD_BIDS: Today's code: LED
+30.04 05:01:28> LED >>> ROM
+30.04 05:01:33> LED >>> ROM
+30.04 05:01:37> LED >>> ROM
+30.04 05:01:42> LED >>> PAR
+30.04 05:01:46> LED >>> PAR
+30.04 05:01:51> LED >>> PAR
+30.04 05:01:55> LED >>> RIO
+30.04 05:01:59> LED >>> RIO
+30.04 05:02:04> LED >>> RIO
+30.04 05:02:08> LED >>> LED
+30.04 05:02:12> LED >>> LED
+30.04 05:02:17> LED >>> LED
+30.04 05:02:21> LED >>> IST
+30.04 05:02:25> LED >>> IST
+30.04 05:02:30> LED >>> IST
+30.04 05:02:35> LED >>> LON
+30.04 05:02:39> LED >>> LON
+30.04 05:02:43> LED >>> LON
+30.04 05:02:48> LED >>> SPU
+30.04 05:02:52> LED >>> SPU
+30.04 05:02:56> LED >>> SPU
+30.04 05:03:01> LED >>> BCN
+30.04 05:03:05> LED >>> BCN
+30.04 05:03:10> LED >>> BCN
+30.04 05:03:15> LED >>> MIL
+30.04 05:03:19> LED >>> MIL
+30.04 05:03:24> LED >>> MIL
+30.04 05:03:29> LED >>> FLR
+30.04 05:03:33> LED >>> FLR
+30.04 05:03:37> LED >>> FLR
+30.04 05:03:42> LED >>> BUD
+30.04 05:03:46> LED >>> BUD
+30.04 05:03:51> LED >>> BUD
+30.04 05:03:55> LED >>> PRG
+30.04 05:04:00> LED >>> PRG
+30.04 05:04:05> LED >>> PRG
+30.04 05:04:09> LED >>> LIS
+30.04 05:04:14> LED >>> LIS
+30.04 05:04:18> LED >>> LIS
+30.04 05:04:23> LED >>> DBV
+30.04 05:04:27> LED >>> DBV
+30.04 05:04:31> LED >>> DBV
+30.04 05:04:36> LED >>> ZAD
+30.04 05:04:40> LED >>> ZAD
+30.04 05:04:45> LED >>> ZAD
+30.04 05:04:49> LED >>> PUY
+30.04 05:04:53> LED >>> PUY
+30.04 05:04:58> LED >>> PUY
+30.04 05:05:02> LED >>> BER
+30.04 05:05:06> LED >>> BER
+30.04 05:05:11> LED >>> BER
+30.04 05:05:16> LED >>> AMS
+30.04 05:05:20> LED >>> AMS
+30.04 05:05:25> LED >>> AMS
+30.04 05:05:30> LED >>> RAK
+30.04 05:05:34> LED >>> RAK
+30.04 05:05:38> LED >>> RAK
+30.04 05:05:43> LED >>> MAD
+30.04 05:05:47> LED >>> MAD
+30.04 05:05:52> LED >>> MAD
+30.04 05:05:57> LED >>> VCE
+30.04 05:06:01> LED >>> VCE
+30.04 05:06:07> LED >>> VCE
+30.04 05:06:11> LED >>> SEL
+30.04 05:06:16> LED >>> SEL
+30.04 05:06:20> LED >>> SEL
+30.04 05:06:25> LED >>> VIE
+30.04 05:06:29> LED >>> VIE
+30.04 05:06:34> LED >>> VIE
+30.04 05:06:39> LED >>> BUE
+30.04 05:06:43> LED >>> BUE
+30.04 05:06:47> LED >>> BUE
+30.04 05:06:52> LED >>> KRK
+30.04 05:06:56> LED >>> KRK
+30.04 05:07:00> LED >>> KRK
+30.04 05:07:04> LED >>> BEG
+30.04 05:07:09> LED >>> BEG
+30.04 05:07:13> LED >>> BEG
+30.04 05:07:18> LED >>> TBS
+30.04 05:07:22> LED >>> TBS
+30.04 05:07:27> LED >>> TBS
+30.04 05:07:32> LED >>> CEQ
+30.04 05:07:36> LED >>> CEQ
+30.04 05:07:40> LED >>> CEQ
+30.04 05:07:45> LED >>> SCL
+30.04 05:07:49> LED >>> SCL
+30.04 05:07:53> LED >>> SCL
+30.04 05:07:58> LED >>> BUS
+30.04 05:08:02> LED >>> BUS
+30.04 05:08:07> LED >>> BUS
+30.04 05:08:12> LED >>> DEL
+30.04 05:08:16> LED >>> DEL
+30.04 05:08:20> LED >>> DEL
+30.04 05:08:25> LED >>> CAN
+30.04 05:08:29> LED >>> CAN
+30.04 05:08:34> LED >>> CAN
+30.04 05:08:39> LED >>> WAW
+30.04 05:08:43> LED >>> WAW
+30.04 05:08:47> LED >>> WAW
+30.04 05:08:52> LED >>> SGN
+30.04 05:08:56> LED >>> SGN
+30.04 05:09:00> LED >>> SGN
+30.04 05:09:05> LED >>> LAX
+30.04 05:09:09> LED >>> LAX
+30.04 05:09:14> LED >>> LAX
+30.04 05:09:19> LED >>> CNX
+30.04 05:09:23> LED >>> CNX
+30.04 05:09:27> LED >>> CNX
+30.04 05:09:31> LED >>> BJS
+30.04 05:09:36> LED >>> BJS
+30.04 05:09:40> LED >>> BJS
+30.04 05:09:44> LED >>> DXB
+30.04 05:09:49> LED >>> DXB
+30.04 05:09:53> LED >>> DXB
+30.04 05:09:58> LED >>> NCE
+30.04 05:10:02> LED >>> NCE
+30.04 05:10:07> LED >>> NCE
+30.04 05:10:12> LED >>> NAP
+30.04 05:10:16> LED >>> NAP
+30.04 05:10:21> LED >>> NAP
+30.04 05:10:26> LED >>> RMI
+30.04 05:10:30> LED >>> RMI
+30.04 05:10:34> LED >>> RMI
+30.04 05:10:39> LED >>> OPO
+30.04 05:10:43> LED >>> OPO
+30.04 05:10:47> LED >>> OPO
+30.04 05:10:52> LED >>> PMO
+30.04 05:10:56> LED >>> PMO
+30.04 05:11:00> LED >>> PMO
+30.04 05:11:05> LED >>> ZAG
+30.04 05:11:09> LED >>> ZAG
+30.04 05:11:13> LED >>> ZAG
+30.04 05:11:18> LED >>> NYC
+30.04 05:11:22> LED >>> NYC
+30.04 05:11:27> finished to load bids
+30.04 05:15:44> Starting to load bids
+30.04 05:15:44> Sorting order: destination
+30.04 05:15:44> LOAD_BIDS: Today's code: LED
+30.04 05:15:48> LED >>> NYC
+30.04 05:15:53> LED >>> BRU
+30.04 05:15:57> LED >>> BRU
+30.04 05:16:02> LED >>> BRU
+30.04 05:16:06> LED >>> HAN
+30.04 05:16:11> LED >>> HAN
+30.04 05:16:15> LED >>> HAN
+30.04 05:16:20> LED >>> SAO
+30.04 05:16:24> LED >>> SAO
+30.04 05:16:28> LED >>> SAO
+30.04 05:16:32> LED >>> LIM
+30.04 05:16:37> LED >>> LIM
+30.04 05:16:41> LED >>> LIM
+30.04 05:16:45> LED >>> TYO
+30.04 05:16:49> LED >>> TYO
+30.04 05:16:54> LED >>> TYO
+30.04 05:16:59> LED >>> PBS
+30.04 05:17:03> LED >>> PBS
+30.04 05:17:07> LED >>> PBS
+30.04 05:17:11> LED >>> BOG
+30.04 05:17:16> LED >>> BOG
+30.04 05:17:20> LED >>> BOG
+30.04 05:17:24> LED >>> VRN
+30.04 05:17:28> LED >>> VRN
+30.04 05:17:33> LED >>> VRN
+30.04 05:17:37> LED >>> EDI
+30.04 05:17:41> LED >>> EDI
+30.04 05:17:45> LED >>> CTU
+30.04 05:17:50> LED >>> CTU
+30.04 05:17:54> LED >>> REP
+30.04 05:17:58> LED >>> REP
+30.04 05:18:02> LED >>> FOR
+30.04 05:18:07> LED >>> FOR
+30.04 05:18:11> LED >>> SIA
+30.04 05:18:15> LED >>> SIA
+30.04 05:18:19> LED >>> TLV
+30.04 05:18:24> LED >>> TLV
+30.04 05:18:28> LED >>> SYD
+30.04 05:18:33> LED >>> SYD
+30.04 05:18:37> LED >>> FLN
+30.04 05:18:41> LED >>> FLN
+30.04 05:18:45> LED >>> KUL
+30.04 05:18:50> LED >>> KUL
+30.04 05:18:54> LED >>> MSQ
+30.04 05:18:58> LED >>> MSQ
+30.04 05:19:03> LED >>> MEL
+30.04 05:19:07> LED >>> MEL
+30.04 05:19:11> LED >>> HKG
+30.04 05:19:16> LED >>> HKG
+30.04 05:19:20> LED >>> CUZ
+30.04 05:19:25> LED >>> CUZ
+30.04 05:19:29> LED >>> SJJ
+30.04 05:19:33> LED >>> SJJ
+30.04 05:19:37> LED >>> ORL
+30.04 05:19:41> LED >>> ORL
+30.04 05:19:46> LED >>> HGH
+30.04 05:19:50> LED >>> HGH
+30.04 05:19:54> LED >>> AHO
+30.04 05:19:58> LED >>> AHO
+30.04 05:20:03> LED >>> EVN
+30.04 05:20:07> LED >>> EVN
+30.04 05:20:12> LED >>> PNH
+30.04 05:20:17> LED >>> PNH
+30.04 05:20:21> LED >>> RIX
+30.04 05:20:26> LED >>> RIX
+30.04 05:20:31> LED >>> SZX
+30.04 05:20:35> LED >>> SZX
+30.04 05:20:39> LED >>> SVX
+30.04 05:20:43> LED >>> SVX
+30.04 05:20:48> LED >>> BLQ
+30.04 05:20:52> LED >>> BLQ
+30.04 05:20:57> LED >>> MEX
+30.04 05:21:01> LED >>> MEX
+30.04 05:21:05> LED >>> BLR
+30.04 05:21:09> LED >>> BLR
+30.04 05:21:14> LED >>> MNL
+30.04 05:21:18> LED >>> MNL
+30.04 05:21:22> LED >>> TPE
+30.04 05:21:27> LED >>> TPE
+30.04 05:21:31> LED >>> LJG
+30.04 05:21:35> LED >>> LJG
+30.04 05:21:39> LED >>> VNO
+30.04 05:21:44> LED >>> VNO
+30.04 05:21:48> LED >>> JKT
+30.04 05:21:52> LED >>> JKT
+30.04 05:21:57> LED >>> TRN
+30.04 05:22:01> LED >>> TRN
+30.04 05:22:05> LED >>> BRC
+30.04 05:22:09> LED >>> BRC
+30.04 05:22:14> LED >>> SIN
+30.04 05:22:18> LED >>> SIN
+30.04 05:22:22> LED >>> TLL
+30.04 05:22:27> LED >>> TLL
+30.04 05:22:31> LED >>> SVQ
+30.04 05:22:35> LED >>> SVQ
+30.04 05:22:40> LED >>> UTP
+30.04 05:22:44> LED >>> UTP
+30.04 05:22:48> LED >>> JAI
+30.04 05:22:52> LED >>> JAI
+30.04 05:22:57> LED >>> HOU
+30.04 05:23:01> LED >>> HOU
+30.04 05:23:05> LED >>> AYT
+30.04 05:23:10> LED >>> AYT
+30.04 05:23:15> LED >>> ODS
+30.04 05:23:19> LED >>> ODS
+30.04 05:23:23> LED >>> HAM
+30.04 05:23:28> LED >>> HAM
+30.04 05:23:32> LED >>> SFO
+30.04 05:23:36> LED >>> SFO
+30.04 05:23:41> LED >>> AGP
+30.04 05:23:45> LED >>> AGP
+30.04 05:23:50> LED >>> NHA
+30.04 05:23:54> LED >>> NHA
+30.04 05:23:59> LED >>> TAO
+30.04 05:24:03> LED >>> TAO
+30.04 05:24:07> LED >>> LWO
+30.04 05:24:11> LED >>> LWO
+30.04 05:24:16> LED >>> SOF
+30.04 05:24:20> LED >>> SOF
+30.04 05:24:24> LED >>> TZX
+30.04 05:24:29> LED >>> TZX
+30.04 05:24:33> LED >>> RUH
+30.04 05:24:37> LED >>> RUH
+30.04 05:24:41> LED >>> YTO
+30.04 05:24:46> LED >>> YTO
+30.04 05:24:50> LED >>> CAG
+30.04 05:24:54> LED >>> CAG
+30.04 05:24:58> LED >>> SAN
+30.04 05:25:03> LED >>> SAN
+30.04 05:25:07> LED >>> GRX
+30.04 05:25:11> LED >>> GRX
+30.04 05:25:16> LED >>> MMH
+30.04 05:25:20> LED >>> MMH
+30.04 05:25:24> LED >>> EAS
+30.04 05:25:28> LED >>> EAS
+30.04 05:25:33> LED >>> LYS
+30.04 05:25:37> LED >>> LYS
+30.04 05:25:41> LED >>> UIO
+30.04 05:25:45> finished to load bids
+30.04 05:30:51> Starting to load bids
+30.04 05:30:51> Sorting order: id
+30.04 05:30:51> LOAD_BIDS: Today's code: LED
+30.04 05:30:55> LED >>> UIO
+30.04 05:31:00> LED >>> BDO
+30.04 05:31:04> LED >>> BDO
+30.04 05:31:08> LED >>> MAA
+30.04 05:31:12> LED >>> MAA
+30.04 05:31:17> LED >>> DUS
+30.04 05:31:21> LED >>> DUS
+30.04 05:31:26> LED >>> MYR
+30.04 05:31:30> LED >>> MYR
+30.04 05:31:34> LED >>> KZN
+30.04 05:31:39> LED >>> KZN
+30.04 05:31:43> LED >>> GDZ
+30.04 05:31:48> LED >>> GDZ
+30.04 05:31:52> LED >>> FNC
+30.04 05:31:57> LED >>> FNC
+30.04 05:32:01> LED >>> TSE
+30.04 05:32:06> LED >>> TSE
+30.04 05:32:10> LED >>> KTM
+30.04 05:32:15> LED >>> KTM
+30.04 05:32:19> LED >>> SAT
+30.04 05:32:23> LED >>> SAT
+30.04 05:32:27> LED >>> JOG
+30.04 05:32:32> LED >>> JOG
+30.04 05:32:36> LED >>> ALA
+30.04 05:32:40> LED >>> ALA
+30.04 05:32:45> LED >>> BOM
+30.04 05:32:50> LED >>> BOM
+30.04 05:32:54> LED >>> DUB
+30.04 05:32:58> LED >>> DUB
+30.04 05:33:03> LED >>> ATH
+30.04 05:33:07> LED >>> ATH
+30.04 05:33:12> LED >>> POZ
+30.04 05:33:16> LED >>> POZ
+30.04 05:33:20> LED >>> AAQ
+30.04 05:33:25> LED >>> AAQ
+30.04 05:33:30> LED >>> KRR
+30.04 05:33:34> LED >>> KRR
+30.04 05:33:39> LED >>> DLI
+30.04 05:33:43> LED >>> DLI
+30.04 05:33:47> LED >>> KLV
+30.04 05:33:52> LED >>> KLV
+30.04 05:33:56> LED >>> NAT
+30.04 05:34:00> LED >>> NAT
+30.04 05:34:04> LED >>> PFO
+30.04 05:34:09> LED >>> PFO
+30.04 05:34:13> LED >>> PFO
+30.04 05:34:18> LED >>> BNE
+30.04 05:34:22> LED >>> BNE
+30.04 05:34:26> LED >>> MDE
+30.04 05:34:30> LED >>> MDE
+30.04 05:34:34> LED >>> OVB
+30.04 05:34:39> LED >>> OVB
+30.04 05:34:44> LED >>> CKG
+30.04 05:34:48> LED >>> CKG
+30.04 05:34:52> LED >>> NKG
+30.04 05:34:56> LED >>> NKG
+30.04 05:35:01> LED >>> FRA
+30.04 05:35:05> LED >>> FRA
+30.04 05:35:10> LED >>> HRG
+30.04 05:35:15> LED >>> HRG
+30.04 05:35:19> LED >>> PVR
+30.04 05:35:24> LED >>> PVR
+30.04 05:35:28> LED >>> COK
+30.04 05:35:32> LED >>> COK
+30.04 05:35:36> LED >>> PUS
+30.04 05:35:41> LED >>> PUS
+30.04 05:35:45> LED >>> BOD
+30.04 05:35:49> LED >>> BOD
+30.04 05:35:53> LED >>> MRS
+30.04 05:35:58> LED >>> MRS
+30.04 05:36:02> LED >>> OSA
+30.04 05:36:06> LED >>> OSA
+30.04 05:36:10> LED >>> LAS
+30.04 05:36:15> LED >>> LAS
+30.04 05:36:19> LED >>> ADZ
+30.04 05:36:23> LED >>> ADZ
+30.04 05:36:27> LED >>> SXR
+30.04 05:36:32> LED >>> SXR
+30.04 05:36:36> LED >>> YMQ
+30.04 05:36:40> LED >>> YMQ
+30.04 05:36:45> LED >>> GOJ
+30.04 05:36:49> LED >>> GOJ
+30.04 05:36:54> LED >>> WRO
+30.04 05:36:58> LED >>> WRO
+30.04 05:37:02> LED >>> VAR
+30.04 05:37:07> LED >>> VAR
+30.04 05:37:11> LED >>> DRS
+30.04 05:37:15> LED >>> DRS
+30.04 05:37:20> LED >>> DRS
+30.04 05:37:24> LED >>> SZV
+30.04 05:37:28> LED >>> SZV
+30.04 05:37:32> LED >>> SZV
+30.04 05:37:36> LED >>> REK
+30.04 05:37:41> LED >>> REK
+30.04 05:37:45> LED >>> REK
+30.04 05:37:49> LED >>> AKL
+30.04 05:37:54> LED >>> AKL
+30.04 05:37:58> LED >>> AKL
+30.04 05:38:02> LED >>> CUN
+30.04 05:38:07> LED >>> CUN
+30.04 05:38:11> LED >>> CUN
+30.04 05:38:15> LED >>> SBZ
+30.04 05:38:19> LED >>> SBZ
+30.04 05:38:24> LED >>> SBZ
+30.04 05:38:28> LED >>> LPQ
+30.04 05:38:32> LED >>> LPQ
+30.04 05:38:36> LED >>> LPQ
+30.04 05:38:41> LED >>> JNB
+30.04 05:38:45> LED >>> JNB
+30.04 05:38:49> LED >>> JNB
+30.04 05:38:53> LED >>> HNL
+30.04 05:38:57> LED >>> HNL
+30.04 05:39:02> LED >>> HNL
+30.04 05:39:06> LED >>> SMR
+30.04 05:39:10> LED >>> SMR
+30.04 05:39:14> LED >>> SMR
+30.04 05:39:19> LED >>> WUH
+30.04 05:39:23> LED >>> WUH
+30.04 05:39:27> LED >>> WUH
+30.04 05:39:31> LED >>> JHM
+30.04 05:39:36> LED >>> JHM
+30.04 05:39:40> LED >>> JHM
+30.04 05:39:44> LED >>> CHI
+30.04 05:39:48> LED >>> CHI
+30.04 05:39:53> LED >>> CHI
+30.04 05:39:57> LED >>> PSA
+30.04 05:40:01> LED >>> PSA
+30.04 05:40:05> LED >>> PSA
+30.04 05:40:10> LED >>> ROV
+30.04 05:40:14> LED >>> ROV
+30.04 05:40:19> LED >>> ROV
+30.04 05:40:24> LED >>> TIV
+30.04 05:40:29> LED >>> TIV
+30.04 05:40:33> LED >>> JRS
+30.04 05:40:38> LED >>> JRS
+30.04 05:40:42> LED >>> UFA
+30.04 05:40:47> LED >>> UFA
+30.04 05:40:51> LED >>> WAS
+30.04 05:40:56> finished to load bids
+30.04 05:45:35> Starting to load bids
+30.04 05:45:35> Sorting order: destination
+30.04 05:45:35> LOAD_BIDS: Today's code: LED
+30.04 05:45:39> LED >>> WAS
+30.04 05:45:44> LED >>> MDQ
+30.04 05:45:48> LED >>> MDQ
+30.04 05:45:52> LED >>> CAI
+30.04 05:45:56> LED >>> CAI
+30.04 05:46:01> LED >>> CLJ
+30.04 05:46:05> LED >>> CLJ
+30.04 05:46:09> LED >>> AQP
+30.04 05:46:13> LED >>> AQP
+30.04 05:46:18> LED >>> HYD
+30.04 05:46:22> LED >>> HYD
+30.04 05:46:26> LED >>> YQB
+30.04 05:46:30> LED >>> YQB
+30.04 05:46:34> LED >>> PNQ
+30.04 05:46:39> LED >>> PNQ
+30.04 05:46:43> LED >>> CMB
+30.04 05:46:47> LED >>> CMB
+30.04 05:46:52> LED >>> HAJ
+30.04 05:46:56> LED >>> HAJ
+30.04 05:47:00> LED >>> MSY
+30.04 05:47:04> LED >>> MSY
+30.04 05:47:09> LED >>> CJU
+30.04 05:47:13> LED >>> CJU
+30.04 05:47:17> LED >>> KWL
+30.04 05:47:21> LED >>> KWL
+30.04 05:47:25> LED >>> CCU
+30.04 05:47:30> LED >>> CCU
+30.04 05:47:34> LED >>> DUR
+30.04 05:47:38> LED >>> DUR
+30.04 05:47:42> LED >>> BIQ
+30.04 05:47:47> LED >>> BIQ
+30.04 05:47:51> LED >>> TLS
+30.04 05:47:55> LED >>> TLS
+30.04 05:47:59> LED >>> SHE
+30.04 05:48:03> LED >>> SHE
+30.04 05:48:08> LED >>> AMM
+30.04 05:48:12> LED >>> AMM
+30.04 05:48:16> LED >>> LEJ
+30.04 05:48:20> LED >>> LEJ
+30.04 05:48:25> LED >>> ATL
+30.04 05:48:29> LED >>> ATL
+30.04 05:48:33> LED >>> SZG
+30.04 05:48:37> LED >>> SZG
+30.04 05:48:41> LED >>> ZRH
+30.04 05:48:46> LED >>> ZRH
+30.04 05:48:51> LED >>> BTS
+30.04 05:48:55> LED >>> BTS
+30.04 05:48:59> LED >>> MDZ
+30.04 05:49:03> LED >>> MDZ
+30.04 05:49:08> LED >>> SSH
+30.04 05:49:12> LED >>> SSH
+30.04 05:49:16> LED >>> BWK
+30.04 05:49:21> LED >>> BWK
+30.04 05:49:25> LED >>> CHQ
+30.04 05:49:29> LED >>> CHQ
+30.04 05:49:33> LED >>> BRQ
+30.04 05:49:38> LED >>> BRQ
+30.04 05:49:42> LED >>> MIA
+30.04 05:49:46> LED >>> MIA
+30.04 05:49:51> LED >>> RGN
+30.04 05:49:55> LED >>> RGN
+30.04 05:50:00> LED >>> STO
+30.04 05:50:04> LED >>> STO
+30.04 05:50:09> LED >>> COR
+30.04 05:50:13> LED >>> COR
+30.04 05:50:17> LED >>> BHZ
+30.04 05:50:22> LED >>> BHZ
+30.04 05:50:26> LED >>> IBZ
+30.04 05:50:30> LED >>> IBZ
+30.04 05:50:35> LED >>> AUS
+30.04 05:50:39> LED >>> AUS
+30.04 05:50:43> LED >>> SLA
+30.04 05:50:47> LED >>> SLA
+30.04 05:50:52> LED >>> GOA
+30.04 05:50:56> LED >>> GOA
+30.04 05:51:00> LED >>> NBO
+30.04 05:51:04> LED >>> NBO
+30.04 05:51:05> finished to load bids
+30.04 06:01:47> Starting to load bids
+30.04 06:01:47> Sorting order: start_date
+30.04 06:01:47> LOAD_BIDS: Today's code: LED
+30.04 06:01:47> finished to load bids
+30.04 06:15:49> Starting to load bids
+30.04 06:15:50> Sorting order: destination
+30.04 06:15:50> LOAD_BIDS: Today's code: LED
+30.04 06:15:50> finished to load bids
+30.04 06:30:56> Starting to load bids
+30.04 06:30:56> Sorting order: id
+30.04 06:30:56> LOAD_BIDS: Today's code: LED
+30.04 06:30:56> finished to load bids
+30.04 06:45:37> Starting to load bids
+30.04 06:45:37> Sorting order: start_date
+30.04 06:45:37> LOAD_BIDS: Today's code: LED
+30.04 06:45:37> finished to load bids
+30.04 07:01:41> Started trip loader task
+30.04 07:01:41> Bed time! zzz...
+30.04 07:01:42> Admin Command Error: /home/Kostikzzz/raccoon/manage.py load_trips
+Traceback (most recent call last):
+  File "/home/Kostikzzz/raccoon/manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/home/Kostikzzz/raccoon/enot_app/management/commands/load_trips.py", line 56, in handle
+    stop_list = Issue.get_last_stoplist(target_city)
+  File "/home/Kostikzzz/raccoon/enot_app/models.py", line 398, in get_last_stoplist
+    last_issue = cls.objects.filter(city=tgt).latest('created_at')
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/query.py", line 550, in latest
+    return self._earliest_or_latest(field_name=field_name, direction="-")
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/query.py", line 544, in _earliest_or_latest
+    return obj.get()
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/query.py", line 385, in get
+    self.model._meta.object_name
+enot_app.models.DoesNotExist: Issue matching query does not exist.
+30.04 07:15:46> Bed time! zzz...
+30.04 07:18:12> Admin Command Error: /home/Kostikzzz/raccoon/manage.py build
+Traceback (most recent call last):
+  File "/home/Kostikzzz/raccoon/manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/home/Kostikzzz/raccoon/enot_app/management/commands/build.py", line 59, in handle
+    city = trip_list[0].origin_city
+IndexError: list index out of range
+30.04 07:27:50> Started trip loader task
+30.04 07:27:50> Admin Command Error: manage.py load_trips --limit 1
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/home/Kostikzzz/raccoon/enot_app/management/commands/load_trips.py", line 56, in handle
+    stop_list = Issue.get_last_stoplist(target_city)
+  File "/home/Kostikzzz/raccoon/enot_app/models.py", line 398, in get_last_stoplist
+    last_issue = cls.objects.filter(city=tgt).latest('created_at')
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/query.py", line 550, in latest
+    return self._earliest_or_latest(field_name=field_name, direction="-")
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/query.py", line 544, in _earliest_or_latest
+    return obj.get()
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/query.py", line 385, in get
+    self.model._meta.object_name
+enot_app.models.DoesNotExist: Issue matching query does not exist.
+30.04 07:30:16> Started trip loader task
+30.04 07:30:17> Admin Command Error: manage.py load_trips --limit 1
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/home/Kostikzzz/raccoon/enot_app/management/commands/load_trips.py", line 56, in handle
+    stop_list = Issue.get_last_stoplist(target_city)
+  File "/home/Kostikzzz/raccoon/enot_app/models.py", line 399, in get_last_stoplist
+    last_issue = cls.objects.filter(city=tgt).latest('created_at')
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/query.py", line 550, in latest
+    return self._earliest_or_latest(field_name=field_name, direction="-")
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/query.py", line 544, in _earliest_or_latest
+    return obj.get()
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/query.py", line 385, in get
+    self.model._meta.object_name
+enot_app.models.DoesNotExist: Issue matching query does not exist.
+30.04 07:30:52> Bed time! zzz...
+30.04 07:39:48> Started trip loader task
+30.04 07:39:48> Admin Command Error: manage.py load_trips --limit 1
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/home/Kostikzzz/raccoon/enot_app/management/commands/load_trips.py", line 56, in handle
+    stop_list = Issue.get_last_stoplist(target_city)
+  File "/home/Kostikzzz/raccoon/enot_app/models.py", line 399, in get_last_stoplist
+    last_issue = cls.objects.filter(city=tgt).latest('created_at')
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/query.py", line 550, in latest
+    return self._earliest_or_latest(field_name=field_name, direction="-")
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/query.py", line 544, in _earliest_or_latest
+    return obj.get()
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/query.py", line 385, in get
+    self.model._meta.object_name
+enot_app.models.DoesNotExist: Issue matching query does not exist.
+30.04 07:42:21> Started trip loader task
+30.04 07:42:25> finished to load trips
+30.04 07:43:07> Started trip loader task
+30.04 07:45:32> Bed time! zzz...
+30.04 07:49:40> finished to load trips
+01.05 09:01:45> Bed time! zzz...
+01.05 09:15:42> Bed time! zzz...
+01.05 09:30:53> Bed time! zzz...
+01.05 09:45:37> Bed time! zzz...
+01.05 10:01:45> Bed time! zzz...
+01.05 10:15:43> Bed time! zzz...
+01.05 10:30:53> Bed time! zzz...
+01.05 10:45:38> Bed time! zzz...
+01.05 11:01:43> Bed time! zzz...
+01.05 11:15:46> Bed time! zzz...
+01.05 11:30:48> Bed time! zzz...
+01.05 11:45:39> Bed time! zzz...
+01.05 12:01:52> Bed time! zzz...
+01.05 12:15:41> Bed time! zzz...
+01.05 12:30:57> Bed time! zzz...
+01.05 12:45:38> Bed time! zzz...
+01.05 13:01:52> Bed time! zzz...
+01.05 13:15:53> Bed time! zzz...
+01.05 13:30:55> Bed time! zzz...
+01.05 13:45:34> Bed time! zzz...
+01.05 14:01:44> Bed time! zzz...
+01.05 14:15:53> Bed time! zzz...
+01.05 14:30:51> Bed time! zzz...
+01.05 14:45:46> Bed time! zzz...
+01.05 15:01:55> Bed time! zzz...
+01.05 15:15:57> Bed time! zzz...
+01.05 15:30:51> Bed time! zzz...
+01.05 15:45:50> Bed time! zzz...
+01.05 16:01:46> Bed time! zzz...
+01.05 16:15:49> Bed time! zzz...
+01.05 16:30:44> Bed time! zzz...
+01.05 16:45:44> Bed time! zzz...
+01.05 17:01:50> Bed time! zzz...
+01.05 17:15:48> Bed time! zzz...
+01.05 17:30:53> Bed time! zzz...
+01.05 17:45:42> Bed time! zzz...
+01.05 18:01:45> Bed time! zzz...
+01.05 18:15:50> Bed time! zzz...
+01.05 18:30:49> Bed time! zzz...
+01.05 18:45:39> Bed time! zzz...
+01.05 19:01:32> Bed time! zzz...
+01.05 19:15:51> Bed time! zzz...
+01.05 19:30:54> Bed time! zzz...
+01.05 19:45:40> Bed time! zzz...
+01.05 20:01:44> Bed time! zzz...
+01.05 20:15:55> Bed time! zzz...
+01.05 20:30:46> Bed time! zzz...
+01.05 20:45:34> Bed time! zzz...
+01.05 21:01:28> Bed time! zzz...
+01.05 21:15:47> Bed time! zzz...
+01.05 21:30:44> Bed time! zzz...
+01.05 21:45:36> Bed time! zzz...
+01.05 22:01:42> Bed time! zzz...
+01.05 22:15:41> Bed time! zzz...
+01.05 22:30:47> Bed time! zzz...
+01.05 22:45:37> Bed time! zzz...
+01.05 23:01:32> Bed time! zzz...
+01.05 23:15:45> Bed time! zzz...
+01.05 23:30:51> Bed time! zzz...
+01.05 23:45:40> Bed time! zzz...

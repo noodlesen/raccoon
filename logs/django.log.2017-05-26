@@ -1,0 +1,1501 @@
+24.05 15:27:01> Admin Command Error: manage.py migrate
+Traceback (most recent call last):
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1061, "Duplicate key name 'enot_app_subscriber_email_ea48cecc_uniq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/commands/migrate.py", line 204, in handle
+    fake_initial=fake_initial,
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 115, in migrate
+    state = self._migrate_all_forwards(state, plan, full_plan, fake=fake, fake_initial=fake_initial)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 145, in _migrate_all_forwards
+    state = self.apply_migration(state, migration, fake=fake, fake_initial=fake_initial)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 244, in apply_migration
+    state = migration.apply(state, schema_editor)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/migration.py", line 129, in apply
+    operation.database_forwards(self.app_label, schema_editor, old_state, project_state)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/operations/fields.py", line 204, in database_forwards
+    schema_editor.alter_field(from_model, from_field, to_field)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 495, in alter_field
+    old_db_params, new_db_params, strict)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 678, in _alter_field
+    self.execute(self._create_unique_sql(model, [new_field.column]))
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 112, in execute
+    cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/utils/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1061, "Duplicate key name 'enot_app_subscriber_email_ea48cecc_uniq'")
+24.05 15:28:39> Admin Command Error: manage.py migrate
+Traceback (most recent call last):
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1061, "Duplicate key name 'enot_app_subscriber_email_ea48cecc_uniq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/commands/migrate.py", line 204, in handle
+    fake_initial=fake_initial,
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 115, in migrate
+    state = self._migrate_all_forwards(state, plan, full_plan, fake=fake, fake_initial=fake_initial)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 145, in _migrate_all_forwards
+    state = self.apply_migration(state, migration, fake=fake, fake_initial=fake_initial)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 244, in apply_migration
+    state = migration.apply(state, schema_editor)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/migration.py", line 129, in apply
+    operation.database_forwards(self.app_label, schema_editor, old_state, project_state)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/operations/fields.py", line 204, in database_forwards
+    schema_editor.alter_field(from_model, from_field, to_field)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 495, in alter_field
+    old_db_params, new_db_params, strict)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 678, in _alter_field
+    self.execute(self._create_unique_sql(model, [new_field.column]))
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 112, in execute
+    cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/utils/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1061, "Duplicate key name 'enot_app_subscriber_email_ea48cecc_uniq'")
+24.05 15:30:03> Admin Command Error: manage.py migrate
+Traceback (most recent call last):
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1061, "Duplicate key name 'enot_app_subscriber_email_ea48cecc_uniq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/commands/migrate.py", line 204, in handle
+    fake_initial=fake_initial,
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 115, in migrate
+    state = self._migrate_all_forwards(state, plan, full_plan, fake=fake, fake_initial=fake_initial)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 145, in _migrate_all_forwards
+    state = self.apply_migration(state, migration, fake=fake, fake_initial=fake_initial)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 244, in apply_migration
+    state = migration.apply(state, schema_editor)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/migration.py", line 129, in apply
+    operation.database_forwards(self.app_label, schema_editor, old_state, project_state)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/operations/fields.py", line 204, in database_forwards
+    schema_editor.alter_field(from_model, from_field, to_field)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 495, in alter_field
+    old_db_params, new_db_params, strict)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 678, in _alter_field
+    self.execute(self._create_unique_sql(model, [new_field.column]))
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 112, in execute
+    cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/utils/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1061, "Duplicate key name 'enot_app_subscriber_email_ea48cecc_uniq'")
+24.05 15:31:49> Admin Command Error: manage.py migrate
+Traceback (most recent call last):
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1061, "Duplicate key name 'enot_app_subscriber_email_ea48cecc_uniq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/commands/migrate.py", line 204, in handle
+    fake_initial=fake_initial,
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 115, in migrate
+    state = self._migrate_all_forwards(state, plan, full_plan, fake=fake, fake_initial=fake_initial)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 145, in _migrate_all_forwards
+    state = self.apply_migration(state, migration, fake=fake, fake_initial=fake_initial)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 244, in apply_migration
+    state = migration.apply(state, schema_editor)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/migration.py", line 129, in apply
+    operation.database_forwards(self.app_label, schema_editor, old_state, project_state)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/operations/fields.py", line 204, in database_forwards
+    schema_editor.alter_field(from_model, from_field, to_field)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 495, in alter_field
+    old_db_params, new_db_params, strict)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 678, in _alter_field
+    self.execute(self._create_unique_sql(model, [new_field.column]))
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 112, in execute
+    cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/utils/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1061, "Duplicate key name 'enot_app_subscriber_email_ea48cecc_uniq'")
+24.05 15:32:57> Admin Command Error: manage.py migrate
+Traceback (most recent call last):
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1061, "Duplicate key name 'enot_app_subscriber_email_ea48cecc_uniq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/commands/migrate.py", line 204, in handle
+    fake_initial=fake_initial,
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 115, in migrate
+    state = self._migrate_all_forwards(state, plan, full_plan, fake=fake, fake_initial=fake_initial)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 145, in _migrate_all_forwards
+    state = self.apply_migration(state, migration, fake=fake, fake_initial=fake_initial)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 244, in apply_migration
+    state = migration.apply(state, schema_editor)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/migration.py", line 129, in apply
+    operation.database_forwards(self.app_label, schema_editor, old_state, project_state)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/operations/fields.py", line 204, in database_forwards
+    schema_editor.alter_field(from_model, from_field, to_field)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 495, in alter_field
+    old_db_params, new_db_params, strict)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 678, in _alter_field
+    self.execute(self._create_unique_sql(model, [new_field.column]))
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 112, in execute
+    cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/utils/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1061, "Duplicate key name 'enot_app_subscriber_email_ea48cecc_uniq'")
+24.05 15:33:14> Admin Command Error: manage.py migrate
+Traceback (most recent call last):
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1061, "Duplicate key name 'enot_app_subscriber_hsh_d2ee0937_uniq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/core/management/commands/migrate.py", line 204, in handle
+    fake_initial=fake_initial,
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 115, in migrate
+    state = self._migrate_all_forwards(state, plan, full_plan, fake=fake, fake_initial=fake_initial)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 145, in _migrate_all_forwards
+    state = self.apply_migration(state, migration, fake=fake, fake_initial=fake_initial)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/executor.py", line 244, in apply_migration
+    state = migration.apply(state, schema_editor)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/migration.py", line 129, in apply
+    operation.database_forwards(self.app_label, schema_editor, old_state, project_state)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/migrations/operations/fields.py", line 204, in database_forwards
+    schema_editor.alter_field(from_model, from_field, to_field)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 495, in alter_field
+    old_db_params, new_db_params, strict)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 678, in _alter_field
+    self.execute(self._create_unique_sql(model, [new_field.column]))
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/base/schema.py", line 112, in execute
+    cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/utils/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/Users/lapshov/Documents/dve/lib/python3.4/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1061, "Duplicate key name 'enot_app_subscriber_hsh_d2ee0937_uniq'")
+26.05 11:01:38> Starting to load bids
+26.05 11:01:38> Sorting order: id
+26.05 11:01:38> LOAD_BIDS: Today's code: MOW
+26.05 11:01:42> MOW >>> ROM
+26.05 11:01:43> Admin Command Error: /home/Kostikzzz/raccoon/manage.py load_bids --time 600
+Traceback (most recent call last):
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'best_price' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/Kostikzzz/raccoon/manage.py", line 26, in <module>
+    execute_from_command_line(sys.argv)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/base.py", line 294, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/core/management/base.py", line 345, in execute
+    output = self.handle(*args, **options)
+  File "/home/Kostikzzz/raccoon/enot_app/management/commands/load_bids.py", line 172, in handle
+    bid.save()
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/base.py", line 796, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/base.py", line 824, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/base.py", line 908, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/base.py", line 947, in _do_insert
+    using=using, raw=raw)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/query.py", line 1045, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1054, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/utils/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/django/db/backends/mysql/base.py", line 110, in execute
+    return self.cursor.execute(query, args)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/MySQLdb/connections.py", line 42, in defaulterrorhandler
+    raise errorvalue
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/MySQLdb/cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/MySQLdb/cursors.py", line 374, in _do_query
+    db.query(q)
+  File "/home/Kostikzzz/venv35/lib/python3.5/site-packages/MySQLdb/connections.py", line 270, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'best_price' in 'field list'")
+26.05 11:16:10> Something went wrong last time
+26.05 11:31:09> Something went wrong last time
+26.05 11:45:54> Starting to load bids
+26.05 11:45:54> Sorting order: -destination
+26.05 11:45:54> LOAD_BIDS: Today's code: MOW
+26.05 11:45:58> MOW >>> SOU
+26.05 11:46:03> MOW >>> SOU
+26.05 11:46:07> MOW >>> SOU
+26.05 11:46:11> MOW >>> IEV
+26.05 11:46:16> MOW >>> IEV
+26.05 11:46:20> MOW >>> IEV
+26.05 11:46:25> MOW >>> CEB
+26.05 11:46:29> MOW >>> CEB
+26.05 11:46:33> MOW >>> CEB
+26.05 11:46:38> MOW >>> CBR
+26.05 11:46:42> MOW >>> CBR
+26.05 11:46:46> MOW >>> CBR
+26.05 11:46:50> MOW >>> JED
+26.05 11:46:55> MOW >>> JED
+26.05 11:46:59> MOW >>> JED
+26.05 11:47:03> MOW >>> MMA
+26.05 11:47:07> MOW >>> MMA
+26.05 11:47:12> MOW >>> MMA
+26.05 11:47:16> MOW >>> LBA
+26.05 11:47:20> MOW >>> LBA
+26.05 11:47:24> MOW >>> LBA
+26.05 11:47:29> MOW >>> NQT
+26.05 11:47:33> MOW >>> NQT
+26.05 11:47:37> MOW >>> NQT
+26.05 11:47:41> MOW >>> SXM
+26.05 11:47:46> MOW >>> SXM
+26.05 11:47:50> MOW >>> SXM
+26.05 11:47:54> MOW >>> BLL
+26.05 11:47:58> MOW >>> BLL
+26.05 11:48:03> MOW >>> BLL
+26.05 11:48:07> MOW >>> BFS
+26.05 11:48:11> MOW >>> BFS
+26.05 11:48:15> MOW >>> BFS
+26.05 11:48:20> MOW >>> BRE
+26.05 11:48:24> MOW >>> BRE
+26.05 11:48:28> MOW >>> BRE
+26.05 11:48:33> MOW >>> SKG
+26.05 11:48:37> MOW >>> SKG
+26.05 11:48:42> MOW >>> SKG
+26.05 11:48:46> MOW >>> DKR
+26.05 11:48:50> MOW >>> DKR
+26.05 11:48:55> MOW >>> DKR
+26.05 11:48:59> MOW >>> HAV
+26.05 11:49:03> MOW >>> HAV
+26.05 11:49:08> MOW >>> HAV
+26.05 11:49:13> MOW >>> EIN
+26.05 11:49:17> MOW >>> EIN
+26.05 11:49:21> MOW >>> EIN
+26.05 11:49:26> MOW >>> MCT
+26.05 11:49:30> MOW >>> MCT
+26.05 11:49:34> MOW >>> MCT
+26.05 11:49:38> MOW >>> LPL
+26.05 11:49:43> MOW >>> LPL
+26.05 11:49:47> MOW >>> LPL
+26.05 11:49:51> MOW >>> TUN
+26.05 11:49:55> MOW >>> TUN
+26.05 11:50:00> MOW >>> TUN
+26.05 11:50:04> MOW >>> TRD
+26.05 11:50:09> MOW >>> TRD
+26.05 11:50:13> MOW >>> TRD
+26.05 11:50:17> MOW >>> BAH
+26.05 11:50:22> MOW >>> BAH
+26.05 11:50:26> MOW >>> BAH
+26.05 11:50:30> MOW >>> NCL
+26.05 11:50:35> MOW >>> NCL
+26.05 11:50:39> MOW >>> NCL
+26.05 11:50:43> MOW >>> PUJ
+26.05 11:50:47> MOW >>> PUJ
+26.05 11:50:52> MOW >>> PUJ
+26.05 11:50:56> MOW >>> CTA
+26.05 11:51:01> MOW >>> CTA
+26.05 11:51:06> MOW >>> CTA
+26.05 11:51:10> MOW >>> CAS
+26.05 11:51:14> MOW >>> CAS
+26.05 11:51:19> MOW >>> CAS
+26.05 11:51:23> MOW >>> SVG
+26.05 11:51:28> MOW >>> SVG
+26.05 11:51:32> MOW >>> SVG
+26.05 11:51:36> MOW >>> PTY
+26.05 11:51:43> MOW >>> PTY
+26.05 11:51:48> MOW >>> PTY
+26.05 11:51:52> MOW >>> EAP
+26.05 11:51:57> MOW >>> EAP
+26.05 11:52:01> MOW >>> EAP
+26.05 11:52:05> MOW >>> SNN
+26.05 11:52:09> MOW >>> SNN
+26.05 11:52:14> MOW >>> SNN
+26.05 11:52:18> MOW >>> CHC
+26.05 11:52:22> MOW >>> CHC
+26.05 11:52:26> MOW >>> CHC
+26.05 11:52:31> MOW >>> TCI
+26.05 11:52:35> MOW >>> TCI
+26.05 11:52:39> MOW >>> TCI
+26.05 11:52:44> MOW >>> BUH
+26.05 11:52:48> MOW >>> BUH
+26.05 11:52:53> MOW >>> BUH
+26.05 11:52:57> MOW >>> LJU
+26.05 11:53:02> MOW >>> LJU
+26.05 11:53:06> MOW >>> LJU
+26.05 11:53:11> MOW >>> NAS
+26.05 11:53:15> MOW >>> NAS
+26.05 11:53:19> MOW >>> NAS
+26.05 11:53:24> MOW >>> FAO
+26.05 11:53:28> MOW >>> FAO
+26.05 11:53:33> MOW >>> FAO
+26.05 11:53:37> MOW >>> GOT
+26.05 11:53:41> MOW >>> GOT
+26.05 11:53:46> MOW >>> GOT
+26.05 11:53:50> MOW >>> HER
+26.05 11:53:54> MOW >>> HER
+26.05 11:53:59> MOW >>> HER
+26.05 11:54:03> MOW >>> PWM
+26.05 11:54:08> MOW >>> PWM
+26.05 11:54:12> MOW >>> PWM
+26.05 11:54:16> MOW >>> RIC
+26.05 11:54:20> MOW >>> RIC
+26.05 11:54:24> MOW >>> RIC
+26.05 11:54:29> MOW >>> MLA
+26.05 11:54:33> MOW >>> MLA
+26.05 11:54:37> MOW >>> MLA
+26.05 11:54:42> MOW >>> BGO
+26.05 11:54:46> MOW >>> BGO
+26.05 11:54:50> MOW >>> BGO
+26.05 11:54:55> MOW >>> AUH
+26.05 11:54:59> MOW >>> AUH
+26.05 11:55:03> MOW >>> AUH
+26.05 11:55:08> MOW >>> BHX
+26.05 11:55:12> MOW >>> BHX
+26.05 11:55:16> MOW >>> BHX
+26.05 11:55:21> MOW >>> LPA
+26.05 11:55:25> MOW >>> LPA
+26.05 11:55:30> MOW >>> LPA
+26.05 11:55:34> MOW >>> STR
+26.05 11:55:38> MOW >>> STR
+26.05 11:55:44> MOW >>> STR
+26.05 11:55:48> MOW >>> DPS
+26.05 11:55:53> MOW >>> DPS
+26.05 11:55:57> finished to load bids
+26.05 12:01:34> Starting to load bids
+26.05 12:01:34> Sorting order: start_date
+26.05 12:01:34> LOAD_BIDS: Today's code: MOW
+26.05 12:01:38> MOW >>> MKE
+26.05 12:01:42> MOW >>> YVR
+26.05 12:01:47> MOW >>> MUC
+26.05 12:01:51> MOW >>> SEA
+26.05 12:01:55> MOW >>> LCA
+26.05 12:02:00> MOW >>> BOS
+26.05 12:02:04> MOW >>> ALC
+26.05 12:02:09> MOW >>> PEE
+26.05 12:02:14> MOW >>> HKT
+26.05 12:02:19> MOW >>> SDQ
+26.05 12:02:24> MOW >>> MAN
+26.05 12:02:28> MOW >>> BAK
+26.05 12:02:33> MOW >>> CPH
+26.05 12:02:37> MOW >>> BKK
+26.05 12:02:41> MOW >>> OSL
+26.05 12:02:46> MOW >>> SJU
+26.05 12:02:50> MOW >>> YWG
+26.05 12:03:09> MOW >>> ANC
+26.05 12:03:13> MOW >>> YEA
+26.05 12:03:17> MOW >>> RNO
+26.05 12:03:22> MOW >>> OKC
+26.05 12:03:26> MOW >>> CPT
+26.05 12:03:30> MOW >>> CGN
+26.05 12:03:35> MOW >>> SHA
+26.05 12:03:39> MOW >>> HEL
+26.05 12:03:44> MOW >>> GVA
+26.05 12:03:48> MOW >>> TIA
+26.05 12:03:52> MOW >>> DLC
+26.05 12:03:57> MOW >>> CAI
+26.05 12:04:01> MOW >>> WAS
+26.05 12:04:05> MOW >>> UFA
+26.05 12:04:11> MOW >>> TIV
+26.05 12:04:16> MOW >>> ROV
+26.05 12:04:22> MOW >>> PSA
+26.05 12:04:27> MOW >>> CHI
+26.05 12:04:31> MOW >>> WUH
+26.05 12:04:36> MOW >>> HNL
+26.05 12:04:40> MOW >>> JNB
+26.05 12:04:44> MOW >>> CUN
+26.05 12:04:49> MOW >>> CMB
+26.05 12:04:53> MOW >>> HAJ
+26.05 12:04:58> MOW >>> TLS
+26.05 12:05:02> MOW >>> PER
+26.05 12:05:06> MOW >>> SXB
+26.05 12:05:11> MOW >>> SJO
+26.05 12:05:15> MOW >>> KIV
+26.05 12:05:21> MOW >>> IKT
+26.05 12:05:26> MOW >>> VOZ
+26.05 12:05:30> MOW >>> KOS
+26.05 12:05:35> MOW >>> NUE
+26.05 12:05:39> MOW >>> PMI
+26.05 12:05:43> MOW >>> ATL
+26.05 12:05:48> MOW >>> AMM
+26.05 12:05:52> MOW >>> AKL
+26.05 12:05:56> MOW >>> ANR
+26.05 12:06:01> MOW >>> MCZ
+26.05 12:06:05> MOW >>> JMK
+26.05 12:06:09> MOW >>> GLA
+26.05 12:06:13> MOW >>> VTE
+26.05 12:06:18> MOW >>> REC
+26.05 12:06:22> MOW >>> MID
+26.05 12:06:27> MOW >>> HUI
+26.05 12:06:31> MOW >>> FLL
+26.05 12:06:35> MOW >>> BPS
+26.05 12:06:39> MOW >>> BSB
+26.05 12:06:43> MOW >>> SGD
+26.05 12:06:48> MOW >>> NQY
+26.05 12:06:52> MOW >>> OST
+26.05 12:06:56> MOW >>> CSX
+26.05 12:07:00> MOW >>> KHH
+26.05 12:07:05> MOW >>> GDL
+26.05 12:07:09> MOW >>> AVN
+26.05 12:07:13> MOW >>> ABZ
+26.05 12:07:18> MOW >>> LIL
+26.05 12:07:22> MOW >>> UDR
+26.05 12:07:26> MOW >>> BES
+26.05 12:07:30> MOW >>> VNS
+26.05 12:07:35> MOW >>> MPL
+26.05 12:07:39> MOW >>> ZQN
+26.05 12:07:43> MOW >>> DFW
+26.05 12:07:47> MOW >>> ACA
+26.05 12:07:52> MOW >>> KMG
+26.05 12:07:56> MOW >>> CVG
+26.05 12:08:02> MOW >>> OAK
+26.05 12:08:06> MOW >>> PIT
+26.05 12:08:10> MOW >>> SJC
+26.05 12:08:14> MOW >>> MEM
+26.05 12:08:19> MOW >>> YYC
+26.05 12:08:23> MOW >>> BNA
+26.05 12:08:27> MOW >>> MKC
+26.05 12:08:31> MOW >>> CLE
+26.05 12:08:36> MOW >>> YOW
+26.05 12:08:40> MOW >>> IND
+26.05 12:08:44> MOW >>> PDX
+26.05 12:08:48> MOW >>> BWI
+26.05 12:08:53> MOW >>> AGR
+26.05 12:08:57> MOW >>> CPC
+26.05 12:09:01> MOW >>> IAG
+26.05 12:09:05> MOW >>> DEN
+26.05 12:09:10> MOW >>> PHX
+26.05 12:09:14> MOW >>> PHL
+26.05 12:09:18> MOW >>> CLT
+26.05 12:09:22> MOW >>> DTT
+26.05 12:09:27> MOW >>> MSP
+26.05 12:09:31> MOW >>> SLC
+26.05 12:09:35> MOW >>> OAX
+26.05 12:09:39> MOW >>> STL
+26.05 12:09:43> MOW >>> ABQ
+26.05 12:09:48> MOW >>> REK
+26.05 12:09:52> MOW >>> RIO
+26.05 12:09:56> MOW >>> FLR
+26.05 12:10:01> MOW >>> HKG
+26.05 12:10:05> MOW >>> BUD
+26.05 12:10:10> MOW >>> MEL
+26.05 12:10:14> MOW >>> MSQ
+26.05 12:10:20> MOW >>> PRG
+26.05 12:10:25> MOW >>> KUL
+26.05 12:10:30> MOW >>> LIS
+26.05 12:10:35> MOW >>> SYD
+26.05 12:10:39> MOW >>> DBV
+26.05 12:10:44> MOW >>> HAN
+26.05 12:10:48> MOW >>> SJJ
+26.05 12:10:52> MOW >>> MIL
+26.05 12:10:57> MOW >>> ORL
+26.05 12:11:01> MOW >>> MEX
+26.05 12:11:05> MOW >>> LED
+26.05 12:11:10> MOW >>> BLQ
+26.05 12:11:14> MOW >>> IST
+26.05 12:11:19> MOW >>> SVX
+26.05 12:11:23> MOW >>> RIX
+26.05 12:11:28> MOW >>> LON
+26.05 12:11:32> MOW >>> PNH
+26.05 12:11:37> finished to load bids
+26.05 12:15:50> Starting to load bids
+26.05 12:15:50> Sorting order: -id
+26.05 12:15:50> LOAD_BIDS: Today's code: MOW
+26.05 12:15:55> MOW >>> OKC
+26.05 12:15:59> MOW >>> CPT
+26.05 12:16:03> MOW >>> RNO
+26.05 12:16:08> MOW >>> YEA
+26.05 12:16:12> MOW >>> ANC
+26.05 12:16:16> MOW >>> CGN
+26.05 12:16:21> MOW >>> YWG
+26.05 12:16:25> MOW >>> SJU
+26.05 12:16:29> MOW >>> SHA
+26.05 12:16:34> MOW >>> MKE
+26.05 12:16:38> MOW >>> ABQ
+26.05 12:16:42> MOW >>> IND
+26.05 12:16:46> MOW >>> YOW
+26.05 12:16:51> MOW >>> CLE
+26.05 12:16:55> MOW >>> HEL
+26.05 12:17:00> MOW >>> GVA
+26.05 12:17:04> MOW >>> MKC
+26.05 12:17:08> MOW >>> BNA
+26.05 12:17:13> MOW >>> OSL
+26.05 12:17:17> MOW >>> YYC
+26.05 12:17:21> MOW >>> MEM
+26.05 12:17:26> MOW >>> SJC
+26.05 12:17:30> MOW >>> PIT
+26.05 12:17:34> MOW >>> OAK
+26.05 12:17:38> MOW >>> BKK
+26.05 12:17:43> MOW >>> CVG
+26.05 12:17:47> MOW >>> PDX
+26.05 12:17:51> MOW >>> BWI
+26.05 12:17:56> MOW >>> STL
+26.05 12:18:00> MOW >>> SLC
+26.05 12:18:04> MOW >>> CPH
+26.05 12:18:09> MOW >>> YVR
+26.05 12:18:13> MOW >>> MSP
+26.05 12:18:17> MOW >>> MUC
+26.05 12:18:22> MOW >>> DTT
+26.05 12:18:26> MOW >>> CLT
+26.05 12:18:30> MOW >>> PHL
+26.05 12:18:35> MOW >>> PHX
+26.05 12:18:39> MOW >>> SEA
+26.05 12:18:43> MOW >>> DEN
+26.05 12:18:47> MOW >>> IAG
+26.05 12:18:52> MOW >>> CPC
+26.05 12:18:56> MOW >>> KMG
+26.05 12:19:00> MOW >>> ACA
+26.05 12:19:04> MOW >>> LCA
+26.05 12:19:09> MOW >>> SGD
+26.05 12:19:13> MOW >>> BSB
+26.05 12:19:17> MOW >>> BPS
+26.05 12:19:21> MOW >>> BOS
+26.05 12:19:26> MOW >>> ALC
+26.05 12:19:30> MOW >>> FLL
+26.05 12:19:35> MOW >>> PEE
+26.05 12:19:54> MOW >>> MID
+26.05 12:19:58> MOW >>> HKT
+26.05 12:20:03> MOW >>> SDQ
+26.05 12:20:07> MOW >>> GLA
+26.05 12:20:11> MOW >>> NQY
+26.05 12:20:16> MOW >>> DFW
+26.05 12:20:20> MOW >>> VNS
+26.05 12:20:24> MOW >>> OAX
+26.05 12:20:29> MOW >>> MAN
+26.05 12:20:33> MOW >>> AVN
+26.05 12:20:37> MOW >>> BAK
+26.05 12:20:42> MOW >>> ANR
+26.05 12:20:46> MOW >>> TIA
+26.05 12:20:51> MOW >>> DLC
+26.05 12:20:55> MOW >>> PER
+26.05 12:20:59> MOW >>> AGR
+26.05 12:21:03> MOW >>> KHH
+26.05 12:21:08> MOW >>> GDL
+26.05 12:21:12> MOW >>> SXB
+26.05 12:21:16> MOW >>> ABZ
+26.05 12:21:21> MOW >>> LIL
+26.05 12:21:25> MOW >>> UDR
+26.05 12:21:29> MOW >>> SJO
+26.05 12:21:33> MOW >>> KIV
+26.05 12:21:38> MOW >>> BES
+26.05 12:21:42> MOW >>> MPL
+26.05 12:21:47> MOW >>> ZQN
+26.05 12:21:51> MOW >>> CSX
+26.05 12:21:55> MOW >>> OST
+26.05 12:21:59> MOW >>> MCZ
+26.05 12:22:04> MOW >>> JMK
+26.05 12:22:08> MOW >>> IKT
+26.05 12:22:13> MOW >>> VTE
+26.05 12:22:17> MOW >>> VOZ
+26.05 12:22:22> MOW >>> REC
+26.05 12:22:26> MOW >>> KOS
+26.05 12:22:30> MOW >>> NUE
+26.05 12:22:34> MOW >>> HUI
+26.05 12:22:38> MOW >>> TLS
+26.05 12:22:43> MOW >>> BIQ
+26.05 12:22:47> MOW >>> DUR
+26.05 12:22:51> MOW >>> CCU
+26.05 12:22:56> MOW >>> KWL
+26.05 12:23:00> MOW >>> CJU
+26.05 12:23:04> MOW >>> MSY
+26.05 12:23:08> MOW >>> HAJ
+26.05 12:23:13> MOW >>> CMB
+26.05 12:23:17> MOW >>> PNQ
+26.05 12:23:21> MOW >>> YQB
+26.05 12:23:26> MOW >>> HYD
+26.05 12:23:30> MOW >>> AQP
+26.05 12:23:34> MOW >>> CLJ
+26.05 12:23:38> MOW >>> CAI
+26.05 12:23:43> MOW >>> MDQ
+26.05 12:23:47> MOW >>> WAS
+26.05 12:23:52> MOW >>> UFA
+26.05 12:23:57> MOW >>> JRS
+26.05 12:24:01> MOW >>> TIV
+26.05 12:24:06> MOW >>> ROV
+26.05 12:24:10> MOW >>> PSA
+26.05 12:24:15> MOW >>> CHI
+26.05 12:24:19> MOW >>> JHM
+26.05 12:24:23> MOW >>> WUH
+26.05 12:24:27> MOW >>> SMR
+26.05 12:24:32> MOW >>> HNL
+26.05 12:24:36> MOW >>> DUB
+26.05 12:24:40> MOW >>> BOM
+26.05 12:24:45> MOW >>> ALA
+26.05 12:24:49> MOW >>> JOG
+26.05 12:24:53> MOW >>> SAT
+26.05 12:24:58> MOW >>> KTM
+26.05 12:25:02> MOW >>> TSE
+26.05 12:25:07> MOW >>> FNC
+26.05 12:25:11> MOW >>> GDZ
+26.05 12:25:16> MOW >>> KZN
+26.05 12:25:21> MOW >>> MYR
+26.05 12:25:26> MOW >>> DUS
+26.05 12:25:30> MOW >>> MAA
+26.05 12:25:35> MOW >>> BDO
+26.05 12:25:39> MOW >>> UIO
+26.05 12:25:43> MOW >>> LYS
+26.05 12:25:48> MOW >>> EAS
+26.05 12:25:52> finished to load bids
+26.05 12:31:02> Starting to load bids
+26.05 12:31:02> Sorting order: id
+26.05 12:31:02> LOAD_BIDS: Today's code: MOW
+26.05 12:31:06> MOW >>> ROM
+26.05 12:31:11> MOW >>> PAR
+26.05 12:31:17> MOW >>> BCN
+26.05 12:31:22> MOW >>> BER
+26.05 12:31:26> MOW >>> AMS
+26.05 12:31:31> MOW >>> RAK
+26.05 12:31:35> MOW >>> MAD
+26.05 12:31:39> MOW >>> VCE
+26.05 12:31:44> MOW >>> SEL
+26.05 12:31:48> MOW >>> VIE
+26.05 12:31:52> MOW >>> BUE
+26.05 12:31:57> MOW >>> KRK
+26.05 12:32:01> MOW >>> BEG
+26.05 12:32:05> MOW >>> TBS
+26.05 12:32:10> MOW >>> SCL
+26.05 12:32:14> MOW >>> BUS
+26.05 12:32:19> MOW >>> DEL
+26.05 12:32:23> MOW >>> CAN
+26.05 12:32:27> MOW >>> WAW
+26.05 12:32:31> MOW >>> SGN
+26.05 12:32:36> MOW >>> LAX
+26.05 12:32:40> MOW >>> CNX
+26.05 12:32:45> MOW >>> BJS
+26.05 12:32:49> MOW >>> DXB
+26.05 12:32:53> MOW >>> NCE
+26.05 12:32:58> MOW >>> NAP
+26.05 12:33:02> MOW >>> RMI
+26.05 12:33:06> MOW >>> OPO
+26.05 12:33:11> MOW >>> PMO
+26.05 12:33:15> MOW >>> ZAG
+26.05 12:33:19> MOW >>> NYC
+26.05 12:33:24> MOW >>> BRU
+26.05 12:33:28> MOW >>> SAO
+26.05 12:33:32> MOW >>> LIM
+26.05 12:33:36> MOW >>> TYO
+26.05 12:33:41> MOW >>> BOG
+26.05 12:33:45> MOW >>> VRN
+26.05 12:33:49> MOW >>> EDI
+26.05 12:33:53> MOW >>> CTU
+26.05 12:33:58> MOW >>> REP
+26.05 12:34:02> MOW >>> TLV
+26.05 12:34:06> MOW >>> HGH
+26.05 12:34:11> MOW >>> EVN
+26.05 12:34:15> MOW >>> BLR
+26.05 12:34:19> MOW >>> MNL
+26.05 12:34:24> MOW >>> TPE
+26.05 12:34:43> MOW >>> VNO
+26.05 12:34:47> MOW >>> JKT
+26.05 12:34:51> MOW >>> TRN
+26.05 12:34:56> MOW >>> SIN
+26.05 12:35:00> MOW >>> TLL
+26.05 12:35:04> MOW >>> SVQ
+26.05 12:35:08> MOW >>> UTP
+26.05 12:35:13> MOW >>> HOU
+26.05 12:35:17> MOW >>> AYT
+26.05 12:35:22> MOW >>> ODS
+26.05 12:35:26> MOW >>> HAM
+26.05 12:35:30> MOW >>> SFO
+26.05 12:35:35> MOW >>> AGP
+26.05 12:35:39> MOW >>> NHA
+26.05 12:35:43> MOW >>> LWO
+26.05 12:35:48> MOW >>> SOF
+26.05 12:35:52> MOW >>> YTO
+26.05 12:35:56> MOW >>> LYS
+26.05 12:36:01> MOW >>> UIO
+26.05 12:36:05> MOW >>> MAA
+26.05 12:36:09> MOW >>> DUS
+26.05 12:36:13> MOW >>> KZN
+26.05 12:36:18> MOW >>> GDZ
+26.05 12:36:37> MOW >>> FNC
+26.05 12:36:41> MOW >>> TSE
+26.05 12:36:46> MOW >>> KTM
+26.05 12:36:50> MOW >>> ALA
+26.05 12:36:54> MOW >>> BOM
+26.05 12:36:58> MOW >>> DUB
+26.05 12:37:03> MOW >>> ATH
+26.05 12:37:07> MOW >>> AAQ
+26.05 12:37:12> MOW >>> KRR
+26.05 12:37:16> MOW >>> KLV
+26.05 12:37:21> MOW >>> PFO
+26.05 12:37:25> MOW >>> BNE
+26.05 12:37:29> MOW >>> OVB
+26.05 12:37:34> MOW >>> NKG
+26.05 12:37:38> MOW >>> FRA
+26.05 12:37:42> MOW >>> HRG
+26.05 12:37:47> MOW >>> COK
+26.05 12:37:51> MOW >>> BOD
+26.05 12:37:55> MOW >>> MRS
+26.05 12:38:00> MOW >>> OSA
+26.05 12:38:04> MOW >>> LAS
+26.05 12:38:08> MOW >>> YMQ
+26.05 12:38:12> MOW >>> GOJ
+26.05 12:38:17> MOW >>> VAR
+26.05 12:38:21> MOW >>> DRS
+26.05 12:38:25> MOW >>> ROM
+26.05 12:38:30> MOW >>> PAR
+26.05 12:38:34> MOW >>> RIO
+26.05 12:38:39> MOW >>> LED
+26.05 12:38:43> MOW >>> IST
+26.05 12:38:48> MOW >>> LON
+26.05 12:38:52> MOW >>> BCN
+26.05 12:38:57> MOW >>> MIL
+26.05 12:39:01> MOW >>> FLR
+26.05 12:39:06> MOW >>> BUD
+26.05 12:39:11> MOW >>> PRG
+26.05 12:39:16> MOW >>> LIS
+26.05 12:39:20> MOW >>> DBV
+26.05 12:39:25> MOW >>> BER
+26.05 12:39:29> MOW >>> AMS
+26.05 12:39:34> MOW >>> RAK
+26.05 12:39:38> MOW >>> MAD
+26.05 12:39:42> MOW >>> VCE
+26.05 12:39:47> MOW >>> SEL
+26.05 12:39:52> MOW >>> VIE
+26.05 12:39:56> MOW >>> BUE
+26.05 12:40:01> MOW >>> KRK
+26.05 12:40:05> MOW >>> BEG
+26.05 12:40:10> MOW >>> TBS
+26.05 12:40:14> MOW >>> SCL
+26.05 12:40:19> MOW >>> BUS
+26.05 12:40:24> MOW >>> DEL
+26.05 12:40:29> MOW >>> CAN
+26.05 12:40:34> MOW >>> WAW
+26.05 12:40:39> MOW >>> SGN
+26.05 12:40:43> MOW >>> LAX
+26.05 12:40:48> MOW >>> CNX
+26.05 12:40:52> MOW >>> BJS
+26.05 12:40:57> MOW >>> DXB
+26.05 12:41:01> MOW >>> NCE
+26.05 12:41:06> finished to load bids
+26.05 12:46:00> Starting to load bids
+26.05 12:46:00> Sorting order: start_date
+26.05 12:46:00> LOAD_BIDS: Today's code: MOW
+26.05 12:46:04> MOW >>> TSN
+26.05 12:46:09> MOW >>> CCU
+26.05 12:46:13> MOW >>> KWL
+26.05 12:46:17> MOW >>> DLI
+26.05 12:46:22> MOW >>> NAT
+26.05 12:46:26> MOW >>> CJU
+26.05 12:46:30> MOW >>> MDE
+26.05 12:46:34> MOW >>> MSY
+26.05 12:46:39> MOW >>> BIQ
+26.05 12:46:43> MOW >>> PVR
+26.05 12:46:47> MOW >>> DUR
+26.05 12:46:51> MOW >>> SHE
+26.05 12:46:56> MOW >>> SLA
+26.05 12:47:00> MOW >>> AUS
+26.05 12:47:04> MOW >>> BHZ
+26.05 12:47:08> MOW >>> COR
+26.05 12:47:12> MOW >>> BRQ
+26.05 12:47:17> MOW >>> IBZ
+26.05 12:47:21> MOW >>> BWK
+26.05 12:47:25> MOW >>> MDZ
+26.05 12:47:30> MOW >>> LEJ
+26.05 12:47:34> MOW >>> PNQ
+26.05 12:47:39> MOW >>> PUS
+26.05 12:47:43> MOW >>> SBZ
+26.05 12:47:47> MOW >>> AQP
+26.05 12:47:51> MOW >>> LPQ
+26.05 12:47:56> MOW >>> WRO
+26.05 12:48:00> MOW >>> SMR
+26.05 12:48:04> MOW >>> CLJ
+26.05 12:48:08> MOW >>> JHM
+26.05 12:48:13> MOW >>> JRS
+26.05 12:48:17> MOW >>> MDQ
+26.05 12:48:21> MOW >>> CKG
+26.05 12:48:25> MOW >>> SZV
+26.05 12:48:29> MOW >>> SXR
+26.05 12:48:34> MOW >>> ADZ
+26.05 12:48:38> MOW >>> YQB
+26.05 12:48:42> MOW >>> HYD
+26.05 12:48:46> MOW >>> KWL
+26.05 12:48:51> MOW >>> MSY
+26.05 12:48:55> MOW >>> COR
+26.05 12:48:59> MOW >>> MDQ
+26.05 12:49:03> MOW >>> BHZ
+26.05 12:49:07> MOW >>> BWK
+26.05 12:49:12> MOW >>> IBZ
+26.05 12:49:16> MOW >>> AUS
+26.05 12:49:20> MOW >>> SLA
+26.05 12:49:25> MOW >>> YQB
+26.05 12:49:29> MOW >>> BRQ
+26.05 12:49:33> MOW >>> MEM
+26.05 12:49:37> MOW >>> CCU
+26.05 12:49:42> MOW >>> AQP
+26.05 12:49:46> MOW >>> DUR
+26.05 12:49:50> MOW >>> PNQ
+26.05 12:49:54> MOW >>> BIQ
+26.05 12:49:59> MOW >>> SHE
+26.05 12:50:03> MOW >>> CLJ
+26.05 12:50:07> MOW >>> LEJ
+26.05 12:50:12> MOW >>> CJU
+26.05 12:50:16> MOW >>> MDZ
+26.05 12:50:20> MOW >>> HYD
+26.05 12:50:24> MOW >>> TSN
+26.05 12:50:29> MOW >>> OKC
+26.05 12:50:33> MOW >>> OAK
+26.05 12:50:37> MOW >>> CVG
+26.05 12:50:41> MOW >>> PDX
+26.05 12:50:46> MOW >>> BWI
+26.05 12:50:50> MOW >>> STL
+26.05 12:50:55> MOW >>> SLC
+26.05 12:50:59> MOW >>> MSP
+26.05 12:51:03> MOW >>> DTT
+26.05 12:51:08> MOW >>> CLT
+26.05 12:51:12> MOW >>> PHL
+26.05 12:51:16> MOW >>> PHX
+26.05 12:51:20> MOW >>> DEN
+26.05 12:51:25> MOW >>> IAG
+26.05 12:51:29> MOW >>> PIT
+26.05 12:51:33> MOW >>> SJC
+26.05 12:51:37> MOW >>> RNO
+26.05 12:51:42> MOW >>> YEA
+26.05 12:51:46> MOW >>> ANC
+26.05 12:51:50> MOW >>> YWG
+26.05 12:51:54> MOW >>> SJU
+26.05 12:51:59> MOW >>> MKE
+26.05 12:52:03> MOW >>> ABQ
+26.05 12:52:07> MOW >>> IND
+26.05 12:52:11> MOW >>> YOW
+26.05 12:52:16> MOW >>> CLE
+26.05 12:52:20> MOW >>> MKC
+26.05 12:52:39> MOW >>> BNA
+26.05 12:52:43> MOW >>> YYC
+26.05 12:52:48> MOW >>> CPC
+26.05 12:52:52> MOW >>> KMG
+26.05 12:52:56> MOW >>> GDL
+26.05 12:53:00> MOW >>> ABZ
+26.05 12:53:05> MOW >>> LIL
+26.05 12:53:09> MOW >>> UDR
+26.05 12:53:13> MOW >>> BES
+26.05 12:53:17> MOW >>> MPL
+26.05 12:53:22> MOW >>> ZQN
+26.05 12:53:26> MOW >>> CSX
+26.05 12:53:30> MOW >>> OST
+26.05 12:53:35> MOW >>> MCZ
+26.05 12:53:39> MOW >>> JMK
+26.05 12:53:43> MOW >>> VTE
+26.05 12:53:48> MOW >>> REC
+26.05 12:53:52> MOW >>> KHH
+26.05 12:53:56> MOW >>> AGR
+26.05 12:54:00> MOW >>> ACA
+26.05 12:54:05> MOW >>> SGD
+26.05 12:54:09> MOW >>> BSB
+26.05 12:54:13> MOW >>> BPS
+26.05 12:54:17> MOW >>> FLL
+26.05 12:54:22> MOW >>> MID
+26.05 12:54:26> MOW >>> GLA
+26.05 12:54:30> MOW >>> NQY
+26.05 12:54:34> MOW >>> DFW
+26.05 12:54:39> MOW >>> VNS
+26.05 12:54:43> MOW >>> OAX
+26.05 12:54:47> MOW >>> AVN
+26.05 12:54:51> MOW >>> ANR
+26.05 12:54:56> MOW >>> HUI
+26.05 12:55:00> MOW >>> DUS
+26.05 12:55:04> MOW >>> UTP
+26.05 12:55:09> MOW >>> SVQ
+26.05 12:55:13> MOW >>> TLL
+26.05 12:55:18> MOW >>> SIN
+26.05 12:55:23> MOW >>> TRN
+26.05 12:55:28> MOW >>> JKT
+26.05 12:55:32> MOW >>> VNO
+26.05 12:55:37> MOW >>> TPE
+26.05 12:55:41> MOW >>> MNL
+26.05 12:55:46> MOW >>> BLR
+26.05 12:55:50> MOW >>> MEX
+26.05 12:55:55> MOW >>> HOU
+26.05 12:55:59> MOW >>> AYT
+26.05 12:56:04> finished to load bids
+26.05 13:01:49> Bed time! zzz...
+26.05 13:01:49> Started trip loader task
+26.05 13:01:55> 1: [3376] РИМИНИ | 7д | 2196 км | 6976р | R3147
+26.05 13:01:55> 2: [3117] БАРСЕЛОНА | 7д | 3010 км | 7341р | R2712
+26.05 13:01:55> 3: [3369] НЕАПОЛЬ | 7д | 2374 км | 8369р | R2427
+26.05 13:01:55> 4: [1506] ПИЗА | 2д | 2348 км | 8161р | R2106
+26.05 13:01:55> 5: [498] КАСАБЛАНКА | 7д | 4235 км | 13854р | R2065
+26.05 13:01:55> 6: [969] МАЛЬТА | 7д | 2821 км | 10914р | R1956
+26.05 13:01:55> 7: [855] ИРАКЛИОН (КРИТ) | 4д | 2460 км | 11940р | R1882
+26.05 13:01:55> 8: [4814] НИЦЦА | 7д | 2537 км | 10011р | R1866
+26.05 13:01:55> 9: [2397] АНТВЕРПЕН | 15д | 2232 км | 11884р | R1857
+26.05 13:01:55> 10: [2437] СТРАСБУРГ | 5д | 2167 км | 11247р | R1800
+26.05 13:01:55> 11: [3824] МАРСЕЛЬ | 8д | 2673 км | 12109р | R1714
+26.05 13:01:55> 12: [3709] АНАПА | 11д | 1207 км | 5986р | R1657
+26.05 13:01:55> 13: [552] МЮЛУЗ | 4д | 2244 км | 12215р | R1648
+26.05 13:01:55> 14: [436] КАТАНИЯ | 7д | 2641 км | 12467р | R1644
+26.05 13:01:55> 15: [4552] БАТУМИ | 7д | 1599 км | 10554р | R1539
+26.05 13:01:55> 16: [1236] АЛИКАНТЕ | 11д | 3410 км | 14177р | R1522
+26.05 13:01:55> 17: [1699] ЛИССАБОН | 11д | 3908 км | 14430р | R1518
+26.05 13:01:55> 18: [5143] ТУРИН | 7д | 2404 км | 13662р | R1513
+26.05 13:01:55> 19: [3043] ЛИОН | 14д | 2528 км | 12160р | R1500
+26.05 13:01:55> 20: [1728] МИЛАН | 13д | 2286 км | 8707р | R1492
+26.05 13:01:55> 21: [2543] ТУЛУЗА | 6д | 2890 км | 14834р | R1477
+26.05 13:01:55> 22: [1205] ЛАРНАКА | 7д | 2341 км | 9170р | R1441
+26.05 13:01:55> 23: [5336] АНТАЛЬЯ | 7д | 2159 км | 11062р | R1437
+26.05 13:01:55> 24: [3867] РИМ | 13д | 2377 км | 10824р | R1420
+26.05 13:01:55> 25: [124] САЛОНИКИ | 13д | 2004 км | 8863р | R1404
+26.05 13:01:55> 26: [3449] ТЕЛЬ-АВИВ | 13д | 2650 км | 10753р | R1399
+26.05 13:01:55> 27: [1446] ТИВАТ | 6д | 2011 км | 9767р | R1378
+26.05 13:01:55> 28: [2003] ЖЕНЕВА | 14д | 2419 км | 12145р | R1360
+26.05 13:01:55> 29: [4283] АМСТЕРДАМ | 5д | 2148 км | 10280р | R1359
+26.05 13:01:55> 30: [1341] БАНГКОК | 15д | 7068 км | 19328р | R1343
+26.05 13:01:55> 31: [1589] ПАЛЬМА | 2д | 3123 км | 14745р | R1318
+26.05 13:01:55> 32: [1031] БИРМЕНГЕМ | 8д | 2565 км | 14588р | R1317
+26.05 13:01:55> 33: [4614] ГУАНЧЖОУ | 13д | 6993 км | 20490р | R1315
+26.05 13:01:55> 34: [4331] МАДРИД | 7д | 3441 км | 12753р | R1309
+26.05 13:01:55> 35: [1812] ЕКАТЕРИНБУРГ | 5д | 1430 км | 4778р | R1291
+26.05 13:01:55> 36: [4013] ЛОНДОН | 9д | 2489 км | 11001р | R1275
+26.05 13:01:55> 37: [4359] ВЕНЕЦИЯ | 5д | 2103 км | 10996р | R1267
+26.05 13:01:55> 38: [2312] ПХУКЕТ | 15д | 7462 км | 24565р | R1248
+26.05 13:01:55> 39: [592] ТЕНЕРИФЕ | 9д | 5233 км | 17949р | R1243
+26.05 13:01:55> 40: [4875] ЛЕЙПЦИГ | 14д | 1732 км | 12455р | R1222
+26.05 13:01:55> 41: [3445] ВЕРОНА | 12д | 2182 км | 11187р | R1222
+26.05 13:01:55> 42: [1527] ГАННОВЕР | 11д | 1845 км | 10475р | R1222
+26.05 13:01:55> 43: [2695] УФА | 8д | 1164 км | 5470р | R1209
+26.05 13:01:55> 44: [3674] АЛМАТЫ | 7д | 3105 км | 12501р | R1198
+26.05 13:01:55> 45: [4101] ФЛОРЕНЦИЯ | 10д | 2293 км | 12176р | R1197
+26.05 13:01:55> 46: [5054] ПАТТАЙЯ | 11д | 7196 км | 33633р | R1174
+26.05 13:01:55> 47: [1007] АБУ ДАБИ | 7д | 3738 км | 18224р | R1169
+26.05 13:01:55> 48: [4832] ИБИЦА | 5д | 3258 км | 17022р | R1165
+26.05 13:01:55> 49: [4746] ПЕКИН | 7д | 5795 км | 18757р | R1149
+26.05 13:01:55> 50: [1621] БУДАПЕШТ | 5д | 1569 км | 7984р | R1123
+26.05 13:01:55> 51: [3696] АФИНЫ | 12д | 2229 км | 12119р | R1119
+26.05 13:01:55> 52: [828] ФАРУ | 10д | 3968 км | 18211р | R1100
+26.05 13:01:55> 53: [5026] ДЮССЕЛЬДОРФ | 5д | 2083 км | 9785р | R1099
+26.05 13:01:55> 54: [2557] БИАРРИЦ | 12д | 3080 км | 17093р | R1073
+26.05 13:01:55> 55: [3768] ПАФОС | 6д | 2373 км | 18032р | R1066
+26.05 13:01:55> 56: [4583] НЬЮ-ДЕЛИ | 16д | 4343 км | 17303р | R1060
+26.05 13:01:55> 57: [4000] СТАМБУЛ | 8д | 1764 км | 8931р | R1060
+26.05 13:01:55> 58: [5161] ДЖАКАРТА | 21д | 9314 км | 26603р | R1050
+26.05 13:01:55> 59: [3424] БРЮССЕЛЬ | 15д | 2253 км | 11121р | R1050
+26.05 13:01:55> 60: [334] БАХРЕЙН | 7д | 3443 км | 19784р | R1049
+26.05 13:01:55> 61: [3397] НЬЮ-ЙОРК | 13д | 7512 км | 24213р | R1038
+26.05 13:01:55> 62: [2853] МУМБАИ | 9д | 5027 км | 24757р | R1034
+26.05 13:01:55> 63: [3851] ВАРНА | 14д | 1558 км | 12350р | R1032
+26.05 13:01:55> 64: [117] БРЕМЕН | 14д | 1876 км | 12700р | R1032
+26.05 13:01:55> 65: [3437] ТОКИО | 7д | 7480 км | 27969р | R1032
+26.05 13:01:55> 66: [1132] БАЛИ (ДЕНПАСАР) | 26д | 10047 км | 31650р | R1030
+26.05 13:01:55> 67: [2353] МАНЧЕСТЕР | 28д | 2543 км | 14172р | R1024
+26.05 13:01:55> 68: [4671] ХОШИМИН | 31д | 7713 км | 23967р | R1021
+26.05 13:01:55> 69: [4221] ДУБРОВНИК | 11д | 2020 км | 14869р | R1018
+26.05 13:01:55> 70: [1610] ГОНКОНГ | 8д | 7151 км | 25220р | R1001
+26.05 13:01:55> 71: [4265] БЕРЛИН | 4д | 1608 км | 8953р | R999
+26.05 13:01:55> 72: [2536] НЮРНБЕРГ | 5д | 1910 км | 13192р | R997
+26.05 13:01:55> 73: [3901] ПАРИЖ | 9д | 2487 км | 12963р | R996
+26.05 13:01:55> 74: [1891] КЕЙПТАУН | 30д | 10142 км | 37617р | R995
+26.05 13:01:55> 75: [560] ШЕННОН | 7д | 2987 км | 20342р | R987
+26.05 13:01:55> 76: [1110] ШТУТТГАРТ | 4д | 2067 км | 12508р | R984
+26.05 13:01:55> 77: [4433] ВЕНА | 7д | 1670 км | 9192р | R982
+26.05 13:01:55> 78: [313] ТУНИС | 14д | 2939 км | 17917р | R981
+26.05 13:01:55> 79: [3832] МОНРЕАЛЬ | 11д | 7055 км | 29267р | R972
+26.05 13:01:55> 80: [4390] СЕУЛ | 11д | 6607 км | 26254р | R961
+26.05 13:01:55> 81: [724] ЛЮБЛЯНА | 15д | 1922 км | 14531р | R948
+26.05 13:01:55> 82: [3586] НЯЧАНГ | 13д | 7738 км | 31357р | R945
+26.05 13:01:55> 83: [235] ГАВАНА | 22д | 9603 км | 33570р | R937
+26.05 13:01:55> 84: [2625] КЛУЖ | 10д | 1386 км | 13091р | R934
+26.05 13:01:55> 85: [1411] КАИР | 4д | 2893 км | 17688р | R933
+26.05 13:01:55> 86: [4908] ПИТТСБУРГ | 8д | 7815 км | 32880р | R929
+26.05 13:01:55> 87: [4999] ФОРТ-ЛОДЕРДЕЙЛ | 30д | 9188 км | 31282р | R926
+26.05 13:01:55> 88: [2465] КИШИНЁВ | 8д | 1149 км | 6690р | R912
+26.05 13:01:55> 89: [673] БУХАРЕСТ | 6д | 1499 км | 11164р | R909
+26.05 13:01:55> 90: [3388] ПОРТУ | 5д | 3689 км | 18055р | R908
+26.05 13:01:55> 91: [1521] КОЛОМБО | 12д | 6575 км | 24829р | R907
+26.05 13:01:55> 92: [113] БИЛЛУНН | 30д | 1769 км | 11874р | R904
+26.05 13:01:55> 93: [2946] ГЕЛЕНДЖИК | 5д | 1244 км | 10707р | R904
+26.05 13:01:55> 94: [4465] КРАКОВ | 7д | 1346 км | 14342р | R900
+26.05 13:01:55> 95: [5115] СИНГАПУР | 14д | 8431 км | 28720р | R897
+26.05 13:01:55> 96: [1034] ГРАН-КАНАРИЯ | 14д | 5188 км | 21521р | R895
+26.05 13:01:55> 97: [275] ЛИВЕРПУЛЬ | 7д | 2587 км | 22483р | R893
+26.05 13:01:55> 98: [4880] ЦИНЦИННАТИ | 14д | 8143 км | 32498р | R890
+26.05 13:01:55> 99: [4988] ВЬЕНТЬЯН | 10д | 6807 км | 33438р | R888
+26.05 13:01:55> 100: [3393] ПАЛЕРМО | 27д | 2670 км | 15648р | R886
+26.05 13:01:55> 101: [849] ГЁТЕБОРГ | 9д | 1569 км | 12476р | R883
+26.05 13:01:55> 102: [4546] САНТЬЯГО | 6д | 14125 км | 50415р | R870
+26.05 13:01:55> 103: [4950] МОНПЕЛЬЕ | 10д | 2740 км | 19605р | R853
+26.05 13:01:55> 104: [5219] ТАЙБЭЙ | 14д | 7357 км | 34112р | R852
+26.05 13:01:55> 105: [776] НАССАУ | 14д | 9147 км | 45740р | R852
+26.05 13:01:55> 106: [1976] ХЕЛЬСИНКИ | 7д | 894 км | 8162р | R847
+26.05 13:01:55> 107: [3811] ФРАНКФУРТ | 28д | 2031 км | 11557р | R847
+26.05 13:01:55> 108: [2660] ВАШИНГТОН | 9д | 7824 км | 31656р | R843
+26.05 13:01:55> 109: [4722] ЛОС-АНДЖЕЛЕС | 14д | 9772 км | 31128р | R840
+26.05 13:01:55> 110: [4994] ГАОСЮН | 7д | 7505 км | 35161р | R829
+26.05 13:01:55> 111: [4731] ЧАНГ МАЙ | 7д | 6514 км | 33455р | R823
+26.05 13:01:55> 112: [5015] ДАЛЛАС | 7д | 9263 км | 32549р | R821
+26.05 13:01:55> 113: [5290] МЕХИКО | 56д | 10723 км | 34530р | R819
+26.05 13:01:55> 114: [1694] КУАЛА-ЛУМПУР | 21д | 8129 км | 27500р | R819
+26.05 13:01:55> 115: [4161] ПРАГА | 9д | 1668 км | 8601р | R814
+26.05 13:01:55> 116: [1884] ПНОМ ПЕНЬ | 8д | 7534 км | 33284р | R814
+26.05 13:01:55> 117: [2930] ФУНШАЛ | 13д | 4867 км | 22993р | R813
+26.05 13:01:55> 118: [5322] ХЬЮСТОН | 7д | 9518 км | 32081р | R812
+26.05 13:01:55> 119: [4767] ДУБАЙ | 16д | 3682 км | 16712р | R811
+26.05 13:01:55> 120: [3572] ГАМБУРГ | 4д | 1782 км | 12122р | R811
+26.05 13:01:55> 121: [1387] ШАНХАЙ | 7д | 6819 км | 25638р | R810
+26.05 13:01:55> 122: [5262] БАНГАЛОР | 13д | 5846 км | 28009р | R809
+26.05 13:01:55> 123: [4888] МИННЕАПОЛИС | 16д | 7909 км | 34921р | R806
+26.05 13:01:55> 124: [112] ФИЛИПСБУРГ | 8д | 9009 км | 38712р | R806
+26.05 13:01:55> 125: [3653] АСТАНА | 10д | 2280 км | 15918р | R805
+26.05 13:01:55> 126: [1725] ХАНОЙ | 29д | 6717 км | 29449р | R803
+26.05 13:01:55> 127: [4310] МАРРАКЕШ | 252д | 4427 км | 16047р | R780
+26.05 13:01:55> 128: [4959] КВИНСТАУН | 14д | 16441 км | 71637р | R770
+26.05 13:01:55> 129: [4898] ДЕТРОЙТ | 7д | 7769 км | 41213р | R768
+26.05 13:01:55> 130: [1299] САНТО-ДОМИНГО | 7д | 9366 км | 37456р | R763
+26.05 13:01:55> 131: [4884] БАЛТИМОР | 21д | 7768 км | 31785р | R758
+26.05 13:01:55> 132: [4970] МИКОНОС | 7д | 2235 км | 19106р | R750
+26.05 13:01:55> 133: [2829] ДУБЛИН | 7д | 2790 км | 16823р | R750
+26.05 13:01:55> 134: [4913] САН-ХОСЕ | 21д | 9485 км | 37462р | R748
+26.05 13:01:55> 135: [4922] ОТТАВА | 4д | 7161 км | 29688р | R748
+26.05 13:01:55> 136: [2114] КОПЕНГАГЕН | 14д | 1559 км | 10463р | R745
+26.05 13:01:55> 137: [2889] КАТМАНДУ | 14д | 4894 км | 28572р | R744
+26.05 13:01:55> 138: [1509] ЧИКАГО | 14д | 8001 км | 32716р | R739
+26.05 13:01:55> 139: [2502] ИРКУТСК | 29д | 4208 км | 22398р | R718
+26.05 13:01:55> 140: [2248] БОСТОН | 23д | 7221 км | 34005р | R714
+26.05 13:01:55> 141: [1004] БЕРГЕН | 13д | 1946 км | 15905р | R714
+26.05 13:01:55> 142: [269] МАСКАТ | 4д | 3957 км | 24930р | R712
+26.05 13:01:55> 143: [376] ПУНТА КАНА | 6д | 9267 км | 37788р | R705
+26.05 13:01:55> 144: [1780] БОЛОНЬЯ | 1д | 2232 км | 12852р | R699
+26.05 13:01:55> 145: [5077] СЕВИЛЬЯ | 6д | 3820 км | 24269р | R697
+26.05 13:01:55> 146: [4942] КАЛГАРИ | 7д | 7847 км | 53696р | R694
+26.05 13:01:55> 147: [2432] ПЕРТ | 14д | 12222 км | 54291р | R682
+26.05 13:01:55> 148: [4868] ДУРБАН | 18д | 9543 км | 47990р | R680
+26.05 13:01:55> 149: [4485] БЕЛГРАД | 14д | 1714 км | 11514р | R676
+26.05 13:01:55> 150: [2337] ГЛАЗГО | 13д | 2576 км | 19647р | R670
+26.05 13:01:55> 151: [2979] КАЗАНЬ | 4д | 731 км | 4470р | R670
+26.05 13:01:55> 152: [5087] ТАЛЛИН | 4д | 867 км | 9956р | R669
+26.05 13:01:55> 153: [1593] АММАН | 12д | 2676 км | 26422р | R668
+26.05 13:01:55> 154: [2194] ФИЛАДЕЛЬФИЯ | 22д | 7637 км | 38275р | R645
+26.05 13:01:55> 155: [4920] САН-ХУАН | 14д | 9146 км | 46916р | R640
+26.05 13:01:55> 156: [2390] БАКУ | 11д | 1925 км | 10530р | R639
+26.05 13:01:55> 157: [194] ДАКАР | 7д | 6512 км | 42764р | R625
+26.05 13:01:55> 158: [2163] МЮНХЕН | 4д | 1960 км | 8573р | R615
+26.05 13:01:55> 159: [3926] РИО-ДЕ-ЖАНЕЙРО | 8д | 11542 км | 51415р | R612
+26.05 13:01:55> 160: [1600] ГВАДАЛАХАРА | 4д | 10772 км | 60879р | R610
+26.05 13:01:55> 161: [1380] КЁЛЬН | 14д | 2085 км | 9585р | R600
+26.05 13:01:55> 162: [4449] БУЭНОС-АЙРЕС | 13д | 13479 км | 55585р | R598
+26.05 13:01:55> 163: [4866] КАЛЬКУТТА | 25д | 5531 км | 37662р | R597
+26.05 13:01:55> 164: [1513] ГОНОЛУЛУ | 14д | 11325 км | 58544р | R595
+26.05 13:01:55> 165: [3601] ЛЬВОВ | 4д | 1128 км | 11870р | R594
+26.05 13:01:55> 166: [2402] ТИРАНА | 8д | 2055 км | 16193р | R594
+26.05 13:01:55> 167: [1900] ЭДМОНТОН | 7д | 7580 км | 59291р | R591
+26.05 13:01:55> 168: [4828] НОВ. ОРЛЕАН | 1д | 9277 км | 29764р | R590
+26.05 13:01:55> 169: [3579] МАЛАГА | 10д | 3779 км | 17412р | R588
+26.05 13:01:55> 170: [2050] ОСЛО | 9д | 1643 км | 11652р | R583
+26.05 13:01:55> 171: [1843] РИГА | 11д | 849 км | 8819р | R583
+26.05 13:01:55> 172: [536] ПАНАМА | 4д | 10804 км | 43275р | R581
+26.05 13:01:55> 173: [2193] ШАРЛОТТ | 22д | 8349 км | 39351р | R574
+26.05 13:01:55> 174: [3605] СОФИЯ | 18д | 1775 км | 12972р | R570
+26.05 13:01:55> 175: [2352] ВАРАНАСИ | 31д | 4951 км | 38356р | R561
+26.05 13:01:55> 176: [1203] СИЭТТЛ | 4д | 8373 км | 39723р | R556
+26.05 13:01:55> 177: [5235] МАНИЛА | 14д | 8259 км | 33439р | R554
+26.05 13:01:55> 178: [3829] ЛАС-ВЕГАС | 8д | 9481 км | 40040р | R548
+26.05 13:01:55> 179: [4933] КЛИВЛЕНД | 13д | 7790 км | 40596р | R527
+26.05 13:01:55> 180: [4862] ОСТИН | 3д | 9558 км | 36865р | R525
+26.05 13:01:55> 181: [4939] НЭШВИЛЛ | 56д | 8522 км | 36886р | R512
+26.05 13:01:55> 182: [532] СТАВАНГЕР | 7д | 1926 км | 20229р | R502
+26.05 13:01:55> 183: [88] СЕБУ | 14д | 8837 км | 42376р | R495
+26.05 13:01:55> 184: [3778] БРИСБЕН | 6д | 14076 км | 63812р | R494
+26.05 13:01:55> 185: [3569] ОДЕССА | 14д | 1142 км | 11480р | R492
+26.05 13:01:55> 186: [4966] ОСТЕНДЕ | 5д | 2326 км | 34846р | R483
+26.05 13:01:55> 187: [3820] ХУРГАДА | 8д | 3192 км | 24814р | R481
+26.05 13:01:55> 188: [4946] КУНЬМИН | 25д | 6195 км | 31566р | R474
+26.05 13:01:55> 189: [1248] ПЕРМЬ | 14д | 1141 км | 6525р | R468
+26.05 13:01:55> 190: [4870] ШЭНЬЯН | 31д | 6049 км | 35156р | R458
+26.05 13:01:55> 191: [265] ЭЙНДХОВЕН | 3д | 2154 км | 18167р | R449
+26.05 13:01:55> 192: [4918] ВИННИПЕГ | 9д | 7548 км | 45491р | R445
+26.05 13:01:55> 193: [4643] ВАРШАВА | 5д | 1156 км | 10344р | R445
+26.05 13:01:55> 194: [1643] МИНСК | 4д | 675 км | 4303р | R444
+26.05 13:01:55> 195: [1518] КАНКУН | 17д | 10014 км | 47145р | R437
+26.05 13:01:55> 196: [2533] СИАНУКВИЛЬ | 11д | 7536 км | 59077р | R435
+26.05 13:01:55> 197: [2111] СОЛТ ЛЕЙК СИТИ | 14д | 8905 км | 49150р | R429
+26.05 13:01:55> 198: [1597] ОКЛЕНД | 12д | 16203 км | 63866р | R417
+26.05 13:01:55> 199: [3448] СИЕМРЕАП | 11д | 7300 км | 42932р | R411
+26.05 13:01:55> 200: [97] КАНБЕРРА | 6д | 14491 км | 74244р | R410
+26.05 13:01:55> 201: [1716] СИДНЕЙ | 6д | 14500 км | 61502р | R387
+26.05 13:01:55> 202: [3006] МЕРТЛ-БИЧ | 7д | 8403 км | 53636р | R384
+26.05 13:01:55> 203: [4904] ДЕНВЕР | 48д | 8826 км | 36865р | R383
+26.05 13:01:55> 204: [5188] ВИЛЬНЮС | 7д | 791 км | 8080р | R379
+26.05 13:01:55> 205: [2] КИЕВ | 13д | 756 км | 9423р | R376
+26.05 13:01:55> 206: [100] ДЖИДДА | 13д | 3793 км | 37787р | R360
+26.05 13:01:55> 207: [4882] ПОРТЛЕНД (ОРЕГОН) | 6д | 8597 км | 42643р | R345
+26.05 13:01:55> 208: [2430] ДАЛЯНЬ | 17д | 6175 км | 35990р | R341
+26.05 13:01:55> 209: [1188] ВАНКУВЕР | 4д | 8204 км | 44810р | R330
+26.05 13:01:55> 210: [4886] СЕНТ-ЛУИС | 30д | 8423 км | 45168р | R325
+26.05 13:01:55> 211: [1898] РИНО | 13д | 9211 км | 48750р | R323
+26.05 13:01:55> 212: [1515] ЙОХАННЕСБУРГ | 1д | 9161 км | 39064р | R314
+26.05 13:01:55> 213: [4996] АКАПУЛЬКО | 7д | 11022 км | 67187р | R301
+26.05 13:01:55> 214: [3578] САН-ФРАНЦИСКО | 5д | 9447 км | 40446р | R301
+26.05 13:01:55> 215: [4948] АБЕРДИН | 2д | 2411 км | 20259р | R301
+26.05 13:01:55> 216: [3038] КИТО | 14д | 11619 км | 79828р | R297
+26.05 13:01:55> 217: [4865] БРНО | 6д | 1590 км | 33108р | R285
+26.05 13:01:55> 218: [3840] НИЖНИЙ НОВГОРОД | 9д | 387 км | 4800р | R282
+26.05 13:01:55> 219: [2456] САН-ХОСЕ | 18д | 10961 км | 75665р | R268
+26.05 13:01:55> 220: [4995] АГРА | 7д | 4519 км | 183881р | R239
+26.05 13:01:55> 221: [3432] ЛИМА | 14д | 12649 км | 70949р | R224
+26.05 13:01:55> 222: [3960] САНКТ-ПЕТЕРБУРГ | 5д | 634 км | 3980р | R169
+26.05 13:01:55> 223: [2770] РОСТОВ-НА-ДОНУ | 15д | 957 км | 4870р | R147
+26.05 13:01:55> 224: [2033] КАНЗАС СИТИ | 44д | 8549 км | 47517р | R144
+26.05 13:01:55> 225: [3431] САН-ПАУЛУ | 4д | 11818 км | 63942р | R141
+26.05 13:01:55> 226: [111] МАЛЬМЁ | 14д | 1535 км | 21263р | R132
+26.05 13:01:55> 227: [2197] ФЕНИКС | 4д | 9690 км | 50637р | R91
+26.05 13:01:55> 228: [931] ПОРТЛЕНД (МЭН) | 91д | 7070 км | 35367р | R81
+26.05 13:01:55> 229: [4515] ТБИЛИСИ | 29д | 1654 км | 11515р | R78
+26.05 13:01:55> 230: [3792] НОВОСИБИРСК | 7д | 2797 км | 14685р | R70
+26.05 13:01:55> 231: [1887] ОКЛАХОМА СИТИ | 6д | 9019 км | 59230р | R39
+26.05 13:01:55> 232: [3067] САН-СЕБАСТЬЯН | 3д | 3119 км | 33474р | R36
+26.05 13:01:55> 233: [4997] БРАЗИЛИА | 2д | 11189 км | 70335р | R26
+26.05 13:13:15> finished to load trips
+26.05 13:15:57> Bed time! zzz...
+26.05 13:31:28> Bed time! zzz...
+26.05 13:45:51> Bed time! zzz...
+26.05 14:01:35> Bed time! zzz...
+26.05 14:16:09> Bed time! zzz...
+26.05 14:31:21> Bed time! zzz...
+26.05 14:45:52> Bed time! zzz...
+26.05 15:01:25> Bed time! zzz...
+26.05 15:15:59> Bed time! zzz...
+26.05 15:30:53> Bed time! zzz...
+26.05 15:45:38> Bed time! zzz...
+26.05 16:01:47> Bed time! zzz...
+26.05 16:16:02> Bed time! zzz...
+26.05 16:30:56> Bed time! zzz...
+26.05 16:45:38> Bed time! zzz...
+26.05 17:01:21> Bed time! zzz...
+26.05 17:15:43> Bed time! zzz...
+26.05 17:30:52> Bed time! zzz...
+26.05 17:45:39> Bed time! zzz...
+26.05 18:01:02> Bed time! zzz...
+26.05 18:15:47> Bed time! zzz...
+26.05 18:30:57> Bed time! zzz...
+26.05 18:45:41> Bed time! zzz...
+26.05 19:01:20> Bed time! zzz...
+26.05 19:15:52> Bed time! zzz...
+26.05 19:31:09> Bed time! zzz...
+26.05 19:45:44> Bed time! zzz...
+26.05 20:01:17> Bed time! zzz...
+26.05 20:15:52> Bed time! zzz...
+26.05 20:31:06> Bed time! zzz...
+26.05 20:45:36> Bed time! zzz...
+26.05 21:01:11> Bed time! zzz...
+26.05 21:15:51> Bed time! zzz...
+26.05 21:30:50> Bed time! zzz...
+26.05 21:45:37> Bed time! zzz...
+26.05 22:01:27> Bed time! zzz...
+26.05 22:15:44> Bed time! zzz...
+26.05 22:30:56> Bed time! zzz...
+26.05 22:45:39> Bed time! zzz...
+26.05 23:01:29> Bed time! zzz...
+26.05 23:15:53> Bed time! zzz...
+26.05 23:31:11> Bed time! zzz...
+26.05 23:46:00> Bed time! zzz...
