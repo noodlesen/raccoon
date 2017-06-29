@@ -115,10 +115,16 @@ def build(request, dts):
         management.call_command('build')
     return redirect('enot_app:main_page')
 
+
 @login_required
-def mandrill(request, dts):
-    pass
-    #management.call_command('test_mandrill')
+def load_trips(request, dts):
+    if checkstring(dts):
+        management.call_command('load_trips')
+    return redirect('enot_app:main_page')
+
+# @login_required
+# def mandrill(request, dts):
+#     management.call_command('test_mandrill')
 
 
 # @ensure_csrf_cookie
