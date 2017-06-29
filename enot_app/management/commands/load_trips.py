@@ -86,46 +86,40 @@ class Command(BaseCommand):
                 b.pre_rating,
             ))
 
-        if not options['test']:
-            qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)  
+        if not options['test'] and sentinel.allows('to_request_qpx'):
 
+            qpx = QPXExpressApi(api_key=GOOGLE_API_KEY)  
             started = datetime.now()
+            
             for b in bids[:options['req_lim']]:
 
-                if True:  #b.destination_code not in stop_list:
+                req = QPXRequest(target_city.code,
+                                 b.destination_code,
+                                 b.departure_date,
+                                 1,
+                                 return_date=b.return_date
+                                 )
 
-                    req = QPXRequest(target_city.code,
-                                     b.destination_code,
-                                     b.departure_date,
-                                     1,
-                                     return_date=b.return_date
-                                     )
+                resp = qpx.search(req)
+                res = resp.top_trips(num=30)
 
-                    if sentinel.allows('to_request_qpx'):
+                for r in res:
+                    t = Trip.load_qpx(r, b)
+                    t.origin_city = target_city
+                    rw = review(t)
+                    t.rt_comfort = rw['rt_comfort']
+                    t.rt_price = rw['rt_price']
+                    t.rt_eff = rw['rt_eff']
+                    t.rating = rw['rt']
+                    t.tplink = rw['tplink']
+                    t.direct = rw['direct']
+                    t.hd = json.dumps(rw['hd'])
+                    if b.destination_code not in stop_list:
+                        t.new = True
+                    t.save()
+                    t.slug = get_hash(str(t.id))
+                    t.save()
 
-                        #print('search')
-                        resp = qpx.search(req)
-                        res = resp.top_trips(num=30)
-
-                        for r in res:
-                            t = Trip.load_qpx(r, b)
-                            t.origin_city = target_city
-                            rw = review(t)
-                            t.rt_comfort = rw['rt_comfort']
-                            t.rt_price = rw['rt_price']
-                            t.rt_eff = rw['rt_eff']
-                            t.rating = rw['rt']
-                            t.tplink = rw['tplink']
-                            t.direct = rw['direct']
-                            t.hd = json.dumps(rw['hd'])
-                            if b.destination_code not in stop_list:
-                                t.new = True
-                            t.save()
-                            t.slug = get_hash(str(t.id))
-                            t.save()
-
-                else:
-                    sentinel.report('%s is in the stop list — PASS' % b.destination_code)
 
             finished = datetime.now()
             sentinel.report('TIME ELAPSED: %d' % (finished-started).seconds)
