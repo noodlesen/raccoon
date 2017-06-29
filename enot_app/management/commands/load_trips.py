@@ -103,11 +103,9 @@ class Command(BaseCommand):
 
                     if sentinel.allows('to_request_qpx'):
 
-                        print('search')
+                        #print('search')
                         resp = qpx.search(req)
                         res = resp.top_trips(num=30)
-
-                        
 
                         for r in res:
                             t = Trip.load_qpx(r, b)
@@ -127,13 +125,13 @@ class Command(BaseCommand):
                             t.save()
 
                 else:
-                    print(b.destination_code, 'is in the stop list — PASS')
+                    sentinel.report('%s is in the stop list — PASS' % b.destination_code)
 
             finished = datetime.now()
-            print ('TIME ELAPSED: ', (finished-started).seconds)
+            sentinel.report('TIME ELAPSED: %d' % (finished-started).seconds)
 
             sentinel.inform('finished_trip_loader')
         else:
-            print('TEST MODE')
+            sentinel.report('TEST MODE')
 
 

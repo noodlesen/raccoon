@@ -188,10 +188,10 @@ class Bid(models.Model):
         res={}
         for r in rows:
             if r['drn'] not in res.keys():
-                print('creating direction', r['drn'])
+                #print('creating direction', r['drn'])
                 res[r['drn']]={"name": r['drn'], "countries": {}}
             if r['crn'] not in res[r['drn']]['countries'].keys():
-                print('creating country', r['crn'])
+                #print('creating country', r['crn'])
                 res[r['drn']]['countries'][r['crn']] = {"name": r['crn'],
                                                         "places": []
                                                         }
@@ -214,7 +214,7 @@ class Bid(models.Model):
         dests = {}
 
         for b in bids:
-            print (b.id)
+            #print (b.id)
             if b.destination_code not in dests.keys():
                 dests[b.destination_code] = b
             else:
@@ -427,7 +427,7 @@ class Status(models.Model):
             stats = cls.objects.get(stat_date=yesterday)
         except cls.DoesNotExist:
             if force is False:
-                print('Previous stats record does not exist')
+                #print('Previous stats record does not exist')
                 return False
             else:
                 stats = cls(stat_date=yesterday,
