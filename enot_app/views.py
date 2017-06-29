@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.cache import cache_page
 from django.contrib.auth.decorators import login_required
+from django.core import management
 
 from datetime import datetime
 import calendar
@@ -99,6 +100,25 @@ def ticket_no(request, no):
 
 def outdated(request):
     return render(request, 'enot_app/outdated.html', {})
+
+def checkstring(dts):
+    t = datetime.today()
+    s = t.strftime('%d%m')
+    print (s)
+    return True if dts == s else False
+
+
+@login_required
+def build(request, dts):
+    if checkstring(dts):
+        print('BUILD')
+        management.call_command('build')
+    return redirect('enot_app:main_page')
+
+@login_required
+def mandrill(request, dts):
+    pass
+    #management.call_command('test_mandrill')
 
 
 # @ensure_csrf_cookie

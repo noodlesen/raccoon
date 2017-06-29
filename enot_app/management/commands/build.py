@@ -68,6 +68,8 @@ class Command(BaseCommand):
             iss.name = 'test name'
             iss.save()
 
+            sentinel.inform("build_complete")
+
         else:
             sentinel.report('No trips...')
 

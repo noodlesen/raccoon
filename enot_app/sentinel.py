@@ -102,6 +102,8 @@ def inform(action, **kwargs):
         report('Started trip loader task')
     elif action == 'finished_trip_loader':
         report('finished to load trips')
+    elif action == 'build_complete':
+        report('Улётные билеты готовы', mail=True)
 
     if 'extra' in kwargs.keys():
         report(kwargs['extra'])
