@@ -47,8 +47,8 @@ def allows(action, **kwargs):
 
     if action == 'to_load_bids':
         moscow_time = now_in_moscow()
-        time_to_work = True if moscow_time.hour in range(8, 11) else False
-        if time_to_work or isForced:  
+        time_to_work = True if moscow_time.hour in range(5, 15) else False
+        if time_to_work or isForced:
             st = Status.get_today()
             if st.loader_started == st.loader_finished:
                 allow = True
@@ -60,7 +60,7 @@ def allows(action, **kwargs):
             else:
                 report('Something went wrong last time', mail=True)
         else:
-            report('Bed time! zzz...') 
+            report('Bed time! zzz...')
 
     if action == 'to_request_qpx':
         stats = Status.get_today()
@@ -69,7 +69,7 @@ def allows(action, **kwargs):
                 Trip.objects.all().delete()
             allow = True
             stats.qpx_requests += 1
-            stats.save()   
+            stats.save()
         else:
             report('REQUEST LIMIT EXCEEDED', mail=True)
 
