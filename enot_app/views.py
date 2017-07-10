@@ -17,7 +17,7 @@ from .models import Bid, Destination, Trip, Subscriber, GCountry, GDirection
 @login_required
 def letter_page(request):
 
-    preset = {'expose': True, 'price__lt': 35000, 'rating__gt': 100}
+    preset = {'expose': True, 'price__lt': 35000, 'rating__gt': 0}
 
     g = request.GET
     sort = g.get('sort', 'rating')

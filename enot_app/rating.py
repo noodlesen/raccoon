@@ -121,7 +121,8 @@ def review(trip):
 
     eff = int(trip.distance/trip.price*1000)
     rtp1 = int(eff*1.5)
-    rtp2 = int((trip.average_price-trip.price*0.8)/trip.average_price*500)
+    tap = trip.average_price if trip.average_price!=0 else 1
+    rtp2 = int((trip.average_price-trip.price*0.8)/tap*500)
     rtp += rtp1 + rtp2
 
     ###
