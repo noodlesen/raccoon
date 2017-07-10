@@ -340,7 +340,7 @@ class Trip(models.Model):
         return json.loads(self.slices)
 
     @classmethod
-    def load_qpx(cls, qpx, bid={}):
+    def load_qpx(cls, qpx, bid={} ):
         """ Makes Trip object from QPX response trip
         :param qpx: qpx trip dict
         :param bid_info: dict with related bid info (from sql)
